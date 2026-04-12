@@ -12,7 +12,7 @@ import {
 } from "@/components/Icons";
 import { api } from "@/lib/api";
 import type { CourseDetail } from "@/types/api";
-import { tasks } from "@/lib/mock/tasks";
+import { tasks, type Task } from "@/lib/mock/tasks";
 import { squads } from "@/lib/mock/squads";
 import { posts } from "@/lib/mock/posts";
 import { currentUser } from "@/lib/mock/users";
@@ -93,31 +93,6 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
   const displayCourse = course || null;
   const isUsingMock = !course && mockTask;
 
-  // Create unified task object for UI (prefers API data, falls back to mock)
-  const task = displayCourse ? {
-    id: displayCourse.id,
-    title: displayCourse.title,
-    type: displayCourse.type,
-    industry: displayCourse.industry,
-    estimatedMinutes: displayCourse.estimatedMinutes,
-    description: displayCourse.description,
-    career: displayCourse.career,
-    activeLearners: displayCourse.activeLearners,
-    recruitingSquads: displayCourse.recruitingSquads,
-    difficulty: 'entry' as const, // Default for API courses
-    careerContext: displayCourse.career?.title || '',
-    scenario: displayCourse.description,
-    skills: displayCourse.learning_objectives || [],
-    syllabus: {
-      modules: displayCourse.content?.map((c: any, i: number) => ({
-        id: `module-${i}`,
-        title: c.title,
-        duration: c.duration,
-        type: c.type,
-      })) || []
-    }
-  } : mockTask;
-
   if (loading) {
     return (
       <div className="min-h-screen bg-[#f9fafb] flex items-center justify-center">
@@ -149,6 +124,33 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
       </div>
     );
   }
+
+  // At this point, we have either API data or mock data
+  // Use mockTask as fallback when API data is not available
+  const task: Task = mockTask || (displayCourse ? {
+    ...displayCourse,
+    // Add missing fields with defaults for API courses
+    subtitle: displayCourse.description,
+    scenario: displayCourse.description,
+    careerContext: displayCourse.career?.title || '',
+    difficulty: 'entry' as const,
+    resources: [],
+    assignments: [],
+    bonusPool: { baseAmount: 5000, perMemberStake: 100, sponsorAmount: 2000, sponsorName: 'OPC Learn' },
+    squadSize: { min: 3, max: 5 },
+    activeSquads: displayCourse.recruitingSquads,
+    skills: displayCourse.learning_objectives || [],
+    syllabus: {
+      objective: displayCourse.learning_objectives?.join('、') || '',
+      knowledgePoints: displayCourse.learning_objectives || [],
+      modules: displayCourse.content?.map((c: any, i: number) => ({
+        id: `module-${i}`,
+        title: c.title,
+        duration: c.duration,
+        type: c.type,
+      })) || []
+    }
+  } as any : mockTask) as Task;
 
   const ind = industries[task.industry as keyof typeof industries];
   const taskSquads = squads.filter((s) => s.taskId === task.id);
