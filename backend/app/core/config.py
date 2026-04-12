@@ -15,7 +15,11 @@ class Settings(BaseSettings):
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 7  # 7 days
     
     # CORS
-    CORS_ORIGINS: List[str] = ["http://localhost:3000", "http://localhost:3001"]
+    CORS_ORIGINS: List[str] = [
+        "http://localhost:3000", 
+        "http://localhost:3001",
+        "https://opc-learn-demo.vercel.app",  # Vercel production
+    ]
     
     model_config = {"env_file": ".env"}
 
