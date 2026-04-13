@@ -67,10 +67,46 @@ const questions: Question[] = [
   },
 ];
 
-const recommendations: Record<string, { industry: string; courseId: string; level: string; reason: string }> = {
-  retail: { industry: "retail", courseId: "r-micro-01", level: "微技能课", reason: "零售电商种草文案需求最大，2小时速成即可上岗实习" },
-  tourism: { industry: "tourism", courseId: "t-micro-01", level: "微技能课", reason: "文旅旅行笔记以体验写作为主，你的兴趣和方向非常匹配" },
-  manufacturing: { industry: "manufacturing", courseId: "m-micro-01", level: "微技能课", reason: "B2B产品文案需要专业感，你的理性分析能力是优势" },
+const recommendations: Record<string, { industry: string; courseId: string; level: string; reason: string; skills: string[]; nextSteps: string[] }> = {
+  retail: { 
+    industry: "retail", 
+    courseId: "r-micro-01", 
+    level: "微技能课", 
+    reason: "零售电商种草文案需求最大，2小时速成即可上岗实习。你的内容创作兴趣与零售行业高度匹配。",
+    skills: ["文案写作", "用户洞察", "AIDA模型", "小红书运营"],
+    nextSteps: [
+      "学习种草文案速成课（2小时）",
+      "加入学习小组完成实战作业",
+      "获得技能认证后申请实习岗位",
+      "继续学习体系课晋升主管"
+    ]
+  },
+  tourism: { 
+    industry: "tourism", 
+    courseId: "t-micro-01", 
+    level: "微技能课", 
+    reason: "文旅旅行笔记以体验写作为主，你的兴趣和方向非常匹配。旅行内容创作者市场需求增长迅猛。",
+    skills: ["5感写作", "旅行叙事", "体验描写", "情感共鸣"],
+    nextSteps: [
+      "学习旅行笔记速写课（2小时）",
+      "掌握5感写作法核心技巧",
+      "完成3篇旅行笔记作品",
+      "获得认证后接洽文旅项目"
+    ]
+  },
+  manufacturing: { 
+    industry: "manufacturing", 
+    courseId: "m-micro-01", 
+    level: "微技能课", 
+    reason: "B2B产品文案需要专业感，你的理性分析能力是优势。制造业数字化转型带来大量内容需求。",
+    skills: ["B2B文案", "产品说明", "专业表达", "技术转化"],
+    nextSteps: [
+      "学习B2B产品文案课（2小时）",
+      "掌握技术语言转化技巧",
+      "完成产品详情页文案作业",
+      "申请制造业内容运营岗位"
+    ]
+  },
 };
 
 export default function AssessmentPage() {
@@ -248,6 +284,37 @@ export default function AssessmentPage() {
                 <IconChevronRight size={16} className="text-gray-300 shrink-0" />
               </div>
             </Link>
+          </div>
+
+          {/* Skills you'll learn */}
+          <div className="bg-white rounded-xl p-4 border border-gray-100 shadow-sm mb-4">
+            <div className="text-sm font-semibold text-gray-900 mb-3">你将掌握的技能</div>
+            <div className="grid grid-cols-2 gap-2">
+              {rec.skills.map((skill, i) => (
+                <div key={i} className="flex items-center gap-2 p-2 rounded-lg bg-[#2DD4A8]/5">
+                  <IconCheck size={12} className="text-[#2DD4A8]" />
+                  <span className="text-xs text-gray-700">{skill}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Next Steps */}
+          <div className="bg-gradient-to-br from-blue-50/70 to-violet-50/50 rounded-xl p-4 border border-blue-200/30 mb-4">
+            <div className="flex items-center gap-2 mb-3">
+              <IconLightbulb size={16} className="text-blue-500" />
+              <span className="text-sm font-semibold text-gray-900">学习路径建议</span>
+            </div>
+            <div className="space-y-2">
+              {rec.nextSteps.map((step, i) => (
+                <div key={i} className="flex items-start gap-2">
+                  <div className="w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center shrink-0 mt-0.5">
+                    <span className="text-[10px] font-bold text-blue-600">{i + 1}</span>
+                  </div>
+                  <span className="text-xs text-gray-700">{step}</span>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Skills Preview */}

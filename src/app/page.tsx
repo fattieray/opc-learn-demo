@@ -70,6 +70,63 @@ export default function LandingPage() {
               <div className="text-xs text-gray-400 mt-1">学习路径</div>
             </div>
           </div>
+          <div className="mt-4 pt-4 border-t border-gray-100">
+            <div className="grid grid-cols-3 gap-4 text-center text-xs">
+              <div>
+                <div className="text-lg font-bold text-[#2DD4A8]">1,247</div>
+                <div className="text-[10px] text-gray-400 mt-0.5">活跃学员</div>
+              </div>
+              <div>
+                <div className="text-lg font-bold text-amber-600">¥156K</div>
+                <div className="text-[10px] text-gray-400 mt-0.5">奖学金发放</div>
+              </div>
+              <div>
+                <div className="text-lg font-bold text-blue-600">89%</div>
+                <div className="text-[10px] text-gray-400 mt-0.5">完课率</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Recent Success Stories */}
+      <div className="px-6 mb-8">
+        <div className="text-sm font-semibold text-gray-700 mb-3">学员成功案例</div>
+        <div className="space-y-3">
+          <div className="bg-white rounded-xl p-4 border border-gray-100 shadow-sm">
+            <div className="flex items-start gap-3">
+              <div className="w-10 h-10 rounded-full bg-[#2DD4A8]/10 flex items-center justify-center text-sm font-bold text-[#14B88C] shrink-0">琪</div>
+              <div className="flex-1">
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="text-sm font-medium text-gray-900">思琪</span>
+                  <span className="text-[10px] px-1.5 py-0.5 rounded bg-[#2DD4A8]/10 text-[#14B88C]">已入职</span>
+                </div>
+                <div className="text-xs text-gray-600 mb-2">学完种草文案速成，2周后拿到小红书运营实习offer，月薪5.5K</div>
+                <div className="flex items-center gap-3 text-[10px] text-gray-400">
+                  <span>🎯 零售电商</span>
+                  <span>⏱️ 2小时学习</span>
+                  <span>💰 ¥3,200奖学金</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="bg-white rounded-xl p-4 border border-gray-100 shadow-sm">
+            <div className="flex items-start gap-3">
+              <div className="w-10 h-10 rounded-full bg-violet-50 flex items-center justify-center text-sm font-bold text-violet-600 shrink-0">月</div>
+              <div className="flex-1">
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="text-sm font-medium text-gray-900">小月</span>
+                  <span className="text-[10px] px-1.5 py-0.5 rounded bg-violet-50 text-violet-600">晋升中</span>
+                </div>
+                <div className="text-xs text-gray-600 mb-2">从微技能课到体系课，3个月后晋升内容主管，管理5人实习生团队</div>
+                <div className="flex items-center gap-3 text-[10px] text-gray-400">
+                  <span>🎯 零售电商</span>
+                  <span>⏱️ 12小时学习</span>
+                  <span>💼 运营主管</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 

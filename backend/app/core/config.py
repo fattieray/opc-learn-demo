@@ -18,7 +18,10 @@ class Settings(BaseSettings):
     CORS_ORIGINS: List[str] = [
         "http://localhost:3000", 
         "http://localhost:3001",
+        "http://localhost:3004",  # Local dev (dynamic port)
+        "http://localhost:3005",  # Local dev (alternate port)
         "https://opc-learn-demo.vercel.app",  # Vercel production
+        "https://opc-learn-demo-*.vercel.app",  # Vercel preview deployments
     ]
     
     model_config = {"env_file": ".env"}

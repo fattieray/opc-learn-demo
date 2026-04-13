@@ -36,6 +36,10 @@ const feedItems = [
   { id: "f4", type: "complete", user: "小韩", avatar: "韩", action: "完成了旅行笔记速写课程", course: "小红书旅行种草笔记速写", courseId: "t-micro-01", time: "2小时前" },
   { id: "f5", type: "help", user: "林雪", avatar: "L", role: "coach", action: "回答了阿杰关于AIDA的问题", course: "小红书种草文案速成", courseId: "r-micro-01", time: "3小时前", likes: 5, isExpertAnswer: true },
   { id: "f6", type: "certificate", user: "小月", avatar: "月", action: "获得了「种草文案」技能认证", time: "5小时前" },
+  { id: "f7", type: "submit", user: "阿明", avatar: "明", action: "提交了B2B产品文案作业", course: "1688产品详情页文案速写", courseId: "m-micro-01", time: "6小时前", likes: 1 },
+  { id: "f8", type: "help", user: "小程", avatar: "程", action: "帮助小鹿理解5感写作法", course: "小红书旅行种草笔记速写", courseId: "t-micro-01", time: "8小时前", likes: 4 },
+  { id: "f9", type: "praise", user: "陈野", avatar: "C", role: "coach", action: "认可了小韩的旅行叙事能力", target: "小韩", time: "昨天" },
+  { id: "f10", type: "complete", user: "小林", avatar: "林", action: "完成了体系课第3模块", course: "小红书内容运营全栈能力", courseId: "r-sys-01", time: "昨天" },
 ];
 
 const feedTypeIcons: Record<string, typeof IconCheck> = {
@@ -60,6 +64,8 @@ const helpRequests = [
   { id: "h1", user: "阿杰", avatar: "杰", question: "种草文案的开头怎么写才能抓住注意力？", course: "小红书种草文案速成", courseId: "r-micro-01", answers: 1, time: "20分钟前", expertAnswered: true },
   { id: "h2", user: "小鹿", avatar: "鹿", question: "5感写作法的「触感」怎么融入旅行笔记？", course: "小红书旅行种草笔记速写", courseId: "t-micro-01", answers: 0, time: "1小时前", expertAnswered: false },
   { id: "h3", user: "小程", avatar: "程", question: "B2B产品文案怎么避免太技术化？", course: "1688产品详情页文案速写", courseId: "m-micro-01", answers: 0, time: "2小时前", expertAnswered: false },
+  { id: "h4", user: "小林", avatar: "林", question: "体系课的作业评分标准是什么？", course: "小红书内容运营全栈能力", courseId: "r-sys-01", answers: 2, time: "3小时前", expertAnswered: true },
+  { id: "h5", user: "阿明", avatar: "明", question: "如何平衡文案的商业性和真实性？", course: "电商详情页卖点提炼", courseId: "r-micro-02", answers: 1, time: "5小时前", expertAnswered: false },
 ];
 
 // Onboarding steps for new users

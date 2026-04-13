@@ -20,6 +20,8 @@ const peerActivities = [
   { user: "思琪", avatar: "琪", action: "完成了第2门微技能课", course: "电商详情页卖点提炼", time: "2小时前", skill: "文案写作", level: "apprentice" },
   { user: "阿明", avatar: "明", action: "开始学习体系课", course: "小红书内容运营全栈能力", time: "5小时前", skill: "内容策划", level: "apprentice" },
   { user: "小韩", avatar: "韩", action: "获得了旅行笔记技能认证", course: "小红书旅行种草笔记速写", time: "昨天", skill: "旅行叙事", level: "apprentice" },
+  { user: "小月", avatar: "月", action: "通过了OPC认证评估", course: "OPC内容运营认证", time: "昨天", skill: "全栈运营", level: "artisan" },
+  { user: "阿杰", avatar: "杰", action: "完成了第1门微技能课", course: "小红书种草文案速成", time: "2天前", skill: "文案写作", level: "rookie" },
 ];
 
 export default function DiscoverPage() {
@@ -125,7 +127,7 @@ export default function DiscoverPage() {
                 <div className="h-1.5 bg-white/40 rounded-full overflow-hidden">
                   <div className="h-full bg-gray-200 rounded-full" style={{ width: "0%" }} />
                 </div>
-                <div className="text-[10px] text-gray-400 mt-1">进阶：{systemCourses[0]?.careerGrowth?.title || "运营主管"} · {systemCourses[0]?.careerGrowth?.salaryRange || "10k+"}</div>
+                <div className="text-[10px] text-gray-400 mt-1">进阶：{(systemCourses[0] as any)?.careerGrowth?.title || "运营主管"} · {(systemCourses[0] as any)?.careerGrowth?.salaryRange || "10k+"}</div>
               </div>
             </div>
           </div>

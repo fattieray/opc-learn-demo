@@ -47,6 +47,23 @@ const growthLog = [
   { date: "今天", events: ["连续学习5天", "文案写作 15→20 (+5)"] },
   { date: "昨天", events: ["完成种草文案模块三", "获得教练认可"] },
   { date: "3天前", events: ["帮助思琪理解AIDA模型", "互评2份作业"] },
+  { date: "1周前", events: ["完成第一门微技能课", "获得技能认证"] },
+];
+
+// Scholarship history
+const scholarshipHistory = [
+  { date: "2026-04-10", amount: 320, type: "奖学金分配", source: "种草文案速成班", status: "已到账" },
+  { date: "2026-04-05", amount: 150, type: "互评奖励", source: "点评3份作业", status: "已到账" },
+  { date: "2026-03-28", amount: 200, type: "帮助他人", source: "解答5个问题", status: "已到账" },
+  { date: "2026-03-20", amount: 100, type: "新手奖励", source: "完成首次学习", status: "已到账" },
+];
+
+// Honor records
+const honorRecords = [
+  { date: "2026-04-12", title: "互助达人", desc: "累计帮助10位同学", points: 50 },
+  { date: "2026-04-08", title: "优质互评", desc: "获得5次教练认可", points: 30 },
+  { date: "2026-04-01", title: "连续学习", desc: "连续学习7天", points: 20 },
+  { date: "2026-03-25", title: "首次认证", desc: "获得第一张技能认证", points: 100 },
 ];
 
 export default function ProfilePage() {
@@ -384,14 +401,16 @@ export default function ProfilePage() {
               {inProgressCerts > 0 && <span className="text-[10px] text-blue-500 mr-1">{inProgressCerts}项准备中</span>}
               <IconChevronRight size={16} className="text-gray-300" />
             </Link>
-            <div className="flex items-center gap-3 px-4 py-3.5 border-b border-gray-50 hover:bg-gray-50">
+            <Link href="/profile/certificate" className="flex items-center gap-3 px-4 py-3.5 border-b border-gray-50 hover:bg-gray-50">
               <IconTrophy size={16} className="text-gray-400" />
-              <span className="text-sm text-gray-700 flex-1">荣誉记录</span>
+              <span className="text-sm text-gray-700 flex-1">我的证书</span>
+              <span className="text-[10px] text-gray-400 mr-1">{userCertifications.filter(c => c.status === "earned").length}张</span>
               <IconChevronRight size={16} className="text-gray-300" />
-            </div>
-            <div className="flex items-center gap-3 px-4 py-3.5 hover:bg-gray-50">
+            </Link>
+            <div className="flex items-center gap-3 px-4 py-3.5 border-b border-gray-50 hover:bg-gray-50">
               <IconCoins size={16} className="text-gray-400" />
               <span className="text-sm text-gray-700 flex-1">奖学金记录</span>
+              <span className="text-[10px] text-amber-600 mr-1">¥{scholarshipHistory.reduce((sum, s) => sum + s.amount, 0)}</span>
               <IconChevronRight size={16} className="text-gray-300" />
             </div>
           </div>
