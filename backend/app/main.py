@@ -5,7 +5,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.core.config import settings
 from app.core.database import init_db
-from app.api import auth, courses, assessments, users, seed
+from app.api import auth, courses, assessments, users, seed, missions, circles
 
 
 @asynccontextmanager
@@ -43,6 +43,28 @@ app.include_router(courses.router, prefix="/api/v1")
 app.include_router(assessments.router, prefix="/api/v1")
 app.include_router(users.router, prefix="/api/v1")
 app.include_router(seed.router, prefix="/api/v1")
+app.include_router(missions.router, prefix="/api/v1")
+app.include_router(circles.router, prefix="/api/v1")
+
+
+@app.get("/api/v1/")
+async def api_root():
+    """API root endpoint"""
+    return {
+        "name": settings.APP_NAME,
+        "version": settings.APP_VERSION,
+        "status": "running",
+        "docs": "/docs",
+        "endpoints": {
+            "auth": "/api/v1/auth",
+            "courses": "/api/v1/courses",
+            "missions": "/api/v1/missions",
+            "circles": "/api/v1/circles",
+            "assessments": "/api/v1/assessments",
+            "users": "/api/v1/users",
+            "seed": "/api/v1/seed"
+        }
+    }
 
 
 @app.get("/")
