@@ -73,7 +73,8 @@ export const api = {
       const queryParams = new URLSearchParams();
       if (params?.type) queryParams.set("type", params.type);
       if (params?.industry) queryParams.set("industry", params.industry);
-      return fetchAPI(`/courses?${queryParams}`);
+      const queryString = queryParams.toString();
+      return fetchAPI(queryString ? `/courses?${queryString}` : `/courses`);
     },
     get: (id: string) => fetchAPI(`/courses/${id}`),
   },
