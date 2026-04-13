@@ -1,0 +1,33 @@
+# CloudBase 云函数配置
+# 此文件用于配置云函数的运行时环境
+
+# 函数入口
+handler: index.handler
+
+# 运行时环境
+runtime: Python3.8
+
+# 超时时间（秒）
+timeout: 30
+
+# 内存大小（MB）
+memorySize: 512
+
+# 环境变量
+environment:
+  variables:
+    APP_NAME: "OPC Learn Demo"
+    APP_VERSION: "0.1.0"
+    ENVIRONMENT: "production"
+    # 数据库配置（需要根据实际情况修改）
+    DATABASE_URL: "sqlite+aiosqlite:///tmp/opc_learn.db"
+    SECRET_KEY: "your-secret-key-change-this-in-production"
+    # CORS 配置
+    CORS_ORIGINS: '["https://opc-learn-xxx.service.tcloudbase.net"]'
+
+# 触发器配置
+triggers:
+  - name: api
+    type: http
+    config:
+      enableUrlParams: true
