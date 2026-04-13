@@ -627,3 +627,28 @@ async def seed_database(db: AsyncSession = Depends(get_db)):
             "circles": "8 circles created",
         },
     }
+
+
+@router.post("/reset")
+async def reset_and_seed(db: AsyncSession = Depends(get_db)):
+    """Clear all data and re-seed"""
+    # Delete all existing data
+    await db.execute(Circle.__table__.delete())
+    await db.execute(Mission.__table__.delete())
+    await db.execute(Course.__table__.delete())
+    await db.commit()
+    
+    # Re-seed
+    await seed_courses(db)
+    await seed_missions(db)
+    await seed_circles(db)
+    
+    return {
+        "status": "success",
+        "message": "Database reset and re-seeded",
+        "data": {
+            "courses": "18 courses created (6 per industry)",
+            "missions": "12 missions created", 
+            "circles": "8 circles created",
+        },
+    }
