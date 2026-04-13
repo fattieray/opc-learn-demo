@@ -29,14 +29,14 @@ async def list_missions(
     
     return [
         MissionResponse(
-            id=mission.id,
+            id=str(mission.id),
             title=mission.title,
             industry=mission.industry,
             difficulty=mission.difficulty,
-            estimatedMinutes=mission.estimated_minutes,
+            estimatedMinutes=mission.estimated_duration_minutes,
             description=mission.description,
-            rewards=mission.rewards,
-            status=mission.status,
+            rewards={"type": mission.type, "skills": mission.required_skills or []},
+            status="available",
         )
         for mission in missions
     ]
@@ -52,12 +52,12 @@ async def get_mission(mission_id: str, db: AsyncSession = Depends(get_db)):
         raise HTTPException(status_code=404, detail="Mission not found")
     
     return MissionResponse(
-        id=mission.id,
+        id=str(mission.id),
         title=mission.title,
         industry=mission.industry,
         difficulty=mission.difficulty,
-        estimatedMinutes=mission.estimated_minutes,
+        estimatedMinutes=mission.estimated_duration_minutes,
         description=mission.description,
-        rewards=mission.rewards,
-        status=mission.status,
+        rewards={"type": mission.type, "skills": mission.required_skills or []},
+        status="available",
     )

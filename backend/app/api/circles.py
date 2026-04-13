@@ -26,13 +26,13 @@ async def list_circles(
     
     return [
         CircleResponse(
-            id=circle.id,
+            id=str(circle.id),
             name=circle.name,
             industry=circle.industry,
             description=circle.description,
-            memberCount=circle.member_count,
-            activeMembers=circle.active_members,
-            coachName=circle.coach_name,
+            memberCount=circle.max_members,
+            activeMembers=circle.current_members,
+            coachName="TBD",
         )
         for circle in circles
     ]
@@ -48,11 +48,11 @@ async def get_circle(circle_id: str, db: AsyncSession = Depends(get_db)):
         raise HTTPException(status_code=404, detail="Circle not found")
     
     return CircleResponse(
-        id=circle.id,
+        id=str(circle.id),
         name=circle.name,
         industry=circle.industry,
         description=circle.description,
-        memberCount=circle.member_count,
-        activeMembers=circle.active_members,
-        coachName=circle.coach_name,
+        memberCount=circle.max_members,
+        activeMembers=circle.current_members,
+        coachName="TBD",
     )

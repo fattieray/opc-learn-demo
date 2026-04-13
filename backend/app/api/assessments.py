@@ -5,7 +5,7 @@ from app.models.models import User, AssessmentResult
 from app.schemas.assessment import AssessmentRequest, AssessmentResponse
 from app.services.assessment_service import calculate_recommendation
 
-router = APIRouter(prefix="/assessments", tags=["assessments"])
+router = APIRouter(prefix="/assessment", tags=["assessments"])
 
 
 # Mock assessment questions
