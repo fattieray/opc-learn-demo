@@ -95,13 +95,17 @@ export default function LoginPage() {
               <input
                 type="tel"
                 value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                placeholder="请输入手机号"
+                onChange={(e) => setPhone(e.target.value.replace(/\D/g, '').slice(0, 11))}
+                placeholder="请输入11位手机号"
                 className="flex-1 text-sm outline-none"
                 required
-                pattern="^1[3-9]\\d{9}$"
+                pattern="^1[3-9]\d{9}$"
+                title="请输入有效的11位手机号，以1开头，第二位是3-9"
               />
             </div>
+            <p className="text-xs text-gray-400 mt-2">
+              示例：13800138000
+            </p>
           </div>
 
           {/* Nickname (Register only) */}
@@ -134,23 +138,36 @@ export default function LoginPage() {
                 <input
                   type="text"
                   value={otp}
-                  onChange={(e) => setOtp(e.target.value)}
-                  placeholder="请输入验证码（测试用：123456）"
+                  onChange={(e) => setOtp(e.target.value.replace(/\D/g, '').slice(0, 6))}
+                  placeholder="6位数字验证码"
                   className="flex-1 text-sm outline-none"
                   required
+                  pattern="^\d{6}$"
                   maxLength={6}
+                  title="请输入6位数字验证码"
                 />
               </div>
-              <p className="text-xs text-gray-400 mt-2">
-                测试环境请使用固定验证码：123456
+              <p className="text-xs text-[#2DD4A8] mt-2 font-medium">
+                💡 测试环境请使用固定验证码：123456
               </p>
             </div>
           )}
 
           {/* Error Message */}
           {error && (
-            <div className="bg-red-50 border border-red-200 rounded-xl p-3 text-sm text-red-600">
-              {error}
+            <div className="bg-red-50 border border-red-200 rounded-xl p-4 text-sm text-red-600">
+              <div className="font-medium mb-1">❌ 操作失败</div>
+              <div>{error}</div>
+              {error.includes("phone") && (
+                <div className="mt-2 text-xs text-red-500">
+                  💡 提示：手机号格式应为 11 位数字，例如：13800138000
+                </div>
+              )}
+              {error.includes("OTP") || error.includes("otp") ? (
+                <div className="mt-2 text-xs text-red-500">
+                  💡 提示：测试环境请使用固定验证码 123456
+                </div>
+              ) : null}
             </div>
           )}
 
