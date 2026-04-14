@@ -20,6 +20,65 @@ export default function PathPage() {
   const path = paths.find((p) => p.industry === user.industry) || paths[0];
   const ind = industries[path.industry];
 
+  // Learning milestones with detailed information
+  const milestones = [
+    {
+      id: "milestone-1",
+      phase: "第一阶段",
+      title: "微技能课入门",
+      duration: "1-2周",
+      icon: "🎯",
+      goal: "掌握基础文案技能，获得实习岗位",
+      outcome: "实习运营助理 (4k-7k/月)",
+      courses: [
+        { title: "小红书种草文案速成", status: "completed" as const, score: 85, hours: 2 },
+        { title: "电商详情页卖点提炼", status: "completed" as const, score: 78, hours: 2 },
+        { title: "私域社群文案设计", status: "in-progress" as const, progress: 60, hours: 2 }
+      ],
+      totalHours: 6,
+      completedHours: 4
+    },
+    {
+      id: "milestone-2",
+      phase: "第二阶段",
+      title: "体系课进阶",
+      duration: "3-4周",
+      icon: "📚",
+      goal: "掌握完整运营体系，晋升主管",
+      outcome: "内容主管 (8k-12k/月)",
+      courses: [
+        { title: "小红书内容运营全栈能力", status: "locked" as const, progress: 0, hours: 10 }
+      ],
+      totalHours: 10,
+      completedHours: 0
+    },
+    {
+      id: "milestone-3",
+      phase: "第三阶段",
+      title: "OPC认证",
+      duration: "2-3周",
+      icon: "🏆",
+      goal: "通过OPC认证评估",
+      outcome: "OPC认证内容运营师",
+      courses: [],
+      totalHours: 8,
+      completedHours: 0
+    }
+  ];
+
+  // Learning statistics
+  const pathStats = {
+    totalCourses: path.taskIds.length,
+    completedCourses: user.tasksCompleted,
+    inProgressCourses: 1,
+    lockedCourses: path.taskIds.length - user.tasksCompleted - 1,
+    totalHours: 24,
+    completedHours: 4,
+    estimatedWeeks: path.estimatedWeeks,
+    currentWeek: 3,
+    completionRate: Math.round((user.tasksCompleted / path.taskIds.length) * 100)
+  };
+
   return (
     <div className="min-h-screen bg-[#f9fafb] pb-6">
       {/* Header */}
@@ -45,6 +104,102 @@ export default function PathPage() {
           </div>
           <div className="text-lg font-bold text-gray-900 mb-1">{path.title}</div>
           <p className="text-xs text-gray-500 leading-relaxed">{path.goal}</p>
+        </div>
+      </div>
+
+      {/* Learning Statistics */}
+      <div className="px-4 pt-4">
+        <div className="bg-white rounded-xl p-4 border border-gray-100 shadow-sm">
+          <div className="flex items-center gap-2 mb-3">
+            <IconTrendingUp size={16} className="text-[#2DD4A8]" />
+            <span className="text-sm font-semibold text-gray-900">学习进度</span>
+          </div>
+          <div className="grid grid-cols-2 gap-3 mb-3">
+            <div className="p-3 rounded-lg bg-gradient-to-br from-[#2DD4A8]/5 to-[#2DD4A8]/10 border border-[#2DD4A8]/20">
+              <div className="text-2xl font-bold text-[#2DD4A8]">{pathStats.completionRate}%</div>
+              <div className="text-[10px] text-gray-500 mt-0.5">总体完成度</div>
+            </div>
+            <div className="p-3 rounded-lg bg-gradient-to-br from-blue-50 to-blue-100/50 border border-blue-200/30">
+              <div className="text-2xl font-bold text-blue-600">{pathStats.currentWeek}/{pathStats.estimatedWeeks}</div>
+              <div className="text-[10px] text-gray-500 mt-0.5">当前周/总周数</div>
+            </div>
+            <div className="p-3 rounded-lg bg-gradient-to-br from-amber-50 to-amber-100/50 border border-amber-200/30">
+              <div className="text-2xl font-bold text-amber-600">{pathStats.completedHours}/{pathStats.totalHours}</div>
+              <div className="text-[10px] text-gray-500 mt-0.5">已完成学时</div>
+            </div>
+            <div className="p-3 rounded-lg bg-gradient-to-br from-violet-50 to-violet-100/50 border border-violet-200/30">
+              <div className="text-2xl font-bold text-violet-600">{pathStats.completedCourses}</div>
+              <div className="text-[10px] text-gray-500 mt-0.5">已完成课程</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Milestones */}
+      <div className="px-4 pt-4">
+        <div className="text-sm font-semibold text-gray-700 mb-3">学习里程碑</div>
+        <div className="space-y-4">
+          {milestones.map((milestone, idx) => (
+            <div key={milestone.id} className="bg-white rounded-xl p-4 border border-gray-100 shadow-sm">
+              {/* Milestone Header */}
+              <div className="flex items-start gap-3 mb-3">
+                <div className="text-2xl">{milestone.icon}</div>
+                <div className="flex-1">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-[10px] px-1.5 py-0.5 rounded bg-gray-100 text-gray-500">{milestone.phase}</span>
+                    <span className="text-[10px] text-gray-400">{milestone.duration}</span>
+                  </div>
+                  <div className="text-sm font-semibold text-gray-900 mb-1">{milestone.title}</div>
+                  <div className="text-xs text-gray-500">{milestone.goal}</div>
+                </div>
+              </div>
+              
+              {/* Expected Outcome */}
+              <div className="mb-3 p-2 rounded-lg bg-[#2DD4A8]/5 border border-[#2DD4A8]/10">
+                <div className="text-[10px] text-gray-500">预期成果</div>
+                <div className="text-xs font-semibold text-[#2DD4A8]">{milestone.outcome}</div>
+              </div>
+
+              {/* Courses in this milestone */}
+              {milestone.courses.length > 0 && (
+                <div className="space-y-2">
+                  <div className="text-[11px] font-semibold text-gray-700">课程列表</div>
+                  {milestone.courses.map((course, i) => (
+                    <div key={i} className="flex items-center gap-2 p-2 rounded-lg bg-gray-50">
+                      <div className={`w-2 h-2 rounded-full ${
+                        course.status === "completed" ? "bg-[#2DD4A8]" :
+                        course.status === "in-progress" ? "bg-blue-500" :
+                        "bg-gray-300"
+                      }`} />
+                      <div className="flex-1">
+                        <div className="text-xs text-gray-900">{course.title}</div>
+                        <div className="text-[10px] text-gray-400">
+                          {course.status === "completed" && `已完成 · ${course.hours}小时 · ${course.score}分`}
+                          {course.status === "in-progress" && `进行中 · ${course.progress}% · ${course.hours}小时`}
+                          {course.status === "locked" && `未解锁 · ${course.hours}小时`}
+                        </div>
+                      </div>
+                      {course.status === "completed" && <IconCheck size={14} className="text-[#2DD4A8]" />}
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {/* Milestone progress */}
+              <div className="mt-3 pt-3 border-t border-gray-100">
+                <div className="flex items-center justify-between text-[10px] text-gray-400 mb-1">
+                  <span>阶段进度</span>
+                  <span>{milestone.completedHours}/{milestone.totalHours}小时</span>
+                </div>
+                <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                  <div 
+                    className="h-full bg-gradient-to-r from-[#2DD4A8]/40 to-[#2DD4A8] rounded-full"
+                    style={{ width: `${(milestone.completedHours / milestone.totalHours) * 100}%` }}
+                  />
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 

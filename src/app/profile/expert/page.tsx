@@ -5,7 +5,7 @@ import {
   IconArrowLeft, IconBadgeCheck, IconCertification, IconChalkboard,
   IconCheck, IconChevronRight, IconDollarSign, IconShield,
   IconStar, IconBriefcase, IconWallet, IconLightbulb, IconFlag,
-  IconZap, IconUsers, IconTrophy,
+  IconZap, IconUsers, IconTrophy, IconClock, IconTrendingUp, IconFileText,
 } from "@/components/Icons";
 import { experts, expertCourses, industries, userCertifications } from "@/lib/mock/data";
 import { currentUser } from "@/lib/mock/users";
@@ -49,8 +49,89 @@ const roleConfig = {
   },
 };
 
+// 即将到来的辅导会话
+const upcomingSessions = [
+  {
+    id: "session-1",
+    coachId: "coach-lin",
+    coachName: "林雪",
+    coachAvatar: "L",
+    topic: "种草文案作业点评 - 思琪的作业",
+    time: "明天 15:00-15:45",
+    type: "一对一辅导",
+    status: "已预约" as const,
+    industry: "retail"
+  },
+  {
+    id: "session-2",
+    coachId: "coach-chen",
+    coachName: "陈野",
+    coachAvatar: "C",
+    topic: "旅行笔记写作技巧分享",
+    time: "后天 10:00-10:45",
+    type: "小组辅导（3人）",
+    status: "已预约" as const,
+    industry: "tourism"
+  },
+  {
+    id: "session-3",
+    coachId: "coach-zhao",
+    coachName: "赵工",
+    coachAvatar: "Z",
+    topic: "B2B产品文案优化建议",
+    time: "本周五 14:00-14:45",
+    type: "一对一辅导",
+    status: "可申请" as const,
+    industry: "manufacturing"
+  }
+];
+
+// 辅导统计数据
+const coachingStats = {
+  totalSessions: 23,
+  completedSessions: 18,
+  upcomingSessions: 3,
+  canceledSessions: 2,
+  totalFeedback: 15,
+  avgRating: 4.7,
+  totalHours: 17.5,
+  skillImprovement: "+35%" // 技能提升百分比
+};
+
+// 历史辅导记录
+const sessionHistory = [
+  {
+    id: "history-1",
+    coachName: "林雪",
+    topic: "详情页文案AIDA框架应用",
+    date: "2026-04-08",
+    rating: 5,
+    feedback: "讲解清晰，案例实用，作业批改详细",
+    type: "一对一"
+  },
+  {
+    id: "history-2",
+    coachName: "陈野",
+    topic: "旅行叙事的5感写作法",
+    date: "2026-04-05",
+    rating: 5,
+    feedback: "很有启发性，学会了如何融入感官描写",
+    type: "小组"
+  },
+  {
+    id: "history-3",
+    coachName: "林雪",
+    topic: "种草文案开头技巧",
+    date: "2026-03-28",
+    rating: 4,
+    feedback: "内容很好，希望更多实战案例",
+    type: "一对一"
+  }
+];
+
 export default function ExpertPage() {
   const [selectedRole, setSelectedRole] = useState<"cert_coach" | "course_provider">("cert_coach");
+  const [showHistory, setShowHistory] = useState(false);
   const user = currentUser;
 
   const hasOPCCert = userCertifications.some((c) => c.status === "earned" && c.certDefId.startsWith("cert-opc"));
@@ -278,6 +359,125 @@ export default function ExpertPage() {
               );
             })}
           </div>
+        </div>
+      </div>
+
+      {/* Upcoming Coaching Sessions */}
+      <div className="px-4 pt-4">
+        <div className="bg-white rounded-xl p-4 border border-gray-100 shadow-sm">
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center gap-2">
+              <IconClock size={16} className="text-blue-500" />
+              <span className="text-sm font-semibold text-gray-900">即将到来的辅导</span>
+            </div>
+            <span className="text-[10px] text-gray-400">{upcomingSessions.filter(s => s.status === "已预约").length}个已预约</span>
+          </div>
+          <div className="space-y-2.5">
+            {upcomingSessions.map((session) => {
+              const ind = industries[session.industry as keyof typeof industries];
+              return (
+                <div key={session.id} className="p-3 rounded-lg bg-gradient-to-r from-blue-50/50 to-indigo-50/30 border border-blue-100/30">
+                  <div className="flex items-start gap-2.5">
+                    <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-xs font-bold text-blue-600 shrink-0">
+                      {session.coachAvatar}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="text-xs font-semibold text-gray-900">{session.coachName}</span>
+                        <span className="text-[9px] px-1.5 py-0.5 rounded bg-blue-100 text-blue-600">{session.type}</span>
+                      </div>
+                      <div className="text-xs text-gray-700 mb-1.5">{session.topic}</div>
+                      <div className="flex items-center gap-2 text-[10px] text-gray-500">
+                        <span>🕒 {session.time}</span>
+                        <span className={`px-1.5 py-0.5 rounded ${session.status === "已预约" ? "bg-green-100 text-green-600" : "bg-amber-100 text-amber-600"}`}>
+                          {session.status}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  {session.status === "可申请" && (
+                    <button className="mt-2 w-full py-1.5 rounded-lg bg-blue-500 text-white text-xs font-medium hover:bg-blue-600 transition-colors">
+                      申请辅导
+                    </button>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
+      {/* Coaching Statistics */}
+      <div className="px-4 pt-4">
+        <div className="bg-white rounded-xl p-4 border border-gray-100 shadow-sm">
+          <div className="flex items-center gap-2 mb-3">
+            <IconTrendingUp size={16} className="text-[#2DD4A8]" />
+            <span className="text-sm font-semibold text-gray-900">辅导统计</span>
+          </div>
+          <div className="grid grid-cols-2 gap-3 mb-3">
+            <div className="p-3 rounded-lg bg-gradient-to-br from-[#2DD4A8]/5 to-[#2DD4A8]/10 border border-[#2DD4A8]/20">
+              <div className="text-2xl font-bold text-[#2DD4A8]">{coachingStats.completedSessions}</div>
+              <div className="text-[10px] text-gray-500 mt-0.5">已完成辅导</div>
+            </div>
+            <div className="p-3 rounded-lg bg-gradient-to-br from-blue-50 to-blue-100/50 border border-blue-200/30">
+              <div className="text-2xl font-bold text-blue-600">{coachingStats.upcomingSessions}</div>
+              <div className="text-[10px] text-gray-500 mt-0.5">即将到来</div>
+            </div>
+            <div className="p-3 rounded-lg bg-gradient-to-br from-amber-50 to-amber-100/50 border border-amber-200/30">
+              <div className="text-2xl font-bold text-amber-600">{coachingStats.avgRating}</div>
+              <div className="text-[10px] text-gray-500 mt-0.5">平均评分</div>
+            </div>
+            <div className="p-3 rounded-lg bg-gradient-to-br from-violet-50 to-violet-100/50 border border-violet-200/30">
+              <div className="text-2xl font-bold text-violet-600">{coachingStats.skillImprovement}</div>
+              <div className="text-[10px] text-gray-500 mt-0.5">技能提升</div>
+            </div>
+          </div>
+          <div className="flex items-center justify-between text-[10px] text-gray-400 pt-2 border-t border-gray-50">
+            <span>总辅导时长: {coachingStats.totalHours}小时</span>
+            <span>获得反馈: {coachingStats.totalFeedback}次</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Session History */}
+      <div className="px-4 pt-4">
+        <div className="bg-white rounded-xl p-4 border border-gray-100 shadow-sm">
+          <button 
+            onClick={() => setShowHistory(!showHistory)}
+            className="w-full flex items-center justify-between"
+          >
+            <div className="flex items-center gap-2">
+              <IconFileText size={16} className="text-gray-600" />
+              <span className="text-sm font-semibold text-gray-900">辅导历史</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-[10px] text-gray-400">{sessionHistory.length}条记录</span>
+              <IconChevronRight size={16} className={`text-gray-400 transition-transform ${showHistory ? "rotate-90" : ""}`} />
+            </div>
+          </button>
+          
+          {showHistory && (
+            <div className="mt-3 space-y-2.5 pt-3 border-t border-gray-100">
+              {sessionHistory.map((session) => (
+                <div key={session.id} className="p-3 rounded-lg bg-gray-50/80">
+                  <div className="flex items-start justify-between mb-2">
+                    <div>
+                      <div className="text-xs font-semibold text-gray-900 mb-0.5">{session.topic}</div>
+                      <div className="text-[10px] text-gray-400">教练: {session.coachName} · {session.type} · {session.date}</div>
+                    </div>
+                    <div className="flex items-center gap-0.5">
+                      {[...Array(session.rating)].map((_, i) => (
+                        <IconStar key={i} size={10} className="text-amber-500 fill-amber-500" />
+                      ))}
+                    </div>
+                  </div>
+                  <div className="text-[10px] text-gray-600 bg-white/60 p-2 rounded border border-gray-100/50">
+                    💬 {session.feedback}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
 
