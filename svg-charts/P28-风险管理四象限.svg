@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="380" viewBox="0 0 900 380">
+  <text x="450" y="30" text-anchor="middle" fill="#0f172a" font-family="sans-serif" font-size="16" font-weight="700">风险管理与合规</text>
+  <!-- 四象限 -->
+  <rect x="30" y="55" width="410" height="140" rx="12" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="235" y="82" text-anchor="middle" fill="#1e40af" font-family="sans-serif" font-size="13" font-weight="700">数据安全与隐私</text>
+  <text x="50" y="105" fill="#475569" font-family="sans-serif" font-size="11">· 脱敏处理 / 分级授权 / 学生自主控制可见性</text>
+  <text x="50" y="125" fill="#475569" font-family="sans-serif" font-size="11">· 聚合分析不存原始行为数据</text>
+  <text x="50" y="145" fill="#475569" font-family="sans-serif" font-size="11">· 符合个人信息保护法 + 数据安全法</text>
+  <text x="50" y="165" fill="#475569" font-family="sans-serif" font-size="11">· 链上存证，数据可追溯不可篡改</text>
+  <rect x="460" y="55" width="410" height="140" rx="12" fill="#f0fdf4" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="665" y="82" text-anchor="middle" fill="#166534" font-family="sans-serif" font-size="13" font-weight="700">AI评估公平性</text>
+  <text x="480" y="105" fill="#475569" font-family="sans-serif" font-size="11">· 基于作品评估非背景属性</text>
+  <text x="480" y="125" fill="#475569" font-family="sans-serif" font-size="11">· 多模型交叉验证 + 人工抽检</text>
+  <text x="480" y="145" fill="#475569" font-family="sans-serif" font-size="11">· 可解释评估 + 公开评估框架</text>
+  <text x="480" y="165" fill="#475569" font-family="sans-serif" font-size="11">· 定期审计评估偏差</text>
+  <rect x="30" y="210" width="410" height="140" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="235" y="237" text-anchor="middle" fill="#92400e" font-family="sans-serif" font-size="13" font-weight="700">质量控制</text>
+  <text x="50" y="260" fill="#475569" font-family="sans-serif" font-size="11">· 交付前：能力匹配预筛选</text>
+  <text x="50" y="280" fill="#475569" font-family="sans-serif" font-size="11">· 交付中：进度追踪 / 质量抽检</text>
+  <text x="50" y="300" fill="#475569" font-family="sans-serif" font-size="11">· 交付后：雇主验收 + LLM交叉验证</text>
+  <text x="50" y="320" fill="#475569" font-family="sans-serif" font-size="11">· 反作弊：重复检测 / 贡献度拆分 / 异常识别</text>
+  <rect x="460" y="210" width="410" height="140" rx="12" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="665" y="237" text-anchor="middle" fill="#6d28d9" font-family="sans-serif" font-size="13" font-weight="700">合规路径</text>
+  <text x="480" y="260" fill="#475569" font-family="sans-serif" font-size="11">· 个人信息保护法 + 数据安全法</text>
+  <text x="480" y="280" fill="#475569" font-family="sans-serif" font-size="11">· 生成式AI服务管理办法备案</text>
+  <text x="480" y="300" fill="#475569" font-family="sans-serif" font-size="11">· 灵活用工法律框架</text>
+  <text x="480" y="320" fill="#475569" font-family="sans-serif" font-size="11">· 高校合作符合教育部规定</text>
+</svg>

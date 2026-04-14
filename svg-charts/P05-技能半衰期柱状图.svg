@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="360" viewBox="0 0 800 360">
+  <text x="400" y="35" text-anchor="middle" fill="#0f172a" font-family="sans-serif" font-size="16" font-weight="700">技能半衰期变化趋势</text>
+  <!-- 柱状图 -->
+  <rect x="60" y="70" width="100" height="200" rx="6" fill="#94a3b8"/>
+  <text x="110" y="60" text-anchor="middle" fill="#64748b" font-family="sans-serif" font-size="11">10年+</text>
+  <text x="110" y="290" text-anchor="middle" fill="#475569" font-family="sans-serif" font-size="12" font-weight="500">2000年前</text>
+  <rect x="200" y="120" width="100" height="150" rx="6" fill="#64748b"/>
+  <text x="250" y="112" text-anchor="middle" fill="#64748b" font-family="sans-serif" font-size="11">5-7年</text>
+  <text x="250" y="290" text-anchor="middle" fill="#475569" font-family="sans-serif" font-size="12" font-weight="500">2010年</text>
+  <rect x="340" y="155" width="100" height="115" rx="6" fill="#f59e0b"/>
+  <text x="390" y="148" text-anchor="middle" fill="#d97706" font-family="sans-serif" font-size="11">3-5年</text>
+  <text x="390" y="290" text-anchor="middle" fill="#475569" font-family="sans-serif" font-size="12" font-weight="500">2020年</text>
+  <rect x="480" y="180" width="100" height="90" rx="6" fill="#f97316"/>
+  <text x="530" y="173" text-anchor="middle" fill="#ea580c" font-family="sans-serif" font-size="11">2-3年</text>
+  <text x="530" y="290" text-anchor="middle" fill="#475569" font-family="sans-serif" font-size="12" font-weight="500">2025年</text>
+  <rect x="620" y="200" width="100" height="70" rx="6" fill="#e11d48"/>
+  <text x="670" y="193" text-anchor="middle" fill="#dc2626" font-family="sans-serif" font-size="11" font-weight="700">1.5-2年</text>
+  <text x="670" y="290" text-anchor="middle" fill="#dc2626" font-family="sans-serif" font-size="12" font-weight="700">AI时代</text>
+  <!-- 警示线 -->
+  <line x1="40" y1="230" x2="750" y2="230" stroke="#e11d48" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <text x="760" y="234" fill="#e11d48" font-family="sans-serif" font-size="10">课程更新周期</text>
+  <!-- 挑战/机会 -->
+  <rect x="60" y="315" width="320" height="35" rx="8" fill="#fef2f2" stroke="#f87171"/>
+  <text x="220" y="337" text-anchor="middle" fill="#991b1b" font-family="sans-serif" font-size="12" font-weight="600">⚠ 挑战：入学时学的技能，毕业时已过时</text>
+  <rect x="420" y="315" width="320" height="35" rx="8" fill="#f0fdf4" stroke="#22c55e"/>
+  <text x="580" y="337" text-anchor="middle" fill="#166534" font-family="sans-serif" font-size="12" font-weight="600">✦ 机会：大模型让新解法首次成为可能</text>
+</svg>

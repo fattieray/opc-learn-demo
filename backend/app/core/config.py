@@ -21,9 +21,7 @@ class Settings(BaseSettings):
         "http://localhost:3004",  # Local dev (dynamic port)
         "http://localhost:3005",  # Local dev (alternate port)
         "https://opc-learn-demo.vercel.app",  # Vercel production
-        "https://opc-learn-demo-*.vercel.app",  # Vercel preview deployments
-        "https://*.service.tcloudbase.net",  # Tencent CloudBase
-        "https://opc-learn.cn",  # Custom domain (optional)
+        "*",  # Allow all origins for demo (can be restricted in production)
     ]
     
     model_config = {"env_file": ".env"}

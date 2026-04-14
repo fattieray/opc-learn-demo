@@ -1,0 +1,2274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>基于大模型的大学生"学-练-就"一体化平台 - 战略汇报</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+:root{
+  --primary:#0f172a;--primary-mid:#1e3a5f;--accent:#2563eb;--accent2:#7c3aed;
+  --teal:#0d9488;--emerald:#059669;--amber:#d97706;--rose:#e11d48;
+  --text:#1e293b;--text2:#475569;--text3:#94a3b8;
+  --bg:#ffffff;--bg2:#f8fafc;--bg3:#f1f5f9;
+  --border:#e2e8f0;--shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.04);
+  --shadow-lg:0 10px 25px rgba(0,0,0,.08);
+  --grad:linear-gradient(135deg,#0f172a 0%,#1e3a5f 50%,#2563eb 100%);
+  --grad2:linear-gradient(135deg,#2563eb 0%,#7c3aed 100%);
+  --grad-teal:linear-gradient(135deg,#0d9488 0%,#059669 100%);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter','Noto Sans SC',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--text);line-height:1.5;font-size:15px;overflow:hidden}
+.slide{width:100vw;height:100vh;padding:48px 64px;display:none;flex-direction:column;position:relative;overflow:hidden}
+.slide.active{display:flex}
+/* Cover */
+.slide-cover{background:var(--grad);color:#fff;justify-content:center;align-items:center;text-align:center}
+.slide-cover::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.cover-content{position:relative;z-index:1}
+.cover-badge{display:inline-block;padding:8px 24px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);border-radius:24px;font-size:12px;letter-spacing:3px;text-transform:uppercase;margin-bottom:28px;backdrop-filter:blur(10px)}
+.cover-title{font-size:52px;font-weight:800;letter-spacing:-1.5px;margin-bottom:16px;line-height:1.15;text-shadow:0 4px 30px rgba(0,0,0,.3)}
+.cover-subtitle{font-size:20px;font-weight:400;opacity:.9;margin-bottom:36px;letter-spacing:.5px}
+.cover-pillars{display:flex;gap:20px;justify-content:center;margin-bottom:36px}
+.pillar{padding:14px 28px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);border-radius:12px;backdrop-filter:blur(8px);text-align:center}
+.pillar-label{font-size:11px;opacity:.7;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px}
+.pillar-val{font-size:18px;font-weight:700}
+.cover-slogan{font-size:18px;opacity:.85;font-weight:300;letter-spacing:1px}
+.cover-meta{position:absolute;bottom:40px;left:0;right:0;text-align:center;font-size:13px;opacity:.6;letter-spacing:1px}
+/* Section divider slides */
+.slide-section{background:var(--grad2);color:#fff;justify-content:center;align-items:center;text-align:center}
+.slide-section::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M20 20.5V18H0v-2h20v-2l3 3-3 3z'/%3E%3C/g%3E%3C/svg%3E")}
+.section-num{font-size:80px;font-weight:900;opacity:.15;position:absolute;top:40px;right:60px}
+.section-icon{margin-bottom:20px}
+.section-title{font-size:44px;font-weight:800;margin-bottom:12px;letter-spacing:-1px}
+.section-desc{font-size:18px;opacity:.8;max-width:600px}
+/* Header */
+.hdr{margin-bottom:24px;padding-bottom:14px;border-bottom:2px solid var(--border);display:flex;align-items:baseline;gap:16px}
+.hdr-num{font-size:12px;color:var(--accent);font-weight:700;letter-spacing:2px}
+.hdr-title{font-size:30px;font-weight:700;color:var(--primary);letter-spacing:-.5px}
+.hdr-sub{font-size:14px;color:var(--text2);margin-left:auto}
+/* Content */
+.ct{flex:1;display:flex;flex-direction:column;gap:18px}
+.row{display:flex;gap:18px}
+.col{flex:1;display:flex;flex-direction:column;gap:14px}
+.card{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:20px;box-shadow:var(--shadow)}
+.card-accent{border-left:4px solid var(--accent)}
+.card-teal{border-left:4px solid var(--teal)}
+.card-amber{border-left:4px solid var(--amber)}
+.card-rose{border-left:4px solid var(--rose)}
+.card-purple{border-left:4px solid var(--accent2)}
+.card-title{font-size:15px;font-weight:700;color:var(--primary);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.card-text{font-size:13px;color:var(--text2);line-height:1.6}
+/* Stat cards */
+.stats{display:flex;gap:16px}
+.stat{flex:1;text-align:center;padding:20px 12px;background:var(--bg2);border-radius:12px;border:1px solid var(--border)}
+.stat-val{font-size:36px;font-weight:800;color:var(--accent);line-height:1.1}
+.stat-label{font-size:12px;color:var(--text2);margin-top:6px;font-weight:500}
+.stat-desc{font-size:11px;color:var(--text3);margin-top:4px}
+/* Highlight box */
+.hl{background:linear-gradient(135deg,#eff6ff,#f0f9ff);border:1px solid #bfdbfe;border-radius:10px;padding:16px 20px;font-size:14px;color:var(--primary-mid)}
+.hl-dark{background:var(--primary);color:#fff;border:none}
+.hl strong{font-weight:700}
+/* Flow */
+.flow{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.flow-item{padding:10px 18px;background:var(--bg2);border:1px solid var(--border);border-radius:8px;font-size:13px;font-weight:600;white-space:nowrap}
+.flow-arrow{color:var(--accent);font-weight:700;font-size:18px}
+/* Table */
+.tbl{width:100%;border-collapse:collapse;font-size:13px}
+.tbl th{background:var(--primary);color:#fff;padding:10px 14px;text-align:left;font-weight:600;font-size:12px}
+.tbl td{padding:10px 14px;border-bottom:1px solid var(--border)}
+.tbl tr:nth-child(even) td{background:var(--bg2)}
+/* Grid */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.g4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:14px}
+/* Badge/Tag */
+.badge{display:inline-block;padding:4px 10px;border-radius:6px;font-size:11px;font-weight:600}
+.badge-blue{background:#dbeafe;color:#1d4ed8}
+.badge-teal{background:#ccfbf1;color:#0f766e}
+.badge-amber{background:#fef3c7;color:#92400e}
+.badge-rose{background:#ffe4e6;color:#9f1239}
+.badge-purple{background:#ede9fe;color:#6d28d9}
+/* VS block */
+.vs{display:flex;align-items:center;gap:16px}
+.vs-side{flex:1;padding:18px;border-radius:10px}
+.vs-left{background:#fef2f2;border:1px solid #fecaca}
+.vs-right{background:#f0fdf4;border:1px solid #bbf7d0}
+.vs-badge{padding:8px 14px;background:var(--accent2);color:#fff;border-radius:8px;font-weight:700;font-size:13px}
+/* Step/Pillar */
+.steps{display:flex;gap:14px}
+.step{flex:1;text-align:center;padding:16px 12px;background:var(--bg2);border-radius:10px;border:1px solid var(--border);position:relative}
+.step-num{font-size:28px;font-weight:800;color:var(--accent);opacity:.2}
+.step-title{font-size:14px;font-weight:700;color:var(--primary);margin:4px 0}
+.step-desc{font-size:12px;color:var(--text2)}
+/* Timeline */
+.timeline{display:flex;align-items:stretch;gap:0;position:relative}
+.timeline::before{content:'';position:absolute;top:50%;left:0;right:0;height:3px;background:var(--border);z-index:0}
+.tl-phase{flex:1;text-align:center;padding:16px;position:relative;z-index:1}
+.tl-dot{width:14px;height:14px;border-radius:50%;background:var(--accent);margin:0 auto 8px;border:3px solid #fff;box-shadow:0 0 0 2px var(--accent)}
+.tl-title{font-size:15px;font-weight:700;color:var(--primary)}
+.tl-time{font-size:12px;color:var(--accent);font-weight:600}
+.tl-items{margin-top:8px;font-size:12px;color:var(--text2);line-height:1.7}
+/* Nav */
+.nav{position:fixed;bottom:20px;right:24px;z-index:100;display:flex;align-items:center;gap:8px}
+.nav-btn{width:40px;height:40px;border-radius:50%;border:1px solid var(--border);background:var(--bg);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--text2);box-shadow:var(--shadow);transition:all .2s}
+.nav-btn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+.nav-info{font-size:12px;color:var(--text3);padding:0 8px;min-width:60px;text-align:center}
+/* Progress */
+.progress{position:fixed;top:0;left:0;height:3px;background:var(--accent);z-index:200;transition:width .3s}
+/* SVG Icons */
+.icon{width:20px;height:20px;fill:currentColor;flex-shrink:0}
+.icon-lg{width:28px;height:28px}
+.icon-xl{width:40px;height:40px}
+.icon-xxl{width:56px;height:56px}
+.icon-accent{color:var(--accent)}
+.icon-teal{color:var(--teal)}
+.icon-amber{color:var(--amber)}
+.icon-rose{color:var(--rose)}
+.icon-purple{color:var(--accent2)}
+.icon-white{color:#fff}
+/* Footer tag */
+.slide-tag{position:absolute;bottom:20px;left:64px;font-size:11px;color:var(--text3);letter-spacing:1px}
+/* Layer diagram */
+.layer-stack{display:flex;flex-direction:column;gap:4px;max-width:560px;margin:0 auto}
+.layer{padding:14px 20px;border-radius:8px;text-align:center;font-weight:600;font-size:14px;color:#fff}
+.layer:nth-child(1){background:linear-gradient(90deg,#2563eb,#3b82f6)}
+.layer:nth-child(2){background:linear-gradient(90deg,#7c3aed,#8b5cf6)}
+.layer:nth-child(3){background:linear-gradient(90deg,#0d9488,#14b8a6)}
+.layer:nth-child(4){background:linear-gradient(90deg,#d97706,#f59e0b)}
+/* Matrix */
+.matrix{display:grid;grid-template-columns:80px 1fr 1fr 1fr;border:1px solid var(--border);border-radius:10px;overflow:hidden;font-size:13px}
+.matrix-cell{padding:10px 12px;border-bottom:1px solid var(--border);border-right:1px solid var(--border)}
+.matrix-header{background:var(--primary);color:#fff;font-weight:600;font-size:12px}
+.matrix-row-label{background:var(--bg3);font-weight:600;color:var(--primary);font-size:12px}
+/* Arrow connector */
+.conn{display:flex;justify-content:center;padding:8px 0}
+.conn svg{overflow:visible}
+/* Bar chart */
+.bar-chart{display:flex;align-items:flex-end;gap:20px;height:140px;padding:0 20px}
+.bar-col{display:flex;flex-direction:column;align-items:center;flex:1}
+.bar{width:40px;border-radius:6px 6px 0 0;transition:height .5s}
+.bar-label{font-size:11px;color:var(--text2);margin-top:6px;text-align:center}
+.bar-val{font-size:12px;font-weight:700;margin-bottom:4px}
+/* Browser Frame / Demo Mockup */
+.browser{border-radius:10px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.15);border:1px solid #d1d5db;background:#fff}
+.browser-bar{height:36px;background:#f3f4f6;border-bottom:1px solid #e5e7eb;display:flex;align-items:center;padding:0 12px;gap:6px}
+.browser-dot{width:10px;height:10px;border-radius:50%}
+.browser-dot:nth-child(1){background:#ef4444}
+.browser-dot:nth-child(2){background:#f59e0b}
+.browser-dot:nth-child(3){background:#22c55e}
+.browser-url{margin-left:12px;height:22px;flex:1;background:#e5e7eb;border-radius:4px;display:flex;align-items:center;padding:0 10px;font-size:11px;color:#6b7280;font-family:monospace}
+.browser-body{padding:0;height:100%}
+/* App UI Components */
+.app{display:flex;height:100%;font-size:12px}
+.app-sidebar{width:180px;background:#0f172a;color:#cbd5e1;padding:14px 10px;flex-shrink:0;display:flex;flex-direction:column;gap:2px}
+.app-sidebar-logo{font-size:14px;font-weight:700;color:#fff;padding:6px 8px;margin-bottom:12px;display:flex;align-items:center;gap:6px}
+.app-sidebar-item{padding:7px 10px;border-radius:6px;font-size:12px;color:#94a3b8;cursor:default;display:flex;align-items:center;gap:8px}
+.app-sidebar-item.active{background:#2563eb;color:#fff}
+.app-sidebar-section{font-size:10px;color:#475569;padding:8px 10px 4px;text-transform:uppercase;letter-spacing:1px}
+.app-main{flex:1;display:flex;flex-direction:column;overflow:hidden}
+.app-topbar{height:40px;background:#fff;border-bottom:1px solid #e5e7eb;display:flex;align-items:center;padding:0 16px;gap:12px;flex-shrink:0}
+.app-topbar-title{font-weight:600;font-size:13px;color:var(--primary)}
+.app-topbar-search{height:26px;flex:1;max-width:200px;background:#f1f5f9;border-radius:4px;border:none;padding:0 10px;font-size:11px;color:#94a3b8}
+.app-topbar-avatar{width:26px;height:26px;border-radius:50%;background:var(--grad2);margin-left:auto}
+.app-content{flex:1;padding:14px;overflow:hidden;background:#f8fafc}
+.app-card{background:#fff;border:1px solid #e5e7eb;border-radius:8px;padding:12px;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.app-card-title{font-size:12px;font-weight:600;color:var(--primary);margin-bottom:8px}
+.app-stat{display:flex;align-items:baseline;gap:4px;margin-bottom:4px}
+.app-stat-val{font-size:22px;font-weight:800;color:var(--accent)}
+.app-stat-label{font-size:10px;color:var(--text3)}
+.app-tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:600}
+.app-tag-blue{background:#dbeafe;color:#1d4ed8}
+.app-tag-green{background:#dcfce7;color:#166534}
+.app-tag-purple{background:#ede9fe;color:#6d28d9}
+.app-tag-amber{background:#fef3c7;color:#92400e}
+.app-tag-rose{background:#ffe4e6;color:#9f1239}
+.app-progress{height:6px;background:#e5e7eb;border-radius:3px;overflow:hidden}
+.app-progress-bar{height:100%;border-radius:3px}
+.app-table{width:100%;font-size:11px;border-collapse:collapse}
+.app-table th{text-align:left;padding:6px 8px;background:#f1f5f9;color:#64748b;font-weight:600;font-size:10px}
+.app-table td{padding:6px 8px;border-bottom:1px solid #f1f5f9}
+.app-avatar{width:24px;height:24px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff}
+.demo-label{position:absolute;top:8px;right:16px;padding:4px 12px;background:var(--accent2);color:#fff;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:1px;z-index:5}
+/* Skill radar placeholder */
+.radar-placeholder{width:120px;height:120px;position:relative;margin:0 auto}
+.radar-ring{position:absolute;border:1px dashed #cbd5e1;border-radius:50%}
+.radar-ring:nth-child(1){inset:0}
+.radar-ring:nth-child(2){inset:15px}
+.radar-ring:nth-child(3){inset:30px}
+.radar-dot{position:absolute;width:8px;height:8px;border-radius:50%;background:var(--accent);transform:translate(-50%,-50%)}
+/* Demo slide specific */
+.slide-demo{background:var(--bg2)}
+.slide-demo .hdr{border-bottom-color:#d1d5db}
+/* Mobile Phone Frame */
+.phone{width:290px;height:580px;border-radius:32px;background:#0f172a;padding:8px;box-shadow:0 12px 40px rgba(0,0,0,.2),0 0 0 2px #374151;margin:0 auto;position:relative;flex-shrink:0}
+.phone-screen{width:100%;height:100%;border-radius:26px;background:#fff;overflow:hidden;display:flex;flex-direction:column}
+.phone-notch{height:28px;background:#0f172a;margin:0 40px;border-radius:0 0 14px 14px;display:flex;align-items:center;justify-content:center;gap:6px;position:relative;z-index:2;margin-top:-1px}
+.phone-notch-cam{width:10px;height:10px;border-radius:50%;background:#1e293b;border:2px solid #374151}
+.phone-status{height:20px;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-size:10px;color:#64748b;font-weight:600}
+.phone-nav{height:44px;display:flex;align-items:center;padding:0 12px;gap:8px;border-bottom:1px solid #f1f5f9}
+.phone-nav-title{font-size:14px;font-weight:700;color:var(--primary);flex:1}
+.phone-nav-icon{width:20px;height:20px;color:#64748b}
+.phone-body{flex:1;overflow:hidden;background:#f8fafc}
+.phone-tab-bar{height:48px;background:#fff;border-top:1px solid #f1f5f9;display:flex;align-items:center;justify-content:space-around;flex-shrink:0}
+.phone-tab{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:9px;color:#94a3b8}
+.phone-tab.active{color:var(--accent)}
+.phone-tab-icon{width:18px;height:18px}
+.phone-home-indicator{height:4px;width:100px;margin:6px auto;border-radius:2px;background:#d1d5db}
+/* Mobile UI Components */
+.m-card{background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:10px;margin-bottom:8px}
+.m-card-title{font-size:11px;font-weight:700;color:var(--primary);margin-bottom:6px}
+.m-stat-row{display:flex;gap:8px}
+.m-stat{flex:1;text-align:center;padding:8px 4px;background:var(--bg2);border-radius:8px}
+.m-stat-val{font-size:16px;font-weight:800;color:var(--accent)}
+.m-stat-label{font-size:8px;color:var(--text3);margin-top:2px}
+.m-tag{display:inline-block;padding:2px 6px;border-radius:4px;font-size:8px;font-weight:600}
+.m-progress{height:4px;background:#e5e7eb;border-radius:2px;overflow:hidden}
+.m-progress-bar{height:100%;border-radius:2px}
+.m-avatar{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0}
+.m-task-card{padding:10px;background:#fff;border:1px solid #e5e7eb;border-radius:10px;margin-bottom:6px}
+.m-task-title{font-size:11px;font-weight:600;color:var(--primary)}
+.m-task-meta{font-size:9px;color:var(--text3);margin-top:2px}
+.m-skill-row{display:flex;align-items:center;gap:4px;margin-bottom:4px}
+.m-skill-name{font-size:9px;width:36px;color:var(--text2)}
+.m-skill-bar{flex:1}
+.m-skill-val{font-size:8px;font-weight:700;width:24px;text-align:right}
+.demo-mobile-row{display:flex;gap:24px;justify-content:center;align-items:center}
+/* ===== Print / PDF Export ===== */
+@media print{
+  @page{size:landscape;margin:0}
+  html,body{width:100%;height:auto;overflow:visible!important;background:#fff!important;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;color-adjust:exact!important}
+  .slide{display:flex!important;width:100vw;height:100vh;page-break-after:always;page-break-inside:avoid;position:relative;overflow:hidden}
+  .slide:last-child{page-break-after:auto}
+  .nav,.progress{display:none!important}
+  .cover-badge,.pillar,.cover-content>div[style*="rgba"]{background:rgba(255,255,255,.15)!important;border-color:rgba(255,255,255,.3)!important}
+  .slide-cover::before,.slide-section::before{display:block!important}
+  .browser{box-shadow:0 4px 12px rgba(0,0,0,.15)!important;-webkit-print-color-adjust:exact!important}
+  .phone{box-shadow:0 8px 24px rgba(0,0,0,.2),0 0 0 2px #374151!important;-webkit-print-color-adjust:exact!important}
+  .card,.stat,.flow-item,.step,.hl,.vs-side,.badge,.layer,.matrix-cell,.app-card,.m-card,.m-stat,.m-task-card,.phone-screen,.browser-bar,.app-topbar,.app-sidebar,.app-content,.phone-body,.phone-tab-bar,.phone-nav,.phone-status{box-shadow:none!important;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+  .cover-title{text-shadow:0 2px 12px rgba(0,0,0,.3)!important;-webkit-print-color-adjust:exact!important}
+  .tl-dot{box-shadow:0 0 0 2px #2563eb!important}
+}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<!-- ===== P1 COVER ===== -->
+<div class="slide slide-cover active" data-i="1">
+<div class="cover-content">
+<div class="cover-badge">Strategic Presentation v2.0</div>
+<h1 class="cover-title">基于大模型的<br>大学生"学-练-就"一体化平台</h1>
+<p class="cover-subtitle">Learn · Practice · Achieve</p>
+<div class="cover-pillars">
+  <div class="pillar"><div class="pillar-label">学 Learn</div><div class="pillar-val">AI能力感知</div></div>
+  <div class="pillar"><div class="pillar-label">练 Practice</div><div class="pillar-val">真实任务</div></div>
+  <div class="pillar"><div class="pillar-label">就 Achieve</div><div class="pillar-val">信用护照</div></div>
+</div>
+<p class="cover-slogan">让能力取代学历，成为就业市场的新信号</p>
+</div>
+<div class="cover-meta">战略汇报 · 2026 · v2.0</div>
+</div>
+
+<!-- ===== P2 核心命题 ===== -->
+<div class="slide" data-i="2">
+<div class="hdr"><span class="hdr-num">P2</span><span class="hdr-title">核心命题</span><span class="hdr-sub">一句话 + 三组数据</span></div>
+<div class="ct">
+  <div class="hl" style="font-size:16px;text-align:center;padding:24px">
+    <strong>当"学历"作为能力信号严重失真时</strong><br>
+    大模型让"能力"本身可以被低成本评估和验证<br>
+    <strong style="color:var(--accent)">→ 我们建造的是下一代能力信号基础设施</strong>
+  </div>
+  <div class="stats">
+    <div class="stat"><div class="stat-val">1200万</div><div class="stat-label">年度大学毕业生</div><div class="stat-desc">信号机制失灵 → 人才错配</div></div>
+    <div class="stat"><div class="stat-val">&gt;20%</div><div class="stat-label">青年失业率</div><div class="stat-desc">社会压力临界 → 改革窗口</div></div>
+    <div class="stat"><div class="stat-val">100-465亿</div><div class="stat-label">可服务市场SAM</div><div class="stat-desc">商业空间巨大 → 值得做10年+</div></div>
+  </div>
+  <div class="card card-accent" style="text-align:center">
+    <div class="card-title" style="justify-content:center">核心洞察：问题不在"人"，在"信号"</div>
+    <div class="card-text">学历是18岁一次考试的代理变量 → 我们让能力本身成为直接信号</div>
+  </div>
+</div>
+<span class="slide-tag">基于大模型的大学生"学-练-就"一体化平台</span>
+</div>
+
+<!-- ===== P3 痛点① 学生 ===== -->
+<div class="slide" data-i="3">
+<div class="hdr"><span class="hdr-num">P3 · 痛点①</span><span class="hdr-title">学生：17岁赌定一生，4年后发现自己站错了队</span></div>
+<div class="ct">
+  <div style="background:#fef2f2;border:1px solid #fecaca;border-radius:10px;padding:14px;margin-bottom:8px">
+    <div style="font-weight:700;color:#9f1239;margin-bottom:8px;font-size:13px">一个真实场景</div>
+    <div style="font-size:13px;line-height:2;color:#7f1d1d">
+      <div>张伟，合肥工业大学数据科学专业大三，GPA 3.6/4.0</div>
+      <div>简历写了3页：课程成绩、社团活动、奖学金——唯独没有<strong>"我能做什么"</strong>的证据</div>
+      <div>投了47份简历，收到3个面试，面试官问：<strong>"你做过什么真实项目吗？"</strong></div>
+      <div style="padding:8px;background:#fff;border-radius:6px;margin-top:4px;border-left:3px solid var(--rose)">"我学了4年统计学，但面试要的是Python+SQL+真实数据清洗经验——<strong>这些学校从不教</strong>"</div>
+    </div>
+  </div>
+  <div class="flow" style="justify-content:center;margin-bottom:6px">
+    <div class="flow-item" style="background:#fef2f2;border-color:#fecaca;width:140px"><div style="font-weight:700;font-size:12px">17岁</div><div style="font-size:11px;color:var(--text3)">高考填志愿<br>信息=父母+百度</div></div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-item" style="background:#fef2f2;border-color:#fecaca;width:140px"><div style="font-weight:700;font-size:12px">18-22岁</div><div style="font-size:11px;color:var(--text3)">学4年<br>零市场反馈</div></div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-item" style="background:#fef2f2;border-color:#fecaca;width:140px"><div style="font-weight:700;font-size:12px">22岁</div><div style="font-size:11px;color:var(--text3)">毕业求职<br>简历=自说自话</div></div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-item" style="background:#fef2f2;border-color:#fecaca;width:140px"><div style="font-weight:700;font-size:12px">22岁+</div><div style="font-size:11px;color:var(--text3)">2小时面试<br>被定性</div></div>
+  </div>
+  <div class="g3">
+    <div class="stat"><div class="stat-val" style="font-size:26px;color:var(--rose)">65%</div><div class="stat-label">毕业生认为专业与职业不匹配</div></div>
+    <div class="stat"><div class="stat-val" style="font-size:26px;color:var(--amber)">6-8月</div><div class="stat-label">平均求职周期（海投等待）</div></div>
+    <div class="stat"><div class="stat-val" style="font-size:26px;color:var(--accent2)">47份</div><div class="stat-label">平均投递简历数才获1个offer</div></div>
+  </div>
+  <div class="hl-dark" style="text-align:center;padding:14px;border-radius:10px;font-size:15px;font-weight:600">
+    核心矛盾：<strong>有能力的人发不出信号</strong>，<strong>有信号的人未必有能力</strong>
+  </div>
+</div>
+<span class="slide-tag">基于大模型的大学生"学-练-就"一体化平台</span>
+</div>
+
+<!-- ===== P4 痛点② 企业 ===== -->
+<div class="slide" data-i="4">
+<div class="hdr"><span class="hdr-num">P4 · 痛点②</span><span class="hdr-title">企业：花5万招一个人，2小时判断，3个月发现招错了</span></div>
+<div class="ct">
+  <div style="background:#fef2f2;border:1px solid #fecaca;border-radius:10px;padding:14px;margin-bottom:8px">
+    <div style="font-weight:700;color:#9f1239;margin-bottom:8px;font-size:13px">一个真实场景</div>
+    <div style="font-size:13px;line-height:2;color:#7f1d1d">
+      <div>某合肥高新区SaaS企业，校招HC 5人</div>
+      <div>收简历 <strong>1200份</strong> → 筛选笔试 <strong>80人</strong> → 面试 <strong>20人</strong> → 发放offer <strong>8人</strong> → 入职 <strong>5人</strong></div>
+      <div>3个月后：2人离职（不适应），1人转岗（能力不匹配）</div>
+      <div style="padding:8px;background:#fff;border-radius:6px;margin-top:4px;border-left:3px solid var(--rose)">"简历上写'精通Python'，实际上连pandas都没用过——<strong>我们花了5万才知道</strong>"</div>
+    </div>
+  </div>
+  <div class="flow" style="justify-content:center;margin-bottom:4px">
+    <div class="flow-item" style="width:90px;font-size:11px">准备JD<br><span style="font-size:10px;color:var(--text3)">1-2周</span></div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-item" style="width:90px;font-size:11px">校园宣讲<br><span style="font-size:10px;color:var(--text3)">1-2月</span></div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-item" style="width:90px;font-size:11px">简历筛选<br><span style="font-size:10px;color:var(--text3)">1200→80</span></div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-item" style="width:90px;font-size:11px">笔试面试<br><span style="font-size:10px;color:var(--text3)">80→5人</span></div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-item" style="width:90px;font-size:11px;background:#fef2f2;border-color:#fecaca">3个月验证<br><span style="font-size:10px;color:var(--rose)">5→2人</span></div>
+  </div>
+  <div class="hl" style="text-align:center"><strong>每成功入职1人 → 企业端成本 1-5万元 → 3个月留存率仅60%</strong></div>
+  <div class="g3">
+    <div class="card card-rose"><div class="card-title"><svg class="icon icon-rose" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>招错人代价</div><div class="card-text">招聘成本沉没+团队效率↓<br>重新招聘1-3月<br><strong style="color:var(--rose)">综合损失 10-30万/人</strong></div></div>
+    <div class="card card-amber"><div class="card-title"><svg class="icon icon-amber" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>验证方式原始</div><div class="card-text">简历=自说自话<br>面试2小时定2年用人<br><strong style="color:var(--amber)">本质是概率赌博</strong></div></div>
+    <div class="card card-purple"><div class="card-title"><svg class="icon icon-purple" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>隐形人才流失</div><div class="card-text">跨学科/大器晚成/自学型<br>被系统性筛掉<br><strong style="color:var(--accent2)">不是没有人才，是看不见</strong></div></div>
+  </div>
+</div>
+<span class="slide-tag">基于大模型的大学生"学-练-就"一体化平台</span>
+</div>
+
+<!-- ===== P5 痛点③ 大学 ===== -->
+<div class="slide" data-i="5">
+<div class="hdr"><span class="hdr-num">P5 · 痛点③</span><span class="hdr-title">大学：花了4年培养，却不知道毕业生5年后怎样</span></div>
+<div class="ct">
+  <div style="background:#fef2f2;border:1px solid #fecaca;border-radius:10px;padding:14px;margin-bottom:8px">
+    <div style="font-weight:700;color:#9f1239;margin-bottom:8px;font-size:13px">一个真实场景</div>
+    <div style="font-size:13px;line-height:2;color:#7f1d1d">
+      <div>某高校市场营销专业，课程大纲<strong>2018年制定</strong>，2024年仍在用</div>
+      <div>教了4P理论、消费者行为——<strong>没教抖音投放、私域运营、A/B测试</strong></div>
+      <div>毕业生小李说："工作后发现学的90%用不上，要用的学校没教过"</div>
+      <div style="padding:8px;background:#fff;border-radius:6px;margin-top:4px;border-left:3px solid var(--amber)">"我们不知道毕业生5年后在哪、做什么、发展如何——<strong>产品没有反馈回路，怎么优化？</strong>"</div>
+    </div>
+  </div>
+  <div class="vs">
+    <div class="vs-side vs-left">
+      <div style="font-weight:700;color:#991b1b;margin-bottom:6px">教师考核体系</div>
+      <div style="font-size:12px;color:#7f1d1d">论文+课题+项目<br><span style="font-size:11px">→ 为学术排名服务</span></div>
+    </div>
+    <div class="vs-badge">VS</div>
+    <div class="vs-side vs-right">
+      <div style="font-weight:700;color:#166534;margin-bottom:6px">学生真实需求</div>
+      <div style="font-size:12px;color:#14532d">就业+成长+收入<br><span style="font-size:11px">→ 被系统性忽视</span></div>
+    </div>
+  </div>
+  <div class="vs">
+    <div class="vs-side vs-left">
+      <div style="font-weight:700;color:#991b1b;margin-bottom:6px">课程更新周期</div>
+      <div style="font-size:12px;color:#7f1d1d">5-10年一审<br><span style="font-size:11px">→ 严重滞后市场</span></div>
+    </div>
+    <div class="vs-badge">VS</div>
+    <div class="vs-side vs-right">
+      <div style="font-weight:700;color:#166534;margin-bottom:6px">技能半衰期</div>
+      <div style="font-size:12px;color:#14532d">2-3年<br><span style="font-size:11px">→ 持续加速</span></div>
+    </div>
+  </div>
+  <div class="hl" style="text-align:center"><strong>激励结构决定了大学不可能直接为市场服务</strong> | <span style="color:var(--rose)">学分持续贬值，文凭信用流失，但大学无法单独改变</span></div>
+</div>
+<span class="slide-tag">基于大模型的大学生"学-练-就"一体化平台</span>
+</div>
+
+<!-- ===== P6 痛点汇总 ===== -->
+<div class="slide" data-i="6">
+<div class="hdr"><span class="hdr-num">P6 · 痛点汇总</span><span class="hdr-title">三方共输的结构性困境——不是谁的问题，是连接断裂了</span></div>
+<div class="ct">
+  <div class="g3" style="margin-bottom:8px">
+    <div class="card" style="border-top:4px solid var(--rose);background:#fef2f2">
+      <div class="card-title" style="color:#991b1b"><svg class="icon icon-rose" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>学生：有能力无信号</div>
+      <div class="card-text" style="font-size:12px;line-height:1.8;color:#7f1d1d">
+        <div>学4年不知自己能做什么</div>
+        <div>投47份简历才获1个面试</div>
+        <div><strong>→ 被低估、被误判、被浪费</strong></div>
+      </div>
+    </div>
+    <div class="card" style="border-top:4px solid var(--accent2);background:#ede9fe">
+      <div class="card-title" style="color:#6d28d9"><svg class="icon icon-purple" viewBox="0 0 24 24"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg>企业：有需求无匹配</div>
+      <div class="card-text" style="font-size:12px;line-height:1.8;color:#4c1d95">
+        <div>花5万招1人，3个月就走</div>
+        <div>隐形人才被系统性筛掉</div>
+        <div><strong>→ 高成本试错、低效匹配</strong></div>
+      </div>
+    </div>
+    <div class="card" style="border-top:4px solid var(--amber);background:#fef3c7">
+      <div class="card-title" style="color:#92400e"><svg class="icon icon-amber" viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>大学：有教学无验证</div>
+      <div class="card-text" style="font-size:12px;line-height:1.8;color:#78350f">
+        <div>课程5年不更新，90%用不上</div>
+        <div>毕业生5年后怎样？不知道</div>
+        <div><strong>→ 学分贬值、信任流失</strong></div>
+      </div>
+    </div>
+  </div>
+  <div style="text-align:center;margin:8px 0;font-size:14px">
+    <div style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:#fef2f2;border:2px solid #fecaca;border-radius:10px">
+      <span style="color:var(--rose);font-weight:700">学生被低估</span>
+      <span style="color:var(--text3)">+</span>
+      <span style="color:var(--accent2);font-weight:700">企业浪费钱</span>
+      <span style="color:var(--text3)">+</span>
+      <span style="color:var(--amber);font-weight:700">大学丢信用</span>
+    </div>
+  </div>
+  <div class="hl-dark" style="text-align:center;padding:16px;border-radius:10px;font-size:15px">
+    缺失的不是某个环节，而是连接三方的<strong>"能力信号基础设施"</strong><br>
+    <span style="font-size:13px;opacity:.8">类比：互联网出现前的商品交易——信息不对称→效率极低→需要一个"能力领域的互联网"</span>
+  </div>
+</div>
+<span class="slide-tag">基于大模型的大学生"学-练-就"一体化平台</span>
+</div>
+
+<!-- ===== P7 挑战① ===== -->
+<div class="slide" data-i="7">
+<div class="hdr"><span class="hdr-num">P7 · 挑战①</span><span class="hdr-title">信息基础设施级失败——三个环节各自为战，没有"翻译层"</span></div>
+<div class="ct">
+  <!-- 信息流断裂示意 -->
+  <div style="display:grid;grid-template-columns:1fr 60px 1fr 60px 1fr;gap:0;align-items:center;margin-bottom:10px">
+    <div style="padding:16px;background:#eff6ff;border:2px solid #bfdbfe;border-radius:10px;text-align:center">
+      <div style="font-size:10px;color:var(--accent);font-weight:700;margin-bottom:4px">环节1</div>
+      <div style="font-size:15px;font-weight:800;color:var(--primary)">能力生产</div>
+      <div style="font-size:11px;color:var(--text2);margin-top:4px">大学按学科逻辑培养</div>
+      <div style="padding:6px;background:#fef2f2;border-radius:4px;margin-top:6px;font-size:10px;color:var(--rose);font-weight:600">不追踪市场需要什么</div>
+    </div>
+    <div style="text-align:center">
+      <div style="font-size:20px;color:var(--rose);font-weight:800">→</div>
+      <div style="font-size:9px;color:var(--rose);font-weight:700">断裂</div>
+    </div>
+    <div style="padding:16px;background:#fef3c7;border:2px solid #fde68a;border-radius:10px;text-align:center">
+      <div style="font-size:10px;color:var(--amber);font-weight:700;margin-bottom:4px">环节2</div>
+      <div style="font-size:15px;font-weight:800;color:var(--primary)">能力信号</div>
+      <div style="font-size:11px;color:var(--text2);margin-top:4px">文凭+简历做代理</div>
+      <div style="padding:6px;background:#fef2f2;border-radius:4px;margin-top:6px;font-size:10px;color:var(--rose);font-weight:600">信号严重失真</div>
+    </div>
+    <div style="text-align:center">
+      <div style="font-size:20px;color:var(--rose);font-weight:800">→</div>
+      <div style="font-size:9px;color:var(--rose);font-weight:700">断裂</div>
+    </div>
+    <div style="padding:16px;background:#fef2f2;border:2px solid #fecaca;border-radius:10px;text-align:center">
+      <div style="font-size:10px;color:var(--rose);font-weight:700;margin-bottom:4px">环节3</div>
+      <div style="font-size:15px;font-weight:800;color:var(--primary)">能力验证</div>
+      <div style="font-size:11px;color:var(--text2);margin-top:4px">雇主2小时面试判断</div>
+      <div style="padding:6px;background:#fef2f2;border-radius:4px;margin-top:6px;font-size:10px;color:var(--rose);font-weight:600">成本高·准确率低</div>
+    </div>
+  </div>
+  <!-- 每个环节的具体失败 -->
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:10px">
+    <div style="padding:10px;background:var(--bg2);border-radius:8px;border-left:3px solid var(--accent)">
+      <div style="font-size:11px;font-weight:700;color:var(--accent);margin-bottom:4px">大学端：只管产出，不管验证</div>
+      <div style="font-size:11px;color:var(--text2);line-height:1.7">课程5年不更新<br>不知道毕业生5年后怎样<br>没有反馈回路 = 产品无法迭代</div>
+    </div>
+    <div style="padding:10px;background:var(--bg2);border-radius:8px;border-left:3px solid var(--amber)">
+      <div style="font-size:11px;font-weight:700;color:var(--amber);margin-bottom:4px">信号端：代理变量严重失真</div>
+      <div style="font-size:11px;color:var(--text2);line-height:1.7">"985"=18岁一次考试<br>简历=自说自话<br>技能endorsement=任何人可点</div>
+    </div>
+    <div style="padding:10px;background:var(--bg2);border-radius:8px;border-left:3px solid var(--rose)">
+      <div style="font-size:11px;font-weight:700;color:var(--rose);margin-bottom:4px">企业端：独自承担验证成本</div>
+      <div style="font-size:11px;color:var(--text2);line-height:1.7">1200份简历筛到5人<br>2小时定2年用人<br>3个月才发现招错</div>
+    </div>
+  </div>
+  <!-- 结论 -->
+  <div class="hl-dark" style="text-align:center;padding:14px;border-radius:10px">
+    <div style="font-size:14px;font-weight:700;margin-bottom:4px">信息的生产·流通·验证 全部由低效中介完成——缺失的是连接三方的<strong>"能力信号基础设施"</strong></div>
+    <div style="font-size:12px;opacity:.8">类比：互联网出现前的商品交易——信息不对称→效率极低→需要一个"能力领域的互联网"</div>
+  </div>
+</div>
+<span class="slide-tag">基于大模型的大学生"学-练-就"一体化平台</span>
+</div>
+
+<!-- ===== P8 挑战② ===== -->
+<div class="slide" data-i="8">
+<div class="hdr"><span class="hdr-num">P8 · 挑战②</span><span class="hdr-title">三次结构性断裂</span></div>
+<div class="ct">
+  <div class="g3">
+    <div class="card" style="border-top:4px solid var(--rose)">
+      <div class="card-title"><span class="badge badge-rose">断裂①</span>教育与市场脱节</div>
+      <div class="card-text" style="margin-bottom:8px">
+        <div style="padding:8px;background:#fef2f2;border-radius:6px;margin-bottom:6px;font-size:12px">编译原理很熟<br>没做过真实软件项目</div>
+        <div style="padding:8px;background:#fef2f2;border-radius:6px;font-size:12px">4P理论精通<br>没做过投放实验</div>
+      </div>
+      <div style="font-size:12px;color:var(--rose);font-weight:600">→ 学了没用的，有用的没学</div>
+    </div>
+    <div class="card" style="border-top:4px solid var(--amber)">
+      <div class="card-title"><span class="badge badge-amber">断裂②</span>信号机制失真</div>
+      <div class="card-text" style="margin-bottom:8px">
+        <div style="padding:8px;background:#fef3c7;border-radius:6px;margin-bottom:6px;font-size:12px">"985" = 18岁时一次考试表现</div>
+        <div style="padding:8px;background:#fef3c7;border-radius:6px;font-size:12px">简历 = 自说自话</div>
+      </div>
+      <div style="font-size:12px;color:var(--amber);font-weight:600">→ 好能力发不出信号，强信号≠好能力</div>
+    </div>
+    <div class="card" style="border-top:4px solid var(--accent2)">
+      <div class="card-title"><span class="badge badge-purple">断裂③</span>悬崖式切换</div>
+      <div class="card-text" style="margin-bottom:8px">
+        <div style="padding:8px;background:#ede9fe;border-radius:6px;margin-bottom:6px;font-size:12px">毕业前一天 = 学生<br>毕业后一天 = 求职者</div>
+        <div style="padding:8px;background:#ede9fe;border-radius:6px;font-size:12px">中间没有任何过渡带</div>
+      </div>
+      <div style="font-size:12px;color:var(--accent2);font-weight:600">→ 从学生到职场人，零过渡零验证</div>
+    </div>
+  </div>
+  <div class="hl" style="text-align:center;font-size:14px">
+    对个人：17岁做的选择4年后才知对错 | 对企业：2小时决定2年用人 | 对社会：大量人才错配、能力沉没
+  </div>
+</div>
+<span class="slide-tag">基于大模型的大学生"学-练-就"一体化平台</span>
+</div>
+
+<!-- ===== P9 挑战③ ===== -->
+<div class="slide" data-i="9">
+<div class="hdr"><span class="hdr-num">P9 · 挑战③</span><span class="hdr-title">AI时代加速撕裂：技能半衰期压缩</span></div>
+<div class="ct">
+  <div class="card" style="padding:20px">
+    <div class="card-title">技能半衰期变化趋势</div>
+    <div style="display:flex;align-items:flex-end;gap:8px;height:140px;margin-top:12px">
+      <div style="display:flex;flex-direction:column;align-items:center;flex:1"><div style="font-size:12px;font-weight:700;color:var(--text2)">10年+</div><div style="width:100%;background:linear-gradient(0deg,#3b82f6,#60a5fa);height:120px;border-radius:6px 6px 0 0"></div><div style="font-size:11px;color:var(--text3);margin-top:4px">2000年前</div></div>
+      <div style="display:flex;flex-direction:column;align-items:center;flex:1"><div style="font-size:12px;font-weight:700;color:var(--text2)">5-7年</div><div style="width:100%;background:linear-gradient(0deg,#3b82f6,#60a5fa);height:90px;border-radius:6px 6px 0 0"></div><div style="font-size:11px;color:var(--text3);margin-top:4px">2010年</div></div>
+      <div style="display:flex;flex-direction:column;align-items:center;flex:1"><div style="font-size:12px;font-weight:700;color:var(--text2)">3-5年</div><div style="width:100%;background:linear-gradient(0deg,#f59e0b,#fbbf24);height:60px;border-radius:6px 6px 0 0"></div><div style="font-size:11px;color:var(--text3);margin-top:4px">2020年</div></div>
+      <div style="display:flex;flex-direction:column;align-items:center;flex:1"><div style="font-size:12px;font-weight:700;color:var(--rose)">2-3年</div><div style="width:100%;background:linear-gradient(0deg,#ef4444,#f87171);height:40px;border-radius:6px 6px 0 0"></div><div style="font-size:11px;color:var(--text3);margin-top:4px">2025年</div></div>
+      <div style="display:flex;flex-direction:column;align-items:center;flex:1"><div style="font-size:12px;font-weight:700;color:var(--rose)">1.5-2年</div><div style="width:100%;background:linear-gradient(0deg,#dc2626,#ef4444);height:28px;border-radius:6px 6px 0 0"></div><div style="font-size:11px;color:var(--text3);margin-top:4px">AI时代</div></div>
+    </div>
+    <div style="text-align:center;margin-top:8px;font-size:13px;color:var(--rose);font-weight:600">技能半衰期 < 大学课程更新周期 → 入学时学的技能毕业时已过时</div>
+  </div>
+  <div class="g2">
+    <div class="card card-rose"><div class="card-title"><svg class="icon icon-rose" viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>挑战面</div><div class="card-text">· 大量初级岗位被AI替代<br>· "会用AI"成为最基础要求<br>· 传统技能贬值加速</div></div>
+    <div class="card card-teal"><div class="card-title"><svg class="icon icon-teal" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>机会面</div><div class="card-text">· LLM可低成本评估能力<br>· AI可个性化生成学习路径<br>· 任务可被智能拆解和匹配</div></div>
+  </div>
+  <div class="hl" style="text-align:center"><strong>关键判断：AI让旧问题更严重，但也第一次让新解法成为可能</strong></div>
+</div>
+<span class="slide-tag">基于大模型的大学生"学-练-就"一体化平台</span>
+</div>
+
+<!-- ===== P10 挑战汇总 ===== -->
+<div class="slide" data-i="10">
+<div class="hdr"><span class="hdr-num">P10 · 挑战汇总</span><span class="hdr-title">不是修修补补，而是需要新基础设施</span></div>
+<div class="ct">
+  <div class="g2" style="margin-bottom:8px">
+    <div class="card" style="border-top:3px solid #fecaca;background:#fef2f2">
+      <div class="card-title" style="color:#991b1b">打补丁思路</div>
+      <div style="font-size:13px;color:#7f1d1d;line-height:2">
+        <div>就业指导中心 → <span style="text-decoration:line-through">指导≠验证</span></div>
+        <div>校企合作基地 → <span style="text-decoration:line-through">少数人受益</span></div>
+        <div>简历优化培训 → <span style="text-decoration:line-through">优化自述≠增强信号</span></div>
+        <div>职业技能证书 → <span style="text-decoration:line-through">静态·考试导向</span></div>
+      </div>
+    </div>
+    <div class="card" style="border-top:3px solid #bbf7d0;background:#f0fdf4">
+      <div class="card-title" style="color:#166534">新基础设施思路</div>
+      <div style="font-size:13px;color:#14532d;line-height:2">
+        <div>能力感知系统 → 基于证据的能力评估</div>
+        <div>任务市场 → 所有人可参与的验证</div>
+        <div>能力护照 → 第三方可信的能力信号</div>
+        <div>动态能力追踪 → 任务验证导向</div>
+      </div>
+    </div>
+  </div>
+  <div class="hl-dark" style="text-align:center;padding:18px;border-radius:12px">
+    <div style="font-size:16px;font-weight:700;margin-bottom:8px">大模型打开了三个关键能力，使"新基础设施"首次成为可能</div>
+    <div style="display:flex;gap:24px;justify-content:center;font-size:14px">
+      <span>① 低成本高质量能力评估</span>
+      <span>② 需求-能力智能匹配</span>
+      <span>③ 个性化自适应学习路径</span>
+    </div>
+  </div>
+</div>
+<span class="slide-tag">基于大模型的大学生"学-练-就"一体化平台</span>
+</div>
+
+<!-- ===== P11 价值总览 ===== -->
+<div class="slide" data-i="11">
+<div class="hdr"><span class="hdr-num">P11 · 价值总览</span><span class="hdr-title">"学-练-就"飞轮模型——三个闭环，持续自增强</span></div>
+<div class="ct">
+  <!-- 三大模块 -->
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:10px">
+    <div style="padding:18px;background:linear-gradient(135deg,#0d9488,#14b8a6);color:#fff;border-radius:12px;text-align:center">
+      <svg class="icon icon-white icon-xl" viewBox="0 0 24 24" style="margin:0 auto"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
+      <div style="font-size:18px;font-weight:800;margin-top:8px">学 Learn</div>
+      <div style="font-size:12px;opacity:.85;margin-top:4px">AI能力感知</div>
+      <div style="font-size:11px;opacity:.75;margin-top:8px;line-height:1.6">发现短板 · 能力指纹<br>自适应补课 · 精准学习</div>
+    </div>
+    <div style="padding:18px;background:linear-gradient(135deg,#7c3aed,#8b5cf6);color:#fff;border-radius:12px;text-align:center">
+      <svg class="icon icon-white icon-xl" viewBox="0 0 24 24" style="margin:0 auto"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+      <div style="font-size:18px;font-weight:800;margin-top:8px">练 Practice</div>
+      <div style="font-size:12px;opacity:.85;margin-top:4px">真实任务</div>
+      <div style="font-size:11px;opacity:.75;margin-top:8px;line-height:1.6">微任务→标准→项目制<br>每次交付 = 能力验证</div>
+    </div>
+    <div style="padding:18px;background:linear-gradient(135deg,#2563eb,#3b82f6);color:#fff;border-radius:12px;text-align:center">
+      <svg class="icon icon-white icon-xl" viewBox="0 0 24 24" style="margin:0 auto"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+      <div style="font-size:18px;font-weight:800;margin-top:8px">就 Achieve</div>
+      <div style="font-size:12px;opacity:.85;margin-top:4px">信用护照</div>
+      <div style="font-size:11px;opacity:.75;margin-top:8px;line-height:1.6">能力被市场认可<br>就业+收入+信号输出</div>
+    </div>
+  </div>
+  <!-- 飞轮循环 -->
+  <div style="display:flex;align-items:center;justify-content:center;gap:6px;margin-bottom:10px">
+    <div style="padding:10px 16px;background:#f0fdfa;border:1px solid #bbf7d0;border-radius:8px;font-size:12px;font-weight:600;color:var(--teal)">练中发现短板</div>
+    <span style="color:var(--accent);font-weight:700">→</span>
+    <div style="padding:10px 16px;background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;font-size:12px;font-weight:600;color:var(--accent)">AI自适应学习</div>
+    <span style="color:var(--accent2);font-weight:700">→</span>
+    <div style="padding:10px 16px;background:#ede9fe;border:1px solid #c4b5fd;border-radius:8px;font-size:12px;font-weight:600;color:var(--accent2)">能力↑→更难任务</div>
+    <span style="color:var(--amber);font-weight:700">→</span>
+    <div style="padding:10px 16px;background:#fef3c7;border:1px solid #fde68a;border-radius:8px;font-size:12px;font-weight:600;color:var(--amber)">收入↑信号↑</div>
+    <span style="color:var(--teal);font-weight:700">→ ↻</span>
+  </div>
+  <!-- 对比 -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+    <div style="padding:12px;background:#fef2f2;border-radius:8px;border-left:3px solid var(--rose)">
+      <div style="font-size:12px;font-weight:700;color:var(--rose);margin-bottom:4px">传统路径：线性·断裂·无反馈</div>
+      <div style="font-size:11px;color:var(--text2);line-height:1.6">学4年 → 毕业找工作<br>学和用脱节，学完不知道缺什么，无法自纠</div>
+    </div>
+    <div style="padding:12px;background:#f0fdf4;border-radius:8px;border-left:3px solid var(--teal)">
+      <div style="font-size:12px;font-weight:700;color:var(--teal);margin-bottom:4px">飞轮路径：循环·连续·实时反馈</div>
+      <div style="font-size:11px;color:var(--text2);line-height:1.6">学⇄练⇄就<br>每一轮循环：能力↑ 信号↑ 机会↑ 收入↑</div>
+    </div>
+  </div>
+</div>
+<span class="slide-tag">基于大模型的大学生"学-练-就"一体化平台</span>
+</div>
+
+<!-- ===== P12 价值层1 ===== -->
+<div class="slide" data-i="12">
+<div class="hdr"><span class="hdr-num">P12 · 价值层1</span><span class="hdr-title">学：AI能力指纹——从"我觉得我会"到"证据证明我会"</span></div>
+<div class="ct">
+  <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;padding:14px;margin-bottom:8px">
+    <div style="font-weight:700;color:#166534;margin-bottom:8px;font-size:13px">张伟现在变了</div>
+    <div style="font-size:13px;line-height:2;color:#14532d">
+      <div>平台接入了他的 <strong>GitHub代码仓库 + 课程作业 + 3个微任务交付物</strong></div>
+      <div>LLM分析后生成能力指纹：<strong>Python 88% | SQL 72% | 可视化 68% | 沟通 80%</strong></div>
+      <div>AI自动生成能力叙事：<strong>"数据分析能力突出，Python处同专业前15%"</strong></div>
+      <div style="padding:8px;background:#fff;border-radius:6px;margin-top:4px;border-left:3px solid var(--teal)">"以前简历写'精通Python'被HR忽略，现在能力护照写'Python 88%·前15%'——<strong>面试邀请从3个涨到11个</strong>"</div>
+    </div>
+  </div>
+  <div class="flow" style="justify-content:center;margin-bottom:4px">
+    <div class="flow-item" style="background:#eff6ff;border-color:#bfdbfe;padding:12px 14px">
+      <div style="font-weight:700;font-size:11px;color:var(--accent)">数据输入</div>
+      <div style="font-size:10px;color:var(--text2);margin-top:3px">GitHub/作品集/作业<br>任务记录/学习行为</div>
+    </div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-item" style="background:#f0fdf4;border-color:#bbf7d0;padding:12px 14px">
+      <div style="font-weight:700;font-size:11px;color:var(--teal)">LLM分析</div>
+      <div style="font-size:10px;color:var(--text2);margin-top:3px">读值作品·结构化评估<br>可比较·可追踪·可解释</div>
+    </div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-item" style="background:#ede9fe;border-color:#c4b5fd;padding:12px 14px">
+      <div style="font-weight:700;font-size:11px;color:var(--accent2)">能力指纹</div>
+      <div style="font-size:10px;color:var(--text2);margin-top:3px">技能矩阵+软能力<br>成长轨迹+缺口分析<br>AI能力叙事</div>
+    </div>
+  </div>
+  <div class="g2">
+    <div class="hl" style="text-align:center;font-size:12px">LinkedIn技能endorsement<br><strong>→ 自述（无验证·任何人可点）</strong></div>
+    <div class="hl" style="text-align:center;font-size:12px;background:#f0fdf4;border-color:#bbf7d0">AI能力指纹<br><strong>→ 证据驱动（每个分数有交付物佐证）</strong></div>
+  </div>
+</div>
+<span class="slide-tag">基于大模型的大学生"学-练-就"一体化平台</span>
+</div>
+
+<!-- ===== P13 价值层2 ===== -->
+<div class="slide" data-i="13">
+<div class="hdr"><span class="hdr-num">P13 · 价值层2</span><span class="hdr-title">练：任务市场——50次小验证 > 1次面试2小时</span></div>
+<div class="ct">
+  <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;padding:14px;margin-bottom:8px">
+    <div style="font-weight:700;color:#166534;margin-bottom:8px;font-size:13px">具体怎么练？</div>
+    <div style="font-size:13px;line-height:2;color:#14532d">
+      <div>合肥高新区某电商企业发布需求：<strong>"竞品分析报告"</strong></div>
+      <div>LLM智能拆解为：<strong>数据采集(L1)→可视化(L2)→洞察报告(L2)</strong></div>
+      <div>平台匹配：张伟的Python 88%+可视化 68%→推送L2任务</div>
+      <div style="padding:8px;background:#fff;border-radius:6px;margin-top:4px;border-left:3px solid var(--teal)">5天完成→雇主评价★★★★→能力护照自动更新："数据分析+实战验证"→下一轮匹配度更高</div>
+    </div>
+  </div>
+  <div class="g2" style="margin-bottom:4px">
+    <div class="card" style="background:#fef2f2;border-color:#fecaca">
+      <div class="card-title" style="color:#991b1b">传统模式</div>
+      <div class="card-text" style="font-size:12px">一个岗位 = 长期全职<br><strong>2小时面试定2年→试错成本极高</strong></div>
+    </div>
+    <div class="card" style="background:#f0fdf4;border-color:#bbf7d0">
+      <div class="card-title" style="color:#166534">本平台模式</div>
+      <div class="card-text" style="font-size:12px">企业需求→LLM拆解→微任务A/B/C<br>→智能匹配学生→50次小验证<br><strong>验证门槛↓ 累积信号强度↑</strong></div>
+    </div>
+  </div>
+  <div class="card" style="padding:14px">
+    <div class="card-title">任务层级设计（从易到难）</div>
+    <div style="display:flex;gap:6px;margin-top:6px">
+      <div style="flex:1;padding:12px;background:linear-gradient(135deg,#dbeafe,#eff6ff);border-radius:8px;text-align:center">
+        <div style="font-size:10px;color:var(--accent);font-weight:700">Level 1</div>
+        <div style="font-weight:700;margin:2px 0;font-size:13px">微任务</div>
+        <div style="font-size:10px;color:var(--text2)">几小时~2天<br>写文案/修bug<br>¥50-200</div>
+      </div>
+      <div style="flex:1;padding:12px;background:linear-gradient(135deg,#c7d2fe,#e0e7ff);border-radius:8px;text-align:center">
+        <div style="font-size:10px;color:var(--accent2);font-weight:700">Level 2</div>
+        <div style="font-weight:700;margin:2px 0;font-size:13px">标准任务</div>
+        <div style="font-size:10px;color:var(--text2)">3天~2周<br>竞品分析/功能开发<br>¥500-3000</div>
+      </div>
+      <div style="flex:1;padding:12px;background:linear-gradient(135deg,#ccfbf1,#f0fdfa);border-radius:8px;text-align:center">
+        <div style="font-size:10px;color:var(--teal);font-weight:700">Level 3</div>
+        <div style="font-weight:700;margin:2px 0;font-size:13px">项目制</div>
+        <div style="font-size:10px;color:var(--text2)">2周~3月<br>MVP/营销策划<br>¥3000-10000</div>
+      </div>
+      <div style="flex:1;padding:12px;background:linear-gradient(135deg,#fef3c7,#fffbeb);border-radius:8px;text-align:center">
+        <div style="font-size:10px;color:var(--amber);font-weight:700">Level 4</div>
+        <div style="font-weight:700;margin:2px 0;font-size:13px">准雇佣</div>
+        <div style="font-size:10px;color:var(--text2)">3月+<br>预筛选实习<br>月薪¥3000+</div>
+      </div>
+    </div>
+  </div>
+</div>
+<span class="slide-tag">基于大模型的大学生"学-练-就"一体化平台</span>
+</div>
+
+<!-- ===== P14 价值层3 ===== -->
+<div class="slide" data-i="14">
+<div class="hdr"><span class="hdr-num">P14 · 价值层3</span><span class="hdr-title">就：信用护照 · 能力取代学历的信号机制</span></div>
+<div class="ct">
+  <!-- 能力护照核心 -->
+  <div style="display:grid;grid-template-columns:2fr 1fr;gap:12px;margin-bottom:10px">
+    <div style="padding:16px;border:2px solid var(--accent2);border-radius:12px">
+      <div style="text-align:center;margin-bottom:10px;font-size:16px;font-weight:800;color:var(--accent2)">能 力 护 照 Capability Passport</div>
+      <!-- 技能矩阵 - 进度条可视化 -->
+      <div style="font-size:12px;font-weight:700;color:var(--primary);margin-bottom:8px">技能矩阵</div>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:10px">
+        <div style="display:flex;align-items:center;gap:8px"><span style="font-size:12px;width:56px;font-weight:600">Python</span><div style="flex:1;height:10px;background:#e5e7eb;border-radius:5px;overflow:hidden"><div style="width:88%;height:100%;background:linear-gradient(90deg,#2563eb,#3b82f6);border-radius:5px"></div></div><span style="font-size:12px;font-weight:800;color:var(--accent)">88%</span><span style="font-size:10px;color:var(--text3)">前15%</span></div>
+        <div style="display:flex;align-items:center;gap:8px"><span style="font-size:12px;width:56px;font-weight:600">SQL</span><div style="flex:1;height:10px;background:#e5e7eb;border-radius:5px;overflow:hidden"><div style="width:72%;height:100%;background:linear-gradient(90deg,#0d9488,#14b8a6);border-radius:5px"></div></div><span style="font-size:12px;font-weight:800;color:var(--teal)">72%</span></div>
+        <div style="display:flex;align-items:center;gap:8px"><span style="font-size:12px;width:56px;font-weight:600">可视化</span><div style="flex:1;height:10px;background:#e5e7eb;border-radius:5px;overflow:hidden"><div style="width:68%;height:100%;background:linear-gradient(90deg,#7c3aed,#8b5cf6);border-radius:5px"></div></div><span style="font-size:12px;font-weight:800;color:var(--accent2)">68%</span></div>
+        <div style="display:flex;align-items:center;gap:8px"><span style="font-size:12px;width:56px;font-weight:600">沟通</span><div style="flex:1;height:10px;background:#e5e7eb;border-radius:5px;overflow:hidden"><div style="width:80%;height:100%;background:linear-gradient(90deg,#e11d48,#f43f5e);border-radius:5px"></div></div><span style="font-size:12px;font-weight:800;color:var(--rose)">80%</span></div>
+      </div>
+      <!-- AI叙事 -->
+      <div style="padding:10px;background:linear-gradient(135deg,#eff6ff,#ede9fe);border:1px solid #c7d2fe;border-radius:8px">
+        <div style="font-size:11px;font-weight:700;color:var(--accent2);margin-bottom:4px">AI能力叙事</div>
+        <div style="font-size:11px;color:var(--primary);line-height:1.6">该学生在过去6个月完成<strong>23个</strong>数据分析相关任务，数据处理和可视化能力<strong>突出</strong>，Python技能处于<strong>前15%</strong>水平，统计建模正在<strong>快速成长</strong></div>
+      </div>
+    </div>
+    <!-- 任务履历 -->
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <div style="padding:12px;background:var(--bg2);border-radius:8px;text-align:center">
+        <div style="font-size:12px;font-weight:700;color:var(--primary)">任务履历</div>
+        <div style="font-size:10px;color:var(--text2);margin-top:4px">雇主好评率 <strong style="color:var(--teal)">87%</strong></div>
+      </div>
+      <div style="padding:8px;background:#f0fdf4;border-radius:6px;font-size:11px;border-left:3px solid var(--teal)">★★★★ 电商数据看板<br><span style="font-size:10px;color:var(--text3)">L2标准 · ¥1,500</span></div>
+      <div style="padding:8px;background:#f0fdf4;border-radius:6px;font-size:11px;border-left:3px solid var(--teal)">★★★★ 产品详情文案x5<br><span style="font-size:10px;color:var(--text3)">L1微任务 · ¥600</span></div>
+      <div style="padding:8px;background:#fef3c7;border-radius:6px;font-size:11px;border-left:3px solid var(--amber)">★★★○ 竞品分析报告<br><span style="font-size:10px;color:var(--text3)">L2标准 · ¥800</span></div>
+      <div style="padding:8px;background:#f0fdf4;border-radius:6px;font-size:11px;border-left:3px solid var(--teal)">★★★★ 小红书种草x10<br><span style="font-size:10px;color:var(--text3)">L1微任务 · ¥200</span></div>
+      <div style="padding:12px;background:var(--bg2);border-radius:8px;text-align:center">
+        <div style="font-size:12px;font-weight:700;color:var(--primary)">成长轨迹</div>
+        <div style="font-size:10px;color:var(--teal);margin-top:4px;font-weight:600">6个月能力曲线持续上升</div>
+        <div style="margin-top:4px;height:6px;background:#e5e7eb;border-radius:3px;overflow:hidden"><div style="width:75%;height:100%;background:linear-gradient(90deg,#0d9488,#14b8a6);border-radius:3px"></div></div>
+        <div style="font-size:9px;color:var(--text3);margin-top:2px">缺口：统计建模 → 推荐补强</div>
+      </div>
+    </div>
+  </div>
+  <!-- 信号进化 -->
+  <div style="display:flex;gap:8px;align-items:center;justify-content:center">
+    <div style="flex:1;padding:10px;background:#fef2f2;border-radius:8px;text-align:center;font-size:12px"><strong>传统简历</strong><br><span style="font-size:10px;color:var(--text2)">自说自话 · 不可验证</span></div>
+    <span style="font-size:16px;color:var(--text3)">→</span>
+    <div style="flex:1;padding:10px;background:#fef3c7;border-radius:8px;text-align:center;font-size:12px"><strong>文凭</strong><br><span style="font-size:10px;color:var(--text2)">代理变量 · 18岁快照</span></div>
+    <span style="font-size:16px;color:var(--text3)">→</span>
+    <div style="flex:1;padding:10px;background:#f0fdf4;border-radius:8px;text-align:center;font-size:12px;border:2px solid #bbf7d0"><strong style="color:var(--teal)">能力护照</strong><br><span style="font-size:10px;color:var(--teal)">证据驱动 · 可验证 · 防伪造</span></div>
+  </div>
+  <div style="text-align:center;font-size:12px;color:var(--text2)">信号强度：低→高 | 可验证性：弱→强 | 造假成本：低→<strong style="color:var(--rose)">极高</strong></div>
+</div>
+<span class="slide-tag">基于大模型的大学生"学-练-就"一体化平台</span>
+</div>
+
+<!-- ===== P15 价值闭环 ===== -->
+<div class="slide" data-i="15">
+<div class="hdr"><span class="hdr-num">P15 · 价值闭环</span><span class="hdr-title">学→练→就→学的正向飞轮</span></div>
+<div class="ct">
+  <!-- 飞轮核心循环 -->
+  <div style="display:flex;align-items:center;justify-content:center;gap:6px;margin-bottom:10px">
+    <div style="padding:12px 18px;background:linear-gradient(135deg,#0d9488,#14b8a6);color:#fff;border-radius:8px;text-align:center;min-width:100px">
+      <div style="font-size:14px;font-weight:800">练</div>
+      <div style="font-size:10px;opacity:.85">执行任务</div>
+    </div>
+    <div style="color:var(--accent);font-size:18px;font-weight:700">→</div>
+    <div style="padding:12px 18px;background:linear-gradient(135deg,#e11d48,#f43f5e);color:#fff;border-radius:8px;text-align:center;min-width:100px">
+      <div style="font-size:14px;font-weight:800">发现短板</div>
+      <div style="font-size:10px;opacity:.85">能力缺口识别</div>
+    </div>
+    <div style="color:var(--accent2);font-size:18px;font-weight:700">→</div>
+    <div style="padding:12px 18px;background:linear-gradient(135deg,#2563eb,#3b82f6);color:#fff;border-radius:8px;text-align:center;min-width:100px">
+      <div style="font-size:14px;font-weight:800">学</div>
+      <div style="font-size:10px;opacity:.85">自适应补课</div>
+    </div>
+    <div style="color:var(--amber);font-size:18px;font-weight:700">→</div>
+    <div style="padding:12px 18px;background:linear-gradient(135deg,#d97706,#f59e0b);color:#fff;border-radius:8px;text-align:center;min-width:100px">
+      <div style="font-size:14px;font-weight:800">就</div>
+      <div style="font-size:10px;opacity:.85">能力提升+变现</div>
+    </div>
+    <div style="color:var(--teal);font-size:18px;font-weight:700">→ ↻</div>
+  </div>
+  <!-- 为什么是飞轮而不是线性 -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
+    <div style="padding:12px;background:#fef2f2;border-radius:8px;border-left:3px solid var(--rose)">
+      <div style="font-size:12px;font-weight:700;color:var(--rose);margin-bottom:4px">传统模式：线性，无反馈</div>
+      <div style="font-size:11px;color:var(--text2);line-height:1.7">学（4年）→ 考证 → 投简历 → 面试<br><strong>问题：</strong>学和用脱节，学完不知道缺什么，无法自纠</div>
+    </div>
+    <div style="padding:12px;background:#f0fdfa;border-radius:8px;border-left:3px solid var(--teal)">
+      <div style="font-size:12px;font-weight:700;color:var(--teal);margin-bottom:4px">飞轮模式：闭环，自增强</div>
+      <div style="font-size:11px;color:var(--text2);line-height:1.7">练 → 系统自动识别短板 → 精准学 → 能力↑ → 接更难任务<br><strong>结果：</strong>每一轮循环，能力↑ 信号↑ 机会↑ 收入↑</div>
+    </div>
+  </div>
+  <!-- 飞轮加速的三个引擎 -->
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:10px">
+    <div style="padding:10px;background:#eff6ff;border-radius:8px;text-align:center">
+      <div style="font-size:11px;font-weight:700;color:var(--accent)">数据飞轮</div>
+      <div style="font-size:10px;color:var(--text2);line-height:1.6;margin-top:4px">更多任务 → 更多能力数据<br>→ 更准匹配 → 更高满意度</div>
+    </div>
+    <div style="padding:10px;background:#ede9fe;border-radius:8px;text-align:center">
+      <div style="font-size:11px;font-weight:700;color:var(--accent2)">信号飞轮</div>
+      <div style="font-size:10px;color:var(--text2);line-height:1.6;margin-top:4px">更多任务记录 → 护照更丰富<br>→ 雇主信任度↑ → 更好机会</div>
+    </div>
+    <div style="padding:10px;background:#fef3c7;border-radius:8px;text-align:center">
+      <div style="font-size:11px;font-weight:700;color:var(--amber)">网络飞轮</div>
+      <div style="font-size:10px;color:var(--text2);line-height:1.6;margin-top:4px">更多学生 → 更多企业<br>→ 更多任务 → 吸引更多学生</div>
+    </div>
+  </div>
+  <!-- 四年四轮 -->
+  <div style="display:flex;gap:8px">
+    <div style="flex:1;text-align:center;padding:10px 6px;background:linear-gradient(135deg,#dbeafe,#eff6ff);border-radius:8px">
+      <div style="font-weight:700;font-size:12px;color:var(--accent)">大一</div>
+      <div style="font-size:10px;color:var(--text2)">微任务→初级认证→微收入</div>
+    </div>
+    <div style="flex:1;text-align:center;padding:10px 6px;background:linear-gradient(135deg,#c7d2fe,#e0e7ff);border-radius:8px">
+      <div style="font-weight:700;font-size:12px;color:var(--accent2)">大二</div>
+      <div style="font-size:10px;color:var(--text2)">标准任务→中级信号→稳定收入</div>
+    </div>
+    <div style="flex:1;text-align:center;padding:10px 6px;background:linear-gradient(135deg,#ccfbf1,#f0fdfa);border-radius:8px">
+      <div style="font-weight:700;font-size:12px;color:var(--teal)">大三</div>
+      <div style="font-size:10px;color:var(--text2)">项目制→行业认可→职业化</div>
+    </div>
+    <div style="flex:1;text-align:center;padding:10px 6px;background:linear-gradient(135deg,#fef3c7,#fffbeb);border-radius:8px">
+      <div style="font-weight:700;font-size:12px;color:var(--amber)">大四</div>
+      <div style="font-size:10px;color:var(--text2)">准雇佣→雇主预签约→无缝过渡</div>
+    </div>
+  </div>
+</div>
+<span class="slide-tag">基于大模型的大学生"学-练-就"一体化平台</span>
+</div>
+
+<!-- ===== P16 价值量化 ===== -->
+<div class="slide" data-i="16">
+<div class="hdr"><span class="hdr-num">P16 · 价值量化</span><span class="hdr-title">三方获益的具体指标——用数字说话</span></div>
+<div class="ct">
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:8px">
+    <!-- 学生 -->
+    <div style="padding:14px;background:#eff6ff;border-radius:10px;border-top:3px solid var(--accent)">
+      <div style="font-size:13px;font-weight:800;color:var(--accent);margin-bottom:8px;display:flex;align-items:center;gap:6px"><svg class="icon icon-accent" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>学生（张伟的4年）</div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <div style="display:flex;align-items:center;gap:4px;font-size:11px"><span style="width:52px;color:var(--text3)">求职周期</span><span style="padding:2px 8px;background:#fef2f2;border-radius:4px;font-weight:600;color:var(--rose);text-decoration:line-through;font-size:10px">6-8月</span><span style="font-weight:700;color:var(--teal)">→</span><span style="padding:2px 8px;background:#f0fdf4;border-radius:4px;font-weight:700;color:var(--teal);font-size:10px">2-3月</span><span style="font-size:10px;color:var(--teal);font-weight:800;margin-left:auto">↓60%</span></div>
+        <div style="display:flex;align-items:center;gap:4px;font-size:11px"><span style="width:52px;color:var(--text3)">在校收入</span><span style="padding:2px 8px;background:#fef2f2;border-radius:4px;font-weight:600;color:var(--rose);font-size:10px">0</span><span style="font-weight:700;color:var(--teal)">→</span><span style="padding:2px 8px;background:#f0fdf4;border-radius:4px;font-weight:700;color:var(--teal);font-size:10px">月均500-3000</span></div>
+        <div style="display:flex;align-items:center;gap:4px;font-size:11px"><span style="width:52px;color:var(--text3)">能力可见</span><span style="padding:2px 8px;background:#fef2f2;border-radius:4px;font-weight:600;color:var(--rose);font-size:10px">"精通Python"</span><span style="font-weight:700;color:var(--teal)">→</span><span style="padding:2px 8px;background:#f0fdf4;border-radius:4px;font-weight:700;color:var(--teal);font-size:10px">88%·前15%</span></div>
+        <div style="display:flex;align-items:center;gap:4px;font-size:11px"><span style="width:52px;color:var(--text3)">面试邀请</span><span style="padding:2px 8px;background:#fef2f2;border-radius:4px;font-weight:600;color:var(--rose);font-size:10px">3个</span><span style="font-weight:700;color:var(--teal)">→</span><span style="padding:2px 8px;background:#f0fdf4;border-radius:4px;font-weight:700;color:var(--teal);font-size:10px">11个</span><span style="font-size:10px;color:var(--teal);font-weight:800;margin-left:auto">↑267%</span></div>
+      </div>
+    </div>
+    <!-- 企业 -->
+    <div style="padding:14px;background:#fef3c7;border-radius:10px;border-top:3px solid var(--amber)">
+      <div style="font-size:13px;font-weight:800;color:var(--amber);margin-bottom:8px;display:flex;align-items:center;gap:6px"><svg class="icon icon-amber" viewBox="0 0 24 24"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg>企业（某SaaS公司校招）</div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <div style="display:flex;align-items:center;gap:4px;font-size:11px"><span style="width:52px;color:var(--text3)">校招成本</span><span style="padding:2px 8px;background:#fef2f2;border-radius:4px;font-weight:600;color:var(--rose);text-decoration:line-through;font-size:10px">5万/人</span><span style="font-weight:700;color:var(--teal)">→</span><span style="padding:2px 8px;background:#f0fdf4;border-radius:4px;font-weight:700;color:var(--teal);font-size:10px">0.8万</span><span style="font-size:10px;color:var(--teal);font-weight:800;margin-left:auto">↓84%</span></div>
+        <div style="display:flex;align-items:center;gap:4px;font-size:11px"><span style="width:52px;color:var(--text3)">3月留存</span><span style="padding:2px 8px;background:#fef2f2;border-radius:4px;font-weight:600;color:var(--rose);font-size:10px">60%</span><span style="font-weight:700;color:var(--teal)">→</span><span style="padding:2px 8px;background:#f0fdf4;border-radius:4px;font-weight:700;color:var(--teal);font-size:10px">85%</span><span style="font-size:10px;color:var(--teal);font-weight:800;margin-left:auto">+25pp</span></div>
+        <div style="display:flex;align-items:center;gap:4px;font-size:11px"><span style="width:52px;color:var(--text3)">用人准确</span><span style="padding:2px 8px;background:#fef2f2;border-radius:4px;font-weight:600;color:var(--rose);font-size:10px">30%</span><span style="font-weight:700;color:var(--teal)">→</span><span style="padding:2px 8px;background:#f0fdf4;border-radius:4px;font-weight:700;color:var(--teal);font-size:10px">70%+</span></div>
+        <div style="display:flex;align-items:center;gap:4px;font-size:11px"><span style="width:52px;color:var(--text3)">漏斗效率</span><span style="padding:2px 8px;background:#fef2f2;border-radius:4px;font-weight:600;color:var(--rose);font-size:10px">1200→5→2</span><span style="font-weight:700;color:var(--teal)">→</span><span style="padding:2px 8px;background:#f0fdf4;border-radius:4px;font-weight:700;color:var(--teal);font-size:10px">50→5→4</span></div>
+      </div>
+    </div>
+    <!-- 大学 -->
+    <div style="padding:14px;background:#f0fdfa;border-radius:10px;border-top:3px solid var(--teal)">
+      <div style="font-size:13px;font-weight:800;color:var(--teal);margin-bottom:8px;display:flex;align-items:center;gap:6px"><svg class="icon icon-teal" viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>大学（某高校专业）</div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <div style="display:flex;align-items:center;gap:4px;font-size:11px"><span style="width:52px;color:var(--text3)">就业率</span><span style="padding:2px 8px;background:var(--bg2);border-radius:4px;font-weight:600;font-size:10px">当前基线</span><span style="font-weight:700;color:var(--teal)">→</span><span style="padding:2px 8px;background:#f0fdf4;border-radius:4px;font-weight:700;color:var(--teal);font-size:10px">+15-25%</span></div>
+        <div style="display:flex;align-items:center;gap:4px;font-size:11px"><span style="width:52px;color:var(--text3)">起薪提升</span><span style="padding:2px 8px;background:var(--bg2);border-radius:4px;font-weight:600;font-size:10px">当前基线</span><span style="font-weight:700;color:var(--teal)">→</span><span style="padding:2px 8px;background:#f0fdf4;border-radius:4px;font-weight:700;color:var(--teal);font-size:10px">+20-40%</span></div>
+        <div style="display:flex;align-items:center;gap:4px;font-size:11px"><span style="width:52px;color:var(--text3)">闭环反馈</span><span style="padding:2px 8px;background:#fef2f2;border-radius:4px;font-weight:600;color:var(--rose);font-size:10px">"不知道"</span><span style="font-weight:700;color:var(--teal)">→</span><span style="padding:2px 8px;background:#f0fdf4;border-radius:4px;font-weight:700;color:var(--teal);font-size:10px">实时追踪</span></div>
+        <div style="display:flex;align-items:center;gap:4px;font-size:11px"><span style="width:52px;color:var(--text3)">课程优化</span><span style="padding:2px 8px;background:#fef2f2;border-radius:4px;font-weight:600;color:var(--rose);font-size:10px">"凭感觉"</span><span style="font-weight:700;color:var(--teal)">→</span><span style="padding:2px 8px;background:#f0fdf4;border-radius:4px;font-weight:700;color:var(--teal);font-size:10px">数据驱动</span></div>
+      </div>
+    </div>
+  </div>
+  <div style="text-align:center;font-size:12px;color:var(--primary)">社会层面：人才错配率↓ 青年失业率↓ 教育资源浪费↓ 灵活就业质量↑</div>
+</div>
+<span class="slide-tag">基于大模型的大学生"学-练-就"一体化平台</span>
+</div>
+
+<!-- ===== P17 DEMO: 能力体检 ===== -->
+<div class="slide slide-demo" data-i="17">
+<div style="position:relative">
+<div class="demo-label">DEMO</div>
+<div class="hdr"><span class="hdr-num">P17 · Demo</span><span class="hdr-title">能力体检 — 学生端首页</span><span class="hdr-sub">AI能力感知系统</span></div>
+</div>
+<div class="ct">
+  <div class="browser" style="height:480px">
+    <div class="browser-bar"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-url">learn-practice.com/dashboard</div></div>
+    <div class="browser-body" style="height:calc(100% - 36px)">
+      <div class="app">
+        <div class="app-sidebar">
+          <div class="app-sidebar-logo"><svg width="18" height="18" viewBox="0 0 24 24" fill="#3b82f6"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>学练就</div>
+          <div class="app-sidebar-item active"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>能力概览</div>
+          <div class="app-sidebar-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg>任务市场</div>
+          <div class="app-sidebar-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>能力护照</div>
+          <div class="app-sidebar-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>学习路径</div>
+          <div class="app-sidebar-section">账户</div>
+          <div class="app-sidebar-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 00.12-.61l-1.92-3.32a.488.488 0 00-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.07.62-.07.94s.02.64.07.94l-2.03 1.58a.49.49 0 00-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>设置</div>
+        </div>
+        <div class="app-main">
+          <div class="app-topbar"><div class="app-topbar-title">能力概览</div><input class="app-topbar-search" value="搜索任务、技能..." readonly><div class="app-topbar-avatar"></div></div>
+          <div class="app-content" style="display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:auto 1fr;gap:12px">
+            <!-- Row 1: Stats -->
+            <div class="app-card"><div class="app-card-title">能力总分</div><div class="app-stat"><div class="app-stat-val">78</div><div class="app-stat-label">/ 100</div></div><div class="app-progress"><div class="app-progress-bar" style="width:78%;background:var(--accent)"></div></div></div>
+            <div class="app-card"><div class="app-card-title">已完成任务</div><div class="app-stat"><div class="app-stat-val" style="color:var(--teal)">23</div></div><div style="font-size:10px;color:var(--text3)">本月 +5 · 好评率 91%</div></div>
+            <div class="app-card"><div class="app-card-title">累计收入</div><div class="app-stat"><div class="app-stat-val" style="color:var(--amber)">¥3,860</div></div><div style="font-size:10px;color:var(--text3)">本月 ¥680 · ↑ 15%</div></div>
+            <!-- Row 2: Radar + Tasks -->
+            <div class="app-card" style="grid-row:2">
+              <div class="app-card-title">能力雷达图</div>
+              <div class="radar-placeholder">
+                <div class="radar-ring"></div><div class="radar-ring"></div><div class="radar-ring"></div>
+                <div class="radar-dot" style="top:18%;left:55%;background:var(--accent)"></div>
+                <div class="radar-dot" style="top:40%;left:85%;background:var(--teal)"></div>
+                <div class="radar-dot" style="top:72%;left:72%;background:var(--accent2)"></div>
+                <div class="radar-dot" style="top:78%;left:30%;background:var(--amber)"></div>
+                <div class="radar-dot" style="top:45%;left:18%;background:var(--rose)"></div>
+              </div>
+              <div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:8px;justify-content:center">
+                <span class="app-tag app-tag-blue">Python ●●●</span><span class="app-tag app-tag-green">SQL ●●○</span><span class="app-tag app-tag-purple">可视化 ●●○</span><span class="app-tag app-tag-amber">统计 ●○○</span><span class="app-tag app-tag-rose">沟通 ●●●</span>
+              </div>
+            </div>
+            <div class="app-card" style="grid-row:2;grid-column:2/4">
+              <div class="app-card-title">近期任务</div>
+              <table class="app-table">
+                <tr><th>任务</th><th>类型</th><th>状态</th><th>收入</th></tr>
+                <tr><td>电商产品详情页文案</td><td><span class="app-tag app-tag-blue">L1微任务</span></td><td><span class="app-tag app-tag-green">已完成</span></td><td>¥120</td></tr>
+                <tr><td>竞品分析报告-智能硬件</td><td><span class="app-tag app-tag-purple">L2标准</span></td><td><span class="app-tag app-tag-amber">进行中</span></td><td>¥800</td></tr>
+                <tr><td>小红书种草内容10篇</td><td><span class="app-tag app-tag-blue">L1微任务</span></td><td><span class="app-tag app-tag-green">已完成</span></td><td>¥200</td></tr>
+                <tr><td>数据可视化Dashboard</td><td><span class="app-tag app-tag-purple">L2标准</span></td><td><span class="app-tag app-tag-green">已完成</span></td><td>¥1,500</td></tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<span class="slide-tag">基于大模型的大学生"学-练-就"一体化平台</span>
+</div>
+
+<!-- ===== P18 DEMO: 任务市场 ===== -->
+<div class="slide slide-demo" data-i="18">
+<div style="position:relative">
+<div class="demo-label">DEMO</div>
+<div class="hdr"><span class="hdr-num">P18 · Demo</span><span class="hdr-title">任务市场 — 智能匹配引擎</span><span class="hdr-sub">练：真实任务接单</span></div>
+</div>
+<div class="ct">
+  <div class="browser" style="height:480px">
+    <div class="browser-bar"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-url">learn-practice.com/tasks</div></div>
+    <div class="browser-body" style="height:calc(100% - 36px)">
+      <div class="app">
+        <div class="app-sidebar">
+          <div class="app-sidebar-logo"><svg width="18" height="18" viewBox="0 0 24 24" fill="#3b82f6"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>学练就</div>
+          <div class="app-sidebar-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>能力概览</div>
+          <div class="app-sidebar-item active"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg>任务市场</div>
+          <div class="app-sidebar-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>能力护照</div>
+          <div class="app-sidebar-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>学习路径</div>
+          <div class="app-sidebar-section">筛选</div>
+          <div class="app-sidebar-item" style="color:#60a5fa"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>AI推荐</div>
+          <div class="app-sidebar-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>全部任务</div>
+          <div class="app-sidebar-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>我的任务</div>
+        </div>
+        <div class="app-main">
+          <div class="app-topbar"><div class="app-topbar-title">任务市场</div><input class="app-topbar-search" value="搜索任务..." readonly><div style="margin-left:auto;display:flex;gap:8px;font-size:10px"><span class="app-tag app-tag-blue">表达力</span><span class="app-tag app-tag-green">行政力</span><span class="app-tag app-tag-purple">执行力</span></div><div class="app-topbar-avatar"></div></div>
+          <div class="app-content" style="display:flex;flex-direction:column;gap:10px">
+            <!-- AI Match Banner -->
+            <div style="padding:10px 14px;background:linear-gradient(135deg,#eff6ff,#ede9fe);border:1px solid #c7d2fe;border-radius:8px;display:flex;align-items:center;gap:12px">
+              <div style="padding:8px;background:var(--accent2);color:#fff;border-radius:6px;font-size:10px;font-weight:700">AI匹配</div>
+              <div style="font-size:12px"><strong style="color:var(--accent2)">为您推荐12个新任务</strong> · 基于您的Python和可视化能力，匹配度 > 85%</div>
+            </div>
+            <!-- Task Cards -->
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;flex:1">
+              <div class="app-card" style="border-left:3px solid var(--accent)">
+                <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:6px"><span class="app-tag app-tag-blue">L1 微任务</span><span style="font-weight:700;color:var(--accent)">¥150</span></div>
+                <div style="font-weight:600;font-size:13px;color:var(--primary);margin-bottom:4px">撰写智能手表产品详情页</div>
+                <div style="font-size:10px;color:var(--text3);margin-bottom:6px">零售 · 表达力 · 需3-5小时</div>
+                <div style="display:flex;align-items:center;gap:6px"><div class="app-progress" style="flex:1"><div class="app-progress-bar" style="width:92%;background:var(--accent)"></div></div><span style="font-size:10px;font-weight:600;color:var(--accent)">92%匹配</span></div>
+              </div>
+              <div class="app-card" style="border-left:3px solid var(--accent2)">
+                <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:6px"><span class="app-tag app-tag-purple">L2 标准任务</span><span style="font-weight:700;color:var(--accent2)">¥1,200</span></div>
+                <div style="font-weight:600;font-size:13px;color:var(--primary);margin-bottom:4px">电商平台竞品分析报告</div>
+                <div style="font-size:10px;color:var(--text3);margin-bottom:6px">零售 · 表达力+行政力 · 需5-7天</div>
+                <div style="display:flex;align-items:center;gap:6px"><div class="app-progress" style="flex:1"><div class="app-progress-bar" style="width:87%;background:var(--accent2)"></div></div><span style="font-size:10px;font-weight:600;color:var(--accent2)">87%匹配</span></div>
+              </div>
+              <div class="app-card" style="border-left:3px solid var(--teal)">
+                <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:6px"><span class="app-tag app-tag-green">L1 微任务</span><span style="font-weight:700;color:var(--teal)">¥80</span></div>
+                <div style="font-weight:600;font-size:13px;color:var(--primary);margin-bottom:4px">景区小红书种草笔记x3</div>
+                <div style="font-size:10px;color:var(--text3);margin-bottom:6px">文旅 · 表达力 · 需2-3小时</div>
+                <div style="display:flex;align-items:center;gap:6px"><div class="app-progress" style="flex:1"><div class="app-progress-bar" style="width:79%;background:var(--teal)"></div></div><span style="font-size:10px;font-weight:600;color:var(--teal)">79%匹配</span></div>
+              </div>
+              <div class="app-card" style="border-left:3px solid var(--amber)">
+                <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:6px"><span class="app-tag app-tag-amber">L3 项目制</span><span style="font-weight:700;color:var(--amber)">¥5,000</span></div>
+                <div style="font-weight:600;font-size:13px;color:var(--primary);margin-bottom:4px">制造企业供应商数据看板</div>
+                <div style="font-size:10px;color:var(--text3);margin-bottom:6px">制造 · 执行力+行政力 · 需2-4周</div>
+                <div style="display:flex;align-items:center;gap:6px"><div class="app-progress" style="flex:1"><div class="app-progress-bar" style="width:65%;background:var(--amber)"></div></div><span style="font-size:10px;font-weight:600;color:var(--amber)">65%匹配</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<span class="slide-tag">基于大模型的大学生"学-练-就"一体化平台</span>
+</div>
+
+<!-- ===== P19 DEMO: 能力护照 ===== -->
+<div class="slide slide-demo" data-i="19">
+<div style="position:relative">
+<div class="demo-label">DEMO</div>
+<div class="hdr"><span class="hdr-num">P19 · Demo</span><span class="hdr-title">能力护照 — 第三方可信能力信号</span><span class="hdr-sub">就：信用验证系统</span></div>
+</div>
+<div class="ct">
+  <div class="browser" style="height:480px">
+    <div class="browser-bar"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-url">learn-practice.com/passport/u/zhangwei</div></div>
+    <div class="browser-body" style="height:calc(100% - 36px)">
+      <div class="app">
+        <div class="app-sidebar">
+          <div class="app-sidebar-logo"><svg width="18" height="18" viewBox="0 0 24 24" fill="#3b82f6"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>学练就</div>
+          <div class="app-sidebar-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>能力概览</div>
+          <div class="app-sidebar-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg>任务市场</div>
+          <div class="app-sidebar-item active"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>能力护照</div>
+          <div class="app-sidebar-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>学习路径</div>
+          <div class="app-sidebar-section">分享</div>
+          <div class="app-sidebar-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>分享给雇主</div>
+          <div class="app-sidebar-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>导出PDF</div>
+        </div>
+        <div class="app-main">
+          <div class="app-topbar" style="background:linear-gradient(135deg,#1e3a5f,#2563eb);color:#fff"><div class="app-topbar-title" style="color:#fff">能力护照 · 张伟</div><div style="margin-left:auto;font-size:11px;opacity:.8">更新于 2小时前</div><div class="app-topbar-avatar" style="background:#fff;color:var(--accent);font-size:11px;font-weight:700">ZW</div></div>
+          <div class="app-content" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
+            <!-- Profile Card -->
+            <div class="app-card" style="grid-column:1/4;display:flex;gap:16px;align-items:center;padding:14px">
+              <div style="width:52px;height:52px;border-radius:50%;background:var(--grad2);display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;font-weight:800;flex-shrink:0">ZW</div>
+              <div style="flex:1">
+                <div style="font-size:16px;font-weight:700;color:var(--primary)">张伟 · Zhang Wei</div>
+                <div style="font-size:11px;color:var(--text2);margin-top:2px">合肥工业大学 · 数据科学 · 大三</div>
+                <div style="display:flex;gap:6px;margin-top:6px"><span class="app-tag app-tag-blue">Python</span><span class="app-tag app-tag-purple">数据分析</span><span class="app-tag app-tag-green">可视化</span></div>
+              </div>
+              <div style="text-align:center;padding:8px 16px;background:#eff6ff;border-radius:8px"><div style="font-size:24px;font-weight:800;color:var(--accent)">78</div><div style="font-size:10px;color:var(--text3)">能力总分</div></div>
+              <div style="text-align:center;padding:8px 16px;background:#f0fdf4;border-radius:8px"><div style="font-size:24px;font-weight:800;color:var(--teal)">23</div><div style="font-size:10px;color:var(--text3)">完成任务</div></div>
+              <div style="text-align:center;padding:8px 16px;background:#fef3c7;border-radius:8px"><div style="font-size:24px;font-weight:800;color:var(--amber)">91%</div><div style="font-size:10px;color:var(--text3)">雇主好评</div></div>
+            </div>
+            <!-- Radar -->
+            <div class="app-card" style="text-align:center">
+              <div class="app-card-title">技能矩阵</div>
+              <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px">
+                <div style="display:flex;align-items:center;gap:6px"><span style="font-size:11px;width:50px">Python</span><div class="app-progress" style="flex:1"><div class="app-progress-bar" style="width:88%;background:var(--accent)"></div></div><span style="font-size:10px;font-weight:600">88%</span></div>
+                <div style="display:flex;align-items:center;gap:6px"><span style="font-size:11px;width:50px">SQL</span><div class="app-progress" style="flex:1"><div class="app-progress-bar" style="width:72%;background:var(--teal)"></div></div><span style="font-size:10px;font-weight:600">72%</span></div>
+                <div style="display:flex;align-items:center;gap:6px"><span style="font-size:11px;width:50px">可视化</span><div class="app-progress" style="flex:1"><div class="app-progress-bar" style="width:68%;background:var(--accent2)"></div></div><span style="font-size:10px;font-weight:600">68%</span></div>
+                <div style="display:flex;align-items:center;gap:6px"><span style="font-size:11px;width:50px">统计</span><div class="app-progress" style="flex:1"><div class="app-progress-bar" style="width:42%;background:var(--amber)"></div></div><span style="font-size:10px;font-weight:600">42%</span></div>
+                <div style="display:flex;align-items:center;gap:6px"><span style="font-size:11px;width:50px">沟通</span><div class="app-progress" style="flex:1"><div class="app-progress-bar" style="width:80%;background:var(--rose)"></div></div><span style="font-size:10px;font-weight:600">80%</span></div>
+              </div>
+            </div>
+            <!-- Task History -->
+            <div class="app-card">
+              <div class="app-card-title">任务履历（近6月）</div>
+              <div style="display:flex;flex-direction:column;gap:6px;margin-top:6px">
+                <div style="display:flex;align-items:center;gap:6px;padding:6px;background:var(--bg2);border-radius:4px"><span class="app-tag app-tag-green" style="font-size:9px">★★★★</span><span style="font-size:11px">电商数据看板</span></div>
+                <div style="display:flex;align-items:center;gap:6px;padding:6px;background:var(--bg2);border-radius:4px"><span class="app-tag app-tag-green" style="font-size:9px">★★★★</span><span style="font-size:11px">产品详情文案</span></div>
+                <div style="display:flex;align-items:center;gap:6px;padding:6px;background:var(--bg2);border-radius:4px"><span class="app-tag app-tag-amber" style="font-size:9px">★★★○</span><span style="font-size:11px">竞品分析报告</span></div>
+                <div style="display:flex;align-items:center;gap:6px;padding:6px;background:var(--bg2);border-radius:4px"><span class="app-tag app-tag-green" style="font-size:9px">★★★★</span><span style="font-size:11px">小红书种草x10</span></div>
+              </div>
+            </div>
+            <!-- AI Narrative -->
+            <div class="app-card" style="background:linear-gradient(135deg,#eff6ff,#ede9fe);border-color:#c7d2fe">
+              <div class="app-card-title" style="color:var(--accent2)"><svg width="14" height="14" viewBox="0 0 24 24" fill="var(--accent2)" style="vertical-align:middle;margin-right:4px"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>AI能力叙事</div>
+              <div style="font-size:11px;color:var(--primary);line-height:1.6;margin-top:4px">该学生在过去6个月完成<strong>23个</strong>数据分析相关任务，数据处理和可视化能力<strong>突出</strong>，Python技能处于<strong>前15%</strong>水平，统计建模正在<strong>快速成长</strong>，商业叙事能力有提升空间...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<span class="slide-tag">基于大模型的大学生"学-练-就"一体化平台</span>
+</div>
+
+<!-- ===== P20 DEMO: 企业端 ===== -->
+<div class="slide slide-demo" data-i="20">
+<div style="position:relative">
+<div class="demo-label">DEMO</div>
+<div class="hdr"><span class="hdr-num">P20 · Demo</span><span class="hdr-title">企业端 — 人才筛选与任务发布</span><span class="hdr-sub">B端增值服务</span></div>
+</div>
+<div class="ct">
+  <div class="browser" style="height:480px">
+    <div class="browser-bar"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-url">learn-practice.com/enterprise/talent-pool</div></div>
+    <div class="browser-body" style="height:calc(100% - 36px)">
+      <div class="app">
+        <div class="app-sidebar" style="background:#1a1a2e">
+          <div class="app-sidebar-logo"><svg width="18" height="18" viewBox="0 0 24 24" fill="#f59e0b"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg>企业端</div>
+          <div class="app-sidebar-item active" style="background:#d97706"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>人才库</div>
+          <div class="app-sidebar-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>发布任务</div>
+          <div class="app-sidebar-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l7.59-7.59L21 8l-9 9z"/></svg>任务管理</div>
+          <div class="app-sidebar-section">分析</div>
+          <div class="app-sidebar-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>数据看板</div>
+        </div>
+        <div class="app-main">
+          <div class="app-topbar" style="background:#fffbeb"><div class="app-topbar-title" style="color:var(--amber)">人才库</div><input class="app-topbar-search" value="按技能、评分筛选..." readonly><div style="margin-left:auto;font-size:11px;color:var(--text2)">48位匹配人才</div><div class="app-topbar-avatar" style="background:var(--amber)"></div></div>
+          <div class="app-content" style="display:flex;flex-direction:column;gap:10px">
+            <!-- Filter bar -->
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <span class="app-tag app-tag-blue" style="cursor:default">Python ✓</span>
+              <span class="app-tag app-tag-purple" style="cursor:default">数据分析 ✓</span>
+              <span class="app-tag app-tag-amber" style="cursor:default">评分>70 ✓</span>
+              <span class="app-tag" style="background:#f1f5f9;color:#64748b;cursor:default">+ 添加筛选</span>
+            </div>
+            <!-- Talent cards -->
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;flex:1">
+              <div class="app-card" style="border-top:3px solid var(--accent);display:flex;flex-direction:column;gap:6px">
+                <div style="display:flex;align-items:center;gap:8px"><div class="app-avatar" style="background:var(--accent)">ZW</div><div><div style="font-weight:600;font-size:12px">张伟</div><div style="font-size:10px;color:var(--text3)">合工大·数据科学·大三</div></div><div style="margin-left:auto;text-align:right"><div style="font-size:18px;font-weight:800;color:var(--accent)">78</div><div style="font-size:9px;color:var(--text3)">能力分</div></div></div>
+                <div style="display:flex;gap:4px"><span class="app-tag app-tag-blue" style="font-size:9px">Python 88%</span><span class="app-tag app-tag-green" style="font-size:9px">SQL 72%</span></div>
+                <div style="font-size:10px;color:var(--text2)">完成任务23 · 好评91% · 推荐度★★★★</div>
+                <div style="padding:6px;background:#eff6ff;border-radius:4px;font-size:10px;color:var(--accent)"><strong>AI评价：</strong>数据能力强，适合分析类任务</div>
+              </div>
+              <div class="app-card" style="border-top:3px solid var(--accent2);display:flex;flex-direction:column;gap:6px">
+                <div style="display:flex;align-items:center;gap:8px"><div class="app-avatar" style="background:var(--accent2)">LM</div><div><div style="font-weight:600;font-size:12px">李敏</div><div style="font-size:10px;color:var(--text3)">安大·市场营销·大二</div></div><div style="margin-left:auto;text-align:right"><div style="font-size:18px;font-weight:800;color:var(--accent2)">72</div><div style="font-size:9px;color:var(--text3)">能力分</div></div></div>
+                <div style="display:flex;gap:4px"><span class="app-tag app-tag-purple" style="font-size:9px">文案 85%</span><span class="app-tag app-tag-rose" style="font-size:9px">沟通 82%</span></div>
+                <div style="font-size:10px;color:var(--text2)">完成任务15 · 好评88% · 推荐度★★★★</div>
+                <div style="padding:6px;background:#ede9fe;border-radius:4px;font-size:10px;color:var(--accent2)"><strong>AI评价：</strong>内容创作出色，适合营销类任务</div>
+              </div>
+              <div class="app-card" style="border-top:3px solid var(--teal);display:flex;flex-direction:column;gap:6px">
+                <div style="display:flex;align-items:center;gap:8px"><div class="app-avatar" style="background:var(--teal)">WJ</div><div><div style="font-weight:600;font-size:12px">王杰</div><div style="font-size:10px;color:var(--text3)">中科大·计算机·大四</div></div><div style="margin-left:auto;text-align:right"><div style="font-size:18px;font-weight:800;color:var(--teal)">85</div><div style="font-size:9px;color:var(--text3)">能力分</div></div></div>
+                <div style="display:flex;gap:4px"><span class="app-tag app-tag-blue" style="font-size:9px">全栈 80%</span><span class="app-tag app-tag-green" style="font-size:9px">Agent 75%</span></div>
+                <div style="font-size:10px;color:var(--text2)">完成任务38 · 好评94% · 推荐度★★★★★</div>
+                <div style="padding:6px;background:#ccfbf1;border-radius:4px;font-size:10px;color:var(--teal)"><strong>AI评价：</strong>综合能力强，适合项目制/准雇佣</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<span class="slide-tag">基于大模型的大学生"学-练-就"一体化平台</span>
+</div>
+
+<!-- ===== P27 机会① ===== -->
+
+<!-- ===== P21 MOBILE DEMO: 学生端首页 ===== -->
+<div class="slide slide-demo" data-i="21">
+<div style="position:relative">
+<div class="demo-label" style="background:var(--teal)">MOBILE DEMO</div>
+<div class="hdr"><span class="hdr-num">P21 · Mobile</span><span class="hdr-title">能力体检 — 移动端首页</span><span class="hdr-sub">随时查看能力分数和任务进展</span></div>
+</div>
+<div class="ct">
+  <div class="demo-mobile-row">
+    <div class="phone">
+      <div class="phone-screen">
+        <div class="phone-notch"><div class="phone-notch-cam"></div></div>
+        <div class="phone-status"><span>9:41</span><span>●●● WiFi</span></div>
+        <div class="phone-nav">
+          <svg class="phone-nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+          <div class="phone-nav-title">学练就</div>
+          <svg class="phone-nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
+        </div>
+        <div class="phone-body" style="padding:10px">
+          <div style="margin-bottom:10px"><div style="font-size:14px;font-weight:700;color:var(--primary)">你好，张伟</div><div style="font-size:10px;color:var(--text3)">合肥工业大学 · 数据科学 · 大三</div></div>
+          <div class="m-card" style="background:linear-gradient(135deg,#1e3a5f,#2563eb);color:#fff;border:none;text-align:center;padding:14px">
+            <div style="font-size:10px;opacity:.8">能力总分</div>
+            <div style="font-size:36px;font-weight:900">78</div>
+            <div style="font-size:10px;opacity:.7">超越 85% 同专业学生</div>
+            <div class="m-progress" style="background:rgba(255,255,255,.2);margin-top:6px"><div class="m-progress-bar" style="width:78%;background:#fbbf24"></div></div>
+          </div>
+          <div class="m-stat-row">
+            <div class="m-stat"><div class="m-stat-val" style="color:var(--teal)">23</div><div class="m-stat-label">完成任务</div></div>
+            <div class="m-stat"><div class="m-stat-val" style="color:var(--amber)">¥3.8k</div><div class="m-stat-label">累计收入</div></div>
+            <div class="m-stat"><div class="m-stat-val" style="color:var(--accent2)">91%</div><div class="m-stat-label">好评率</div></div>
+          </div>
+          <div class="m-card">
+            <div class="m-card-title">核心技能</div>
+            <div class="m-skill-row"><div class="m-skill-name">Python</div><div class="m-skill-bar"><div class="m-progress"><div class="m-progress-bar" style="width:88%;background:var(--accent)"></div></div></div><div class="m-skill-val" style="color:var(--accent)">88%</div></div>
+            <div class="m-skill-row"><div class="m-skill-name">SQL</div><div class="m-skill-bar"><div class="m-progress"><div class="m-progress-bar" style="width:72%;background:var(--teal)"></div></div></div><div class="m-skill-val" style="color:var(--teal)">72%</div></div>
+            <div class="m-skill-row"><div class="m-skill-name">可视化</div><div class="m-skill-bar"><div class="m-progress"><div class="m-progress-bar" style="width:68%;background:var(--accent2)"></div></div></div><div class="m-skill-val" style="color:var(--accent2)">68%</div></div>
+            <div class="m-skill-row"><div class="m-skill-name">沟通</div><div class="m-skill-bar"><div class="m-progress"><div class="m-progress-bar" style="width:80%;background:var(--rose)"></div></div></div><div class="m-skill-val" style="color:var(--rose)">80%</div></div>
+          </div>
+          <div class="m-card" style="background:linear-gradient(135deg,#eff6ff,#ede9fe);border-color:#c7d2fe">
+            <div style="font-size:10px;font-weight:700;color:var(--accent2);margin-bottom:4px">AI推荐</div>
+            <div style="font-size:10px;color:var(--primary)">您有 <strong>5个新任务</strong> 匹配您的Python和可视化能力</div>
+          </div>
+        </div>
+        <div class="phone-tab-bar">
+          <div class="phone-tab active"><svg class="phone-tab-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>首页</div>
+          <div class="phone-tab"><svg class="phone-tab-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg>任务</div>
+          <div class="phone-tab"><svg class="phone-tab-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>护照</div>
+          <div class="phone-tab"><svg class="phone-tab-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>我的</div>
+        </div>
+        <div class="phone-home-indicator"></div>
+      </div>
+    </div>
+    <div style="max-width:300px">
+      <div class="card card-teal" style="margin-bottom:12px">
+        <div class="card-title"><svg class="icon icon-teal" viewBox="0 0 24 24"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>移动端核心场景</div>
+        <div class="card-text" style="font-size:13px;line-height:1.8">
+          <div><strong>能力分数一目了然</strong> — 随时查看能力定位</div>
+          <div style="margin-top:4px"><strong>任务进展实时追踪</strong> — 接单、交付、收款全流程</div>
+          <div style="margin-top:4px"><strong>AI推荐即时推送</strong> — 新任务匹配通知</div>
+        </div>
+      </div>
+      <div class="hl" style="font-size:12px">移动端优先策略：学生90%+使用手机，是冷启动的关键入口</div>
+    </div>
+  </div>
+</div>
+<span class="slide-tag">基于大模型的大学生"学-练-就"一体化平台</span>
+</div>
+
+<!-- ===== P22 MOBILE DEMO: 任务市场 ===== -->
+<div class="slide slide-demo" data-i="22">
+<div style="position:relative">
+<div class="demo-label" style="background:var(--teal)">MOBILE DEMO</div>
+<div class="hdr"><span class="hdr-num">P22 · Mobile</span><span class="hdr-title">任务市场 — 移动端接单与交付</span><span class="hdr-sub">随时随地完成任务赚取收入</span></div>
+</div>
+<div class="ct">
+  <div class="demo-mobile-row">
+    <div class="phone">
+      <div class="phone-screen">
+        <div class="phone-notch"><div class="phone-notch-cam"></div></div>
+        <div class="phone-status"><span>9:41</span><span>●●● WiFi</span></div>
+        <div class="phone-nav">
+          <svg class="phone-nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+          <div class="phone-nav-title">任务市场</div>
+          <svg class="phone-nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        </div>
+        <div style="display:flex;gap:4px;padding:6px 10px">
+          <div style="padding:4px 10px;background:var(--accent);color:#fff;border-radius:12px;font-size:9px;font-weight:600">AI推荐</div>
+          <div style="padding:4px 10px;background:#f1f5f9;color:#64748b;border-radius:12px;font-size:9px">表达力</div>
+          <div style="padding:4px 10px;background:#f1f5f9;color:#64748b;border-radius:12px;font-size:9px">行政力</div>
+          <div style="padding:4px 10px;background:#f1f5f9;color:#64748b;border-radius:12px;font-size:9px">执行力</div>
+        </div>
+        <div class="phone-body" style="padding:8px 10px">
+          <div class="m-task-card" style="border-left:3px solid var(--accent)">
+            <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:4px"><span class="m-tag" style="background:#dbeafe;color:#1d4ed8">L1 微任务</span><span style="font-weight:700;color:var(--accent);font-size:12px">¥150</span></div>
+            <div class="m-task-title">撰写智能手表产品详情页</div>
+            <div class="m-task-meta">零售 · 3-5小时 · 匹配度 <strong style="color:var(--accent)">92%</strong></div>
+            <div class="m-progress" style="margin-top:4px"><div class="m-progress-bar" style="width:92%;background:var(--accent)"></div></div>
+          </div>
+          <div class="m-task-card" style="border-left:3px solid var(--accent2)">
+            <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:4px"><span class="m-tag" style="background:#ede9fe;color:#6d28d9">L2 标准</span><span style="font-weight:700;color:var(--accent2);font-size:12px">¥1,200</span></div>
+            <div class="m-task-title">电商平台竞品分析报告</div>
+            <div class="m-task-meta">零售 · 5-7天 · 匹配度 <strong style="color:var(--accent2)">87%</strong></div>
+            <div class="m-progress" style="margin-top:4px"><div class="m-progress-bar" style="width:87%;background:var(--accent2)"></div></div>
+          </div>
+          <div class="m-task-card" style="border-left:3px solid var(--teal)">
+            <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:4px"><span class="m-tag" style="background:#dcfce7;color:#166534">L1 微任务</span><span style="font-weight:700;color:var(--teal);font-size:12px">¥80</span></div>
+            <div class="m-task-title">景区小红书种草笔记x3</div>
+            <div class="m-task-meta">文旅 · 2-3小时 · 匹配度 <strong style="color:var(--teal)">79%</strong></div>
+            <div class="m-progress" style="margin-top:4px"><div class="m-progress-bar" style="width:79%;background:var(--teal)"></div></div>
+          </div>
+          <div class="m-task-card" style="border-left:3px solid var(--amber)">
+            <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:4px"><span class="m-tag" style="background:#fef3c7;color:#92400e">L3 项目制</span><span style="font-weight:700;color:var(--amber);font-size:12px">¥5,000</span></div>
+            <div class="m-task-title">制造企业供应商数据看板</div>
+            <div class="m-task-meta">制造 · 2-4周 · 匹配度 <strong style="color:var(--amber)">65%</strong></div>
+            <div class="m-progress" style="margin-top:4px"><div class="m-progress-bar" style="width:65%;background:var(--amber)"></div></div>
+          </div>
+        </div>
+        <div class="phone-tab-bar">
+          <div class="phone-tab"><svg class="phone-tab-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>首页</div>
+          <div class="phone-tab active"><svg class="phone-tab-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg>任务</div>
+          <div class="phone-tab"><svg class="phone-tab-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>护照</div>
+          <div class="phone-tab"><svg class="phone-tab-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>我的</div>
+        </div>
+        <div class="phone-home-indicator"></div>
+      </div>
+    </div>
+    <div style="max-width:300px">
+      <div class="card card-accent" style="margin-bottom:12px">
+        <div class="card-title"><svg class="icon icon-accent" viewBox="0 0 24 24"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>移动端接单流程</div>
+        <div class="card-text" style="font-size:13px;line-height:1.8">
+          <div><strong>AI智能匹配</strong> — 打开即看到最适合的任务</div>
+          <div style="margin-top:4px"><strong>一键接单</strong> — 匹配度可视化，快速决策</div>
+          <div style="margin-top:4px"><strong>任务分级</strong> — L1微任务适合碎片时间</div>
+          <div style="margin-top:4px"><strong>进度同步</strong> — 手机查看交付状态</div>
+        </div>
+      </div>
+      <div class="hl" style="font-size:12px">L1微任务专为移动端设计：碎片时间完成，单次30分钟-2小时</div>
+    </div>
+  </div>
+</div>
+<span class="slide-tag">基于大模型的大学生"学-练-就"一体化平台</span>
+</div>
+
+<!-- ===== P23 MOBILE DEMO: 能力护照分享 ===== -->
+<div class="slide slide-demo" data-i="23">
+<div style="position:relative">
+<div class="demo-label" style="background:var(--teal)">MOBILE DEMO</div>
+<div class="hdr"><span class="hdr-num">P23 · Mobile</span><span class="hdr-title">能力护照 — 移动端分享与展示</span><span class="hdr-sub">一键分享给雇主，能力信号随时随地</span></div>
+</div>
+<div class="ct">
+  <div class="demo-mobile-row">
+    <div class="phone">
+      <div class="phone-screen">
+        <div class="phone-notch"><div class="phone-notch-cam"></div></div>
+        <div class="phone-status"><span>9:41</span><span>●●● WiFi</span></div>
+        <div class="phone-nav" style="background:linear-gradient(135deg,#1e3a5f,#2563eb)">
+          <svg class="phone-nav-icon" viewBox="0 0 24 24" fill="#fff"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+          <div class="phone-nav-title" style="color:#fff">能力护照</div>
+          <svg class="phone-nav-icon" viewBox="0 0 24 24" fill="#fff"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
+        </div>
+        <div class="phone-body" style="padding:10px">
+          <div class="m-card" style="display:flex;gap:10px;align-items:center;padding:12px">
+            <div class="m-avatar" style="background:var(--grad2);width:40px;height:40px;font-size:14px">ZW</div>
+            <div style="flex:1"><div style="font-size:13px;font-weight:700;color:var(--primary)">张伟</div><div style="font-size:9px;color:var(--text3)">合工大 · 数据科学 · 大三</div></div>
+            <div style="text-align:center;padding:6px 10px;background:#eff6ff;border-radius:8px"><div style="font-size:18px;font-weight:800;color:var(--accent)">78</div><div style="font-size:8px;color:var(--text3)">能力分</div></div>
+          </div>
+          <div class="m-card">
+            <div class="m-card-title">技能矩阵</div>
+            <div class="m-skill-row"><div class="m-skill-name">Python</div><div class="m-skill-bar"><div class="m-progress"><div class="m-progress-bar" style="width:88%;background:var(--accent)"></div></div></div><div class="m-skill-val" style="color:var(--accent)">88</div></div>
+            <div class="m-skill-row"><div class="m-skill-name">SQL</div><div class="m-skill-bar"><div class="m-progress"><div class="m-progress-bar" style="width:72%;background:var(--teal)"></div></div></div><div class="m-skill-val" style="color:var(--teal)">72</div></div>
+            <div class="m-skill-row"><div class="m-skill-name">可视化</div><div class="m-skill-bar"><div class="m-progress"><div class="m-progress-bar" style="width:68%;background:var(--accent2)"></div></div></div><div class="m-skill-val" style="color:var(--accent2)">68</div></div>
+            <div class="m-skill-row"><div class="m-skill-name">统计</div><div class="m-skill-bar"><div class="m-progress"><div class="m-progress-bar" style="width:42%;background:var(--amber)"></div></div></div><div class="m-skill-val" style="color:var(--amber)">42</div></div>
+            <div class="m-skill-row"><div class="m-skill-name">沟通</div><div class="m-skill-bar"><div class="m-progress"><div class="m-progress-bar" style="width:80%;background:var(--rose)"></div></div></div><div class="m-skill-val" style="color:var(--rose)">80</div></div>
+          </div>
+          <div class="m-card">
+            <div class="m-card-title">任务履历</div>
+            <div style="display:flex;gap:6px;margin-bottom:4px;flex-wrap:wrap">
+              <span class="m-tag" style="background:#dcfce7;color:#166534">★★★★ 电商数据看板</span>
+              <span class="m-tag" style="background:#dcfce7;color:#166534">★★★★ 产品文案</span>
+              <span class="m-tag" style="background:#fef3c7;color:#92400e">★★★○ 竞品分析</span>
+            </div>
+            <div style="font-size:9px;color:var(--teal);font-weight:600;margin-top:4px">23个任务 · 雇主好评率 91%</div>
+          </div>
+          <div class="m-card" style="background:linear-gradient(135deg,#eff6ff,#ede9fe);border-color:#c7d2fe">
+            <div style="font-size:9px;font-weight:700;color:var(--accent2);margin-bottom:3px">AI能力叙事</div>
+            <div style="font-size:9px;color:var(--primary);line-height:1.5">数据处理和可视化能力突出，Python前15%水平...</div>
+          </div>
+          <div style="margin-top:8px;padding:10px;background:var(--accent);color:#fff;border-radius:10px;text-align:center;font-size:12px;font-weight:700">分享给雇主</div>
+        </div>
+        <div class="phone-tab-bar">
+          <div class="phone-tab"><svg class="phone-tab-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>首页</div>
+          <div class="phone-tab"><svg class="phone-tab-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg>任务</div>
+          <div class="phone-tab active"><svg class="phone-tab-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>护照</div>
+          <div class="phone-tab"><svg class="phone-tab-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>我的</div>
+        </div>
+        <div class="phone-home-indicator"></div>
+      </div>
+    </div>
+    <div style="max-width:300px">
+      <div class="card card-purple" style="margin-bottom:12px">
+        <div class="card-title"><svg class="icon icon-purple" viewBox="0 0 24 24"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>移动端护照核心价值</div>
+        <div class="card-text" style="font-size:13px;line-height:1.8">
+          <div><strong>一键分享</strong> — 面试时直接展示，比简历更有说服力</div>
+          <div style="margin-top:4px"><strong>实时更新</strong> — 完成任务后护照自动刷新</div>
+          <div style="margin-top:4px"><strong>社交传播</strong> — 分享到朋友圈驱动冷启动裂变</div>
+        </div>
+      </div>
+      <div class="hl" style="font-size:12px">能力护照是移动端最核心的社交货币——"晒能力"天然驱动传播</div>
+    </div>
+  </div>
+</div>
+<span class="slide-tag">基于大模型的大学生"学-练-就"一体化平台</span>
+</div>
+
+<div class="slide" data-i="24">
+<div class="hdr"><span class="hdr-num">P24 · 机会①</span><span class="hdr-title">三赛道 × 三行业——9个价值落点矩阵</span></div>
+<div class="ct">
+  <!-- 矩阵表头 -->
+  <div style="display:grid;grid-template-columns:72px 1fr 1fr 1fr;gap:0">
+    <div></div>
+    <div style="padding:8px;background:linear-gradient(135deg,#2563eb,#3b82f6);color:#fff;text-align:center;border-radius:8px 8px 0 0;font-size:13px;font-weight:800">表达力<br><span style="font-size:10px;opacity:.8">内容生成与营销</span></div>
+    <div style="padding:8px;background:linear-gradient(135deg,#0d9488,#14b8a6);color:#fff;text-align:center;border-radius:8px 8px 0 0;font-size:13px;font-weight:800">行政力<br><span style="font-size:10px;opacity:.8">运营与流程自动化</span></div>
+    <div style="padding:8px;background:linear-gradient(135deg,#7c3aed,#8b5cf6);color:#fff;text-align:center;border-radius:8px 8px 0 0;font-size:13px;font-weight:800">执行力<br><span style="font-size:10px;opacity:.8">数据处理与交付</span></div>
+  </div>
+  <!-- 矩阵行 -->
+  <div style="display:grid;grid-template-columns:72px 1fr 1fr 1fr;gap:0">
+    <!-- 行1 制造业 -->
+    <div style="padding:10px 6px;background:#eff6ff;font-size:12px;font-weight:700;color:var(--accent);text-align:center;display:flex;align-items:center;justify-content:center;border-left:3px solid var(--accent);border-bottom:1px solid #e5e7eb">制造业</div>
+    <div style="padding:10px;background:#eff6ff;border-bottom:1px solid #e5e7eb;border-right:1px solid #e5e7eb">
+      <div style="font-size:11px;font-weight:700;color:var(--accent)">产品文案 · B2B内容</div>
+      <div style="font-size:10px;color:var(--text3);margin-top:2px">460万工厂 | 外贸需求<br>例：工业品技术文档</div>
+    </div>
+    <div style="padding:10px;background:#f0fdfa;border-bottom:1px solid #e5e7eb;border-right:1px solid #e5e7eb">
+      <div style="font-size:11px;font-weight:700;color:var(--teal)">供应链数字助理</div>
+      <div style="font-size:10px;color:var(--text3);margin-top:2px">数字化率仅30%<br>例：供应商数据清洗</div>
+    </div>
+    <div style="padding:10px;background:#ede9fe;border-bottom:1px solid #e5e7eb">
+      <div style="font-size:11px;font-weight:700;color:var(--accent2)">质检报告 · 成本核算</div>
+      <div style="font-size:10px;color:var(--text3);margin-top:2px">标准化强<br>例：质量检测Agent</div>
+    </div>
+    <!-- 行2 文旅 -->
+    <div style="padding:10px 6px;background:#fef2f2;font-size:12px;font-weight:700;color:var(--rose);text-align:center;display:flex;align-items:center;justify-content:center;border-left:3px solid var(--rose);border-bottom:1px solid #e5e7eb">文旅</div>
+    <div style="padding:10px;background:#eff6ff;border-bottom:1px solid #e5e7eb;border-right:1px solid #e5e7eb">
+      <div style="font-size:11px;font-weight:700;color:var(--accent)">目的地内容营销</div>
+      <div style="font-size:10px;color:var(--text3);margin-top:2px">80万民宿 | 内容即流量<br>例：景区小红书种草</div>
+    </div>
+    <div style="padding:10px;background:#f0fdfa;border-bottom:1px solid #e5e7eb;border-right:1px solid #e5e7eb">
+      <div style="font-size:11px;font-weight:700;color:var(--teal)">行程客服 · 评价维护</div>
+      <div style="font-size:10px;color:var(--text3);margin-top:2px">人力成本年涨20%<br>例：线路问答机器人</div>
+    </div>
+    <div style="padding:10px;background:#ede9fe;border-bottom:1px solid #e5e7eb">
+      <div style="font-size:11px;font-weight:700;color:var(--accent2)">活动策划 · 数据分析</div>
+      <div style="font-size:10px;color:var(--text3);margin-top:2px">多角色协同<br>例：音乐节执行方案</div>
+    </div>
+    <!-- 行3 零售 -->
+    <div style="padding:10px 6px;background:#fef3c7;font-size:12px;font-weight:700;color:var(--amber);text-align:center;display:flex;align-items:center;justify-content:center;border-left:3px solid var(--amber)">零售</div>
+    <div style="padding:10px;background:#eff6ff;border-right:1px solid #e5e7eb;position:relative">
+      <div style="position:absolute;top:4px;right:6px"><span style="font-size:9px;background:#2563eb;color:#fff;padding:1px 6px;border-radius:3px">最高优先</span></div>
+      <div style="font-size:11px;font-weight:700;color:var(--accent)">电商内容批量生产</div>
+      <div style="font-size:10px;color:var(--text3);margin-top:2px">2500万卖家 | 亿级需求<br>例：500商品详情页/月</div>
+    </div>
+    <div style="padding:10px;background:#f0fdfa;border-right:1px solid #e5e7eb">
+      <div style="font-size:11px;font-weight:700;color:var(--teal)">私域运营 · 会员管理</div>
+      <div style="font-size:10px;color:var(--text3);margin-top:2px">大促缺口3-5倍<br>例：社群活动策划</div>
+    </div>
+    <div style="padding:10px;background:#ede9fe">
+      <div style="font-size:11px;font-weight:700;color:var(--accent2)">全域增长Agent</div>
+      <div style="font-size:10px;color:var(--text3);margin-top:2px">自动化投放<br>例：竞品分析·价格监测</div>
+    </div>
+  </div>
+  <!-- 底部 -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px">
+    <div style="padding:10px;background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px">
+      <div style="font-size:11px;font-weight:700;color:var(--accent);margin-bottom:4px">合肥高新区先行切入口：赛道A × 零售业</div>
+      <div style="font-size:10px;color:var(--text2)">200+电商企业月需10万+条文案，每个1-2小时，学生课后即可完成，企业成本降80%</div>
+    </div>
+    <div style="padding:10px;background:var(--bg2);border-radius:8px;text-align:center">
+      <div style="font-size:11px;font-weight:700;color:var(--primary)">9个落点 = 3赛道 × 3行业</div>
+      <div style="font-size:10px;color:var(--text2)">每个交叉点都是可量化、可标准化的微任务品类</div>
+    </div>
+  </div>
+</div>
+<span class="slide-tag">基于大模型的大学生"学-练-就"一体化平台</span>
+</div>
+
+<!-- ===== P18 机会② ===== -->
+
+<!-- ===== P25 为什么是这三条赛道 ===== -->
+<div class="slide" data-i="25">
+<div class="hdr"><span class="hdr-num">P25 · 机会②</span><span class="hdr-title">为什么是这三条赛道？——痛点驱动 × AI解锁 × 学生可进入</span></div>
+<div class="ct">
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;height:100%">
+    <!-- 赛道A -->
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <div style="padding:10px 14px;background:linear-gradient(135deg,#2563eb,#3b82f6);color:#fff;border-radius:8px;text-align:center">
+        <div style="font-size:11px;opacity:.8">赛道A</div>
+        <div style="font-size:16px;font-weight:800">表达力</div>
+        <div style="font-size:11px;opacity:.8">内容生成与营销</div>
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;gap:6px">
+        <div style="padding:10px;background:#fef2f2;border-radius:8px;border-left:3px solid var(--rose)">
+          <div style="font-size:10px;color:var(--rose);font-weight:700;margin-bottom:2px">痛点</div>
+          <div style="font-size:12px;color:#7f1d1d;line-height:1.6">企业月需10万+条内容，全职文案太贵，外包质量不稳定</div>
+        </div>
+        <div style="padding:10px;background:#f0fdfa;border-radius:8px;border-left:3px solid var(--teal)">
+          <div style="font-size:10px;color:var(--teal);font-weight:700;margin-bottom:2px">AI解锁</div>
+          <div style="font-size:12px;color:#134e4a;line-height:1.6">LLM让内容生产成本降90%，但需人工调优+领域知识</div>
+        </div>
+        <div style="padding:10px;background:#ede9fe;border-radius:8px;border-left:3px solid var(--accent2)">
+          <div style="font-size:10px;color:var(--accent2);font-weight:700;margin-bottom:2px">学生可进入</div>
+          <div style="font-size:12px;color:#3b0764;line-height:1.6">天然熟悉网络语言，1-2小时/微任务，课后碎片时间可赚</div>
+        </div>
+      </div>
+      <div style="padding:8px;background:var(--bg2);border-radius:6px;text-align:center">
+        <div style="font-size:10px;color:var(--text3)">单篇¥50 → 笔记¥200 → 品牌体系¥3000+</div>
+      </div>
+    </div>
+    <!-- 赛道B -->
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <div style="padding:10px 14px;background:linear-gradient(135deg,#0d9488,#14b8a6);color:#fff;border-radius:8px;text-align:center">
+        <div style="font-size:11px;opacity:.8">赛道B</div>
+        <div style="font-size:16px;font-weight:800">行政力</div>
+        <div style="font-size:11px;opacity:.8">数字化助理与运营</div>
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;gap:6px">
+        <div style="padding:10px;background:#fef2f2;border-radius:8px;border-left:3px solid var(--rose)">
+          <div style="font-size:10px;color:var(--rose);font-weight:700;margin-bottom:2px">痛点</div>
+          <div style="font-size:12px;color:#7f1d1d;line-height:1.6">200万+中小企业需数字化，请不起IT团队，行政成本年涨15%</div>
+        </div>
+        <div style="padding:10px;background:#f0fdfa;border-radius:8px;border-left:3px solid var(--teal)">
+          <div style="font-size:10px;color:var(--teal);font-weight:700;margin-bottom:2px">AI解锁</div>
+          <div style="font-size:12px;color:#134e4a;line-height:1.6">LLM+低代码让数据清洗、客服、报表成为"组装式"任务</div>
+        </div>
+        <div style="padding:10px;background:#ede9fe;border-radius:8px;border-left:3px solid var(--accent2)">
+          <div style="font-size:10px;color:var(--accent2);font-weight:700;margin-bottom:2px">学生可进入</div>
+          <div style="font-size:12px;color:#3b0764;line-height:1.6">经管/信管/统计对口，Excel/SQL/Python即课堂技能</div>
+        </div>
+      </div>
+      <div style="padding:8px;background:var(--bg2);border-radius:6px;text-align:center">
+        <div style="font-size:10px;color:var(--text3)">数据清洗¥300 → SOP搭建¥2000 → 看板+运维¥1500/月</div>
+      </div>
+    </div>
+    <!-- 赛道C -->
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <div style="padding:10px 14px;background:linear-gradient(135deg,#7c3aed,#8b5cf6);color:#fff;border-radius:8px;text-align:center">
+        <div style="font-size:11px;opacity:.8">赛道C</div>
+        <div style="font-size:16px;font-weight:800">执行力</div>
+        <div style="font-size:11px;opacity:.8">多Agent协同与项目制</div>
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;gap:6px">
+        <div style="padding:10px;background:#fef2f2;border-radius:8px;border-left:3px solid var(--rose)">
+          <div style="font-size:10px;color:var(--rose);font-weight:700;margin-bottom:2px">痛点</div>
+          <div style="font-size:12px;color:#7f1d1d;line-height:1.6">中型企业需复杂AI系统，AI公司报价30-100万，交付3-6月</div>
+        </div>
+        <div style="padding:10px;background:#f0fdfa;border-radius:8px;border-left:3px solid var(--teal)">
+          <div style="font-size:10px;color:var(--teal);font-weight:700;margin-bottom:2px">AI解锁</div>
+          <div style="font-size:12px;color:#134e4a;line-height:1.6">Multi-Agent框架成熟，OPC一人公司可搭5-Agent系统，成本1/10</div>
+        </div>
+        <div style="padding:10px;background:#ede9fe;border-radius:8px;border-left:3px solid var(--accent2)">
+          <div style="font-size:10px;color:var(--accent2);font-weight:700;margin-bottom:2px">学生可进入</div>
+          <div style="font-size:12px;color:#3b0764;line-height:1.6">计算机/AI专业正好学这些，毕业即有3-5个真实项目经验</div>
+        </div>
+      </div>
+      <div style="padding:8px;background:var(--bg2);border-radius:6px;text-align:center">
+        <div style="font-size:10px;color:var(--text3)">单Agent¥5000 → 多Agent¥5万 → 年度运维¥2万/年</div>
+      </div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:8px;font-size:13px;color:var(--text2)">三条赛道的共同特征：<strong>企业有刚需 · AI降门槛 · 学生能上手 · 任务可拆解</strong></div>
+</div>
+<span class="slide-tag">基于大模型的大学生"学-练-就"一体化平台</span>
+</div>
+
+<!-- ===== P26 为什么是这三个行业 ===== -->
+<div class="slide" data-i="26">
+<div class="hdr"><span class="hdr-num">P26 · 机会③</span><span class="hdr-title">为什么是这三个行业？——痛点最深 × 容量最大 × 合肥高新区最强</span></div>
+<div class="ct">
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:8px">
+    <!-- 制造业 -->
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <div style="padding:10px 14px;background:linear-gradient(135deg,#2563eb,#3b82f6);color:#fff;border-radius:8px;text-align:center">
+        <div style="font-size:10px;opacity:.8">行业①</div>
+        <div style="font-size:16px;font-weight:800">制造业</div>
+      </div>
+      <div style="padding:8px;background:#fef2f2;border-radius:6px;border-left:3px solid var(--rose)">
+        <div style="font-size:10px;color:var(--rose);font-weight:700;margin-bottom:2px">痛点</div>
+        <div style="font-size:11px;color:var(--text2);line-height:1.6">460万中小工厂缺内容+缺数字化<br>外贸企业需双语营销无人可做<br>传统供应商数字化率仅30%</div>
+      </div>
+      <div style="padding:8px;background:#f0fdfa;border-radius:6px;border-left:3px solid var(--teal)">
+        <div style="font-size:10px;color:var(--teal);font-weight:700;margin-bottom:2px">为什么大学生能做</div>
+        <div style="font-size:11px;color:var(--text2);line-height:1.6">工科生懂技术文档<br>外语专业做外贸文案<br>工业工程做供应链数据</div>
+      </div>
+      <div style="padding:6px;background:#eff6ff;border-radius:4px;text-align:center;font-size:10px;color:var(--accent);font-weight:600">合肥优势：家电/汽车/半导体产业集群</div>
+    </div>
+    <!-- 文旅 -->
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <div style="padding:10px 14px;background:linear-gradient(135deg,#0d9488,#14b8a6);color:#fff;border-radius:8px;text-align:center">
+        <div style="font-size:10px;opacity:.8">行业②</div>
+        <div style="font-size:16px;font-weight:800">文旅行业</div>
+      </div>
+      <div style="padding:8px;background:#fef2f2;border-radius:6px;border-left:3px solid var(--rose)">
+        <div style="font-size:10px;color:var(--rose);font-weight:700;margin-bottom:2px">痛点</div>
+        <div style="font-size:11px;color:var(--text2);line-height:1.6">80万民宿缺内容营销<br>景区需种草但养不起团队<br>旅行社客服人力成本年涨20%</div>
+      </div>
+      <div style="padding:8px;background:#f0fdfa;border-radius:6px;border-left:3px solid var(--teal)">
+        <div style="font-size:10px;color:var(--teal);font-weight:700;margin-bottom:2px">为什么大学生能做</div>
+        <div style="font-size:11px;color:var(--text2);line-height:1.6">年轻人就是文旅核心用户<br>小红书/抖音原生创作者<br>旅游管理/中文专业对口</div>
+      </div>
+      <div style="padding:6px;background:#f0fdf4;border-radius:4px;text-align:center;font-size:10px;color:var(--teal);font-weight:600">合肥优势：环巢湖/三河/徽州文旅带</div>
+    </div>
+    <!-- 零售 -->
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <div style="padding:10px 14px;background:linear-gradient(135deg,#7c3aed,#8b5cf6);color:#fff;border-radius:8px;text-align:center">
+        <div style="font-size:10px;opacity:.8">行业③</div>
+        <div style="font-size:16px;font-weight:800">零售业</div>
+      </div>
+      <div style="padding:8px;background:#fef2f2;border-radius:6px;border-left:3px solid var(--rose)">
+        <div style="font-size:10px;color:var(--rose);font-weight:700;margin-bottom:2px">痛点</div>
+        <div style="font-size:11px;color:var(--text2);line-height:1.6">2500万电商卖家月需亿级内容<br>私域运营刚需但人才极缺<br>大促期间人力缺口3-5倍</div>
+      </div>
+      <div style="padding:8px;background:#f0fdfa;border-radius:6px;border-left:3px solid var(--teal)">
+        <div style="font-size:10px;color:var(--teal);font-weight:700;margin-bottom:2px">为什么大学生能做</div>
+        <div style="font-size:11px;color:var(--text2);line-height:1.6">网购重度用户=最懂消费者<br>营销/电商专业直接对口<br>大促兼职=最佳入门验证</div>
+      </div>
+      <div style="padding:6px;background:#ede9fe;border-radius:4px;text-align:center;font-size:10px;color:var(--accent2);font-weight:600">合肥优势：200+电商企业·高新区电商园</div>
+    </div>
+  </div>
+  <!-- 共同特征 -->
+  <div style="background:linear-gradient(135deg,#1e3a5f,#2563eb);color:#fff;border-radius:10px;padding:12px;margin-bottom:6px">
+    <div style="font-weight:700;font-size:12px;margin-bottom:6px">三个行业的共同特征：为什么现在是最佳窗口？</div>
+    <div style="display:flex;gap:14px;font-size:11px;line-height:1.7">
+      <div style="flex:1"><strong>1. 痛点刚性</strong><br>内容/数字化/运营是企业生存刚需，不是锦上添花</div>
+      <div style="flex:1"><strong>2. AI降门槛</strong><br>LLM让原本需要3年经验的任务，大学生1周培训即可上手</div>
+      <div style="flex:1"><strong>3. 任务可拆解</strong><br>企业需求可拆为微任务→标准任务→项目制，适合渐进验证</div>
+    </div>
+  </div>
+  <div style="text-align:center;font-size:12px;color:var(--primary);font-weight:600">选这三个行业不是因为"喜欢"，是因为<strong>痛最深、量最大、学生最能干、合肥高新区最匹配</strong></div>
+</div>
+<span class="slide-tag">基于大模型的大学生"学-练-就"一体化平台</span>
+</div>
+
+<div class="slide" data-i="27">
+<div class="hdr"><span class="hdr-num">P27 · 机会②</span><span class="hdr-title">市场规模测算逻辑——不是猜数字，是从底层参数推算</span></div>
+<div class="ct">
+  <!-- 测算公式 -->
+  <div style="background:var(--bg2);border-radius:10px;padding:16px;margin-bottom:10px">
+    <div style="font-size:12px;font-weight:700;color:var(--accent);margin-bottom:8px">TAM = 目标企业数 × 年均客单价 ｜ SAM = TAM × 渗透率(25%)</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
+      <div style="padding:10px;background:#eff6ff;border-radius:8px">
+        <div style="font-size:10px;color:var(--accent);font-weight:700">制造业</div>
+        <div style="font-size:11px;color:var(--text2);line-height:1.7;margin-top:4px">
+          <div>企业池 <strong>460万</strong> 中小厂</div>
+          <div>有付费意愿 <strong>~20-30%</strong></div>
+          <div>年均花费 <strong>1-5万</strong>/家</div>
+        </div>
+      </div>
+      <div style="padding:10px;background:#f0fdf4;border-radius:8px">
+        <div style="font-size:10px;color:var(--teal);font-weight:700">文旅行业</div>
+        <div style="font-size:11px;color:var(--text2);line-height:1.7;margin-top:4px">
+          <div>实体池 <strong>80万</strong>民宿+景区+商户</div>
+          <div>有付费意愿 <strong>~30-40%</strong></div>
+          <div>年均花费 <strong>0.8-4万</strong>/家</div>
+        </div>
+      </div>
+      <div style="padding:10px;background:#ede9fe;border-radius:8px">
+        <div style="font-size:10px;color:var(--accent2);font-weight:700">零售业</div>
+        <div style="font-size:11px;color:var(--text2);line-height:1.7;margin-top:4px">
+          <div>商家池 <strong>2500万</strong> 电商+线下</div>
+          <div>有付费意愿 <strong>~3-5%</strong></div>
+          <div>年均花费 <strong>1-6万</strong>/家</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 三个赛道拆解 -->
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:10px">
+    <div style="padding:12px;border:1px solid #dbeafe;border-radius:8px">
+      <div style="font-size:12px;font-weight:700;color:var(--accent);margin-bottom:6px">赛道A 表达力</div>
+      <div style="font-size:11px;color:var(--text2);line-height:1.8">
+        <div>内容需求最广：企业年需 <strong>250-1800条</strong></div>
+        <div>客单价 <strong>0.8-3万</strong>/年</div>
+        <div style="padding:4px 6px;background:#eff6ff;border-radius:4px;margin-top:4px;font-size:10px">TAM 100-450亿 → SAM 25-110亿</div>
+      </div>
+    </div>
+    <div style="padding:12px;border:1px solid #ccfbf1;border-radius:8px">
+      <div style="font-size:12px;font-weight:700;color:var(--teal);margin-bottom:6px">赛道B 行政力</div>
+      <div style="font-size:11px;color:var(--text2);line-height:1.8">
+        <div>需求最刚性：搭建+月度运维</div>
+        <div>客单价 <strong>1.5-6万</strong>/年（最高）</div>
+        <div style="padding:4px 6px;background:#f0fdf4;border-radius:4px;margin-top:4px;font-size:10px">TAM 285-1160亿 → SAM 60-250亿</div>
+      </div>
+    </div>
+    <div style="padding:12px;border:1px solid #ede9fe;border-radius:8px">
+      <div style="font-size:12px;font-weight:700;color:var(--accent2);margin-bottom:6px">赛道C 执行力</div>
+      <div style="font-size:11px;color:var(--text2);line-height:1.8">
+        <div>系统最复杂：年2-4个项目</div>
+        <div>客单价 <strong>5-25万</strong>/年（高端）</div>
+        <div style="padding:4px 6px;background:#ede9fe;border-radius:4px;margin-top:4px;font-size:10px">TAM 48-430亿 → SAM 15-105亿</div>
+      </div>
+    </div>
+  </div>
+  <!-- 结论 -->
+  <div class="hl-dark" style="text-align:center;padding:14px;border-radius:10px">
+    <div style="font-size:14px;font-weight:700;margin-bottom:4px">TAM 390-1845亿 · SAM 100-465亿</div>
+    <div style="font-size:12px;opacity:.85">吃到SAM的1% = 年收入1-5亿 · 这是一个可以做10年以上的长期赛道</div>
+  </div>
+</div>
+<span class="slide-tag">基于大模型的大学生"学-练-就"一体化平台</span>
+</div>
+
+<!-- ===== P19 机会③ ===== -->
+<div class="slide" data-i="28">
+<div class="hdr"><span class="hdr-num">P28 · 机会③</span><span class="hdr-title">就业容纳测算逻辑——任务量 × 人均产能 = 所需人数</span></div>
+<div class="ct">
+  <!-- 测算公式 -->
+  <div style="background:var(--bg2);border-radius:10px;padding:14px;margin-bottom:10px">
+    <div style="font-size:12px;font-weight:700;color:var(--accent);margin-bottom:6px">OPC全职 = 企业数 ÷ 人均服务企业数 ｜ 兼职学生 = 微任务总量 ÷ 人均月接单量</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <div style="padding:10px;background:#fff;border:1px solid #e2e8f0;border-radius:8px">
+        <div style="font-size:11px;font-weight:700;color:var(--accent);margin-bottom:4px">OPC模式（全职创业者）</div>
+        <div style="font-size:11px;color:var(--text2);line-height:1.7">
+          <div>赛道A：1人服务 <strong>3-5家</strong>企业</div>
+          <div>赛道B：1人服务 <strong>5-10家</strong>企业（标准化高）</div>
+          <div>赛道C：1人服务 <strong>2-4家</strong>企业（项目复杂）</div>
+        </div>
+      </div>
+      <div style="padding:10px;background:#fff;border:1px solid #e2e8f0;border-radius:8px">
+        <div style="font-size:11px;font-weight:700;color:var(--accent2);margin-bottom:4px">学生兼职模式</div>
+        <div style="font-size:11px;color:var(--text2);line-height:1.7">
+          <div>赛道A：月均接 <strong>5-10</strong> 个微任务</div>
+          <div>赛道B：月均参与 <strong>3-5</strong> 个运维任务</div>
+          <div>赛道C：每季度参与 <strong>1-2</strong> 个子项目</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 三赛道拆解 -->
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:10px">
+    <div style="padding:12px;border:1px solid #dbeafe;border-radius:8px">
+      <div style="font-size:12px;font-weight:700;color:var(--accent);margin-bottom:6px">赛道A 表达力</div>
+      <div style="font-size:11px;color:var(--text2);line-height:1.8">
+        <div>年任务量 <strong>~13亿条</strong>内容</div>
+        <div>OPC全职 <strong>20-40万</strong>人</div>
+        <div>兼职学生 <strong>100-210万</strong>人</div>
+        <div style="padding:4px 6px;background:#eff6ff;border-radius:4px;margin-top:4px;font-size:10px">合计 120-250万人</div>
+      </div>
+    </div>
+    <div style="padding:12px;border:1px solid #ccfbf1;border-radius:8px">
+      <div style="font-size:12px;font-weight:700;color:var(--teal);margin-bottom:6px">赛道B 行政力</div>
+      <div style="font-size:11px;color:var(--text2);line-height:1.8">
+        <div>年任务量 <strong>~1900万</strong>搭建+运维</div>
+        <div>OPC全职 <strong>22-42万</strong>人</div>
+        <div>兼职学生 <strong>35-75万</strong>人</div>
+        <div style="padding:4px 6px;background:#f0fdf4;border-radius:4px;margin-top:4px;font-size:10px">合计 55-120万人</div>
+      </div>
+    </div>
+    <div style="padding:12px;border:1px solid #ede9fe;border-radius:8px">
+      <div style="font-size:12px;font-weight:700;color:var(--accent2);margin-bottom:6px">赛道C 执行力</div>
+      <div style="font-size:11px;color:var(--text2);line-height:1.8">
+        <div>年任务量 <strong>~70万</strong>项目+子任务</div>
+        <div>OPC全职 <strong>5-10万</strong>人</div>
+        <div>兼职学生 <strong>13-28万</strong>人</div>
+        <div style="padding:4px 6px;background:#ede9fe;border-radius:4px;margin-top:4px;font-size:10px">合计 19-38万人</div>
+      </div>
+    </div>
+  </div>
+  <!-- 结论 -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+    <div style="padding:12px;background:linear-gradient(135deg,#1e3a5f,#2563eb);color:#fff;border-radius:10px;text-align:center">
+      <div style="font-size:24px;font-weight:800">195-403万</div>
+      <div style="font-size:12px;opacity:.85">总就业/灵活用工容量</div>
+      <div style="font-size:11px;opacity:.7;margin-top:2px">OPC全职 47-92万 + 兼职 148-313万</div>
+    </div>
+    <div style="padding:12px;background:var(--bg2);border-radius:10px;display:flex;flex-direction:column;justify-content:center">
+      <div style="font-size:12px;font-weight:700;color:var(--rose);margin-bottom:4px">对比：现有低质量兼职</div>
+      <div style="font-size:11px;color:var(--text2);line-height:1.7">家教/外卖/发传单 → 收入低 · 零能力积累 · 无信号</div>
+      <div style="font-size:12px;font-weight:700;color:var(--teal);margin-top:6px;margin-bottom:4px">本平台任务</div>
+      <div style="font-size:11px;color:var(--text2);line-height:1.7">收入不低 · 能力可积累 · 能力护照认证</div>
+      <div style="font-size:11px;color:var(--accent);margin-top:4px">每年新增毕业生~1200万，本平台可承接 <strong>16-33%</strong> 灵活就业</div>
+    </div>
+  </div>
+</div>
+<span class="slide-tag">基于大模型的大学生"学-练-就"一体化平台</span>
+</div>
+
+<!-- ===== P20 机会④ ===== -->
+<div class="slide" data-i="29">
+<div class="hdr"><span class="hdr-num">P29 · 机会④</span><span class="hdr-title">五条收入线 + 营收路径</span></div>
+<div class="ct">
+  <!-- 收入线概览 -->
+  <div style="display:grid;grid-template-columns:5fr 3fr;gap:10px;margin-bottom:10px">
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr 1fr;gap:8px">
+      <div style="padding:10px;background:linear-gradient(135deg,#dbeafe,#eff6ff);border-radius:8px;text-align:center;border-top:3px solid var(--accent)">
+        <div style="font-size:10px;font-weight:700;color:var(--accent)">① 核心收入</div>
+        <div style="font-size:12px;font-weight:800;margin:4px 0">任务撮合</div>
+        <div style="font-size:10px;color:var(--text2);line-height:1.5">企业付佣金<br>任务金额×10-20%</div>
+      </div>
+      <div style="padding:10px;background:linear-gradient(135deg,#ccfbf1,#f0fdfa);border-radius:8px;text-align:center;border-top:3px solid var(--teal)">
+        <div style="font-size:10px;font-weight:700;color:var(--teal)">② B端增值</div>
+        <div style="font-size:12px;font-weight:800;margin:4px 0">企业订阅</div>
+        <div style="font-size:10px;color:var(--text2);line-height:1.5">人才库+筛选<br>批量匹配</div>
+      </div>
+      <div style="padding:10px;background:linear-gradient(135deg,#ede9fe,#f5f3ff);border-radius:8px;text-align:center;border-top:3px solid var(--accent2)">
+        <div style="font-size:10px;font-weight:700;color:var(--accent2)">③ C端增值</div>
+        <div style="font-size:12px;font-weight:800;margin:4px 0">学生增值</div>
+        <div style="font-size:10px;color:var(--text2);line-height:1.5">深度报告<br>职业规划</div>
+      </div>
+      <div style="padding:10px;background:linear-gradient(135deg,#fef3c7,#fffbeb);border-radius:8px;text-align:center;border-top:3px solid var(--amber)">
+        <div style="font-size:10px;font-weight:700;color:var(--amber)">④ G/B端</div>
+        <div style="font-size:12px;font-weight:800;margin:4px 0">高校合作</div>
+        <div style="font-size:10px;color:var(--text2);line-height:1.5">能力看板<br>实习管理</div>
+      </div>
+      <div style="padding:10px;background:linear-gradient(135deg,#fef2f2,#fff1f2);border-radius:8px;text-align:center;border-top:3px solid var(--rose)">
+        <div style="font-size:10px;font-weight:700;color:var(--rose)">⑤ 远期</div>
+        <div style="font-size:12px;font-weight:800;margin:4px 0">数据洞察</div>
+        <div style="font-size:10px;color:var(--text2);line-height:1.5">人才供需<br>技能趋势</div>
+      </div>
+    </div>
+    <!-- 护城河逻辑 -->
+    <div style="padding:12px;background:var(--bg2);border-radius:10px;display:flex;flex-direction:column;justify-content:center">
+      <div style="font-size:12px;font-weight:700;color:var(--accent2);margin-bottom:6px">为什么五条线能形成双引擎护城河？</div>
+      <div style="font-size:11px;color:var(--text2);line-height:1.7">
+        <div><strong style="color:var(--accent)">①</strong> 规模越大 → 匹配越准 → 佣金越高</div>
+        <div><strong style="color:var(--teal)">②</strong> 企业用久了 → 订阅切换成本高</div>
+        <div><strong style="color:var(--accent2)">③</strong> 学生能力数据越多 → 报告越值</div>
+        <div><strong style="color:var(--amber)">④</strong> 高校依赖能力看板 → 切换难</div>
+        <div><strong style="color:var(--rose)">⑤</strong> 数据独占 → 无人可复制</div>
+      </div>
+    </div>
+  </div>
+  <!-- 营收增长路径 -->
+  <div style="padding:12px;background:var(--bg2);border-radius:10px">
+    <div style="font-size:12px;font-weight:700;color:var(--primary);margin-bottom:8px">营收增长路径——从单点切入到全生态</div>
+    <div style="display:flex;gap:8px">
+      <div style="flex:1;text-align:center;padding:12px 8px;background:linear-gradient(135deg,#dbeafe,#eff6ff);border-radius:8px;position:relative">
+        <div style="font-size:10px;color:var(--accent);font-weight:700">Year 1</div>
+        <div style="font-size:18px;font-weight:800;color:var(--primary)">500万</div>
+        <div style="font-size:10px;color:var(--text2)">① 撮合佣金为主</div>
+        <div style="font-size:9px;color:var(--text3);margin-top:2px">验证匹配效率</div>
+      </div>
+      <div style="flex:1;text-align:center;padding:12px 8px;background:linear-gradient(135deg,#c7d2fe,#e0e7ff);border-radius:8px">
+        <div style="font-size:10px;color:var(--accent2);font-weight:700">Year 3</div>
+        <div style="font-size:18px;font-weight:800;color:var(--primary)">5000万</div>
+        <div style="font-size:10px;color:var(--text2)">①+② 订阅收入</div>
+        <div style="font-size:9px;color:var(--text3);margin-top:2px">企业留存率>70%</div>
+      </div>
+      <div style="flex:1;text-align:center;padding:12px 8px;background:linear-gradient(135deg,#ccfbf1,#f0fdfa);border-radius:8px">
+        <div style="font-size:10px;color:var(--teal);font-weight:700">Year 5</div>
+        <div style="font-size:18px;font-weight:800;color:var(--primary)">3亿</div>
+        <div style="font-size:10px;color:var(--text2)">①+②+③ 学生增值</div>
+        <div style="font-size:9px;color:var(--text3);margin-top:2px">C端付费转化>15%</div>
+      </div>
+      <div style="flex:1;text-align:center;padding:12px 8px;background:linear-gradient(135deg,#fef3c7,#fffbeb);border-radius:8px">
+        <div style="font-size:10px;color:var(--amber);font-weight:700">Year 8-10</div>
+        <div style="font-size:18px;font-weight:800;color:var(--primary)">15-30亿</div>
+        <div style="font-size:10px;color:var(--text2)">全五线驱动</div>
+        <div style="font-size:9px;color:var(--text3);margin-top:2px">数据洞察独占壁垒</div>
+      </div>
+    </div>
+  </div>
+</div>
+<span class="slide-tag">基于大模型的大学生"学-练-就"一体化平台</span>
+</div>
+
+<!-- ===== P21 定位① ===== -->
+<div class="slide" data-i="30">
+<div class="hdr"><span class="hdr-num">P30 · 定位①</span><span class="hdr-title">产业坐标：我们在什么位置</span></div>
+<div class="ct">
+  <!-- 坐标图 -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
+    <div style="position:relative;padding:20px;background:var(--bg2);border-radius:10px;min-height:200px">
+      <div style="font-size:11px;color:var(--text3);position:absolute;top:50%;left:8px;writing-mode:vertical-lr;transform:rotate(180deg)">供给端 ←</div>
+      <div style="font-size:11px;color:var(--text3);position:absolute;bottom:4px;left:50%;transform:translateX(-50%)">→ 需求端</div>
+      <div style="position:absolute;top:14px;left:40px;padding:8px 12px;background:#fef3c7;border:1px solid #fde68a;border-radius:8px;font-size:11px;width:100px;text-align:center">
+        <div style="font-weight:700;color:#92400e">高校系统</div>
+        <div style="font-size:10px;color:#92400e">学历信号</div>
+        <div style="font-size:9px;color:#92400e;opacity:.7">只产出，不验证</div>
+      </div>
+      <div style="position:absolute;top:14px;right:20px;padding:8px 12px;background:#ede9fe;border:1px solid #c4b5fd;border-radius:8px;font-size:11px;width:100px;text-align:center">
+        <div style="font-weight:700;color:#6d28d9">招聘平台</div>
+        <div style="font-size:10px;color:#6d28d9">信息撮合</div>
+        <div style="font-size:9px;color:#6d28d9;opacity:.7">只匹配，不培养</div>
+      </div>
+      <div style="position:absolute;bottom:14px;left:40px;padding:8px 12px;background:#dbeafe;border:1px solid #93c5fd;border-radius:8px;font-size:11px;width:100px;text-align:center">
+        <div style="font-weight:700;color:#1d4ed8">培训/考证</div>
+        <div style="font-size:10px;color:#1d4ed8">技能信号</div>
+        <div style="font-size:9px;color:#1d4ed8;opacity:.7">只教，不实践</div>
+      </div>
+      <div style="position:absolute;bottom:14px;right:20px;padding:8px 12px;background:#fef2f2;border:1px solid #fecaca;border-radius:8px;font-size:11px;width:100px;text-align:center">
+        <div style="font-weight:700;color:#9f1239">威客/外包</div>
+        <div style="font-size:10px;color:#9f1239">廉价劳动力</div>
+        <div style="font-size:9px;color:#9f1239;opacity:.7">只干活，不成长</div>
+      </div>
+      <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);padding:10px 14px;background:var(--grad2);color:#fff;border-radius:8px;text-align:center;box-shadow:0 6px 20px rgba(124,58,237,.35)">
+        <div style="font-size:9px;opacity:.8">本平台</div>
+        <div style="font-weight:700;font-size:13px">能力信号基础设施</div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <div style="padding:10px;background:#fef2f2;border-radius:8px;border-left:3px solid var(--rose)">
+        <div style="font-size:11px;font-weight:700;color:var(--rose);margin-bottom:2px">现有方案的共同缺陷</div>
+        <div style="font-size:11px;color:var(--text2);line-height:1.6">每个环节只做一件事，彼此断裂——学的不练，练的不证，证的不被信</div>
+      </div>
+      <div style="padding:10px;background:#f0fdfa;border-radius:8px;border-left:3px solid var(--teal)">
+        <div style="font-size:11px;font-weight:700;color:var(--teal);margin-bottom:2px">我们的定位：翻译层</div>
+        <div style="font-size:11px;color:var(--text2);line-height:1.6">把<strong>"学的能力"翻译成"市场认可的能力证据"</strong>，让供给端和需求端说同一种语言</div>
+      </div>
+      <div style="padding:10px;background:#eff6ff;border-radius:8px;border-left:3px solid var(--accent)">
+        <div style="font-size:11px;font-weight:700;color:var(--accent);margin-bottom:2px">为什么必须存在</div>
+        <div style="font-size:11px;color:var(--text2);line-height:1.6">没有翻译层，1200万毕业生只能靠"学历+运气"找工作；有了翻译层，能力可见、可信、可交易</div>
+      </div>
+    </div>
+  </div>
+  <!-- 产业链示意 -->
+  <div style="display:flex;gap:6px;align-items:center;justify-content:center">
+    <div style="padding:8px 14px;background:var(--bg2);border-radius:6px;text-align:center;font-size:11px">
+      <div style="font-weight:700;color:var(--accent2)">上游</div>
+      <div style="font-size:10px;color:var(--text2)">大学 · 培训机构</div>
+    </div>
+    <div style="color:var(--text3);font-size:16px">→</div>
+    <div style="padding:8px 18px;background:var(--grad2);color:#fff;border-radius:6px;text-align:center;font-size:11px;box-shadow:0 4px 12px rgba(124,58,237,.3)">
+      <div style="font-weight:700">连接层（我们）</div>
+      <div style="font-size:10px;opacity:.85">能力信号基础设施</div>
+    </div>
+    <div style="color:var(--text3);font-size:16px">→</div>
+    <div style="padding:8px 14px;background:var(--bg2);border-radius:6px;text-align:center;font-size:11px">
+      <div style="font-weight:700;color:var(--accent2)">下游</div>
+      <div style="font-size:10px;color:var(--text2)">企业 · 灵活用工</div>
+    </div>
+  </div>
+</div>
+<span class="slide-tag">基于大模型的大学生"学-练-就"一体化平台</span>
+</div>
+
+<!-- ===== P25 定位② ===== -->
+<div class="slide" data-i="31">
+<div class="hdr"><span class="hdr-num">P31 · 定位②</span><span class="hdr-title">竞争差异化——只做单环节 vs 飞轮闭环</span></div>
+<div class="ct">
+  <!-- 竞品对比 -->
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr 1fr;gap:8px;margin-bottom:10px">
+    <div style="padding:12px;background:#fef2f2;border-radius:8px;border-top:3px solid var(--rose);text-align:center">
+      <div style="font-size:13px;font-weight:800;color:var(--primary)">猪八戒/威客</div>
+      <div style="font-size:10px;color:var(--text3);margin:4px 0">廉价劳动力</div>
+      <div style="margin-top:6px;display:flex;flex-direction:column;gap:4px">
+        <div style="font-size:10px;padding:4px;background:#fef2f2;border-radius:3px"><span style="color:var(--rose);font-weight:700">×</span> 能力验证</div>
+        <div style="font-size:10px;padding:4px;background:#fef2f2;border-radius:3px"><span style="color:var(--rose);font-weight:700">×</span> 学习闭环</div>
+        <div style="font-size:10px;padding:4px;background:#fef2f2;border-radius:3px"><span style="color:var(--amber);font-weight:700">△</span> 任务匹配</div>
+      </div>
+    </div>
+    <div style="padding:12px;background:#fef3c7;border-radius:8px;border-top:3px solid var(--amber);text-align:center">
+      <div style="font-size:13px;font-weight:800;color:var(--primary)">Coursera</div>
+      <div style="font-size:10px;color:var(--text3);margin:4px 0">学课程</div>
+      <div style="margin-top:6px;display:flex;flex-direction:column;gap:4px">
+        <div style="font-size:10px;padding:4px;background:#fef3c7;border-radius:3px"><span style="color:var(--amber);font-weight:700">△</span> 证书考试</div>
+        <div style="font-size:10px;padding:4px;background:#fef3c7;border-radius:3px"><span style="color:var(--rose);font-weight:700">×</span> 实践验证</div>
+        <div style="font-size:10px;padding:4px;background:#fef3c7;border-radius:3px"><span style="color:var(--rose);font-weight:700">×</span> 就业连接</div>
+      </div>
+    </div>
+    <div style="padding:12px;background:#fef2f2;border-radius:8px;border-top:3px solid var(--rose);text-align:center">
+      <div style="font-size:13px;font-weight:800;color:var(--primary)">BOSS直聘</div>
+      <div style="font-size:10px;color:var(--text3);margin:4px 0">找工作</div>
+      <div style="margin-top:6px;display:flex;flex-direction:column;gap:4px">
+        <div style="font-size:10px;padding:4px;background:#fef2f2;border-radius:3px"><span style="color:var(--amber);font-weight:700">△</span> 简历+面试</div>
+        <div style="font-size:10px;padding:4px;background:#fef2f2;border-radius:3px"><span style="color:var(--rose);font-weight:700">×</span> 学习闭环</div>
+        <div style="font-size:10px;padding:4px;background:#fef2f2;border-radius:3px"><span style="color:var(--rose);font-weight:700">×</span> 能力验证</div>
+      </div>
+    </div>
+    <div style="padding:12px;background:#fef2f2;border-radius:8px;border-top:3px solid var(--rose);text-align:center">
+      <div style="font-size:13px;font-weight:800;color:var(--primary)">实习僧</div>
+      <div style="font-size:10px;color:var(--text3);margin:4px 0">找实习</div>
+      <div style="margin-top:6px;display:flex;flex-direction:column;gap:4px">
+        <div style="font-size:10px;padding:4px;background:#fef2f2;border-radius:3px"><span style="color:var(--amber);font-weight:700">△</span> 简历</div>
+        <div style="font-size:10px;padding:4px;background:#fef2f2;border-radius:3px"><span style="color:var(--rose);font-weight:700">×</span> 学习闭环</div>
+        <div style="font-size:10px;padding:4px;background:#fef2f2;border-radius:3px"><span style="color:var(--rose);font-weight:700">×</span> 能力验证</div>
+      </div>
+    </div>
+    <div style="padding:12px;background:linear-gradient(135deg,#ede9fe,#dbeafe);border-radius:8px;border-top:3px solid var(--accent2);text-align:center;box-shadow:0 2px 8px rgba(124,58,237,.15)">
+      <div style="font-size:13px;font-weight:800;color:var(--accent2)">本平台</div>
+      <div style="font-size:10px;color:var(--accent2);margin:4px 0">学+练+就飞轮</div>
+      <div style="margin-top:6px;display:flex;flex-direction:column;gap:4px">
+        <div style="font-size:10px;padding:4px;background:#f0fdf4;border-radius:3px"><span style="color:var(--teal);font-weight:700">✓</span> 证据驱动·能力护照</div>
+        <div style="font-size:10px;padding:4px;background:#f0fdf4;border-radius:3px"><span style="color:var(--teal);font-weight:700">✓</span> 任务驱动·自适应</div>
+        <div style="font-size:10px;padding:4px;background:#f0fdf4;border-radius:3px"><span style="color:var(--teal);font-weight:700">✓</span> 学⇄练⇄就闭环</div>
+      </div>
+    </div>
+  </div>
+  <!-- 本质区别 -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:8px">
+    <div style="padding:12px;background:#fef2f2;border-radius:8px;border-left:3px solid var(--rose)">
+      <div style="font-size:12px;font-weight:700;color:var(--rose);margin-bottom:4px">竞品：帮你做一件事</div>
+      <div style="font-size:11px;color:var(--text2);line-height:1.6">学 OR 练 OR 就——单环节工具<br>环节之间没有连接，无法形成增强回路</div>
+    </div>
+    <div style="padding:12px;background:#f0fdf4;border-radius:8px;border-left:3px solid var(--teal)">
+      <div style="font-size:12px;font-weight:700;color:var(--teal);margin-bottom:4px">我们：帮你通过真实任务成长并被市场认可</div>
+      <div style="font-size:11px;color:var(--text2);line-height:1.6">学+练+就一体化——每个环节为下个环节赋能<br>飞轮效应：数据越多→匹配越准→能力越强</div>
+    </div>
+  </div>
+  <!-- 护城河 -->
+  <div class="hl-dark" style="text-align:center;padding:12px;border-radius:10px">
+    <div style="font-size:13px;font-weight:700">护城河不是某个功能，而是<strong>飞轮效应</strong></div>
+    <div style="font-size:11px;opacity:.8;margin-top:4px">学→练→就的闭环数据，竞品无法在单一环节复制——跨环节协同才是壁垒</div>
+  </div>
+</div>
+<span class="slide-tag">基于大模型的大学生"学-练-就"一体化平台</span>
+</div>
+
+<!-- ===== P26 定位③ ===== -->
+<div class="slide" data-i="32">
+<div class="hdr"><span class="hdr-num">P32 · 定位③</span><span class="hdr-title">合肥高新区落地：政策契合 × 产业协同</span></div>
+<div class="ct">
+  <!-- 上半：政策+产业协同 -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:8px">
+    <!-- 政策契合 -->
+    <div style="padding:14px;background:#eff6ff;border-radius:10px;border-top:3px solid var(--accent)">
+      <div style="font-size:13px;font-weight:800;color:var(--accent);margin-bottom:8px;display:flex;align-items:center;gap:6px"><svg class="icon icon-accent" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>政策契合</div>
+      <div style="display:flex;gap:8px">
+        <div style="flex:1;padding:10px;background:#fff;border-radius:6px;font-size:11px;border-left:3px solid var(--accent)"><strong style="color:var(--accent)">国家级</strong><br>产教融合·校企合作<br>灵活就业·职教改革</div>
+        <div style="flex:1;padding:10px;background:#fff;border-radius:6px;font-size:11px;border-left:3px solid var(--accent2)"><strong style="color:var(--accent2)">高新区</strong><br>AI产业先导区<br>数字经济产业高地</div>
+      </div>
+    </div>
+    <!-- 产业协同可视化 -->
+    <div style="padding:14px;background:#f0fdfa;border-radius:10px;border-top:3px solid var(--teal)">
+      <div style="font-size:13px;font-weight:800;color:var(--teal);margin-bottom:8px;display:flex;align-items:center;gap:6px"><svg class="icon icon-teal" viewBox="0 0 24 24"><path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/></svg>产业协同</div>
+      <!-- 产业-赛道映射 -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+        <div style="padding:8px;background:#fff;border-radius:6px;border-left:3px solid var(--accent);font-size:11px"><strong>集成电路/半导体</strong><br><span style="font-size:10px;color:var(--teal)">→ 赛道B 数字助理</span></div>
+        <div style="padding:8px;background:#fff;border-radius:6px;border-left:3px solid var(--amber);font-size:11px"><strong>智能制造</strong><br><span style="font-size:10px;color:var(--teal)">→ 赛道B+C 智能体</span></div>
+        <div style="padding:8px;background:#fff;border-radius:6px;border-left:3px solid var(--teal);font-size:11px"><strong>新能源汽车</strong><br><span style="font-size:10px;color:var(--teal)">→ 赛道A+B 内容+运营</span></div>
+        <div style="padding:8px;background:#fff;border-radius:6px;border-left:3px solid var(--accent2);font-size:11px"><strong>文旅/巢湖</strong><br><span style="font-size:10px;color:var(--teal)">→ 赛道A+C 内容+活动</span></div>
+      </div>
+    </div>
+  </div>
+  <!-- 高校资源 -->
+  <div style="padding:12px;background:linear-gradient(135deg,#ede9fe,#eff6ff);border-radius:10px;margin-bottom:8px;display:flex;align-items:center;gap:12px">
+    <div style="flex-shrink:0;padding:10px 14px;background:#fff;border-radius:8px;text-align:center;border:2px solid var(--accent2)">
+      <svg class="icon icon-purple" viewBox="0 0 24 24" style="margin:0 auto"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
+      <div style="font-size:11px;font-weight:700;color:var(--accent2);margin-top:4px">高校资源</div>
+    </div>
+    <div style="flex:1;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+      <div style="padding:8px;background:#fff;border-radius:6px;text-align:center;font-size:11px"><strong style="color:var(--accent2)">中科大</strong><br><span style="font-size:10px;color:var(--text2)">AI技术合作</span></div>
+      <div style="padding:8px;background:#fff;border-radius:6px;text-align:center;font-size:11px"><strong style="color:var(--accent2)">合工大</strong><br><span style="font-size:10px;color:var(--text2)">学生供给+试点</span></div>
+      <div style="padding:8px;background:#fff;border-radius:6px;text-align:center;font-size:11px"><strong style="color:var(--accent2)">安大</strong><br><span style="font-size:10px;color:var(--text2)">文科+综合试点</span></div>
+    </div>
+  </div>
+  <!-- 落地方案 -->
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
+    <div style="text-align:center;padding:14px;background:linear-gradient(135deg,#eff6ff,#dbeafe);border-radius:10px">
+      <div style="font-weight:800;color:var(--accent);font-size:14px">第一年</div>
+      <div style="font-size:11px;color:var(--text2);margin-top:4px;line-height:1.6">3-5所高校试点<br>30家企业种子客户</div>
+    </div>
+    <div style="text-align:center;padding:14px;background:linear-gradient(135deg,#ede9fe,#e0e7ff);border-radius:10px">
+      <div style="font-weight:800;color:var(--accent2);font-size:14px">第二年</div>
+      <div style="font-size:11px;color:var(--text2);margin-top:4px;line-height:1.6">高新区全域覆盖<br>200家企业</div>
+    </div>
+    <div style="text-align:center;padding:14px;background:linear-gradient(135deg,#f0fdfa,#ccfbf1);border-radius:10px">
+      <div style="font-weight:800;color:var(--teal);font-size:14px">第三年</div>
+      <div style="font-size:11px;color:var(--text2);margin-top:4px;line-height:1.6">辐射安徽省<br>形成区域标杆</div>
+    </div>
+  </div>
+</div>
+<span class="slide-tag">基于大模型的大学生"学-练-就"一体化平台</span>
+</div>
+
+<!-- ===== P24 路径① ===== -->
+<div class="slide" data-i="33">
+<div class="hdr"><span class="hdr-num">P33 · 路径①</span><span class="hdr-title">三阶段实施路线图</span></div>
+<div class="ct">
+  <!-- 三阶段卡片 -->
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:10px">
+    <!-- Phase 1 -->
+    <div style="padding:16px;background:linear-gradient(135deg,#eff6ff,#dbeafe);border-radius:10px;border-left:4px solid var(--accent)">
+      <div style="font-size:10px;color:var(--accent);font-weight:700;margin-bottom:2px">PHASE 1</div>
+      <div style="font-size:17px;font-weight:800;color:var(--primary)">MVP验证期</div>
+      <div style="font-size:11px;color:var(--accent);font-weight:600;margin:4px 0">0~12月</div>
+      <div style="font-size:11px;color:var(--text2);line-height:1.7;margin-bottom:8px">赛道A×零售<br>能力体检上线<br>微任务接单验证</div>
+      <div style="padding:10px;background:#fff;border-radius:8px;text-align:center">
+        <div style="font-size:20px;font-weight:900;color:var(--accent)">30家/200人</div>
+        <div style="font-size:12px;color:var(--text2)">营收 <strong style="color:var(--accent)">500万</strong></div>
+      </div>
+    </div>
+    <!-- Phase 2 -->
+    <div style="padding:16px;background:linear-gradient(135deg,#ede9fe,#e0e7ff);border-radius:10px;border-left:4px solid var(--accent2)">
+      <div style="font-size:10px;color:var(--accent2);font-weight:700;margin-bottom:2px">PHASE 2</div>
+      <div style="font-size:17px;font-weight:800;color:var(--primary)">规模化期</div>
+      <div style="font-size:11px;color:var(--accent2);font-weight:600;margin:4px 0">6~18月</div>
+      <div style="font-size:11px;color:var(--text2);line-height:1.7;margin-bottom:8px">3赛道全启动<br>企业侧扩张<br>轻量级用工验证</div>
+      <div style="padding:10px;background:#fff;border-radius:8px;text-align:center">
+        <div style="font-size:20px;font-weight:900;color:var(--accent2)">1500家/800OPC</div>
+        <div style="font-size:12px;color:var(--text2)">营收 <strong style="color:var(--accent2)">5000万</strong></div>
+      </div>
+    </div>
+    <!-- Phase 3 -->
+    <div style="padding:16px;background:linear-gradient(135deg,#f0fdfa,#ccfbf1);border-radius:10px;border-left:4px solid var(--teal)">
+      <div style="font-size:10px;color:var(--teal);font-weight:700;margin-bottom:2px">PHASE 3</div>
+      <div style="font-size:17px;font-weight:800;color:var(--primary)">生态形成期</div>
+      <div style="font-size:11px;color:var(--teal);font-weight:600;margin:4px 0">18~36月</div>
+      <div style="font-size:11px;color:var(--text2);line-height:1.7;margin-bottom:8px">飞轮自运转<br>能力护照上线<br>成为行业标准</div>
+      <div style="padding:10px;background:#fff;border-radius:8px;text-align:center">
+        <div style="font-size:20px;font-weight:900;color:var(--teal)">1万+/3000+OPC</div>
+        <div style="font-size:12px;color:var(--text2)">营收 <strong style="color:var(--teal)">3亿</strong></div>
+      </div>
+    </div>
+  </div>
+  <!-- 关键里程碑 -->
+  <div style="padding:12px;background:var(--bg2);border-radius:10px">
+    <div style="font-size:12px;font-weight:700;color:var(--primary);margin-bottom:8px">关键里程碑</div>
+    <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:6px">
+      <div style="padding:8px 6px;background:#dbeafe;border-radius:6px;text-align:center"><div style="font-size:10px;font-weight:700;color:var(--accent)">M3</div><div style="font-size:9px;color:var(--text2)">能力体检MVP</div></div>
+      <div style="padding:8px 6px;background:#dbeafe;border-radius:6px;text-align:center"><div style="font-size:10px;font-weight:700;color:var(--accent)">M6</div><div style="font-size:9px;color:var(--text2)">首批任务+雇主好评</div></div>
+      <div style="padding:8px 6px;background:#c7d2fe;border-radius:6px;text-align:center"><div style="font-size:10px;font-weight:700;color:var(--accent2)">M9</div><div style="font-size:9px;color:var(--text2)">200学生活跃</div></div>
+      <div style="padding:8px 6px;background:#c7d2fe;border-radius:6px;text-align:center"><div style="font-size:10px;font-weight:700;color:var(--accent2)">M12</div><div style="font-size:9px;color:var(--text2)">企业侧验证</div></div>
+      <div style="padding:8px 6px;background:#ede9fe;border-radius:6px;text-align:center"><div style="font-size:10px;font-weight:700;color:var(--accent2)">M18</div><div style="font-size:9px;color:var(--text2)">OPC模式验证</div></div>
+      <div style="padding:8px 6px;background:#fef3c7;border-radius:6px;text-align:center"><div style="font-size:10px;font-weight:700;color:var(--amber)">M36</div><div style="font-size:9px;color:var(--text2)">能力护照v1</div></div>
+    </div>
+  </div>
+</div>
+<span class="slide-tag">基于大模型的大学生"学-练-就"一体化平台</span>
+</div>
+
+<!-- ===== P28 路径② ===== -->
+<div class="slide" data-i="34">
+<div class="hdr"><span class="hdr-num">P34 · 路径②</span><span class="hdr-title">冷启动策略：学生侧先行</span></div>
+<div class="ct">
+  <div class="flow" style="justify-content:center;margin-bottom:8px">
+    <div class="flow-item" style="padding:16px;background:linear-gradient(135deg,#2563eb,#3b82f6);color:#fff;border:none;width:200px;text-align:center">
+      <div style="font-weight:700;font-size:15px">学生侧先行</div>
+      <div style="font-size:11px;opacity:.8;margin-top:4px">能力体检吸引<br>焦虑+好奇驱动<br>社交传播裂变</div>
+    </div>
+    <span class="flow-arrow" style="font-size:24px">→</span>
+    <div class="flow-item" style="padding:16px;background:linear-gradient(135deg,#0d9488,#14b8a6);color:#fff;border:none;width:200px;text-align:center">
+      <div style="font-weight:700;font-size:15px">企业侧跟进</div>
+      <div style="font-size:11px;opacity:.8;margin-top:4px">学生数据吸引<br>零风险试人<br>低成本验证</div>
+    </div>
+  </div>
+  <div class="hl-dark" style="text-align:center;padding:16px;border-radius:12px;font-size:16px;font-weight:600">
+    "测一测你的专业能力在市场中值多少分"
+  </div>
+  <div class="card card-accent">
+    <div class="card-title">冷启动逻辑</div>
+    <div class="card-text">利用好奇心和焦虑感驱动学生自发传播 → 能力评估报告具有社交传播性 → 先服务好学生侧，再用学生数据吸引企业侧</div>
+  </div>
+  <div class="card">
+    <div class="card-title">切入优先级</div>
+    <div style="display:flex;gap:8px">
+      <div style="flex:1;padding:10px;background:#dbeafe;border-radius:8px;text-align:center;font-size:12px"><strong style="color:var(--accent)">① A-零售</strong><br>量最大·最快</div>
+      <div style="flex:1;padding:10px;background:#c7d2fe;border-radius:8px;text-align:center;font-size:12px"><strong style="color:var(--accent2)">② A-文旅</strong><br>共享表达力</div>
+      <div style="flex:1;padding:10px;background:#ccfbf1;border-radius:8px;text-align:center;font-size:12px"><strong style="color:var(--teal)">③ B-制造</strong><br>TAM大·粘性高</div>
+      <div style="flex:1;padding:10px;background:#fef3c7;border-radius:8px;text-align:center;font-size:12px"><strong style="color:var(--amber)">④ 其他</strong><br>依次扩张</div>
+    </div>
+  </div>
+</div>
+<span class="slide-tag">基于大模型的大学生"学-练-就"一体化平台</span>
+</div>
+
+<!-- ===== P29 路径③ ===== -->
+<div class="slide" data-i="35">
+<div class="hdr"><span class="hdr-num">P35 · 路径③</span><span class="hdr-title">竞争壁垒：三层递进</span></div>
+<div class="ct">
+  <div class="g3">
+    <div class="card card-accent" style="text-align:center">
+      <div style="font-size:11px;color:var(--accent);font-weight:700;margin-bottom:4px">短期 0-12月</div>
+      <div style="font-size:18px;font-weight:800;color:var(--primary);margin:8px 0">数据飞轮</div>
+      <div style="font-size:12px;color:var(--text2);line-height:1.8;text-align:left">
+        <div>更多任务→更多数据</div><div>更好匹配→更多任务</div>
+        <div style="margin-top:6px;padding:6px;background:var(--bg2);border-radius:4px;text-align:center;font-weight:600;color:var(--accent)">6-12月见效</div>
+      </div>
+    </div>
+    <div class="card card-purple" style="text-align:center">
+      <div style="font-size:11px;color:var(--accent2);font-weight:700;margin-bottom:4px">中期 12-24月</div>
+      <div style="font-size:18px;font-weight:800;color:var(--primary);margin:8px 0">网络效应</div>
+      <div style="font-size:12px;color:var(--text2);line-height:1.8;text-align:left">
+        <div>能力护照被更多企业认可</div><div>双边网络→竞品难复制</div>
+        <div style="margin-top:6px;padding:6px;background:var(--bg2);border-radius:4px;text-align:center;font-weight:600;color:var(--accent2)">12-24月见效</div>
+      </div>
+    </div>
+    <div class="card card-amber" style="text-align:center">
+      <div style="font-size:11px;color:var(--amber);font-weight:700;margin-bottom:4px">长期 24月+</div>
+      <div style="font-size:18px;font-weight:800;color:var(--primary);margin:8px 0">生态嵌入</div>
+      <div style="font-size:12px;color:var(--text2);line-height:1.8;text-align:left">
+        <div>高校学分·企业校招·政府参考</div><div>=基础设施·难替代</div>
+        <div style="margin-top:6px;padding:6px;background:var(--bg2);border-radius:4px;text-align:center;font-weight:600;color:var(--amber)">24月+见效</div>
+      </div>
+    </div>
+  </div>
+  <div style="display:flex;align-items:center;gap:8px;justify-content:center;font-size:14px;color:var(--text2)">
+    <div style="padding:8px 14px;background:var(--bg2);border-radius:8px">数据飞轮</div><span style="font-weight:700;color:var(--accent)">→</span>
+    <div style="padding:8px 14px;background:var(--bg2);border-radius:8px">网络效应</div><span style="font-weight:700;color:var(--accent2)">→</span>
+    <div style="padding:8px 14px;background:var(--bg2);border-radius:8px">生态嵌入</div>
+  </div>
+  <div class="hl-dark" style="text-align:center;padding:16px;border-radius:10px;font-size:15px">
+    竞品复制时间估算：<strong style="color:#fbbf24;font-size:20px">8-10年</strong>（需要重新积累同等规模的双边网络）
+  </div>
+</div>
+<span class="slide-tag">基于大模型的大学生"学-练-就"一体化平台</span>
+</div>
+
+<!-- ===== P30 议题① ===== -->
+<div class="slide" data-i="36">
+<div class="hdr"><span class="hdr-num">P36 · 议题①</span><span class="hdr-title">数据安全与隐私 · AI评估公平性</span></div>
+<div class="ct">
+  <div class="g2">
+    <div class="card card-accent">
+      <div class="card-title"><svg class="icon icon-accent" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>数据安全与隐私</div>
+      <table class="tbl" style="font-size:12px">
+        <tr><th>风险点</th><th>应对方案</th></tr>
+        <tr><td>学生作品/代码泄露</td><td>脱敏处理·分级授权·链上存证</td></tr>
+        <tr><td>学习行为数据隐私</td><td>聚合分析·不存储原始行为数据</td></tr>
+        <tr><td>能力评估结果滥用</td><td>学生自主控制·可见性设置</td></tr>
+      </table>
+    </div>
+    <div class="card card-purple">
+      <div class="card-title"><svg class="icon icon-purple" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>AI评估公平性</div>
+      <table class="tbl" style="font-size:12px">
+        <tr><th>潜在偏见</th><th>缓解措施</th></tr>
+        <tr><td>学校/地域偏见</td><td>基于作品评估·非背景属性</td></tr>
+        <tr><td>LLM自身偏见</td><td>多模型交叉验证·人工抽检</td></tr>
+        <tr><td>评估标准不透明</td><td>可解释评估·公开评估框架</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="hl" style="text-align:center;padding:14px"><strong>主动谈风险 = 成熟度的信号</strong> —— 我们不是没想到，而是想清楚了</div>
+</div>
+<span class="slide-tag">基于大模型的大学生"学-练-就"一体化平台</span>
+</div>
+
+<!-- ===== P31 议题② ===== -->
+<div class="slide" data-i="37">
+<div class="hdr"><span class="hdr-num">P37 · 议题②</span><span class="hdr-title">质量控制 · 信任机制 · 合规路径</span></div>
+<div class="ct">
+  <div class="card">
+    <div class="card-title"><svg class="icon icon-accent" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>质量控制体系</div>
+    <div class="g3" style="gap:8px">
+      <div style="text-align:center;padding:12px;background:var(--bg2);border-radius:8px"><div style="font-weight:700;font-size:13px;color:var(--accent)">交付前</div><div style="font-size:11px;color:var(--text2)">能力匹配预筛选</div></div>
+      <div style="text-align:center;padding:12px;background:var(--bg2);border-radius:8px"><div style="font-weight:700;font-size:13px;color:var(--accent2)">交付中</div><div style="font-size:11px;color:var(--text2)">进度追踪·质量抽检</div></div>
+      <div style="text-align:center;padding:12px;background:var(--bg2);border-radius:8px"><div style="font-weight:700;font-size:13px;color:var(--teal)">交付后</div><div style="font-size:11px;color:var(--text2)">雇主验收·LLM交叉验证</div></div>
+    </div>
+  </div>
+  <div class="g2">
+    <div class="card card-teal">
+      <div class="card-title"><svg class="icon icon-teal" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>信任机制</div>
+      <div class="card-text">任务完成→雇主验收→LLM交叉验证→信用分更新→异常检测<br><br><strong style="color:var(--rose)">反作弊：</strong>重复提交检测·协作贡献度拆分·互刷好评检测·行为模式异常识别</div>
+    </div>
+    <div class="card card-amber">
+      <div class="card-title"><svg class="icon icon-amber" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>合规路径</div>
+      <div style="font-size:12px;line-height:1.8;color:var(--text2)">
+        <div>· 数据合规：《个人信息保护法》+《数据安全法》</div>
+        <div>· 劳动合规：灵活用工法律框架</div>
+        <div>· AI合规：生成式AI服务管理办法备案</div>
+        <div>· 教育合规：高校合作符合教育部规定</div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;font-weight:600;color:var(--amber)">从一开始就按合规最高标准设计</div>
+    </div>
+  </div>
+</div>
+<span class="slide-tag">基于大模型的大学生"学-练-就"一体化平台</span>
+</div>
+
+<!-- ===== P32 愿景 ===== -->
+<div class="slide slide-cover" data-i="38">
+<div class="cover-content">
+  <div style="font-size:18px;opacity:.7;letter-spacing:2px;margin-bottom:20px">愿 景</div>
+  <h1 style="font-size:44px;font-weight:800;line-height:1.2;margin-bottom:28px">让每一个人的能力<br>都能被看见、被验证、被认可</h1>
+  <p style="font-size:20px;opacity:.8;margin-bottom:32px">——不论他来自哪里</p>
+  <div style="display:flex;gap:20px;justify-content:center;margin-bottom:24px">
+    <div style="padding:14px 22px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);border-radius:10px;text-align:center">
+      <div style="font-size:12px;opacity:.7">学生路径</div>
+      <div style="font-size:13px;margin-top:4px">微任务→标准任务→项目制→准雇佣</div>
+    </div>
+    <div style="padding:14px 22px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);border-radius:10px;text-align:center">
+      <div style="font-size:12px;opacity:.7">企业方式</div>
+      <div style="font-size:13px;margin-top:4px">不再海选→长期平台观察→基于表现决策</div>
+    </div>
+  </div>
+  <div style="padding:16px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:10px;max-width:560px;margin:0 auto;font-size:14px;line-height:1.8">
+    当前：一个二本学生，有能力但信号弱 → 被系统性低估<br>
+    未来：同一学生，完成50个高质量任务+雇主好评 → 能力信号可与985毕业生比肩
+  </div>
+  <p style="font-size:16px;margin-top:28px;letter-spacing:2px;font-weight:300">方向是确定的 · 路径需要探索 · 我们选择开始</p>
+</div>
+</div>
+
+<div class="nav">
+  <button class="nav-btn" onclick="go(-1)">&#9664;</button>
+  <span class="nav-info" id="navInfo">1 / 38</span>
+  <button class="nav-btn" onclick="go(1)">&#9654;</button>
+</div>
+
+<script>
+let cur=1,total=38;
+const slides=document.querySelectorAll('.slide');
+function show(n){
+  n=Math.max(1,Math.min(total,n));
+  cur=n;
+  slides.forEach(s=>{s.classList.toggle('active',+s.dataset.i===n)});
+  document.getElementById('navInfo').textContent=n+' / '+total;
+  document.getElementById('progress').style.width=(n/total*100)+'%';
+}
+function go(d){show(cur+d)}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowDown')go(1);if(e.key==='ArrowLeft'||e.key==='ArrowUp')go(-1)});
+show(1);
+</script>
+</body>
+</html>

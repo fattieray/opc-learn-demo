@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <!-- 三角形 -->
+  <polygon points="400,60 120,420 680,420" fill="none" stroke="#e2e8f0" stroke-width="2" stroke-dasharray="8,6"/>
+  <!-- 学生 -->
+  <rect x="310" y="30" width="180" height="80" rx="14" fill="#fef2f2" stroke="#f87171" stroke-width="2"/>
+  <text x="400" y="62" text-anchor="middle" fill="#991b1b" font-family="sans-serif" font-size="16" font-weight="700">学 生</text>
+  <text x="400" y="85" text-anchor="middle" fill="#b91c1c" font-family="sans-serif" font-size="12">有能力无信号 → 被低估</text>
+  <!-- 大学 -->
+  <rect x="30" y="370" width="180" height="80" rx="14" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="120" y="402" text-anchor="middle" fill="#92400e" font-family="sans-serif" font-size="16" font-weight="700">大 学</text>
+  <text x="120" y="425" text-anchor="middle" fill="#b45309" font-family="sans-serif" font-size="12">有教学无验证 → 学分贬值</text>
+  <!-- 企业 -->
+  <rect x="590" y="370" width="180" height="80" rx="14" fill="#f0fdf4" stroke="#22c55e" stroke-width="2"/>
+  <text x="680" y="402" text-anchor="middle" fill="#166534" font-family="sans-serif" font-size="16" font-weight="700">企 业</text>
+  <text x="680" y="425" text-anchor="middle" fill="#15803d" font-family="sans-serif" font-size="12">有需求无匹配 → 高成本试错</text>
+  <!-- 断裂连接 -->
+  <line x1="330" y1="110" x2="170" y2="370" stroke="#f87171" stroke-width="2" stroke-dasharray="6,4"/>
+  <text x="220" y="240" text-anchor="middle" fill="#f87171" font-family="sans-serif" font-size="11" font-weight="600" transform="rotate(-55,220,240)">信号失真</text>
+  <line x1="470" y1="110" x2="630" y2="370" stroke="#f87171" stroke-width="2" stroke-dasharray="6,4"/>
+  <text x="580" y="240" text-anchor="middle" fill="#f87171" font-family="sans-serif" font-size="11" font-weight="600" transform="rotate(55,580,240)">悬崖式切换</text>
+  <line x1="210" y1="410" x2="590" y2="410" stroke="#f87171" stroke-width="2" stroke-dasharray="6,4"/>
+  <text x="400" y="440" text-anchor="middle" fill="#f87171" font-family="sans-serif" font-size="11" font-weight="600">无反馈回路</text>
+  <!-- 中心 -->
+  <circle cx="400" cy="300" r="40" fill="#0f172a" opacity="0.05"/>
+  <text x="400" y="295" text-anchor="middle" fill="#e11d48" font-family="sans-serif" font-size="12" font-weight="700">缺失</text>
+  <text x="400" y="312" text-anchor="middle" fill="#e11d48" font-family="sans-serif" font-size="12" font-weight="700">连接层</text>
+  <!-- 底部结论 -->
+  <rect x="200" y="465" width="400" height="30" rx="8" fill="#0f172a"/>
+  <text x="400" y="485" text-anchor="middle" fill="#fff" font-family="sans-serif" font-size="12" font-weight="500">缺失的是连接三方的"能力信号基础设施"</text>
+</svg>

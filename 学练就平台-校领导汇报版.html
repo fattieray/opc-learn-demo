@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>学练就一体化平台 - 高校领导汇报</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;900&display=swap');
+:root{
+  --primary:#0f172a;--primary-mid:#1e3a5f;--accent:#2563eb;--accent2:#7c3aed;
+  --teal:#0d9488;--emerald:#059669;--amber:#d97706;--rose:#e11d48;
+  --text:#1e293b;--text2:#475569;--text3:#94a3b8;
+  --bg:#ffffff;--bg2:#f8fafc;--bg3:#f1f5f9;
+  --border:#e2e8f0;
+  --grad:linear-gradient(135deg,#0f172a 0%,#1e3a5f 50%,#2563eb 100%);
+  --grad2:linear-gradient(135deg,#2563eb 0%,#7c3aed 100%);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans SC',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;font-size:15px;overflow:hidden}
+.slide{width:100vw;height:100vh;padding:48px 64px;display:none;flex-direction:column;position:relative;overflow:hidden}
+.slide.active{display:flex}
+.slide-cover{background:var(--grad);color:#fff;justify-content:center;align-items:center;text-align:center}
+.slide-section{background:var(--grad2);color:#fff;justify-content:center;align-items:center;text-align:center}
+.slide-section::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M20 20.5V18H0v-2h20v-2l3 3-3 3z'/%3E%3C/g%3E%3C/svg%3E")}
+.hdr{margin-bottom:24px;padding-bottom:14px;border-bottom:2px solid var(--border);display:flex;align-items:baseline;gap:16px}
+.hdr-num{font-size:12px;color:var(--accent);font-weight:700;letter-spacing:2px}
+.hdr-title{font-size:28px;font-weight:700;color:var(--primary);letter-spacing:-.5px}
+.hdr-sub{font-size:14px;color:var(--text2);margin-left:auto}
+.ct{flex:1;display:flex;flex-direction:column;gap:20px}
+.row{display:flex;gap:20px}
+.col{flex:1;display:flex;flex-direction:column;gap:16px}
+.card{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:20px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.card-accent{border-left:4px solid var(--accent)}
+.card-teal{border-left:4px solid var(--teal)}
+.card-amber{border-left:4px solid var(--amber)}
+.card-rose{border-left:4px solid var(--rose)}
+.card-purple{border-left:4px solid var(--accent2)}
+.card-title{font-size:15px;font-weight:700;color:var(--primary);margin-bottom:8px}
+.card-text{font-size:13px;color:var(--text2);line-height:1.7}
+.hl{background:linear-gradient(135deg,#eff6ff,#f0f9ff);border:1px solid #bfdbfe;border-radius:10px;padding:16px 20px;font-size:14px;color:var(--primary-mid)}
+.hl-dark{background:var(--primary);color:#fff;border:none}
+.hl strong{font-weight:700}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.stats{display:flex;gap:16px}
+.stat{flex:1;text-align:center;padding:20px 12px;background:var(--bg2);border-radius:12px;border:1px solid var(--border)}
+.stat-val{font-size:32px;font-weight:800;color:var(--accent);line-height:1.1}
+.stat-label{font-size:12px;color:var(--text2);margin-top:6px;font-weight:500}
+.nav{position:fixed;bottom:20px;right:24px;z-index:100;display:flex;align-items:center;gap:8px}
+.nav-btn{width:40px;height:40px;border-radius:50%;border:1px solid var(--border);background:var(--bg);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--text2);box-shadow:0 1px 3px rgba(0,0,0,.08);transition:all .2s}
+.nav-btn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+.nav-info{font-size:12px;color:var(--text3);padding:0 8px;min-width:60px;text-align:center}
+.progress{position:fixed;top:0;left:0;height:3px;background:var(--accent);z-index:200;transition:width .3s}
+.slide-tag{position:absolute;bottom:20px;left:64px;font-size:11px;color:var(--text3);letter-spacing:1px}
+.q-badge{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:var(--accent);color:#fff;border-radius:8px;font-size:16px;font-weight:800;margin-right:12px}
+.answer-box{background:linear-gradient(135deg,#f0fdf4,#ecfdf5);border:1px solid #86efac;border-radius:12px;padding:20px;margin-top:8px}
+.answer-title{font-size:13px;color:#166534;font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.svg-container{display:flex;justify-content:center;align-items:center;padding:16px}
+@media print{
+  @page{size:landscape;margin:0}
+  html,body{width:100%;height:auto;overflow:visible!important;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+  .slide{display:flex!important;width:100vw;height:100vh;page-break-after:always;page-break-inside:avoid}
+  .slide:last-child{page-break-after:auto}
+  .nav,.progress{display:none!important}
+}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<!-- ===== P1 封面 ===== -->
+<div class="slide slide-cover active" data-i="1">
+<div style="max-width:800px">
+  <div style="font-size:14px;letter-spacing:3px;opacity:.7;margin-bottom:20px">高校领导汇报 · 2026</div>
+  <h1 style="font-size:44px;font-weight:800;line-height:1.2;margin-bottom:16px">基于大模型的<br>大学生"学-练-就"一体化平台</h1>
+  <p style="font-size:18px;opacity:.8;margin-bottom:32px">回答应用型本科院校在AI时代最关切的7大核心问题</p>
+  
+  <!-- SVG: 三支柱图 -->
+  <svg width="600" height="120" viewBox="0 0 600 120" style="margin:0 auto 32px">
+    <defs>
+      <linearGradient id="gradBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#2563eb"/>
+        <stop offset="100%" style="stop-color:#3b82f6"/>
+      </linearGradient>
+      <linearGradient id="gradPurple" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#7c3aed"/>
+        <stop offset="100%" style="stop-color:#8b5cf6"/>
+      </linearGradient>
+      <linearGradient id="gradTeal" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#0d9488"/>
+        <stop offset="100%" style="stop-color:#14b8a6"/>
+      </linearGradient>
+    </defs>
+    <!-- 学 -->
+    <rect x="50" y="20" width="140" height="80" rx="12" fill="url(#gradBlue)" opacity="0.9"/>
+    <text x="120" y="52" text-anchor="middle" fill="#fff" font-size="20" font-weight="700">学</text>
+    <text x="120" y="75" text-anchor="middle" fill="#fff" font-size="12" opacity="0.9">AI能力感知</text>
+    <!-- 练 -->
+    <rect x="230" y="20" width="140" height="80" rx="12" fill="url(#gradPurple)" opacity="0.9"/>
+    <text x="300" y="52" text-anchor="middle" fill="#fff" font-size="20" font-weight="700">练</text>
+    <text x="300" y="75" text-anchor="middle" fill="#fff" font-size="12" opacity="0.9">真实任务验证</text>
+    <!-- 就 -->
+    <rect x="410" y="20" width="140" height="80" rx="12" fill="url(#gradTeal)" opacity="0.9"/>
+    <text x="480" y="52" text-anchor="middle" fill="#fff" font-size="20" font-weight="700">就</text>
+    <text x="480" y="75" text-anchor="middle" fill="#fff" font-size="12" opacity="0.9">信用护照</text>
+    <!-- 连接箭头 -->
+    <path d="M195 60 L225 60" stroke="#fff" stroke-width="2" opacity="0.6" marker-end="url(#arrow)"/>
+    <path d="M375 60 L405 60" stroke="#fff" stroke-width="2" opacity="0.6"/>
+    <polygon points="220,55 230,60 220,65" fill="#fff" opacity="0.6"/>
+    <polygon points="400,55 410,60 400,65" fill="#fff" opacity="0.6"/>
+  </svg>
+  
+  <p style="font-size:16px;opacity:.85;letter-spacing:1px">让能力取代学历，成为就业市场的新信号</p>
+</div>
+<div style="position:absolute;bottom:32px;left:0;right:0;text-align:center;font-size:12px;opacity:.5">汇报人 · 日期</div>
+</div>
+
+<!-- ===== P2 问题提出 ===== -->
+<div class="slide" data-i="2">
+<div class="hdr"><span class="hdr-num">开篇</span><span class="hdr-title">AI时代，应用型本科院校面临的7大核心问题</span></div>
+<div class="ct">
+  <div class="hl" style="text-align:center;padding:20px;font-size:15px">
+    <strong>站在校领导视角，我们梳理了当前最关切的7个问题</strong><br>
+    <span style="opacity:.8">这些问题不是孤立存在，而是相互关联的系统挑战</span>
+  </div>
+  
+  <!-- SVG: 7大问题矩阵 -->
+  <svg width="100%" height="380" viewBox="0 0 900 380" style="margin:0 auto">
+    <defs>
+      <linearGradient id="qGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:#2563eb;stop-opacity:0.1"/>
+        <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:0.05"/>
+      </linearGradient>
+    </defs>
+    <!-- Q1 -->
+    <rect x="20" y="20" width="420" height="70" rx="10" fill="url(#qGrad)" stroke="#2563eb" stroke-width="1"/>
+    <circle cx="55" cy="55" r="20" fill="#2563eb"/>
+    <text x="55" y="61" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">Q1</text>
+    <text x="90" y="48" fill="#0f172a" font-size="14" font-weight="600">就业率与就业质量如何保障？</text>
+    <text x="90" y="68" fill="#64748b" font-size="11">考核指标 · 学校声誉 · 招生生源</text>
+    <!-- Q2 -->
+    <rect x="460" y="20" width="420" height="70" rx="10" fill="url(#qGrad)" stroke="#7c3aed" stroke-width="1"/>
+    <circle cx="495" cy="55" r="20" fill="#7c3aed"/>
+    <text x="495" y="61" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">Q2</text>
+    <text x="530" y="48" fill="#0f172a" font-size="14" font-weight="600">专业设置与课程如何快速响应AI时代？</text>
+    <text x="530" y="68" fill="#64748b" font-size="11">课程更新周期5-10年 vs 技能半衰期2年</text>
+    <!-- Q3 -->
+    <rect x="20" y="110" width="420" height="70" rx="10" fill="url(#qGrad)" stroke="#0d9488" stroke-width="1"/>
+    <circle cx="55" cy="145" r="20" fill="#0d9488"/>
+    <text x="55" y="151" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">Q3</text>
+    <text x="90" y="138" fill="#0f172a" font-size="14" font-weight="600">产教融合如何真正落地？</text>
+    <text x="90" y="158" fill="#64748b" font-size="11">校企合作"两张皮" · 流于形式</text>
+    <!-- Q4 -->
+    <rect x="460" y="110" width="420" height="70" rx="10" fill="url(#qGrad)" stroke="#d97706" stroke-width="1"/>
+    <circle cx="495" cy="145" r="20" fill="#d97706"/>
+    <text x="495" y="151" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">Q4</text>
+    <text x="530" y="138" fill="#0f172a" font-size="14" font-weight="600">学生能力培养如何对接市场需求？</text>
+    <text x="530" y="158" fill="#64748b" font-size="11">"学了没用的，有用的没学"</text>
+    <!-- Q5 -->
+    <rect x="20" y="200" width="420" height="70" rx="10" fill="url(#qGrad)" stroke="#e11d48" stroke-width="1"/>
+    <circle cx="55" cy="235" r="20" fill="#e11d48"/>
+    <text x="55" y="241" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">Q5</text>
+    <text x="90" y="228" fill="#0f172a" font-size="14" font-weight="600">师资队伍如何适应AI时代教学？</text>
+    <text x="90" y="248" fill="#64748b" font-size="11">教师能力滞后 · 考核导向偏差</text>
+    <!-- Q6 -->
+    <rect x="460" y="200" width="420" height="70" rx="10" fill="url(#qGrad)" stroke="#059669" stroke-width="1"/>
+    <circle cx="495" cy="235" r="20" fill="#059669"/>
+    <text x="495" y="241" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">Q6</text>
+    <text x="530" y="228" fill="#0f172a" font-size="14" font-weight="600">学校如何形成差异化竞争优势？</text>
+    <text x="530" y="248" fill="#64748b" font-size="11">同质化竞争 · 特色不鲜明</text>
+    <!-- Q7 -->
+    <rect x="240" y="290" width="420" height="70" rx="10" fill="url(#qGrad)" stroke="#1e3a5f" stroke-width="2"/>
+    <circle cx="275" cy="325" r="20" fill="#1e3a5f"/>
+    <text x="275" y="331" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">Q7</text>
+    <text x="310" y="318" fill="#0f172a" font-size="14" font-weight="600">投入新项目的风险与收益如何？</text>
+    <text x="310" y="338" fill="#64748b" font-size="11">决策风险 · 资源有限 · 政绩考量</text>
+  </svg>
+</div>
+<span class="slide-tag">学练就一体化平台 · 高校领导汇报</span>
+</div>
+
+<!-- ===== P3 Q1 就业率与就业质量 ===== -->
+<div class="slide" data-i="3">
+<div class="hdr"><span class="hdr-num">Q1</span><span class="hdr-title">就业率与就业质量如何保障？</span><span class="hdr-sub">校领导最核心的考核指标</span></div>
+<div class="ct">
+  <div class="row">
+    <div class="col">
+      <div class="card card-rose">
+        <div class="card-title">当前困境</div>
+        <div class="card-text">
+          · 求职周期6-8个月，学生焦虑、家长质疑<br>
+          · 就业率统计"注水"，真实就业质量难追踪<br>
+          · 毕业生5年后发展？学校"不知道"<br>
+          · 起薪低、对口率低、离职率高
+        </div>
+      </div>
+      
+      <!-- SVG: 就业漏斗对比 -->
+      <svg width="100%" height="180" viewBox="0 0 400 180">
+        <text x="100" y="20" text-anchor="middle" fill="#64748b" font-size="11" font-weight="600">传统模式</text>
+        <text x="300" y="20" text-anchor="middle" fill="#64748b" font-size="11" font-weight="600">平台模式</text>
+        <!-- 传统漏斗 -->
+        <polygon points="50,40 150,40 130,160 70,160" fill="#fecaca" stroke="#f87171" stroke-width="1"/>
+        <text x="100" y="70" text-anchor="middle" fill="#991b1b" font-size="10">投简历</text>
+        <text x="100" y="90" text-anchor="middle" fill="#991b1b" font-size="10">47份</text>
+        <text x="100" y="120" text-anchor="middle" fill="#991b1b" font-size="10">面试3个</text>
+        <text x="100" y="145" text-anchor="middle" fill="#991b1b" font-size="10">offer 1个</text>
+        <!-- 平台漏斗 -->
+        <polygon points="250,40 350,40 330,160 270,160" fill="#bbf7d0" stroke="#4ade80" stroke-width="1"/>
+        <text x="300" y="70" text-anchor="middle" fill="#166534" font-size="10">能力护照</text>
+        <text x="300" y="90" text-anchor="middle" fill="#166534" font-size="10">精准匹配</text>
+        <text x="300" y="120" text-anchor="middle" fill="#166534" font-size="10">面试11个</text>
+        <text x="300" y="145" text-anchor="middle" fill="#166534" font-size="10">offer 4个</text>
+        <!-- 箭头 -->
+        <path d="M160 100 L240 100" stroke="#2563eb" stroke-width="2" stroke-dasharray="4"/>
+        <polygon points="238,95 248,100 238,105" fill="#2563eb"/>
+      </svg>
+    </div>
+    
+    <div class="col">
+      <div class="answer-box">
+        <div class="answer-title">
+          <svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="#22c55e"/><path d="M5 8l2 2 4-4" stroke="#fff" stroke-width="2" fill="none"/></svg>
+          我们的解决方案
+        </div>
+        <div class="card-text">
+          <strong>能力护照</strong>：让每个学生带着"被验证的能力证据"求职<br>
+          · 50次真实任务验证 > 2小时面试<br>
+          · 雇主好评率、任务履历、成长轨迹全记录<br>
+          · 企业"先看能力再面试"，匹配度大幅提升
+        </div>
+      </div>
+      
+      <!-- SVG: 量化收益 -->
+      <svg width="100%" height="140" viewBox="0 0 400 140">
+        <rect x="20" y="20" width="110" height="100" rx="8" fill="#eff6ff" stroke="#3b82f6"/>
+        <text x="75" y="50" text-anchor="middle" fill="#2563eb" font-size="24" font-weight="800">+15-25%</text>
+        <text x="75" y="75" text-anchor="middle" fill="#1e40af" font-size="11" font-weight="600">就业率提升</text>
+        <text x="75" y="95" text-anchor="middle" fill="#64748b" font-size="10">从"被动统计"到"主动追踪"</text>
+        
+        <rect x="145" y="20" width="110" height="100" rx="8" fill="#f0fdf4" stroke="#22c55e"/>
+        <text x="200" y="50" text-anchor="middle" fill="#16a34a" font-size="24" font-weight="800">+20-40%</text>
+        <text x="200" y="75" text-anchor="middle" fill="#166534" font-size="11" font-weight="600">起薪提升</text>
+        <text x="200" y="95" text-anchor="middle" fill="#64748b" font-size="10">能力信号增强议价权</text>
+        
+        <rect x="270" y="20" width="110" height="100" rx="8" fill="#fef3c7" stroke="#f59e0b"/>
+        <text x="325" y="50" text-anchor="middle" fill="#d97706" font-size="24" font-weight="800">-60%</text>
+        <text x="325" y="75" text-anchor="middle" fill="#92400e" font-size="11" font-weight="600">求职周期</text>
+        <text x="325" y="95" text-anchor="middle" fill="#64748b" font-size="10">6-8月→2-3月</text>
+      </svg>
+    </div>
+  </div>
+</div>
+<span class="slide-tag">学练就一体化平台 · 高校领导汇报</span>
+</div>
+
+<!-- ===== P4 Q1续: 闭环反馈 ===== -->
+<div class="slide" data-i="4">
+<div class="hdr"><span class="hdr-num">Q1·延伸</span><span class="hdr-title">从"不知道"到"实时追踪"——毕业生闭环反馈系统</span></div>
+<div class="ct">
+  <div class="hl" style="text-align:center">
+    <strong>核心价值</strong>：学校第一次能够追踪毕业生的真实发展轨迹，形成培养-就业的闭环反馈
+  </div>
+  
+  <!-- SVG: 闭环反馈系统 -->
+  <svg width="100%" height="340" viewBox="0 0 900 340">
+    <defs>
+      <marker id="arrowBlue" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+        <path d="M0,0 L0,6 L9,3 z" fill="#2563eb"/>
+      </marker>
+    </defs>
+    <!-- 中心: 学校 -->
+    <circle cx="450" cy="170" r="60" fill="#0f172a"/>
+    <text x="450" y="165" text-anchor="middle" fill="#fff" font-size="16" font-weight="700">学校</text>
+    <text x="450" y="185" text-anchor="middle" fill="#94a3b8" font-size="11">培养体系</text>
+    
+    <!-- 学生 -->
+    <rect x="60" y="130" width="120" height="80" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+    <text x="120" y="160" text-anchor="middle" fill="#1e40af" font-size="13" font-weight="600">在校学生</text>
+    <text x="120" y="180" text-anchor="middle" fill="#64748b" font-size="10">能力体检·任务市场</text>
+    <text x="120" y="195" text-anchor="middle" fill="#64748b" font-size="10">能力护照积累</text>
+    
+    <!-- 毕业生 -->
+    <rect x="720" y="130" width="120" height="80" rx="10" fill="#f0fdf4" stroke="#22c55e" stroke-width="2"/>
+    <text x="780" y="160" text-anchor="middle" fill="#166534" font-size="13" font-weight="600">毕业生</text>
+    <text x="780" y="180" text-anchor="middle" fill="#64748b" font-size="10">就业状态·薪资变化</text>
+    <text x="780" y="195" text-anchor="middle" fill="#64748b" font-size="10">职业发展轨迹</text>
+    
+    <!-- 企业 -->
+    <rect x="390" y="280" width="120" height="50" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+    <text x="450" y="310" text-anchor="middle" fill="#92400e" font-size="13" font-weight="600">合作企业</text>
+    
+    <!-- 数据流箭头 -->
+    <path d="M180 170 Q300 120 390 170" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arrowBlue)"/>
+    <text x="285" y="130" text-anchor="middle" fill="#2563eb" font-size="10">培养数据</text>
+    
+    <path d="M510 170 Q600 120 720 170" stroke="#22c55e" stroke-width="2" fill="none"/>
+    <polygon points="715,165 725,170 715,175" fill="#22c55e"/>
+    <text x="615" y="130" text-anchor="middle" fill="#22c55e" font-size="10">能力护照</text>
+    
+    <path d="M720 210 Q600 260 510 305" stroke="#f59e0b" stroke-width="2" fill="none"/>
+    <polygon points="515,300 505,305 515,310" fill="#f59e0b"/>
+    <text x="615" y="270" text-anchor="middle" fill="#f59e0b" font-size="10">就业反馈</text>
+    
+    <path d="M390 305 Q300 320 180 210" stroke="#7c3aed" stroke-width="2" fill="none"/>
+    <polygon points="183,215 175,205 185,208" fill="#7c3aed"/>
+    <text x="270" y="310" text-anchor="middle" fill="#7c3aed" font-size="10">课程优化建议</text>
+    
+    <!-- 反馈回路标签 -->
+    <rect x="380" y="30" width="140" height="30" rx="15" fill="#7c3aed"/>
+    <text x="450" y="50" text-anchor="middle" fill="#fff" font-size="11" font-weight="600">闭环反馈系统</text>
+  </svg>
+  
+  <div class="g3">
+    <div class="card">
+      <div class="card-title">实时数据看板</div>
+      <div class="card-text">各专业学生能力分布、任务完成情况、就业进展一目了然</div>
+    </div>
+    <div class="card">
+      <div class="card-title">毕业生追踪</div>
+      <div class="card-text">5年职业发展轨迹、薪资变化、行业分布持续追踪</div>
+    </div>
+    <div class="card">
+      <div class="card-title">课程优化依据</div>
+      <div class="card-text">基于市场反馈的数据驱动课程调整，而非"拍脑袋"</div>
+    </div>
+  </div>
+</div>
+<span class="slide-tag">学练就一体化平台 · 高校领导汇报</span>
+</div>
+
+<!-- ===== P5 Q2 专业设置与课程响应 ===== -->
+<div class="slide" data-i="5">
+<div class="hdr"><span class="hdr-num">Q2</span><span class="hdr-title">专业设置与课程如何快速响应AI时代？</span><span class="hdr-sub">课程更新周期 vs 技能半衰期</span></div>
+<div class="ct">
+  <div class="row">
+    <div class="col">
+      <div class="card card-amber">
+        <div class="card-title">结构性矛盾</div>
+        <div class="card-text">
+          <strong>课程更新周期：5-10年</strong><br>
+          · 教学大纲制定流程漫长<br>
+          · 教师考核导向学术而非市场<br>
+          · 教材编写周期3-5年<br><br>
+          <strong>技能半衰期：1.5-2年（AI时代）</strong><br>
+          · 入学时学的技能，毕业时已过时<br>
+          · 新岗位不断涌现，课程来不及响应
+        </div>
+      </div>
+      
+      <!-- SVG: 技能半衰期趋势 -->
+      <svg width="100%" height="160" viewBox="0 0 400 160">
+        <text x="200" y="20" text-anchor="middle" fill="#0f172a" font-size="12" font-weight="600">技能半衰期变化趋势</text>
+        <!-- 柱状图 -->
+        <rect x="40" y="50" width="50" height="90" rx="4" fill="#94a3b8"/>
+        <text x="65" y="145" text-anchor="middle" fill="#64748b" font-size="9">2000年前</text>
+        <text x="65" y="70" text-anchor="middle" fill="#fff" font-size="10" font-weight="600">10年+</text>
+        
+        <rect x="110" y="70" width="50" height="70" rx="4" fill="#64748b"/>
+        <text x="135" y="145" text-anchor="middle" fill="#64748b" font-size="9">2010年</text>
+        <text x="135" y="90" text-anchor="middle" fill="#fff" font-size="10" font-weight="600">5-7年</text>
+        
+        <rect x="180" y="90" width="50" height="50" rx="4" fill="#f59e0b"/>
+        <text x="205" y="145" text-anchor="middle" fill="#64748b" font-size="9">2020年</text>
+        <text x="205" y="110" text-anchor="middle" fill="#fff" font-size="10" font-weight="600">3-5年</text>
+        
+        <rect x="250" y="105" width="50" height="35" rx="4" fill="#f97316"/>
+        <text x="275" y="145" text-anchor="middle" fill="#64748b" font-size="9">2025年</text>
+        <text x="275" y="125" text-anchor="middle" fill="#fff" font-size="10" font-weight="600">2-3年</text>
+        
+        <rect x="320" y="115" width="50" height="25" rx="4" fill="#e11d48"/>
+        <text x="345" y="145" text-anchor="middle" fill="#64748b" font-size="9">AI时代</text>
+        <text x="345" y="132" text-anchor="middle" fill="#fff" font-size="10" font-weight="600">1.5年</text>
+        
+        <!-- 警示线 -->
+        <line x1="30" y1="140" x2="380" y2="140" stroke="#e2e8f0" stroke-width="1"/>
+      </svg>
+    </div>
+    
+    <div class="col">
+      <div class="answer-box">
+        <div class="answer-title">
+          <svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="#22c55e"/><path d="M5 8l2 2 4-4" stroke="#fff" stroke-width="2" fill="none"/></svg>
+          我们的解决方案：自适应学习路径
+        </div>
+        <div class="card-text">
+          <strong>不是"改课程"，而是"补课程"</strong><br>
+          · 平台实时追踪市场需求变化<br>
+          · AI自动生成个性化学习路径<br>
+          · 学生在任务中发现短板→精准补强<br>
+          · 学校获得市场需求数据→辅助课程决策
+        </div>
+      </div>
+      
+      <!-- SVG: 自适应学习流程 -->
+      <svg width="100%" height="160" viewBox="0 0 400 160">
+        <rect x="20" y="40" width="80" height="60" rx="8" fill="#eff6ff" stroke="#3b82f6"/>
+        <text x="60" y="65" text-anchor="middle" fill="#1e40af" font-size="11" font-weight="600">任务执行</text>
+        <text x="60" y="82" text-anchor="middle" fill="#64748b" font-size="9">发现能力缺口</text>
+        
+        <path d="M105 70 L135 70" stroke="#2563eb" stroke-width="2"/>
+        <polygon points="132,65 142,70 132,75" fill="#2563eb"/>
+        
+        <rect x="145" y="40" width="80" height="60" rx="8" fill="#f0fdf4" stroke="#22c55e"/>
+        <text x="185" y="65" text-anchor="middle" fill="#166534" font-size="11" font-weight="600">AI诊断</text>
+        <text x="185" y="82" text-anchor="middle" fill="#64748b" font-size="9">精准定位短板</text>
+        
+        <path d="M230 70 L260 70" stroke="#22c55e" stroke-width="2"/>
+        <polygon points="257,65 267,70 257,75" fill="#22c55e"/>
+        
+        <rect x="270" y="40" width="80" height="60" rx="8" fill="#fef3c7" stroke="#f59e0b"/>
+        <text x="310" y="65" text-anchor="middle" fill="#92400e" font-size="11" font-weight="600">智能推荐</text>
+        <text x="310" y="82" text-anchor="middle" fill="#64748b" font-size="9">学习资源匹配</text>
+        
+        <!-- 循环箭头 -->
+        <path d="M310 105 Q310 130 60 130 Q20 130 20 105" stroke="#7c3aed" stroke-width="2" fill="none" stroke-dasharray="4"/>
+        <text x="185" y="145" text-anchor="middle" fill="#7c3aed" font-size="10">持续循环提升</text>
+      </svg>
+      
+      <div class="hl" style="margin-top:8px">
+        <strong>学校收益</strong>：无需频繁修改课程体系，平台作为"动态补充层"填补市场与教学的鸿沟
+      </div>
+    </div>
+  </div>
+</div>
+<span class="slide-tag">学练就一体化平台 · 高校领导汇报</span>
+</div>
+
+<!-- ===== P6 Q3 产教融合落地 ===== -->
+<div class="slide" data-i="6">
+<div class="hdr"><span class="hdr-num">Q3</span><span class="hdr-title">产教融合如何真正落地？</span><span class="hdr-sub">校企合作"两张皮"困境</span></div>
+<div class="ct">
+  <div class="row">
+    <div class="col">
+      <div class="card card-rose">
+        <div class="card-title">当前困境：形式大于内容</div>
+        <div class="card-text">
+          <strong>校企合作基地</strong><br>
+          · 签约多、落地少<br>
+          · 少数学生受益，多数人"围观"<br>
+          · 实习=打杂，无系统能力建设<br><br>
+          <strong>企业真实诉求</strong><br>
+          · 需要的是"能干活的人"<br>
+          · 不愿意承担培训成本<br>
+          · 校招成本高、试错风险大
+        </div>
+      </div>
+      
+      <!-- SVG: 传统vs平台对比 -->
+      <svg width="100%" height="140" viewBox="0 0 400 140">
+        <text x="100" y="20" text-anchor="middle" fill="#64748b" font-size="11" font-weight="600">传统模式</text>
+        <text x="300" y="20" text-anchor="middle" fill="#64748b" font-size="11" font-weight="600">平台模式</text>
+        
+        <!-- 传统 -->
+        <rect x="30" y="35" width="140" height="90" rx="8" fill="#fef2f2" stroke="#f87171"/>
+        <text x="100" y="60" text-anchor="middle" fill="#991b1b" font-size="10">签约基地</text>
+        <text x="100" y="80" text-anchor="middle" fill="#991b1b" font-size="10">↓</text>
+        <text x="100" y="95" text-anchor="middle" fill="#991b1b" font-size="10">少数学生实习</text>
+        <text x="100" y="115" text-anchor="middle" fill="#b91c1c" font-size="9">打杂·无验证·无积累</text>
+        
+        <!-- 平台 -->
+        <rect x="230" y="35" width="140" height="90" rx="8" fill="#f0fdf4" stroke="#4ade80"/>
+        <text x="300" y="60" text-anchor="middle" fill="#166534" font-size="10">任务市场</text>
+        <text x="300" y="80" text-anchor="middle" fill="#166534" font-size="10">↓</text>
+        <text x="300" y="95" text-anchor="middle" fill="#166534" font-size="10">所有学生可参与</text>
+        <text x="300" y="115" text-anchor="middle" fill="#166534" font-size="9">真实任务·雇主验证·能力积累</text>
+      </svg>
+    </div>
+    
+    <div class="col">
+      <div class="answer-box">
+        <div class="answer-title">
+          <svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="#22c55e"/><path d="M5 8l2 2 4-4" stroke="#fff" stroke-width="2" fill="none"/></svg>
+          我们的解决方案：任务市场
+        </div>
+        <div class="card-text">
+          <strong>把"企业需求"拆解成"学生任务"</strong><br>
+          · L1微任务：几小时-2天，50-200元<br>
+          · L2标准任务：3天-2周，500-3000元<br>
+          · L3项目制：2周-3月，3000-10000元<br>
+          · L4准雇佣：3月+，月薪3000元+<br><br>
+          <strong>关键洞察</strong>：门槛降低→参与扩大→验证累积
+        </div>
+      </div>
+      
+      <!-- SVG: 任务层级金字塔 -->
+      <svg width="100%" height="140" viewBox="0 0 400 140">
+        <!-- 金字塔 -->
+        <polygon points="200,15 320,125 80,125" fill="#eff6ff" stroke="#3b82f6"/>
+        <line x1="140" y1="70" x2="260" y2="70" stroke="#3b82f6" stroke-dasharray="3"/>
+        <line x1="110" y1="100" x2="290" y2="100" stroke="#3b82f6" stroke-dasharray="3"/>
+        
+        <text x="200" y="50" text-anchor="middle" fill="#1e40af" font-size="10" font-weight="600">L4 准雇佣</text>
+        <text x="200" y="85" text-anchor="middle" fill="#1e40af" font-size="10" font-weight="600">L2-L3 项目/标准任务</text>
+        <text x="200" y="118" text-anchor="middle" fill="#1e40af" font-size="10" font-weight="600">L1 微任务（冷启动入口）</text>
+        
+        <!-- 参与人数指示 -->
+        <text x="340" y="50" fill="#64748b" font-size="9">少数</text>
+        <text x="340" y="85" fill="#64748b" font-size="9">中等</text>
+        <text x="340" y="118" fill="#64748b" font-size="9">大量</text>
+      </svg>
+      
+      <div class="hl" style="margin-top:8px">
+        <strong>学校收益</strong>：一次对接平台=对接数百家企业，所有学生平等受益，产教融合真正落地
+      </div>
+    </div>
+  </div>
+</div>
+<span class="slide-tag">学练就一体化平台 · 高校领导汇报</span>
+</div>
+
+<!-- ===== P7 Q4 学生能力对接市场 ===== -->
+<div class="slide" data-i="7">
+<div class="hdr"><span class="hdr-num">Q4</span><span class="hdr-title">学生能力培养如何对接市场需求？</span><span class="hdr-sub">"学了没用的，有用的没学"</span></div>
+<div class="ct">
+  <div class="row">
+    <div class="col">
+      <div class="card card-amber">
+        <div class="card-title">能力错配的根源</div>
+        <div class="card-text">
+          <strong>学生视角</strong><br>
+          · "编译原理很熟，没做过真实软件项目"<br>
+          · "4P理论精通，没做过投放实验"<br>
+          · 有知识无能力，有成绩无证据<br><br>
+          <strong>企业视角</strong><br>
+          · 简历=自说自话<br>
+          · 文凭=18岁一次考试的代理变量<br>
+          · 面试2小时=盲人摸象
+        </div>
+      </div>
+    </div>
+    
+    <div class="col">
+      <div class="answer-box">
+        <div class="answer-title">
+          <svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="#22c55e"/><path d="M5 8l2 2 4-4" stroke="#fff" stroke-width="2" fill="none"/></svg>
+          我们的解决方案：AI能力指纹
+        </div>
+        <div class="card-text">
+          <strong>从"我觉得我会"到"证据证明我会"</strong><br>
+          · 读取学生作品：GitHub/作业/任务交付<br>
+          · LLM分析生成能力指纹<br>
+          · 技能矩阵+软能力+成长轨迹+缺口分析<br>
+          · 动态更新，每次任务刷新
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- SVG: 能力指纹示例 -->
+  <svg width="100%" height="200" viewBox="0 0 900 200">
+    <rect x="20" y="20" width="280" height="160" rx="12" fill="#0f172a"/>
+    <text x="160" y="50" text-anchor="middle" fill="#fff" font-size="13" font-weight="600">能力指纹 · 张伟</text>
+    
+    <!-- 雷达图背景 -->
+    <polygon points="160,140 110,100 120,55 200,55 210,100" fill="none" stroke="#334155" stroke-width="1"/>
+    <polygon points="160,120 125,95 132,65 188,65 195,95" fill="none" stroke="#334155" stroke-width="1"/>
+    <polygon points="160,100 140,85 144,75 176,75 180,85" fill="none" stroke="#334155" stroke-width="1"/>
+    
+    <!-- 雷达图数据 -->
+    <polygon points="160,115 115,92 130,58 195,62 190,95" fill="#2563eb" fill-opacity="0.3" stroke="#3b82f6" stroke-width="2"/>
+    
+    <!-- 标签 -->
+    <text x="160" y="155" text-anchor="middle" fill="#94a3b8" font-size="9">Python 88%</text>
+    <text x="85" y="100" text-anchor="middle" fill="#94a3b8" font-size="9">SQL 72%</text>
+    <text x="100" y="50" text-anchor="middle" fill="#94a3b8" font-size="9">可视化 68%</text>
+    <text x="220" y="50" text-anchor="middle" fill="#94a3b8" font-size="9">统计 42%</text>
+    <text x="235" y="100" text-anchor="middle" fill="#94a3b8" font-size="9">沟通 80%</text>
+    
+    <!-- 能力叙事 -->
+    <rect x="320" y="20" width="560" height="160" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="340" y="50" fill="#0f172a" font-size="12" font-weight="600">AI能力叙事</text>
+    <text x="340" y="75" fill="#475569" font-size="11">"该学生在过去6个月完成了12个数据分析相关任务，</text>
+    <text x="340" y="95" fill="#475569" font-size="11">数据处理和可视化能力突出（处于同专业前15%），</text>
+    <text x="340" y="115" fill="#475569" font-size="11">统计建模正在快速成长，商业叙事能力有提升空间..."</text>
+    
+    <text x="340" y="145" fill="#0f172a" font-size="12" font-weight="600">缺口分析</text>
+    <rect x="340" y="155" width="80" height="18" rx="4" fill="#fef3c7"/>
+    <text x="380" y="168" text-anchor="middle" fill="#92400e" font-size="9">统计建模</text>
+    <rect x="430" y="155" width="80" height="18" rx="4" fill="#fef3c7"/>
+    <text x="470" y="168" text-anchor="middle" fill="#92400e" font-size="9">商业分析</text>
+    <rect x="520" y="155" width="80" height="18" rx="4" fill="#dbeafe"/>
+    <text x="560" y="168" text-anchor="middle" fill="#1d4ed8" font-size="9">推荐课程</text>
+  </svg>
+</div>
+<span class="slide-tag">学练就一体化平台 · 高校领导汇报</span>
+</div>
+
+<!-- ===== P8 Q5 师资队伍 ===== -->
+<div class="slide" data-i="8">
+<div class="hdr"><span class="hdr-num">Q5</span><span class="hdr-title">师资队伍如何适应AI时代教学？</span><span class="hdr-sub">教师能力滞后与考核偏差</span></div>
+<div class="ct">
+  <div class="row">
+    <div class="col">
+      <div class="card card-rose">
+        <div class="card-title">当前困境</div>
+        <div class="card-text">
+          <strong>教师能力滞后</strong><br>
+          · 教师自身未经历过AI时代的工作<br>
+          · 科研导向≠市场能力导向<br>
+          · 缺乏真实项目经验<br><br>
+          <strong>考核导向偏差</strong><br>
+          · 论文+课题=职称<br>
+          · 学生就业质量≠教师考核<br>
+          · 激励结构决定了行为
+        </div>
+      </div>
+    </div>
+    
+    <div class="col">
+      <div class="answer-box">
+        <div class="answer-title">
+          <svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="#22c55e"/><path d="M5 8l2 2 4-4" stroke="#fff" stroke-width="2" fill="none"/></svg>
+          我们的解决方案
+        </div>
+        <div class="card-text">
+          <strong>为教师提供"能力评估工具"</strong><br>
+          · 教师也可使用能力体检功能<br>
+          · 了解自身与市场需求的差距<br>
+          · 获得精准的学习推荐<br><br>
+          <strong>为教学提供"市场反馈数据"</strong><br>
+          · 哪些能力市场最需要？<br>
+          · 哪些课程内容已过时？<br>
+          · 数据驱动的教学改进依据
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- SVG: 教师赋能系统 -->
+  <svg width="100%" height="200" viewBox="0 0 900 200">
+    <rect x="50" y="30" width="180" height="140" rx="12" fill="#eff6ff" stroke="#3b82f6"/>
+    <text x="140" y="60" text-anchor="middle" fill="#1e40af" font-size="13" font-weight="600">教师能力体检</text>
+    <text x="140" y="85" text-anchor="middle" fill="#64748b" font-size="10">了解自身能力差距</text>
+    <text x="140" y="105" text-anchor="middle" fill="#64748b" font-size="10">获得学习推荐</text>
+    <text x="140" y="125" text-anchor="middle" fill="#64748b" font-size="10">参与真实任务</text>
+    <text x="140" y="145" text-anchor="middle" fill="#64748b" font-size="10">积累项目经验</text>
+    
+    <path d="M240 100 L290 100" stroke="#2563eb" stroke-width="2"/>
+    <polygon points="285,95 295,100 285,105" fill="#2563eb"/>
+    
+    <rect x="300" y="30" width="180" height="140" rx="12" fill="#f0fdf4" stroke="#22c55e"/>
+    <text x="390" y="60" text-anchor="middle" fill="#166534" font-size="13" font-weight="600">市场需求数据</text>
+    <text x="390" y="85" text-anchor="middle" fill="#64748b" font-size="10">能力需求排行</text>
+    <text x="390" y="105" text-anchor="middle" fill="#64748b" font-size="10">薪资趋势分析</text>
+    <text x="390" y="125" text-anchor="middle" fill="#64748b" font-size="10">岗位变化追踪</text>
+    <text x="390" y="145" text-anchor="middle" fill="#64748b" font-size="10">课程优化建议</text>
+    
+    <path d="M490 100 L540 100" stroke="#22c55e" stroke-width="2"/>
+    <polygon points="535,95 545,100 535,105" fill="#22c55e"/>
+    
+    <rect x="550" y="30" width="180" height="140" rx="12" fill="#fef3c7" stroke="#f59e0b"/>
+    <text x="640" y="60" text-anchor="middle" fill="#92400e" font-size="13" font-weight="600">教学改进</text>
+    <text x="640" y="85" text-anchor="middle" fill="#64748b" font-size="10">数据驱动课程调整</text>
+    <text x="640" y="105" text-anchor="middle" fill="#64748b" font-size="10">引入真实案例</text>
+    <text x="640" y="125" text-anchor="middle" fill="#64748b" font-size="10">设计实践项目</text>
+    <text x="640" y="145" text-anchor="middle" fill="#64748b" font-size="10">提升教学实效</text>
+    
+    <path d="M740 100 L790 100" stroke="#f59e0b" stroke-width="2"/>
+    <polygon points="785,95 795,100 785,105" fill="#f59e0b"/>
+    
+    <rect x="800" y="30" width="80" height="140" rx="12" fill="#0f172a"/>
+    <text x="840" y="90" text-anchor="middle" fill="#fff" font-size="12" font-weight="600">学生</text>
+    <text x="840" y="110" text-anchor="middle" fill="#fff" font-size="12" font-weight="600">受益</text>
+    <text x="840" y="130" text-anchor="middle" fill="#94a3b8" font-size="10">就业↑</text>
+  </svg>
+  
+  <div class="hl" style="text-align:center">
+    <strong>核心理念</strong>：不是要求教师"全知全能"，而是为教师提供工具和数据，让教学更贴近市场
+  </div>
+</div>
+<span class="slide-tag">学练就一体化平台 · 高校领导汇报</span>
+</div>
+
+<!-- ===== P9 Q6 差异化竞争优势 ===== -->
+<div class="slide" data-i="9">
+<div class="hdr"><span class="hdr-num">Q6</span><span class="hdr-title">学校如何形成差异化竞争优势？</span><span class="hdr-sub">同质化竞争困局</span></div>
+<div class="ct">
+  <div class="row">
+    <div class="col">
+      <div class="card card-purple">
+        <div class="card-title">同质化困局</div>
+        <div class="card-text">
+          · 专业设置趋同，缺乏特色<br>
+          · 培养方案雷同，难以区分<br>
+          · 就业报告千篇一律<br>
+          · 家长学生选择困难<br><br>
+          <strong>核心问题</strong>：没有独特的"品牌标签"
+        </div>
+      </div>
+    </div>
+    
+    <div class="col">
+      <div class="answer-box">
+        <div class="answer-title">
+          <svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="#22c55e"/><path d="M5 8l2 2 4-4" stroke="#fff" stroke-width="2" fill="none"/></svg>
+          我们的解决方案：能力护照成为学校品牌
+        </div>
+        <div class="card-text">
+          <strong>让学校成为"能力护照认证中心"</strong><br>
+          · 学生毕业时携带"被验证的能力证据"<br>
+          · 企业认可→学校品牌提升<br>
+          · 形成独特的就业竞争力标签<br>
+          · 区别于传统"文凭+成绩单"模式
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- SVG: 品牌差异化 -->
+  <svg width="100%" height="220" viewBox="0 0 900 220">
+    <text x="450" y="25" text-anchor="middle" fill="#0f172a" font-size="14" font-weight="600">传统模式 vs 能力护照模式</text>
+    
+    <!-- 传统模式 -->
+    <rect x="50" y="50" width="350" height="150" rx="12" fill="#fef2f2" stroke="#f87171"/>
+    <text x="225" y="80" text-anchor="middle" fill="#991b1b" font-size="12" font-weight="600">传统模式</text>
+    
+    <rect x="80" y="100" width="120" height="80" rx="8" fill="#fff" stroke="#e2e8f0"/>
+    <text x="140" y="130" text-anchor="middle" fill="#64748b" font-size="10">毕业证书</text>
+    <text x="140" y="150" text-anchor="middle" fill="#94a3b8" font-size="9">所有学校都有</text>
+    <text x="140" y="165" text-anchor="middle" fill="#94a3b8" font-size="9">无差异化</text>
+    
+    <rect x="220" y="100" width="120" height="80" rx="8" fill="#fff" stroke="#e2e8f0"/>
+    <text x="280" y="130" text-anchor="middle" fill="#64748b" font-size="10">成绩单</text>
+    <text x="280" y="150" text-anchor="middle" fill="#94a3b8" font-size="9">学科成绩</text>
+    <text x="280" y="165" text-anchor="middle" fill="#94a3b8" font-size="9">无市场验证</text>
+    
+    <!-- 平台模式 -->
+    <rect x="500" y="50" width="350" height="150" rx="12" fill="#f0fdf4" stroke="#4ade80"/>
+    <text x="675" y="80" text-anchor="middle" fill="#166534" font-size="12" font-weight="600">能力护照模式</text>
+    
+    <rect x="530" y="100" width="120" height="80" rx="8" fill="#fff" stroke="#22c55e"/>
+    <text x="590" y="125" text-anchor="middle" fill="#166534" font-size="10" font-weight="600">能力护照</text>
+    <text x="590" y="145" text-anchor="middle" fill="#64748b" font-size="9">证据驱动</text>
+    <text x="590" y="160" text-anchor="middle" fill="#64748b" font-size="9">雇主验证</text>
+    <text x="590" y="175" text-anchor="middle" fill="#22c55e" font-size="9">★ 独特标签</text>
+    
+    <rect x="670" y="100" width="120" height="80" rx="8" fill="#fff" stroke="#3b82f6"/>
+    <text x="730" y="125" text-anchor="middle" fill="#1e40af" font-size="10" font-weight="600">任务履历</text>
+    <text x="730" y="145" text-anchor="middle" fill="#64748b" font-size="9">真实项目经验</text>
+    <text x="730" y="160" text-anchor="middle" fill="#64748b" font-size="9">能力可追溯</text>
+    <text x="730" y="175" text-anchor="middle" fill="#3b82f6" font-size="9">★ 企业认可</text>
+    
+    <!-- 箭头 -->
+    <path d="M410 125 L490 125" stroke="#7c3aed" stroke-width="2"/>
+    <polygon points="485,120 495,125 485,130" fill="#7c3aed"/>
+  </svg>
+  
+  <div class="hl" style="text-align:center">
+    <strong>学校品牌价值</strong>：成为区域内"能力本位教育"的标杆，吸引优质生源和企业合作
+  </div>
+</div>
+<span class="slide-tag">学练就一体化平台 · 高校领导汇报</span>
+</div>
+
+<!-- ===== P10 Q7 风险与收益 ===== -->
+<div class="slide" data-i="10">
+<div class="hdr"><span class="hdr-num">Q7</span><span class="hdr-title">投入新项目的风险与收益如何？</span><span class="hdr-sub">决策风险·资源有限·政绩考量</span></div>
+<div class="ct">
+  <div class="row">
+    <div class="col">
+      <div class="card card-amber">
+        <div class="card-title">校领导的合理顾虑</div>
+        <div class="card-text">
+          <strong>资源有限</strong><br>
+          · 人力、资金、时间都是稀缺资源<br>
+          · 投入新项目意味着放弃其他机会<br><br>
+          <strong>风险担忧</strong><br>
+          · 平台是否靠谱？能否落地？<br>
+          · 学生是否愿意参与？<br>
+          · 企业是否认可能力护照？<br><br>
+          <strong>政绩考量</strong><br>
+          · 短期可见效 vs 长期才能验证<br>
+          · 如何向上级汇报成果？
+        </div>
+      </div>
+    </div>
+    
+    <div class="col">
+      <div class="answer-box">
+        <div class="answer-title">
+          <svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="#22c55e"/><path d="M5 8l2 2 4-4" stroke="#fff" stroke-width="2" fill="none"/></svg>
+          我们的解决方案：低成本试点+清晰里程碑
+        </div>
+        <div class="card-text">
+          <strong>低成本启动</strong><br>
+          · 学校无需投入大量资金<br>
+          · 平台提供技术支持和运营服务<br>
+          · 学生免费使用，企业按效果付费<br><br>
+          <strong>可验证的里程碑</strong><br>
+          · M3：首批学生能力体检完成<br>
+          · M6：首批任务完成+雇主好评<br>
+          · M9：200学生活跃使用<br>
+          · M12：企业侧验证完成
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- SVG: 收益矩阵 -->
+  <svg width="100%" height="180" viewBox="0 0 900 180">
+    <text x="450" y="25" text-anchor="middle" fill="#0f172a" font-size="14" font-weight="600">投入产出分析</text>
+    
+    <!-- 投入 -->
+    <rect x="50" y="50" width="200" height="110" rx="12" fill="#fef3c7" stroke="#f59e0b"/>
+    <text x="150" y="80" text-anchor="middle" fill="#92400e" font-size="13" font-weight="600">学校投入</text>
+    <text x="150" y="105" text-anchor="middle" fill="#64748b" font-size="10">· 组织学生参与试点</text>
+    <text x="150" y="125" text-anchor="middle" fill="#64748b" font-size="10">· 提供基础数据对接</text>
+    <text x="150" y="145" text-anchor="middle" fill="#64748b" font-size="10">· 配合宣传推广</text>
+    
+    <!-- 箭头 -->
+    <path d="M260 105 L300 105" stroke="#2563eb" stroke-width="3"/>
+    <polygon points="295,100 305,105 295,110" fill="#2563eb"/>
+    
+    <!-- 产出 -->
+    <rect x="320" y="50" width="530" height="110" rx="12" fill="#f0fdf4" stroke="#22c55e"/>
+    <text x="585" y="75" text-anchor="middle" fill="#166534" font-size="13" font-weight="600">学校收益</text>
+    
+    <rect x="340" y="90" width="150" height="55" rx="6" fill="#fff" stroke="#22c55e"/>
+    <text x="415" y="115" text-anchor="middle" fill="#166534" font-size="11" font-weight="600">短期可见</text>
+    <text x="415" y="135" text-anchor="middle" fill="#64748b" font-size="9">学生参与数据·任务完成量</text>
+    
+    <rect x="510" y="90" width="150" height="55" rx="6" fill="#fff" stroke="#3b82f6"/>
+    <text x="585" y="115" text-anchor="middle" fill="#1e40af" font-size="11" font-weight="600">中期可验证</text>
+    <text x="585" y="135" text-anchor="middle" fill="#64748b" font-size="9">就业率↑·起薪↑·企业好评</text>
+    
+    <rect x="680" y="90" width="150" height="55" rx="6" fill="#fff" stroke="#7c3aed"/>
+    <text x="755" y="115" text-anchor="middle" fill="#6d28d9" font-size="11" font-weight="600">长期价值</text>
+    <text x="755" y="135" text-anchor="middle" fill="#64748b" font-size="9">品牌差异化·产教融合标杆</text>
+  </svg>
+</div>
+<span class="slide-tag">学练就一体化平台 · 高校领导汇报</span>
+</div>
+
+<!-- ===== P11 合作路径 ===== -->
+<div class="slide" data-i="11">
+<div class="hdr"><span class="hdr-num">合作</span><span class="hdr-title">三阶段合作路径</span><span class="hdr-sub">从试点到深度合作</span></div>
+<div class="ct">
+  <!-- SVG: 三阶段路线图 -->
+  <svg width="100%" height="380" viewBox="0 0 900 380">
+    <!-- Phase 1 -->
+    <rect x="30" y="30" width="270" height="320" rx="16" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+    <rect x="30" y="30" width="270" height="50" rx="16" fill="#2563eb"/>
+    <rect x="30" y="60" width="270" height="20" fill="#2563eb"/>
+    <text x="165" y="62" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">Phase 1 试点期</text>
+    <text x="165" y="95" text-anchor="middle" fill="#1e40af" font-size="11">0-6个月</text>
+    
+    <text x="50" y="125" fill="#0f172a" font-size="11" font-weight="600">目标</text>
+    <text x="50" y="145" fill="#64748b" font-size="10">· 1-2个专业试点</text>
+    <text x="50" y="165" fill="#64748b" font-size="10">· 200学生参与</text>
+    <text x="50" y="185" fill="#64748b" font-size="10">· 能力体检上线</text>
+    
+    <text x="50" y="215" fill="#0f172a" font-size="11" font-weight="600">学校工作</text>
+    <text x="50" y="235" fill="#64748b" font-size="10">· 组织学生注册</text>
+    <text x="50" y="255" fill="#64748b" font-size="10">· 提供课程数据</text>
+    <text x="50" y="275" fill="#64748b" font-size="10">· 配合宣传推广</text>
+    
+    <text x="50" y="305" fill="#0f172a" font-size="11" font-weight="600">预期成果</text>
+    <text x="50" y="325" fill="#22c55e" font-size="10">· 学生能力画像生成</text>
+    <text x="50" y="345" fill="#22c55e" font-size="10">· 首批任务完成验证</text>
+    
+    <!-- Phase 2 -->
+    <rect x="315" y="30" width="270" height="320" rx="16" fill="#f0fdf4" stroke="#22c55e" stroke-width="2"/>
+    <rect x="315" y="30" width="270" height="50" rx="16" fill="#16a34a"/>
+    <rect x="315" y="60" width="270" height="20" fill="#16a34a"/>
+    <text x="450" y="62" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">Phase 2 扩展期</text>
+    <text x="450" y="95" text-anchor="middle" fill="#166534" font-size="11">6-12个月</text>
+    
+    <text x="335" y="125" fill="#0f172a" font-size="11" font-weight="600">目标</text>
+    <text x="335" y="145" fill="#64748b" font-size="10">· 全校推广</text>
+    <text x="335" y="165" fill="#64748b" font-size="10">· 1000+学生活跃</text>
+    <text x="335" y="185" fill="#64748b" font-size="10">· 企业对接深化</text>
+    
+    <text x="335" y="215" fill="#0f172a" font-size="11" font-weight="600">学校工作</text>
+    <text x="335" y="235" fill="#64748b" font-size="10">· 纳入就业指导体系</text>
+    <text x="335" y="255" fill="#64748b" font-size="10">· 对接本地企业资源</text>
+    <text x="335" y="275" fill="#64748b" font-size="10">· 定期数据复盘</text>
+    
+    <text x="335" y="305" fill="#0f172a" font-size="11" font-weight="600">预期成果</text>
+    <text x="335" y="325" fill="#22c55e" font-size="10">· 就业率提升可见</text>
+    <text x="335" y="345" fill="#22c55e" font-size="10">· 产教融合案例形成</text>
+    
+    <!-- Phase 3 -->
+    <rect x="600" y="30" width="270" height="320" rx="16" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+    <rect x="600" y="30" width="270" height="50" rx="16" fill="#d97706"/>
+    <rect x="600" y="60" width="270" height="20" fill="#d97706"/>
+    <text x="735" y="62" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">Phase 3 深度期</text>
+    <text x="735" y="95" text-anchor="middle" fill="#92400e" font-size="11">12-24个月</text>
+    
+    <text x="620" y="125" fill="#0f172a" font-size="11" font-weight="600">目标</text>
+    <text x="620" y="145" fill="#64748b" font-size="10">· 能力护照认证中心</text>
+    <text x="620" y="165" fill="#64748b" font-size="10">· 区域标杆学校</text>
+    <text x="620" y="185" fill="#64748b" font-size="10">· 课程体系优化</text>
+    
+    <text x="620" y="215" fill="#0f172a" font-size="11" font-weight="600">学校工作</text>
+    <text x="620" y="235" fill="#64748b" font-size="10">· 学分体系对接</text>
+    <text x="620" y="255" fill="#64748b" font-size="10">· 教师培训体系</text>
+    <text x="620" y="275" fill="#64748b" font-size="10">· 品牌宣传推广</text>
+    
+    <text x="620" y="305" fill="#0f172a" font-size="11" font-weight="600">预期成果</text>
+    <text x="620" y="325" fill="#22c55e" font-size="10">· 差异化品牌形成</text>
+    <text x="620" y="345" fill="#22c55e" font-size="10">· 上级认可·社会影响</text>
+    
+    <!-- 连接箭头 -->
+    <path d="M305 190 L315 190" stroke="#64748b" stroke-width="2"/>
+    <polygon points="310,185 320,190 310,195" fill="#64748b"/>
+    <path d="M590 190 L600 190" stroke="#64748b" stroke-width="2"/>
+    <polygon points="595,185 605,190 595,195" fill="#64748b"/>
+  </svg>
+</div>
+<span class="slide-tag">学练就一体化平台 · 高校领导汇报</span>
+</div>
+
+<!-- ===== P12 总结 ===== -->
+<div class="slide" data-i="12">
+<div class="hdr"><span class="hdr-num">总结</span><span class="hdr-title">七大问题，一套方案</span></div>
+<div class="ct">
+  <!-- SVG: 问题-方案映射 -->
+  <svg width="100%" height="400" viewBox="0 0 900 400">
+    <defs>
+      <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:#64748b"/>
+        <stop offset="100%" style="stop-color:#22c55e"/>
+      </linearGradient>
+    </defs>
+    
+    <!-- 问题列 -->
+    <text x="100" y="30" text-anchor="middle" fill="#64748b" font-size="12" font-weight="600">核心问题</text>
+    <text x="450" y="30" text-anchor="middle" fill="#64748b" font-size="12" font-weight="600">解决方案</text>
+    <text x="780" y="30" text-anchor="middle" fill="#64748b" font-size="12" font-weight="600">预期收益</text>
+    
+    <!-- Q1 -->
+    <rect x="20" y="50" width="180" height="40" rx="6" fill="#fef2f2" stroke="#f87171"/>
+    <text x="110" y="75" text-anchor="middle" fill="#991b1b" font-size="11">Q1 就业率与质量</text>
+    <line x1="210" y1="70" x2="350" y2="70" stroke="url(#lineGrad)" stroke-width="2"/>
+    <rect x="360" y="50" width="180" height="40" rx="6" fill="#f0fdf4" stroke="#22c55e"/>
+    <text x="450" y="75" text-anchor="middle" fill="#166534" font-size="11">能力护照+闭环追踪</text>
+    <line x1="550" y1="70" x2="680" y2="70" stroke="#22c55e" stroke-width="2"/>
+    <rect x="690" y="50" width="180" height="40" rx="6" fill="#eff6ff" stroke="#3b82f6"/>
+    <text x="780" y="75" text-anchor="middle" fill="#1e40af" font-size="11">就业率+15-25%</text>
+    
+    <!-- Q2 -->
+    <rect x="20" y="100" width="180" height="40" rx="6" fill="#fef2f2" stroke="#f87171"/>
+    <text x="110" y="125" text-anchor="middle" fill="#991b1b" font-size="11">Q2 课程响应速度</text>
+    <line x1="210" y1="120" x2="350" y2="120" stroke="url(#lineGrad)" stroke-width="2"/>
+    <rect x="360" y="100" width="180" height="40" rx="6" fill="#f0fdf4" stroke="#22c55e"/>
+    <text x="450" y="125" text-anchor="middle" fill="#166534" font-size="11">自适应学习路径</text>
+    <line x1="550" y1="120" x2="680" y2="120" stroke="#22c55e" stroke-width="2"/>
+    <rect x="690" y="100" width="180" height="40" rx="6" fill="#eff6ff" stroke="#3b82f6"/>
+    <text x="780" y="125" text-anchor="middle" fill="#1e40af" font-size="11">动态补充课程体系</text>
+    
+    <!-- Q3 -->
+    <rect x="20" y="150" width="180" height="40" rx="6" fill="#fef2f2" stroke="#f87171"/>
+    <text x="110" y="175" text-anchor="middle" fill="#991b1b" font-size="11">Q3 产教融合落地</text>
+    <line x1="210" y1="170" x2="350" y2="170" stroke="url(#lineGrad)" stroke-width="2"/>
+    <rect x="360" y="150" width="180" height="40" rx="6" fill="#f0fdf4" stroke="#22c55e"/>
+    <text x="450" y="175" text-anchor="middle" fill="#166534" font-size="11">任务市场</text>
+    <line x1="550" y1="170" x2="680" y2="170" stroke="#22c55e" stroke-width="2"/>
+    <rect x="690" y="150" width="180" height="40" rx="6" fill="#eff6ff" stroke="#3b82f6"/>
+    <text x="780" y="175" text-anchor="middle" fill="#1e40af" font-size="11">所有学生平等受益</text>
+    
+    <!-- Q4 -->
+    <rect x="20" y="200" width="180" height="40" rx="6" fill="#fef2f2" stroke="#f87171"/>
+    <text x="110" y="225" text-anchor="middle" fill="#991b1b" font-size="11">Q4 能力对接市场</text>
+    <line x1="210" y1="220" x2="350" y2="220" stroke="url(#lineGrad)" stroke-width="2"/>
+    <rect x="360" y="200" width="180" height="40" rx="6" fill="#f0fdf4" stroke="#22c55e"/>
+    <text x="450" y="225" text-anchor="middle" fill="#166534" font-size="11">AI能力指纹</text>
+    <line x1="550" y1="220" x2="680" y2="220" stroke="#22c55e" stroke-width="2"/>
+    <rect x="690" y="200" width="180" height="40" rx="6" fill="#eff6ff" stroke="#3b82f6"/>
+    <text x="780" y="225" text-anchor="middle" fill="#1e40af" font-size="11">精准缺口分析</text>
+    
+    <!-- Q5 -->
+    <rect x="20" y="250" width="180" height="40" rx="6" fill="#fef2f2" stroke="#f87171"/>
+    <text x="110" y="275" text-anchor="middle" fill="#991b1b" font-size="11">Q5 师资适应AI</text>
+    <line x1="210" y1="270" x2="350" y2="270" stroke="url(#lineGrad)" stroke-width="2"/>
+    <rect x="360" y="250" width="180" height="40" rx="6" fill="#f0fdf4" stroke="#22c55e"/>
+    <text x="450" y="275" text-anchor="middle" fill="#166534" font-size="11">教师工具+市场数据</text>
+    <line x1="550" y1="270" x2="680" y2="270" stroke="#22c55e" stroke-width="2"/>
+    <rect x="690" y="250" width="180" height="40" rx="6" fill="#eff6ff" stroke="#3b82f6"/>
+    <text x="780" y="275" text-anchor="middle" fill="#1e40af" font-size="11">数据驱动教学改进</text>
+    
+    <!-- Q6 -->
+    <rect x="20" y="300" width="180" height="40" rx="6" fill="#fef2f2" stroke="#f87171"/>
+    <text x="110" y="325" text-anchor="middle" fill="#991b1b" font-size="11">Q6 差异化竞争</text>
+    <line x1="210" y1="320" x2="350" y2="320" stroke="url(#lineGrad)" stroke-width="2"/>
+    <rect x="360" y="300" width="180" height="40" rx="6" fill="#f0fdf4" stroke="#22c55e"/>
+    <text x="450" y="325" text-anchor="middle" fill="#166534" font-size="11">能力护照品牌</text>
+    <line x1="550" y1="320" x2="680" y2="320" stroke="#22c55e" stroke-width="2"/>
+    <rect x="690" y="300" width="180" height="40" rx="6" fill="#eff6ff" stroke="#3b82f6"/>
+    <text x="780" y="325" text-anchor="middle" fill="#1e40af" font-size="11">独特品牌标签</text>
+    
+    <!-- Q7 -->
+    <rect x="20" y="350" width="180" height="40" rx="6" fill="#fef2f2" stroke="#f87171"/>
+    <text x="110" y="375" text-anchor="middle" fill="#991b1b" font-size="11">Q7 风险与收益</text>
+    <line x1="210" y1="370" x2="350" y2="370" stroke="url(#lineGrad)" stroke-width="2"/>
+    <rect x="360" y="350" width="180" height="40" rx="6" fill="#f0fdf4" stroke="#22c55e"/>
+    <text x="450" y="375" text-anchor="middle" fill="#166534" font-size="11">低成本试点+里程碑</text>
+    <line x1="550" y1="370" x2="680" y2="370" stroke="#22c55e" stroke-width="2"/>
+    <rect x="690" y="350" width="180" height="40" rx="6" fill="#eff6ff" stroke="#3b82f6"/>
+    <text x="780" y="375" text-anchor="middle" fill="#1e40af" font-size="11">可验证·可汇报</text>
+  </svg>
+</div>
+<span class="slide-tag">学练就一体化平台 · 高校领导汇报</span>
+</div>
+
+<!-- ===== P13 愿景 ===== -->
+<div class="slide slide-section" data-i="13">
+<div style="max-width:700px">
+  <div style="font-size:16px;letter-spacing:2px;opacity:.7;margin-bottom:24px">愿 景</div>
+  <h1 style="font-size:36px;font-weight:800;line-height:1.3;margin-bottom:24px">让每一个学生的能力<br>都能被看见、被验证、被认可</h1>
+  <p style="font-size:16px;opacity:.8;margin-bottom:32px">——不论他来自哪所学校</p>
+  
+  <div style="display:flex;gap:20px;justify-content:center;margin-bottom:32px">
+    <div style="padding:16px 24px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);border-radius:12px;text-align:center">
+      <div style="font-size:11px;opacity:.7;margin-bottom:4px">当前</div>
+      <div style="font-size:13px">二本学生有能力但信号弱<br>被系统性低估</div>
+    </div>
+    <div style="padding:16px 24px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);border-radius:12px;text-align:center">
+      <div style="font-size:11px;opacity:.7;margin-bottom:4px">未来</div>
+      <div style="font-size:13px">同一学生完成50个任务+雇主好评<br>能力信号可与985毕业生比肩</div>
+    </div>
+  </div>
+  
+  <p style="font-size:14px;letter-spacing:1px;opacity:.7">方向是确定的 · 路径需要探索 · 我们选择开始</p>
+</div>
+</div>
+
+<!-- ===== P14 行动号召 ===== -->
+<div class="slide" data-i="14">
+<div class="hdr"><span class="hdr-num">下一步</span><span class="hdr-title">期待与贵校的合作</span></div>
+<div class="ct">
+  <div class="g3">
+    <div class="card card-accent" style="text-align:center;padding:32px 20px">
+      <div style="font-size:32px;margin-bottom:12px">📋</div>
+      <div class="card-title" style="font-size:16px;margin-bottom:8px">试点申请</div>
+      <div class="card-text">提交试点意向<br>确定合作专业范围</div>
+    </div>
+    <div class="card card-teal" style="text-align:center;padding:32px 20px">
+      <div style="font-size:32px;margin-bottom:12px">🤝</div>
+      <div class="card-title" style="font-size:16px;margin-bottom:8px">需求对接</div>
+      <div class="card-text">了解学校具体需求<br>定制合作方案</div>
+    </div>
+    <div class="card card-amber" style="text-align:center;padding:32px 20px">
+      <div style="font-size:32px;margin-bottom:12px">🚀</div>
+      <div class="card-title" style="font-size:16px;margin-bottom:8px">快速启动</div>
+      <div class="card-text">2周内完成部署<br>学生即可开始使用</div>
+    </div>
+  </div>
+  
+  <div class="hl" style="text-align:center;padding:24px;margin-top:20px">
+    <div style="font-size:18px;font-weight:700;margin-bottom:8px">联系方式</div>
+    <div style="font-size:14px;color:var(--text2)">
+      联系人：XXX &nbsp;|&nbsp; 电话：XXX-XXXX-XXXX &nbsp;|&nbsp; 邮箱：xxx@example.com
+    </div>
+  </div>
+  
+  <div style="text-align:center;margin-top:20px;color:var(--text3);font-size:13px">
+    感谢您的时间与关注，期待共同探索AI时代的教育创新
+  </div>
+</div>
+<span class="slide-tag">学练就一体化平台 · 高校领导汇报</span>
+</div>
+
+<div class="nav">
+  <button class="nav-btn" onclick="go(-1)">◀</button>
+  <span class="nav-info" id="navInfo">1 / 14</span>
+  <button class="nav-btn" onclick="go(1)">▶</button>
+</div>
+
+<script>
+let cur=1,total=14;
+const slides=document.querySelectorAll('.slide');
+function show(n){
+  n=Math.max(1,Math.min(total,n));
+  cur=n;
+  slides.forEach(s=>{s.classList.toggle('active',+s.dataset.i===n)});
+  document.getElementById('navInfo').textContent=n+' / '+total;
+  document.getElementById('progress').style.width=(n/total*100)+'%';
+}
+function go(d){show(cur+d)}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowDown')go(1);if(e.key==='ArrowLeft'||e.key==='ArrowUp')go(-1)});
+show(1);
+</script>
+</body>
+</html>

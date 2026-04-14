@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Ignore TypeScript errors during build for deployment
+  // 忽略 TypeScript 错误
   typescript: {
     ignoreBuildErrors: true,
   },

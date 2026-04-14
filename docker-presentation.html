@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Docker 与网站部署 - 可视化讲义</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-dark: #0a192f;
+      --bg-light: #112240;
+      --accent: #64ffda;
+      --text-primary: #ccd6f6;
+      --text-secondary: #8892b0;
+      --blue: #57cbff;
+      --purple: #bd34fe;
+      --green: #00ff88;
+      --orange: #ff6b6b;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-primary);
+      overflow: hidden;
+    }
+
+    .slide {
+      height: 100vh;
+      height: 100dvh;
+      display: none;
+      padding: clamp(2rem, 5vw, 4rem);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slide.active {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 4rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--accent), var(--blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    h2 {
+      font-size: clamp(1.5rem, 4vw, 3rem);
+      font-weight: 700;
+      margin-bottom: 2rem;
+      color: var(--accent);
+    }
+
+    h3 {
+      font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+      margin-bottom: 1rem;
+      color: var(--blue);
+    }
+
+    p, li {
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+
+    .subtitle {
+      font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      width: 100%;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: clamp(1rem, 3vw, 2rem);
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(1rem, 2vw, 1.5rem);
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: clamp(1rem, 2vw, 1.5rem);
+    }
+
+    .card {
+      background: var(--bg-light);
+      border-radius: 12px;
+      padding: clamp(1rem, 2vw, 1.5rem);
+      border: 1px solid rgba(100, 255, 218, 0.1);
+      transition: all 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent);
+      box-shadow: 0 10px 30px rgba(100, 255, 218, 0.1);
+    }
+
+    .icon {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 0.5rem;
+    }
+
+    .diagram {
+      background: var(--bg-light);
+      border-radius: 12px;
+      padding: 2rem;
+      margin: 1rem 0;
+      border: 2px solid rgba(100, 255, 218, 0.2);
+    }
+
+    .flow-item {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--accent), var(--blue));
+      color: var(--bg-dark);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-weight: 600;
+      margin: 0.5rem;
+    }
+
+    .arrow {
+      font-size: 2rem;
+      color: var(--accent);
+      margin: 0 0.5rem;
+    }
+
+    .highlight {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .vs-container {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .vs-box {
+      flex: 1;
+      padding: 2rem;
+      border-radius: 12px;
+      position: relative;
+    }
+
+    .vs-old {
+      background: rgba(255, 107, 107, 0.1);
+      border: 2px solid var(--orange);
+    }
+
+    .vs-new {
+      background: rgba(100, 255, 218, 0.1);
+      border: 2px solid var(--accent);
+    }
+
+    .vs-label {
+      position: absolute;
+      top: -15px;
+      left: 20px;
+      background: var(--bg-dark);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .vs-old .vs-label { color: var(--orange); }
+    .vs-new .vs-label { color: var(--accent); }
+
+    .progress {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      z-index: 100;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .dot.active {
+      background: var(--accent);
+      transform: scale(1.3);
+    }
+
+    .nav-hint {
+      position: fixed;
+      bottom: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+
+    .concept-box {
+      text-align: center;
+    }
+
+    .concept-icon {
+      width: clamp(80px, 15vw, 120px);
+      height: clamp(80px, 15vw, 120px);
+      background: linear-gradient(135deg, var(--accent), var(--blue));
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      margin: 0 auto 1rem;
+      box-shadow: 0 10px 30px rgba(100, 255, 218, 0.3);
+    }
+
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: var(--accent);
+      color: var(--bg-dark);
+      border-radius: 50%;
+      font-weight: 800;
+      font-size: 1.2rem;
+      margin-right: 0.5rem;
+    }
+
+    .architecture-box {
+      background: rgba(17, 34, 64, 0.8);
+      border: 2px solid var(--accent);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .code-block {
+      background: #1e1e1e;
+      border-radius: 8px;
+      padding: 1rem;
+      font-family: 'Courier New', monospace;
+      font-size: clamp(0.8rem, 1.5vw, 1rem);
+      margin: 1rem 0;
+      overflow-x: auto;
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(100, 255, 218, 0.1);
+    }
+
+    .comparison-table th {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    @media (max-width: 768px) {
+      .grid-2, .grid-3, .grid-4 {
+        grid-template-columns: 1fr;
+      }
+      .vs-container {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Slide 1: Title -->
+  <section class="slide active">
+    <div class="container" style="text-align: center;">
+      <h1>🐳 Docker 与网站部署</h1>
+      <p class="subtitle">从零理解容器化部署的核心概念</p>
+      <div style="margin-top: 3rem;">
+        <p style="color: var(--accent); font-size: 1.2rem;">OPC Learning Hub 实战案例</p>
+        <p style="margin-top: 1rem; font-size: 1rem;">使用 ← → 键或点击圆点导航</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 2: Problem -->
+  <section class="slide">
+    <div class="container">
+      <h2>🤔 传统部署的痛点</h2>
+      <div class="grid-3">
+        <div class="card">
+          <div class="icon">😰</div>
+          <h3>环境不一致</h3>
+          <p>"在我电脑上能跑啊！"<br/>开发、测试、生产环境不同</p>
+        </div>
+        <div class="card">
+          <div class="icon">🔧</div>
+          <h3>配置复杂</h3>
+          <p>安装 Node.js、Python、Nginx<br/>配置环境变量、依赖冲突</p>
+        </div>
+        <div class="card">
+          <div class="icon">💥</div>
+          <h3>难以迁移</h3>
+          <p>换服务器就要重新配置<br/>耗时长，容易出错</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 3: Traditional vs Docker -->
+  <section class="slide">
+    <div class="container">
+      <h2>⚡ 传统部署 vs Docker 部署</h2>
+      <div class="vs-container">
+        <div class="vs-box vs-old">
+          <div class="vs-label">❌ 传统方式</div>
+          <ul style="list-style: none; margin-top: 1rem;">
+            <li style="margin: 0.5rem 0;">✗ 手动安装所有依赖</li>
+            <li style="margin: 0.5rem 0;">✗ 环境配置容易出错</li>
+            <li style="margin: 0.5rem 0;">✗ 不同服务器结果不同</li>
+            <li style="margin: 0.5rem 0;">✗ 迁移困难</li>
+            <li style="margin: 0.5rem 0;">✗ 占用资源多</li>
+          </ul>
+        </div>
+        <div class="vs-box vs-new">
+          <div class="vs-label">✅ Docker 方式</div>
+          <ul style="list-style: none; margin-top: 1rem;">
+            <li style="margin: 0.5rem 0;">✓ 一键构建镜像</li>
+            <li style="margin: 0.5rem 0;">✓ 环境完全一致</li>
+            <li style="margin: 0.5rem 0;">✓ 随处运行</li>
+            <li style="margin: 0.5rem 0;">✓ 秒级部署</li>
+            <li style="margin: 0.5rem 0;">✓ 资源隔离</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 4: Core Concepts -->
+  <section class="slide">
+    <div class="container">
+      <h2>🎯 Docker 四大核心概念</h2>
+      <div class="grid-4">
+        <div class="card concept-box">
+          <div class="concept-icon">📦</div>
+          <h3>镜像 Image</h3>
+          <p>应用的打包模板<br/>包含代码、依赖、配置</p>
+        </div>
+        <div class="card concept-box">
+          <div class="concept-icon">📱</div>
+          <h3>容器 Container</h3>
+          <p>镜像的运行实例<br/>轻量、隔离、可复用</p>
+        </div>
+        <div class="card concept-box">
+          <div class="concept-icon">💾</div>
+          <h3>数据卷 Volume</h3>
+          <p>持久化数据存储<br/>容器删除数据不丢失</p>
+        </div>
+        <div class="card concept-box">
+          <div class="concept-icon">🌐</div>
+          <h3>网络 Network</h3>
+          <p>容器间通信桥梁<br/>安全隔离又互联</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 5: Analogy -->
+  <section class="slide">
+    <div class="container">
+      <h2>💡 通俗理解 Docker</h2>
+      <div class="grid-2">
+        <div class="diagram">
+          <h3>🍔 类比：快餐连锁店</h3>
+          <div style="margin-top: 1rem;">
+            <p><span class="highlight">镜像</span> = 标准化食谱和食材包</p>
+            <p><span class="highlight">容器</span> = 每家分店的厨房</p>
+            <p><span class="highlight">数据卷</span> = 冰箱（保存食材）</p>
+            <p><span class="highlight">网络</span> = 店内通讯系统</p>
+          </div>
+        </div>
+        <div class="diagram">
+          <h3>🎮 类比：游戏机</h3>
+          <div style="margin-top: 1rem;">
+            <p><span class="highlight">镜像</span> = 游戏卡带</p>
+            <p><span class="highlight">容器</span> = 运行中的游戏</p>
+            <p><span class="highlight">数据卷</span> = 存档文件</p>
+            <p><span class="highlight">网络</span> = 多人联机功能</p>
+          </div>
+        </div>
+      </div>
+      <p style="text-align: center; margin-top: 2rem; font-size: 1.3rem; color: var(--accent);">
+        <strong>核心思想：一次打包，随处运行！</strong>
+      </p>
+    </div>
+  </section>
+
+  <!-- Slide 6: Workflow -->
+  <section class="slide">
+    <div class="container">
+      <h2>🔄 Docker 部署工作流程</h2>
+      <div class="diagram">
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+          <div class="flow-item">1️⃣ 编写 Dockerfile</div>
+          <span class="arrow">→</span>
+          <div class="flow-item">2️⃣ 构建镜像</div>
+          <span class="arrow">→</span>
+          <div class="flow-item">3️⃣ 启动容器</div>
+          <span class="arrow">→</span>
+          <div class="flow-item">4️⃣ 访问应用</div>
+        </div>
+      </div>
+      <div class="grid-2" style="margin-top: 2rem;">
+        <div class="card">
+          <h3>📝 Dockerfile 示例</h3>
+          <div class="code-block">
+FROM node:18-alpine<br/>
+WORKDIR /app<br/>
+COPY . .<br/>
+RUN npm install<br/>
+CMD ["npm", "start"]
+          </div>
+        </div>
+        <div class="card">
+          <h3>⚙️ 常用命令</h3>
+          <div class="code-block">
+docker build -t myapp .<br/>
+docker run -p 3000:3000 myapp<br/>
+docker ps<br/>
+docker logs myapp
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 7: Architecture -->
+  <section class="slide">
+    <div class="container">
+      <h2>🏗️ OPC Learning Hub 架构</h2>
+      <div class="diagram" style="padding: 2rem;">
+        <div class="grid-3">
+          <div class="architecture-box">
+            <div style="font-size: 3rem;">🌐</div>
+            <h3>Nginx</h3>
+            <p>端口 80<br/>反向代理</p>
+          </div>
+          <div class="architecture-box">
+            <div style="font-size: 3rem;">💻</div>
+            <h3>前端 (Next.js)</h3>
+            <p>端口 3000<br/>React 应用</p>
+          </div>
+          <div class="architecture-box">
+            <div style="font-size: 3rem;">⚙️</div>
+            <h3>后端 (FastAPI)</h3>
+            <p>端口 9000<br/>Python API</p>
+          </div>
+        </div>
+        <div style="text-align: center; margin-top: 1.5rem;">
+          <span class="arrow">↓</span>
+          <div class="architecture-box" style="display: inline-block; margin-left: 1rem;">
+            <div style="font-size: 2rem;">💾</div>
+            <h3>SQLite 数据库</h3>
+            <p>数据卷持久化</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 8: docker-compose -->
+  <section class="slide">
+    <div class="container">
+      <h2>🎼 Docker Compose 编排</h2>
+      <p style="margin-bottom: 1rem;">一个文件管理多个容器：</p>
+      <div class="card">
+        <div class="code-block">
+version: '3.8'<br/>
+services:<br/>
+&nbsp;&nbsp;backend:<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;build: ./backend<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;ports: ["9000:9000"]<br/>
+<br/>
+&nbsp;&nbsp;frontend:<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;build: .<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;ports: ["3000:3000"]<br/>
+<br/>
+&nbsp;&nbsp;nginx:<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;image: nginx:alpine<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;ports: ["80:80"]
+        </div>
+      </div>
+      <div style="margin-top: 1.5rem; text-align: center;">
+        <p style="font-size: 1.2rem;">一条命令启动所有服务：</p>
+        <div class="code-block" style="display: inline-block; margin-top: 0.5rem;">
+docker-compose up -d
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 9: Deploy Steps -->
+  <section class="slide">
+    <div class="container">
+      <h2>🚀 实际部署步骤</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3><span class="step-number">1</span>构建镜像</h3>
+          <p>在本地电脑打包应用</p>
+          <div class="code-block">docker build -t opc-frontend .<br/>docker build -t opc-backend -f backend/Dockerfile .</div>
+        </div>
+        <div class="card">
+          <h3><span class="step-number">2</span>导出镜像</h3>
+          <p>保存为文件方便传输</p>
+          <div class="code-block">docker save opc-frontend opc-backend > images.tar</div>
+        </div>
+        <div class="card">
+          <h3><span class="step-number">3</span>上传服务器</h3>
+          <p>传输到腾讯云</p>
+          <div class="code-block">scp images.tar root@124.221.40.35:/tmp/</div>
+        </div>
+        <div class="card">
+          <h3><span class="step-number">4</span>启动服务</h3>
+          <p>一键部署完成</p>
+          <div class="code-block">docker load < images.tar<br/>docker-compose up -d</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 10: Benefits -->
+  <section class="slide">
+    <div class="container">
+      <h2>✨ Docker 带来的好处</h2>
+      <div class="grid-3">
+        <div class="card">
+          <div class="icon">🎯</div>
+          <h3>环境一致</h3>
+          <p>开发 = 测试 = 生产<br/>彻底解决"能跑"问题</p>
+        </div>
+        <div class="card">
+          <div class="icon">⚡</div>
+          <h3>快速部署</h3>
+          <p>一条命令完成<br/>从 30 分钟缩短到 30 秒</p>
+        </div>
+        <div class="card">
+          <div class="icon">🔄</div>
+          <h3>易于扩展</h3>
+          <p>多实例一键启动<br/>轻松应对流量增长</p>
+        </div>
+        <div class="card">
+          <div class="icon">🛡️</div>
+          <h3>安全隔离</h3>
+          <p>容器相互独立<br/>故障不会蔓延</p>
+        </div>
+        <div class="card">
+          <div class="icon">💰</div>
+          <h3>节省资源</h3>
+          <p>比虚拟机轻量 10 倍<br/>一台服务器跑更多应用</p>
+        </div>
+        <div class="card">
+          <div class="icon">📚</div>
+          <h3>学习价值</h3>
+          <p>行业标准技术<br/>提升工程能力</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 11: Summary -->
+  <section class="slide">
+    <div class="container" style="text-align: center;">
+      <h2>📝 总结</h2>
+      <div class="diagram" style="max-width: 800px; margin: 2rem auto;">
+        <div style="font-size: clamp(1rem, 2vw, 1.3rem); line-height: 2;">
+          <p>✅ <span class="highlight">Docker</span> = 应用的标准化打包工具</p>
+          <p>✅ <span class="highlight">镜像</span> 是模板，<span class="highlight">容器</span> 是运行实例</p>
+          <p>✅ <span class="highlight">Docker Compose</span> 管理多个容器</p>
+          <p>✅ 一次构建，<span class="highlight">随处运行</span></p>
+          <p>✅ 让部署变得<span class="highlight">简单、可靠、快速</span></p>
+        </div>
+      </div>
+      <p style="font-size: 1.5rem; margin-top: 2rem; color: var(--accent);">
+        <strong>🎉 恭喜！你已经掌握了 Docker 部署的核心概念！</strong>
+      </p>
+      <p style="margin-top: 1rem;">下一步：动手实践，完成 OPC Learning Hub 的 Docker 部署</p>
+    </div>
+  </section>
+
+  <!-- Navigation -->
+  <div class="progress" id="progress"></div>
+  <div class="nav-hint">← → 键或点击圆点切换幻灯片</div>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    let currentSlide = 0;
+
+    // Create progress dots
+    const progress = document.getElementById('progress');
+    slides.forEach((_, i) => {
+      const dot = document.createElement('div');
+      dot.className = 'dot' + (i === 0 ? ' active' : '');
+      dot.onclick = () => goToSlide(i);
+      progress.appendChild(dot);
+    });
+
+    function goToSlide(n) {
+      slides[currentSlide].classList.remove('active');
+      progress.children[currentSlide].classList.remove('active');
+      currentSlide = n;
+      slides[currentSlide].classList.add('active');
+      progress.children[currentSlide].classList.add('active');
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') {
+        if (currentSlide < slides.length - 1) goToSlide(currentSlide + 1);
+      }
+      if (e.key === 'ArrowLeft') {
+        if (currentSlide > 0) goToSlide(currentSlide - 1);
+      }
+    });
+
+    // Mouse wheel navigation
+    let wheelTimeout;
+    document.addEventListener('wheel', (e) => {
+      clearTimeout(wheelTimeout);
+      wheelTimeout = setTimeout(() => {
+        if (e.deltaY > 0 && currentSlide < slides.length - 1) {
+          goToSlide(currentSlide + 1);
+        }
+        if (e.deltaY < 0 && currentSlide > 0) {
+          goToSlide(currentSlide - 1);
+        }
+      }, 50);
+    });
+
+    // Touch navigation
+    let touchStartX = 0;
+    document.addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+    });
+    document.addEventListener('touchend', (e) => {
+      const diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 50) {
+        if (diff > 0 && currentSlide < slides.length - 1) {
+          goToSlide(currentSlide + 1);
+        }
+        if (diff < 0 && currentSlide > 0) {
+          goToSlide(currentSlide - 1);
+        }
+      }
+    });
+  </script>
+</body>
+</html>

@@ -75,10 +75,44 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
     
     api.courses.get(id)
       .then((data) => {
-        setCourse(data);
-        // Set first module as expanded by default
-        if (data.content && data.content.length > 0) {
-          setExpandedModule(data.content[0].title);
+        // Only set course if data is not null
+        if (data) {
+          setCourse(data);
+          // Set first module as expanded by default
+          if (data.content && data.content.length > 0) {
+            setExpandedModule(data.content[0].title);
+          }
+        } else {
+          // If API returns null, try to find mock data
+          const mockTask = tasks.find((t) => t.id === id);
+          if (mockTask) {
+            // Convert mock task to course format
+            setCourse({
+              id: mockTask.id,
+              title: mockTask.title,
+              type: mockTask.type,
+              industry: mockTask.industry,
+              estimatedMinutes: mockTask.estimatedMinutes,
+              description: mockTask.scenario,
+              career: mockTask.career ? {
+                title: mockTask.career.title,
+                salaryRange: mockTask.career.salaryRange,
+              } : undefined,
+              activeLearners: mockTask.activeLearners,
+              recruitingSquads: mockTask.recruitingSquads,
+              content: mockTask.syllabus?.modules.flatMap(m => 
+                m.items.map(item => ({
+                  title: item.title,
+                  duration: item.minutes || 30,
+                  type: item.type === "learn" ? "lesson" : "practice",
+                }))
+              ) || [],
+              learning_objectives: mockTask.skills || [],
+            });
+            if (mockTask.syllabus?.modules[0]) {
+              setExpandedModule(mockTask.syllabus.modules[0].title);
+            }
+          }
         }
         setLoading(false);
       })
@@ -90,7 +124,28 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
 
   // Fallback to mock data if API fails
   const mockTask = tasks.find((t) => t.id === id);
-  const displayCourse = course || null;
+  const displayCourse = course || (mockTask ? {
+    id: mockTask.id,
+    title: mockTask.title,
+    type: mockTask.type,
+    industry: mockTask.industry,
+    estimatedMinutes: mockTask.estimatedMinutes,
+    description: mockTask.scenario,
+    career: mockTask.career ? {
+      title: mockTask.career.title,
+      salaryRange: mockTask.career.salaryRange,
+    } : undefined,
+    activeLearners: mockTask.activeLearners,
+    recruitingSquads: mockTask.recruitingSquads,
+    content: mockTask.syllabus?.modules.flatMap(m => 
+      m.items.map(item => ({
+        title: item.title,
+        duration: item.minutes || 30,
+        type: item.type === "learn" ? "lesson" : "practice",
+      }))
+    ) || [],
+    learning_objectives: mockTask.skills || [],
+  } : null);
   const isUsingMock = !course && mockTask;
 
   if (loading) {

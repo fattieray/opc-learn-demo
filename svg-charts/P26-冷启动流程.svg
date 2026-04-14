@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="340" viewBox="0 0 900 340">
+  <text x="450" y="30" text-anchor="middle" fill="#0f172a" font-family="sans-serif" font-size="16" font-weight="700">冷启动策略：学生侧先行</text>
+  <!-- 学生侧 -->
+  <rect x="30" y="60" width="380" height="250" rx="14" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="220" y="95" text-anchor="middle" fill="#1e40af" font-family="sans-serif" font-size="15" font-weight="700">学生侧先行</text>
+  <rect x="55" y="115" width="330" height="40" rx="8" fill="#fff" stroke="#bfdbfe"/>
+  <text x="220" y="140" text-anchor="middle" fill="#1e40af" font-family="sans-serif" font-size="12">能力体检吸引：焦虑+好奇驱动</text>
+  <rect x="55" y="165" width="330" height="40" rx="8" fill="#fff" stroke="#bfdbfe"/>
+  <text x="220" y="190" text-anchor="middle" fill="#1e40af" font-family="sans-serif" font-size="12">社交传播裂变："测一测你的能力值多少分"</text>
+  <rect x="55" y="215" width="330" height="40" rx="8" fill="#fff" stroke="#bfdbfe"/>
+  <text x="220" y="240" text-anchor="middle" fill="#1e40af" font-family="sans-serif" font-size="12">任务参与：碎片时间即可完成</text>
+  <rect x="55" y="265" width="330" height="35" rx="6" fill="#dbeafe"/>
+  <text x="220" y="287" text-anchor="middle" fill="#1e40af" font-family="sans-serif" font-size="11" font-weight="600">目标：200学生活跃使用（M9）</text>
+  <!-- 箭头 -->
+  <path d="M415 185 L465 185" stroke="#2563eb" stroke-width="3"/>
+  <polygon points="460,178 475,185 460,192" fill="#2563eb"/>
+  <text x="440" y="175" text-anchor="middle" fill="#2563eb" font-family="sans-serif" font-size="10">数据</text>
+  <!-- 企业侧 -->
+  <rect x="470" y="60" width="400" height="250" rx="14" fill="#f0fdf4" stroke="#22c55e" stroke-width="2"/>
+  <text x="670" y="95" text-anchor="middle" fill="#166534" font-family="sans-serif" font-size="15" font-weight="700">企业侧跟进</text>
+  <rect x="495" y="115" width="350" height="40" rx="8" fill="#fff" stroke="#bbf7d0"/>
+  <text x="670" y="140" text-anchor="middle" fill="#166534" font-family="sans-serif" font-size="12">学生数据吸引：零风险试人</text>
+  <rect x="495" y="165" width="350" height="40" rx="8" fill="#fff" stroke="#bbf7d0"/>
+  <text x="670" y="190" text-anchor="middle" fill="#166534" font-family="sans-serif" font-size="12">低成本验证：先发小任务再扩大合作</text>
+  <rect x="495" y="215" width="350" height="40" rx="8" fill="#fff" stroke="#bbf7d0"/>
+  <text x="670" y="240" text-anchor="middle" fill="#166534" font-family="sans-serif" font-size="12">飞轮启动：更多企业→更多任务→更多学生</text>
+  <rect x="495" y="265" width="350" height="35" rx="6" fill="#dcfce7"/>
+  <text x="670" y="287" text-anchor="middle" fill="#166534" font-family="sans-serif" font-size="11" font-weight="600">目标：30家企业合作（M12）</text>
+  <!-- 切入优先级 -->
+  <rect x="200" y="318" width="500" height="18" rx="6" fill="#0f172a"/>
+  <text x="450" y="331" text-anchor="middle" fill="#fff" font-family="sans-serif" font-size="10">切入优先级：① A-零售（量大见效快）→ ② A-文旅（共享能力）→ ③ B-制造（TAM大粘性高）</text>
+</svg>
