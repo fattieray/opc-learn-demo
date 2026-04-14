@@ -103,7 +103,7 @@ export default function LandingPage() {
 
   const handleStartLearning = () => {
     if (isLoggedIn) {
-      router.push("/courses");
+      router.push("/dashboard");
     } else {
       router.push("/login");
     }
@@ -134,7 +134,7 @@ export default function LandingPage() {
             <div className="flex items-center gap-3">
               {isLoggedIn ? (
                 <button
-                  onClick={() => router.push("/courses")}
+                  onClick={() => router.push("/dashboard")}
                   className="px-4 py-2 rounded-lg bg-[#2DD4A8] text-white text-sm font-medium hover:bg-[#14B88C] transition-colors"
                 >
                   进入学习
