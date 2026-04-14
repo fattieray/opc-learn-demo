@@ -1,38 +1,71 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="900" height="340" viewBox="0 0 900 340">
-  <text x="450" y="35" text-anchor="middle" fill="#0f172a" font-family="sans-serif" font-size="16" font-weight="700">传统模式 vs 能力护照模式</text>
-  <!-- 传统 -->
-  <rect x="40" y="60" width="370" height="250" rx="14" fill="#fef2f2" stroke="#f87171" stroke-width="1.5"/>
-  <text x="225" y="95" text-anchor="middle" fill="#991b1b" font-family="sans-serif" font-size="15" font-weight="700">传统模式</text>
-  <rect x="70" y="115" width="150" height="170" rx="10" fill="#fff" stroke="#e2e8f0"/>
-  <text x="145" y="145" text-anchor="middle" fill="#475569" font-family="sans-serif" font-size="13" font-weight="600">毕业证书</text>
-  <text x="145" y="170" text-anchor="middle" fill="#94a3b8" font-family="sans-serif" font-size="11">所有学校都有</text>
-  <text x="145" y="190" text-anchor="middle" fill="#94a3b8" font-family="sans-serif" font-size="11">无差异化</text>
-  <text x="145" y="220" text-anchor="middle" fill="#94a3b8" font-family="sans-serif" font-size="11">企业无法区分</text>
-  <rect x="240" y="115" width="150" height="170" rx="10" fill="#fff" stroke="#e2e8f0"/>
-  <text x="315" y="145" text-anchor="middle" fill="#475569" font-family="sans-serif" font-size="13" font-weight="600">成绩单</text>
-  <text x="315" y="170" text-anchor="middle" fill="#94a3b8" font-family="sans-serif" font-size="11">学科成绩</text>
-  <text x="315" y="190" text-anchor="middle" fill="#94a3b8" font-family="sans-serif" font-size="11">无市场验证</text>
-  <text x="315" y="220" text-anchor="middle" fill="#94a3b8" font-family="sans-serif" font-size="11">无能力证据</text>
-  <!-- 箭头 -->
-  <path d="M415 185 L475 185" stroke="#7c3aed" stroke-width="3"/>
-  <polygon points="470,178 485,185 470,192" fill="#7c3aed"/>
-  <!-- 平台 -->
-  <rect x="490" y="60" width="370" height="250" rx="14" fill="#f0fdf4" stroke="#22c55e" stroke-width="1.5"/>
-  <text x="675" y="95" text-anchor="middle" fill="#166534" font-family="sans-serif" font-size="15" font-weight="700">能力护照模式</text>
-  <rect x="520" y="115" width="150" height="170" rx="10" fill="#fff" stroke="#22c55e" stroke-width="2"/>
-  <text x="595" y="140" text-anchor="middle" fill="#166534" font-family="sans-serif" font-size="13" font-weight="700">能力护照</text>
-  <text x="595" y="165" text-anchor="middle" fill="#64748b" font-family="sans-serif" font-size="11">证据驱动</text>
-  <text x="595" y="185" text-anchor="middle" fill="#64748b" font-family="sans-serif" font-size="11">雇主验证</text>
-  <text x="595" y="205" text-anchor="middle" fill="#64748b" font-family="sans-serif" font-size="11">能力可追溯</text>
-  <rect x="560" y="230" width="70" height="22" rx="6" fill="#22c55e"/>
-  <text x="595" y="245" text-anchor="middle" fill="#fff" font-family="sans-serif" font-size="10" font-weight="600">★ 独特标签</text>
-  <rect x="690" y="115" width="150" height="170" rx="10" fill="#fff" stroke="#3b82f6" stroke-width="2"/>
-  <text x="765" y="140" text-anchor="middle" fill="#1e40af" font-family="sans-serif" font-size="13" font-weight="700">任务履历</text>
-  <text x="765" y="165" text-anchor="middle" fill="#64748b" font-family="sans-serif" font-size="11">真实项目经验</text>
-  <text x="765" y="185" text-anchor="middle" fill="#64748b" font-family="sans-serif" font-size="11">雇主好评率</text>
-  <text x="765" y="205" text-anchor="middle" fill="#64748b" font-family="sans-serif" font-size="11">成长轨迹</text>
-  <rect x="730" y="230" width="70" height="22" rx="6" fill="#3b82f6"/>
-  <text x="765" y="245" text-anchor="middle" fill="#fff" font-family="sans-serif" font-size="10" font-weight="600">★ 企业认可</text>
-  <rect x="250" y="320" width="400" height="15" rx="4" fill="#f0fdf4"/>
-  <text x="450" y="332" text-anchor="middle" fill="#166534" font-family="sans-serif" font-size="10">学校成为"能力护照认证中心" → 毕业生带着"被验证的能力证据"走向市场</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="360" viewBox="0 0 920 360">
+  <defs>
+    <filter id="shadow" x="-4%" y="-4%" width="108%" height="112%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+    <filter id="shadowLg" x="-4%" y="-4%" width="108%" height="116%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+    <linearGradient id="gBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb"/><stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+    <linearGradient id="gViolet" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="gTeal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d9488"/><stop offset="100%" stop-color="#14b8a6"/>
+    </linearGradient>
+    <linearGradient id="gDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/><stop offset="50%" stop-color="#1e3a5f"/><stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+    <linearGradient id="gLine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#94a3b8"/><stop offset="100%" stop-color="#22c55e"/>
+    </linearGradient>
+    <marker id="arrowB" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L7,3 z" fill="#2563eb"/>
+    </marker>
+    <marker id="arrowG" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L7,3 z" fill="#22c55e"/>
+    </marker>
+    <marker id="arrowV" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L7,3 z" fill="#7c3aed"/>
+    </marker>
+    <marker id="arrowS" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L7,3 z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <text x="460" y="28" text-anchor="middle" fill="#0f172a" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="18" font-weight="700" opacity="1">传统模式 vs 能力护照模式</text>
+  <rect x="30" y="50" width="380" height="270" rx="14" fill="#ffffff" stroke="#f87171" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="30" y="50" width="380" height="44" rx="14" fill="#f87171"/>
+  <rect x="30" y="78" width="380" height="16" fill="#f87171"/>
+  <text x="220" y="78" text-anchor="middle" fill="#ffffff" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="15" font-weight="700" opacity="1">传统模式</text>
+  <rect x="55" y="110" width="160" height="180" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1" filter="url(#shadow)"/>
+  <text x="135" y="145" text-anchor="middle" fill="#475569" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="14" font-weight="600" opacity="1">毕业证书</text>
+  <text x="135" y="170" text-anchor="middle" fill="#94a3b8" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="11" font-weight="400" opacity="1">所有学校都有</text>
+  <text x="135" y="190" text-anchor="middle" fill="#94a3b8" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="11" font-weight="400" opacity="1">无差异化</text>
+  <text x="135" y="215" text-anchor="middle" fill="#94a3b8" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="11" font-weight="400" opacity="1">企业无法区分</text>
+  <rect x="230" y="110" width="160" height="180" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1" filter="url(#shadow)"/>
+  <text x="310" y="145" text-anchor="middle" fill="#475569" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="14" font-weight="600" opacity="1">成绩单</text>
+  <text x="310" y="170" text-anchor="middle" fill="#94a3b8" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="11" font-weight="400" opacity="1">学科成绩</text>
+  <text x="310" y="190" text-anchor="middle" fill="#94a3b8" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="11" font-weight="400" opacity="1">无市场验证</text>
+  <text x="310" y="215" text-anchor="middle" fill="#94a3b8" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="11" font-weight="400" opacity="1">无能力证据</text>
+  <line x1="415" y1="185" x2="478" y2="185" stroke="#7c3aed" stroke-width="3" marker-end="url(#arrowV)"/>
+  <rect x="490" y="50" width="400" height="270" rx="14" fill="#ffffff" stroke="#22c55e" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="490" y="50" width="400" height="44" rx="14" fill="url(#gTeal)"/>
+  <rect x="490" y="78" width="400" height="16" fill="url(#gTeal)"/>
+  <text x="690" y="78" text-anchor="middle" fill="#ffffff" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="15" font-weight="700" opacity="1">能力护照模式</text>
+  <rect x="515" y="110" width="160" height="180" rx="10" fill="#ffffff" stroke="#22c55e" stroke-width="2" filter="url(#shadow)"/>
+  <text x="595" y="140" text-anchor="middle" fill="#166534" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="14" font-weight="700" opacity="1">能力护照</text>
+  <text x="595" y="165" text-anchor="middle" fill="#64748b" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="11" font-weight="400" opacity="1">证据驱动</text>
+  <text x="595" y="185" text-anchor="middle" fill="#64748b" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="11" font-weight="400" opacity="1">雇主验证</text>
+  <text x="595" y="205" text-anchor="middle" fill="#64748b" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="11" font-weight="400" opacity="1">能力可追溯</text>
+  <rect x="560" y="230" width="70" height="22" rx="11.0" fill="#22c55e"/><text x="595.0" y="245.0" text-anchor="middle" fill="#ffffff" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="10" font-weight="600">★ 独特标签</text>
+  <rect x="690" y="110" width="180" height="180" rx="10" fill="#ffffff" stroke="#3b82f6" stroke-width="2" filter="url(#shadow)"/>
+  <text x="780" y="140" text-anchor="middle" fill="#1e40af" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="14" font-weight="700" opacity="1">任务履历</text>
+  <text x="780" y="165" text-anchor="middle" fill="#64748b" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="11" font-weight="400" opacity="1">真实项目经验</text>
+  <text x="780" y="185" text-anchor="middle" fill="#64748b" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="11" font-weight="400" opacity="1">雇主好评率</text>
+  <text x="780" y="205" text-anchor="middle" fill="#64748b" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="11" font-weight="400" opacity="1">成长轨迹</text>
+  <rect x="745" y="230" width="70" height="22" rx="11.0" fill="#3b82f6"/><text x="780.0" y="245.0" text-anchor="middle" fill="#ffffff" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="10" font-weight="600">★ 企业认可</text>
+  <rect x="210" y="335" width="500" height="18" rx="9" fill="#f0fdf4" stroke="#22c55e" stroke-width="1"/>
+  <text x="460" y="348" text-anchor="middle" fill="#166534" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="10" font-weight="500" opacity="1">学校成为&ldquo;能力护照认证中心&rdquo; → 毕业生带着&ldquo;被验证的能力证据&rdquo;走向市场</text>
 </svg>

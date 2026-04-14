@@ -1,24 +1,57 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="200" viewBox="0 0 800 200">
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="220" viewBox="0 0 840 220">
   <defs>
-    <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#2563eb"/><stop offset="100%" stop-color="#3b82f6"/></linearGradient>
-    <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#8b5cf6"/></linearGradient>
-    <linearGradient id="g3" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0d9488"/><stop offset="100%" stop-color="#14b8a6"/></linearGradient>
+    <filter id="shadow" x="-4%" y="-4%" width="108%" height="112%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+    <filter id="shadowLg" x="-4%" y="-4%" width="108%" height="116%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+    <linearGradient id="gBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb"/><stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+    <linearGradient id="gViolet" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="gTeal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d9488"/><stop offset="100%" stop-color="#14b8a6"/>
+    </linearGradient>
+    <linearGradient id="gDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/><stop offset="50%" stop-color="#1e3a5f"/><stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+    <linearGradient id="gLine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#94a3b8"/><stop offset="100%" stop-color="#22c55e"/>
+    </linearGradient>
+    <marker id="arrowB" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L7,3 z" fill="#2563eb"/>
+    </marker>
+    <marker id="arrowG" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L7,3 z" fill="#22c55e"/>
+    </marker>
+    <marker id="arrowV" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L7,3 z" fill="#7c3aed"/>
+    </marker>
+    <marker id="arrowS" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L7,3 z" fill="#64748b"/>
+    </marker>
   </defs>
-  <rect x="80" y="30" width="180" height="120" rx="16" fill="url(#g1)"/>
-  <text x="170" y="78" text-anchor="middle" fill="#fff" font-family="sans-serif" font-size="28" font-weight="800">学</text>
-  <text x="170" y="108" text-anchor="middle" fill="#fff" font-family="sans-serif" font-size="14" opacity="0.9">AI能力感知</text>
-  <text x="170" y="130" text-anchor="middle" fill="#fff" font-family="sans-serif" font-size="11" opacity="0.7">Learn</text>
-  <rect x="310" y="30" width="180" height="120" rx="16" fill="url(#g2)"/>
-  <text x="400" y="78" text-anchor="middle" fill="#fff" font-family="sans-serif" font-size="28" font-weight="800">练</text>
-  <text x="400" y="108" text-anchor="middle" fill="#fff" font-family="sans-serif" font-size="14" opacity="0.9">真实任务验证</text>
-  <text x="400" y="130" text-anchor="middle" fill="#fff" font-family="sans-serif" font-size="11" opacity="0.7">Practice</text>
-  <rect x="540" y="30" width="180" height="120" rx="16" fill="url(#g3)"/>
-  <text x="630" y="78" text-anchor="middle" fill="#fff" font-family="sans-serif" font-size="28" font-weight="800">就</text>
-  <text x="630" y="108" text-anchor="middle" fill="#fff" font-family="sans-serif" font-size="14" opacity="0.9">信用护照</text>
-  <text x="630" y="130" text-anchor="middle" fill="#fff" font-family="sans-serif" font-size="11" opacity="0.7">Achieve</text>
-  <path d="M265 90 L305 90" stroke="#94a3b8" stroke-width="2.5" stroke-dasharray="6,4"/>
-  <polygon points="300,85 312,90 300,95" fill="#94a3b8"/>
-  <path d="M495 90 L535 90" stroke="#94a3b8" stroke-width="2.5" stroke-dasharray="6,4"/>
-  <polygon points="530,85 542,90 530,95" fill="#94a3b8"/>
-  <text x="400" y="185" text-anchor="middle" fill="#475569" font-family="sans-serif" font-size="13" font-weight="500">让能力取代学历，成为就业市场的新信号</text>
+  <!-- 学 -->
+  <rect x="80" y="30" width="200" height="130" rx="16" fill="url(#gBlue)" filter="url(#shadowLg)"/>
+  <text x="180" y="78" text-anchor="middle" fill="#ffffff" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="32" font-weight="800" opacity="1">学</text>
+  <text x="180" y="108" text-anchor="middle" fill="#ffffff" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="15" font-weight="500" opacity="0.9">AI能力感知</text>
+  <text x="180" y="130" text-anchor="middle" fill="#ffffff" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="12" font-weight="400" opacity="0.6">Learn</text>
+  <!-- 练 -->
+  <rect x="320" y="30" width="200" height="130" rx="16" fill="url(#gViolet)" filter="url(#shadowLg)"/>
+  <text x="420" y="78" text-anchor="middle" fill="#ffffff" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="32" font-weight="800" opacity="1">练</text>
+  <text x="420" y="108" text-anchor="middle" fill="#ffffff" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="15" font-weight="500" opacity="0.9">真实任务验证</text>
+  <text x="420" y="130" text-anchor="middle" fill="#ffffff" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="12" font-weight="400" opacity="0.6">Practice</text>
+  <!-- 就 -->
+  <rect x="560" y="30" width="200" height="130" rx="16" fill="url(#gTeal)" filter="url(#shadowLg)"/>
+  <text x="660" y="78" text-anchor="middle" fill="#ffffff" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="32" font-weight="800" opacity="1">就</text>
+  <text x="660" y="108" text-anchor="middle" fill="#ffffff" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="15" font-weight="500" opacity="0.9">信用护照</text>
+  <text x="660" y="130" text-anchor="middle" fill="#ffffff" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="12" font-weight="400" opacity="0.6">Achieve</text>
+  <!-- 连接 -->
+  <line x1="285" y1="95" x2="315" y2="95" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrowS)"/>
+  <line x1="525" y1="95" x2="555" y2="95" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrowS)"/>
+  <!-- 底部标语 -->
+  <text x="420" y="195" text-anchor="middle" fill="#475569" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="14" font-weight="500" opacity="1">让能力取代学历，成为就业市场的新信号</text>
 </svg>

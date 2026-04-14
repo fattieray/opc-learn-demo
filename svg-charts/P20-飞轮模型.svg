@@ -1,43 +1,67 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
-  <text x="400" y="35" text-anchor="middle" fill="#0f172a" font-family="sans-serif" font-size="16" font-weight="700">"学-练-就"飞轮模型——三个闭环，持续自增强</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="520" viewBox="0 0 820 520">
   <defs>
-    <marker id="fw" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#2563eb"/></marker>
+    <filter id="shadow" x="-4%" y="-4%" width="108%" height="112%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+    <filter id="shadowLg" x="-4%" y="-4%" width="108%" height="116%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+    <linearGradient id="gBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb"/><stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+    <linearGradient id="gViolet" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="gTeal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d9488"/><stop offset="100%" stop-color="#14b8a6"/>
+    </linearGradient>
+    <linearGradient id="gDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/><stop offset="50%" stop-color="#1e3a5f"/><stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+    <linearGradient id="gLine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#94a3b8"/><stop offset="100%" stop-color="#22c55e"/>
+    </linearGradient>
+    <marker id="arrowB" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L7,3 z" fill="#2563eb"/>
+    </marker>
+    <marker id="arrowG" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L7,3 z" fill="#22c55e"/>
+    </marker>
+    <marker id="arrowV" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L7,3 z" fill="#7c3aed"/>
+    </marker>
+    <marker id="arrowS" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L7,3 z" fill="#64748b"/>
+    </marker>
   </defs>
-  <!-- 学 -->
-  <circle cx="200" cy="280" r="70" fill="#eff6ff" stroke="#3b82f6" stroke-width="3"/>
-  <text x="200" y="270" text-anchor="middle" fill="#1e40af" font-family="sans-serif" font-size="22" font-weight="800">学</text>
-  <text x="200" y="295" text-anchor="middle" fill="#1e40af" font-family="sans-serif" font-size="11">AI能力感知</text>
-  <text x="200" y="315" text-anchor="middle" fill="#64748b" font-family="sans-serif" font-size="9">Learn</text>
-  <!-- 练 -->
-  <circle cx="600" cy="280" r="70" fill="#f0fdf4" stroke="#22c55e" stroke-width="3"/>
-  <text x="600" y="270" text-anchor="middle" fill="#166534" font-family="sans-serif" font-size="22" font-weight="800">练</text>
-  <text x="600" y="295" text-anchor="middle" fill="#166534" font-family="sans-serif" font-size="11">真实任务验证</text>
-  <text x="600" y="315" text-anchor="middle" fill="#64748b" font-family="sans-serif" font-size="9">Practice</text>
-  <!-- 就 -->
-  <circle cx="400" cy="120" r="70" fill="#ede9fe" stroke="#7c3aed" stroke-width="3"/>
-  <text x="400" y="110" text-anchor="middle" fill="#6d28d9" font-family="sans-serif" font-size="22" font-weight="800">就</text>
-  <text x="400" y="135" text-anchor="middle" fill="#6d28d9" font-family="sans-serif" font-size="11">信用护照</text>
-  <text x="400" y="155" text-anchor="middle" fill="#64748b" font-family="sans-serif" font-size="9">Achieve</text>
-  <!-- 箭头：学→练 -->
-  <path d="M275 300 L525 300" stroke="#2563eb" stroke-width="2.5" marker-end="url(#fw)"/>
-  <text x="400" y="320" text-anchor="middle" fill="#2563eb" font-family="sans-serif" font-size="10" font-weight="500">发现短板 → 接任务验证</text>
-  <!-- 箭头：练→就 -->
-  <path d="M570 220 Q500 160 460 135" stroke="#22c55e" stroke-width="2.5" fill="none" marker-end="url(#fw)"/>
-  <text x="530" y="175" text-anchor="middle" fill="#22c55e" font-family="sans-serif" font-size="10" font-weight="500">任务完成 → 能力积累</text>
-  <!-- 箭头：就→学 -->
-  <path d="M340 135 Q300 160 230 220" stroke="#7c3aed" stroke-width="2.5" fill="none" marker-end="url(#fw)"/>
-  <text x="270" y="175" text-anchor="middle" fill="#7c3aed" font-family="sans-serif" font-size="10" font-weight="500">更强信号 → 更好任务</text>
-  <!-- 中心 -->
-  <circle cx="400" cy="240" r="30" fill="#0f172a" opacity="0.05"/>
-  <text x="400" y="237" text-anchor="middle" fill="#0f172a" font-family="sans-serif" font-size="10" font-weight="700">飞轮</text>
-  <text x="400" y="252" text-anchor="middle" fill="#0f172a" font-family="sans-serif" font-size="10" font-weight="700">效应</text>
-  <!-- 底部对比 -->
-  <rect x="100" y="380" width="280" height="50" rx="10" fill="#fef2f2" stroke="#f87171"/>
-  <text x="240" y="400" text-anchor="middle" fill="#991b1b" font-family="sans-serif" font-size="12" font-weight="600">传统：学4年→毕业找工作</text>
-  <text x="240" y="418" text-anchor="middle" fill="#b91c1c" font-family="sans-serif" font-size="10">线性 · 断裂 · 无反馈</text>
-  <rect x="420" y="380" width="280" height="50" rx="10" fill="#f0fdf4" stroke="#22c55e"/>
-  <text x="560" y="400" text-anchor="middle" fill="#166534" font-family="sans-serif" font-size="12" font-weight="600">我们：学⇄练⇄就</text>
-  <text x="560" y="418" text-anchor="middle" fill="#15803d" font-family="sans-serif" font-size="10">循环 · 连续 · 实时反馈</text>
-  <!-- 飞轮引擎 -->
-  <text x="400" y="465" text-anchor="middle" fill="#475569" font-family="sans-serif" font-size="11">三个飞轮引擎：数据飞轮（更准匹配）+ 信号飞轮（更高信任）+ 网络飞轮（更多参与者）</text>
+  <text x="410" y="28" text-anchor="middle" fill="#0f172a" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="18" font-weight="700" opacity="1">&ldquo;学-练-就&rdquo;飞轮模型——三个闭环，持续自增强</text>
+  <circle cx="200" cy="290" r="72" fill="#eff6ff" stroke="#3b82f6" stroke-width="3" filter="url(#shadowLg)"/>
+  <text x="200" y="278" text-anchor="middle" fill="#1e40af" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="24" font-weight="800" opacity="1">学</text>
+  <text x="200" y="305" text-anchor="middle" fill="#1e40af" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="12" font-weight="500" opacity="1">AI能力感知</text>
+  <text x="200" y="325" text-anchor="middle" fill="#64748b" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="10" font-weight="400" opacity="1">Learn</text>
+  <circle cx="620" cy="290" r="72" fill="#f0fdf4" stroke="#22c55e" stroke-width="3" filter="url(#shadowLg)"/>
+  <text x="620" y="278" text-anchor="middle" fill="#166534" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="24" font-weight="800" opacity="1">练</text>
+  <text x="620" y="305" text-anchor="middle" fill="#166534" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="12" font-weight="500" opacity="1">真实任务验证</text>
+  <text x="620" y="325" text-anchor="middle" fill="#64748b" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="10" font-weight="400" opacity="1">Practice</text>
+  <circle cx="410" cy="120" r="72" fill="#ede9fe" stroke="#7c3aed" stroke-width="3" filter="url(#shadowLg)"/>
+  <text x="410" y="108" text-anchor="middle" fill="#6d28d9" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="24" font-weight="800" opacity="1">就</text>
+  <text x="410" y="135" text-anchor="middle" fill="#6d28d9" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="12" font-weight="500" opacity="1">信用护照</text>
+  <text x="410" y="155" text-anchor="middle" fill="#64748b" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="10" font-weight="400" opacity="1">Achieve</text>
+  <path d="M278 310 L543 310" stroke="#2563eb" stroke-width="2.5" fill="none" marker-end="url(#arrowB)"/>
+  <text x="410" y="335" text-anchor="middle" fill="#2563eb" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="10" font-weight="500" opacity="1">发现短板 → 接任务验证</text>
+  <path d="M590 230 Q510 160 470 135" stroke="#22c55e" stroke-width="2.5" fill="none" marker-end="url(#arrowG)"/>
+  <text x="540" y="180" text-anchor="middle" fill="#22c55e" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="10" font-weight="500" opacity="1">任务完成 → 能力积累</text>
+  <path d="M348 135 Q300 160 230 230" stroke="#7c3aed" stroke-width="2.5" fill="none" marker-end="url(#arrowV)"/>
+  <text x="275" y="180" text-anchor="middle" fill="#7c3aed" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="10" font-weight="500" opacity="1">更强信号 → 更好任务</text>
+  <circle cx="410" cy="240" r="32" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="410" y="237" text-anchor="middle" fill="#0f172a" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="11" font-weight="700" opacity="1">飞轮</text>
+  <text x="410" y="252" text-anchor="middle" fill="#0f172a" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="11" font-weight="700" opacity="1">效应</text>
+  <rect x="90" y="390" width="280" height="55" rx="12" fill="#fef2f2" stroke="#f87171" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="230" y="413" text-anchor="middle" fill="#991b1b" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="13" font-weight="600" opacity="1">传统：学4年→毕业找工作</text>
+  <text x="230" y="433" text-anchor="middle" fill="#b91c1c" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="11" font-weight="400" opacity="1">线性 · 断裂 · 无反馈</text>
+  <rect x="450" y="390" width="280" height="55" rx="12" fill="#f0fdf4" stroke="#22c55e" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="590" y="413" text-anchor="middle" fill="#166534" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="13" font-weight="600" opacity="1">我们：学⇄练⇄就</text>
+  <text x="590" y="433" text-anchor="middle" fill="#15803d" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="11" font-weight="400" opacity="1">循环 · 连续 · 实时反馈</text>
+  <text x="410" y="480" text-anchor="middle" fill="#475569" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="12" font-weight="500" opacity="1">三个飞轮引擎：数据飞轮（更准匹配）+ 信号飞轮（更高信任）+ 网络飞轮（更多参与者）</text>
+  <text x="410" y="505" text-anchor="middle" fill="#94a3b8" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="11" font-weight="400" opacity="1">四年规划：大一微任务→大二标准任务→大三项目制→大四准雇佣（无缝过渡）</text>
 </svg>

@@ -1,33 +1,65 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="900" height="260" viewBox="0 0 900 260">
-  <text x="450" y="30" text-anchor="middle" fill="#0f172a" font-family="sans-serif" font-size="16" font-weight="700">教师赋能系统</text>
-  <rect x="30" y="60" width="180" height="160" rx="14" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
-  <text x="120" y="90" text-anchor="middle" fill="#1e40af" font-family="sans-serif" font-size="14" font-weight="700">教师能力体检</text>
-  <text x="120" y="115" text-anchor="middle" fill="#64748b" font-family="sans-serif" font-size="11">了解自身能力差距</text>
-  <text x="120" y="138" text-anchor="middle" fill="#64748b" font-family="sans-serif" font-size="11">获得学习推荐</text>
-  <text x="120" y="161" text-anchor="middle" fill="#64748b" font-family="sans-serif" font-size="11">参与真实任务</text>
-  <text x="120" y="184" text-anchor="middle" fill="#64748b" font-family="sans-serif" font-size="11">积累项目经验</text>
-  <path d="M215 140 L265 140" stroke="#2563eb" stroke-width="2.5"/>
-  <polygon points="260,134 273,140 260,146" fill="#2563eb"/>
-  <rect x="275" y="60" width="180" height="160" rx="14" fill="#f0fdf4" stroke="#22c55e" stroke-width="2"/>
-  <text x="365" y="90" text-anchor="middle" fill="#166534" font-family="sans-serif" font-size="14" font-weight="700">市场需求数据</text>
-  <text x="365" y="115" text-anchor="middle" fill="#64748b" font-family="sans-serif" font-size="11">能力需求排行</text>
-  <text x="365" y="138" text-anchor="middle" fill="#64748b" font-family="sans-serif" font-size="11">薪资趋势分析</text>
-  <text x="365" y="161" text-anchor="middle" fill="#64748b" font-family="sans-serif" font-size="11">岗位变化追踪</text>
-  <text x="365" y="184" text-anchor="middle" fill="#64748b" font-family="sans-serif" font-size="11">课程优化建议</text>
-  <path d="M460 140 L510 140" stroke="#22c55e" stroke-width="2.5"/>
-  <polygon points="505,134 518,140 505,146" fill="#22c55e"/>
-  <rect x="520" y="60" width="180" height="160" rx="14" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
-  <text x="610" y="90" text-anchor="middle" fill="#92400e" font-family="sans-serif" font-size="14" font-weight="700">教学改进</text>
-  <text x="610" y="115" text-anchor="middle" fill="#64748b" font-family="sans-serif" font-size="11">数据驱动课程调整</text>
-  <text x="610" y="138" text-anchor="middle" fill="#64748b" font-family="sans-serif" font-size="11">引入真实案例</text>
-  <text x="610" y="161" text-anchor="middle" fill="#64748b" font-family="sans-serif" font-size="11">设计实践项目</text>
-  <text x="610" y="184" text-anchor="middle" fill="#64748b" font-family="sans-serif" font-size="11">提升教学实效</text>
-  <path d="M705 140 L755 140" stroke="#f59e0b" stroke-width="2.5"/>
-  <polygon points="750,134 763,140 750,146" fill="#f59e0b"/>
-  <rect x="765" y="80" width="100" height="120" rx="14" fill="#0f172a"/>
-  <text x="815" y="130" text-anchor="middle" fill="#fff" font-family="sans-serif" font-size="14" font-weight="700">学生</text>
-  <text x="815" y="155" text-anchor="middle" fill="#fff" font-family="sans-serif" font-size="14" font-weight="700">受益</text>
-  <text x="815" y="180" text-anchor="middle" fill="#22c55e" font-family="sans-serif" font-size="12">就业↑</text>
-  <rect x="200" y="235" width="500" height="20" rx="6" fill="#f0fdf4"/>
-  <text x="450" y="249" text-anchor="middle" fill="#166534" font-family="sans-serif" font-size="11">核心理念：为教师提供工具和数据，让教学更贴近市场</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="280" viewBox="0 0 920 280">
+  <defs>
+    <filter id="shadow" x="-4%" y="-4%" width="108%" height="112%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+    <filter id="shadowLg" x="-4%" y="-4%" width="108%" height="116%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+    <linearGradient id="gBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb"/><stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+    <linearGradient id="gViolet" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="gTeal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d9488"/><stop offset="100%" stop-color="#14b8a6"/>
+    </linearGradient>
+    <linearGradient id="gDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/><stop offset="50%" stop-color="#1e3a5f"/><stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+    <linearGradient id="gLine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#94a3b8"/><stop offset="100%" stop-color="#22c55e"/>
+    </linearGradient>
+    <marker id="arrowB" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L7,3 z" fill="#2563eb"/>
+    </marker>
+    <marker id="arrowG" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L7,3 z" fill="#22c55e"/>
+    </marker>
+    <marker id="arrowV" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L7,3 z" fill="#7c3aed"/>
+    </marker>
+    <marker id="arrowS" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L7,3 z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <text x="460" y="25" text-anchor="middle" fill="#0f172a" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="18" font-weight="700" opacity="1">教师赋能系统</text>
+  <rect x="25" y="50" width="190" height="170" rx="14" fill="#ffffff" stroke="#3b82f6" stroke-width="2" filter="url(#shadow)"/>
+  <text x="120" y="82" text-anchor="middle" fill="#1e40af" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="15" font-weight="700" opacity="1">教师能力体检</text>
+  <text x="120" y="108" text-anchor="middle" fill="#64748b" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="11" font-weight="400" opacity="1">了解自身能力差距</text>
+  <text x="120" y="128" text-anchor="middle" fill="#64748b" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="11" font-weight="400" opacity="1">获得学习推荐</text>
+  <text x="120" y="148" text-anchor="middle" fill="#64748b" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="11" font-weight="400" opacity="1">参与真实任务</text>
+  <text x="120" y="168" text-anchor="middle" fill="#64748b" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="11" font-weight="400" opacity="1">积累项目经验</text>
+  <line x1="220" y1="135" x2="268" y2="135" stroke="#2563eb" stroke-width="2.5" marker-end="url(#arrowB)"/>
+  <rect x="275" y="50" width="190" height="170" rx="14" fill="#ffffff" stroke="#22c55e" stroke-width="2" filter="url(#shadow)"/>
+  <text x="370" y="82" text-anchor="middle" fill="#166534" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="15" font-weight="700" opacity="1">市场需求数据</text>
+  <text x="370" y="108" text-anchor="middle" fill="#64748b" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="11" font-weight="400" opacity="1">能力需求排行</text>
+  <text x="370" y="128" text-anchor="middle" fill="#64748b" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="11" font-weight="400" opacity="1">薪资趋势分析</text>
+  <text x="370" y="148" text-anchor="middle" fill="#64748b" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="11" font-weight="400" opacity="1">岗位变化追踪</text>
+  <text x="370" y="168" text-anchor="middle" fill="#64748b" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="11" font-weight="400" opacity="1">课程优化建议</text>
+  <line x1="470" y1="135" x2="518" y2="135" stroke="#22c55e" stroke-width="2.5" marker-end="url(#arrowG)"/>
+  <rect x="525" y="50" width="190" height="170" rx="14" fill="#ffffff" stroke="#f59e0b" stroke-width="2" filter="url(#shadow)"/>
+  <text x="620" y="82" text-anchor="middle" fill="#92400e" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="15" font-weight="700" opacity="1">教学改进</text>
+  <text x="620" y="108" text-anchor="middle" fill="#64748b" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="11" font-weight="400" opacity="1">数据驱动课程调整</text>
+  <text x="620" y="128" text-anchor="middle" fill="#64748b" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="11" font-weight="400" opacity="1">引入真实案例</text>
+  <text x="620" y="148" text-anchor="middle" fill="#64748b" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="11" font-weight="400" opacity="1">设计实践项目</text>
+  <text x="620" y="168" text-anchor="middle" fill="#64748b" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="11" font-weight="400" opacity="1">提升教学实效</text>
+  <line x1="720" y1="135" x2="768" y2="135" stroke="#f59e0b" stroke-width="2.5" marker-end="url(#arrowB)"/>
+  <rect x="775" y="70" width="110" height="130" rx="14" fill="#0f172a" filter="url(#shadowLg)"/>
+  <text x="830" y="120" text-anchor="middle" fill="#ffffff" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="18" font-weight="700" opacity="1">学生</text>
+  <text x="830" y="148" text-anchor="middle" fill="#ffffff" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="18" font-weight="700" opacity="1">受益</text>
+  <text x="830" y="178" text-anchor="middle" fill="#22c55e" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="14" font-weight="600" opacity="1">就业↑</text>
+  <rect x="210" y="250" width="500" height="22" rx="8" fill="#f0fdf4" stroke="#22c55e" stroke-width="1"/>
+  <text x="460" y="265" text-anchor="middle" fill="#166534" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="11" font-weight="500" opacity="1">核心理念：为教师提供工具和数据，让教学更贴近市场</text>
 </svg>

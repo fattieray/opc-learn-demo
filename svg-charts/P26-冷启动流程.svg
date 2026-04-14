@@ -1,32 +1,79 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="340" viewBox="0 0 900 340">
-  <text x="450" y="30" text-anchor="middle" fill="#0f172a" font-family="sans-serif" font-size="16" font-weight="700">冷启动策略：学生侧先行</text>
-  <!-- 学生侧 -->
-  <rect x="30" y="60" width="380" height="250" rx="14" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
-  <text x="220" y="95" text-anchor="middle" fill="#1e40af" font-family="sans-serif" font-size="15" font-weight="700">学生侧先行</text>
-  <rect x="55" y="115" width="330" height="40" rx="8" fill="#fff" stroke="#bfdbfe"/>
-  <text x="220" y="140" text-anchor="middle" fill="#1e40af" font-family="sans-serif" font-size="12">能力体检吸引：焦虑+好奇驱动</text>
-  <rect x="55" y="165" width="330" height="40" rx="8" fill="#fff" stroke="#bfdbfe"/>
-  <text x="220" y="190" text-anchor="middle" fill="#1e40af" font-family="sans-serif" font-size="12">社交传播裂变："测一测你的能力值多少分"</text>
-  <rect x="55" y="215" width="330" height="40" rx="8" fill="#fff" stroke="#bfdbfe"/>
-  <text x="220" y="240" text-anchor="middle" fill="#1e40af" font-family="sans-serif" font-size="12">任务参与：碎片时间即可完成</text>
-  <rect x="55" y="265" width="330" height="35" rx="6" fill="#dbeafe"/>
-  <text x="220" y="287" text-anchor="middle" fill="#1e40af" font-family="sans-serif" font-size="11" font-weight="600">目标：200学生活跃使用（M9）</text>
+  <defs>
+    <filter id="shadow" x="-4%" y="-4%" width="108%" height="112%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+    <filter id="shadowLg" x="-4%" y="-4%" width="108%" height="116%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+    <linearGradient id="gBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb"/><stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+    <linearGradient id="gGreen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#16a34a"/><stop offset="100%" stop-color="#22c55e"/>
+    </linearGradient>
+    <linearGradient id="gAmber" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d97706"/><stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+    <linearGradient id="gViolet" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="gTeal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d9488"/><stop offset="100%" stop-color="#14b8a6"/>
+    </linearGradient>
+    <linearGradient id="gDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/><stop offset="50%" stop-color="#1e3a5f"/><stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+    <linearGradient id="gLine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#94a3b8"/><stop offset="100%" stop-color="#22c55e"/>
+    </linearGradient>
+    <marker id="arrowB" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L7,3 z" fill="#2563eb"/>
+    </marker>
+    <marker id="arrowG" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L7,3 z" fill="#22c55e"/>
+    </marker>
+    <marker id="arrowV" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L7,3 z" fill="#7c3aed"/>
+    </marker>
+    <marker id="arrowS" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L7,3 z" fill="#64748b"/>
+    </marker>
+    <marker id="arrowA" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L7,3 z" fill="#d97706"/>
+    </marker>
+  </defs>
+  <text x="450" y="28" text-anchor="middle" fill="#0f172a" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="18" font-weight="700">冷启动策略：学生侧先行</text>
+  <!-- 学生侧先行 -->
+  <rect x="30" y="50" width="380" height="260" rx="14" fill="#ffffff" stroke="#3b82f6" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="30" y="50" width="380" height="40" rx="14" fill="url(#gBlue)"/>
+  <rect x="30" y="76" width="380" height="14" fill="url(#gBlue)"/>
+  <text x="220" y="76" text-anchor="middle" fill="#ffffff" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="15" font-weight="700">学生侧先行</text>
+  <rect x="55" y="100" width="330" height="40" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1"/>
+  <text x="220" y="125" text-anchor="middle" fill="#1e40af" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="12">能力体检吸引：焦虑+好奇驱动</text>
+  <rect x="55" y="148" width="330" height="40" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1"/>
+  <text x="220" y="173" text-anchor="middle" fill="#1e40af" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="12">社交传播裂变："测一测你的能力值多少分"</text>
+  <rect x="55" y="196" width="330" height="40" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1"/>
+  <text x="220" y="221" text-anchor="middle" fill="#1e40af" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="12">任务参与：碎片时间即可完成</text>
+  <rect x="55" y="248" width="330" height="44" rx="8" fill="#dbeafe"/>
+  <text x="220" y="275" text-anchor="middle" fill="#1e40af" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="12" font-weight="600">目标：200学生活跃使用（M9）</text>
   <!-- 箭头 -->
-  <path d="M415 185 L465 185" stroke="#2563eb" stroke-width="3"/>
-  <polygon points="460,178 475,185 460,192" fill="#2563eb"/>
-  <text x="440" y="175" text-anchor="middle" fill="#2563eb" font-family="sans-serif" font-size="10">数据</text>
-  <!-- 企业侧 -->
-  <rect x="470" y="60" width="400" height="250" rx="14" fill="#f0fdf4" stroke="#22c55e" stroke-width="2"/>
-  <text x="670" y="95" text-anchor="middle" fill="#166534" font-family="sans-serif" font-size="15" font-weight="700">企业侧跟进</text>
-  <rect x="495" y="115" width="350" height="40" rx="8" fill="#fff" stroke="#bbf7d0"/>
-  <text x="670" y="140" text-anchor="middle" fill="#166534" font-family="sans-serif" font-size="12">学生数据吸引：零风险试人</text>
-  <rect x="495" y="165" width="350" height="40" rx="8" fill="#fff" stroke="#bbf7d0"/>
-  <text x="670" y="190" text-anchor="middle" fill="#166534" font-family="sans-serif" font-size="12">低成本验证：先发小任务再扩大合作</text>
-  <rect x="495" y="215" width="350" height="40" rx="8" fill="#fff" stroke="#bbf7d0"/>
-  <text x="670" y="240" text-anchor="middle" fill="#166534" font-family="sans-serif" font-size="12">飞轮启动：更多企业→更多任务→更多学生</text>
-  <rect x="495" y="265" width="350" height="35" rx="6" fill="#dcfce7"/>
-  <text x="670" y="287" text-anchor="middle" fill="#166534" font-family="sans-serif" font-size="11" font-weight="600">目标：30家企业合作（M12）</text>
+  <line x1="415" y1="180" x2="465" y2="180" stroke="#2563eb" stroke-width="3" marker-end="url(#arrowB)"/>
+  <text x="440" y="170" text-anchor="middle" fill="#2563eb" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="10" font-weight="600">数据</text>
+  <!-- 企业侧跟进 -->
+  <rect x="470" y="50" width="400" height="260" rx="14" fill="#ffffff" stroke="#22c55e" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="470" y="50" width="400" height="40" rx="14" fill="url(#gGreen)"/>
+  <rect x="470" y="76" width="400" height="14" fill="url(#gGreen)"/>
+  <text x="670" y="76" text-anchor="middle" fill="#ffffff" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="15" font-weight="700">企业侧跟进</text>
+  <rect x="495" y="100" width="350" height="40" rx="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1"/>
+  <text x="670" y="125" text-anchor="middle" fill="#166534" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="12">学生数据吸引：零风险试人</text>
+  <rect x="495" y="148" width="350" height="40" rx="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1"/>
+  <text x="670" y="173" text-anchor="middle" fill="#166534" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="12">低成本验证：先发小任务再扩大合作</text>
+  <rect x="495" y="196" width="350" height="40" rx="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1"/>
+  <text x="670" y="221" text-anchor="middle" fill="#166534" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="12">飞轮启动：更多企业→更多任务→更多学生</text>
+  <rect x="495" y="248" width="350" height="44" rx="8" fill="#dcfce7"/>
+  <text x="670" y="275" text-anchor="middle" fill="#166534" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="12" font-weight="600">目标：30家企业合作（M12）</text>
   <!-- 切入优先级 -->
-  <rect x="200" y="318" width="500" height="18" rx="6" fill="#0f172a"/>
-  <text x="450" y="331" text-anchor="middle" fill="#fff" font-family="sans-serif" font-size="10">切入优先级：① A-零售（量大见效快）→ ② A-文旅（共享能力）→ ③ B-制造（TAM大粘性高）</text>
+  <rect x="200" y="320" width="500" height="18" rx="9" fill="#0f172a"/>
+  <text x="450" y="333" text-anchor="middle" fill="#ffffff" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="10" font-weight="500">切入优先级：① A-零售（量大见效快）→ ② A-文旅（共享能力）→ ③ B-制造（TAM大粘性高）</text>
 </svg>

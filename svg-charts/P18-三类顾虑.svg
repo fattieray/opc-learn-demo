@@ -1,26 +1,65 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="900" height="300" viewBox="0 0 900 300">
-  <text x="450" y="35" text-anchor="middle" fill="#0f172a" font-family="sans-serif" font-size="16" font-weight="700">校领导的合理顾虑</text>
-  <rect x="30" y="60" width="270" height="210" rx="14" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.5"/>
-  <circle cx="165" cy="90" r="18" fill="#d97706"/>
-  <text x="165" y="96" text-anchor="middle" fill="#fff" font-family="sans-serif" font-size="12" font-weight="700">1</text>
-  <text x="165" y="120" text-anchor="middle" fill="#92400e" font-family="sans-serif" font-size="14" font-weight="700">资源有限</text>
-  <text x="165" y="150" text-anchor="middle" fill="#78350f" font-family="sans-serif" font-size="11">· 人力资金时间都是稀缺资源</text>
-  <text x="165" y="172" text-anchor="middle" fill="#78350f" font-family="sans-serif" font-size="11">· 投入新项目=放弃其他机会</text>
-  <text x="165" y="194" text-anchor="middle" fill="#78350f" font-family="sans-serif" font-size="11">· 预算审批流程漫长</text>
-  <rect x="315" y="60" width="270" height="210" rx="14" fill="#fef2f2" stroke="#f87171" stroke-width="1.5"/>
-  <circle cx="450" cy="90" r="18" fill="#e11d48"/>
-  <text x="450" y="96" text-anchor="middle" fill="#fff" font-family="sans-serif" font-size="12" font-weight="700">2</text>
-  <text x="450" y="120" text-anchor="middle" fill="#991b1b" font-family="sans-serif" font-size="14" font-weight="700">风险担忧</text>
-  <text x="450" y="150" text-anchor="middle" fill="#7f1d1d" font-family="sans-serif" font-size="11">· 平台是否靠谱？能否落地？</text>
-  <text x="450" y="172" text-anchor="middle" fill="#7f1d1d" font-family="sans-serif" font-size="11">· 学生是否愿意参与？</text>
-  <text x="450" y="194" text-anchor="middle" fill="#7f1d1d" font-family="sans-serif" font-size="11">· 企业是否认可能力护照？</text>
-  <text x="450" y="216" text-anchor="middle" fill="#7f1d1d" font-family="sans-serif" font-size="11">· 数据安全如何保障？</text>
-  <rect x="600" y="60" width="270" height="210" rx="14" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.5"/>
-  <circle cx="735" cy="90" r="18" fill="#475569"/>
-  <text x="735" y="96" text-anchor="middle" fill="#fff" font-family="sans-serif" font-size="12" font-weight="700">3</text>
-  <text x="735" y="120" text-anchor="middle" fill="#334155" font-family="sans-serif" font-size="14" font-weight="700">政绩考量</text>
-  <text x="735" y="150" text-anchor="middle" fill="#475569" font-family="sans-serif" font-size="11">· 短期能否见效？</text>
-  <text x="735" y="172" text-anchor="middle" fill="#475569" font-family="sans-serif" font-size="11">· 如何向上级汇报成果？</text>
-  <text x="735" y="194" text-anchor="middle" fill="#475569" font-family="sans-serif" font-size="11">· 政策是否支持？</text>
-  <text x="735" y="216" text-anchor="middle" fill="#475569" font-family="sans-serif" font-size="11">· 失败了怎么办？</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="310" viewBox="0 0 920 310">
+  <defs>
+    <filter id="shadow" x="-4%" y="-4%" width="108%" height="112%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+    <filter id="shadowLg" x="-4%" y="-4%" width="108%" height="116%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+    <linearGradient id="gBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb"/><stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+    <linearGradient id="gViolet" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="gTeal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d9488"/><stop offset="100%" stop-color="#14b8a6"/>
+    </linearGradient>
+    <linearGradient id="gDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/><stop offset="50%" stop-color="#1e3a5f"/><stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+    <linearGradient id="gLine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#94a3b8"/><stop offset="100%" stop-color="#22c55e"/>
+    </linearGradient>
+    <marker id="arrowB" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L7,3 z" fill="#2563eb"/>
+    </marker>
+    <marker id="arrowG" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L7,3 z" fill="#22c55e"/>
+    </marker>
+    <marker id="arrowV" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L7,3 z" fill="#7c3aed"/>
+    </marker>
+    <marker id="arrowS" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L7,3 z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <text x="460" y="25" text-anchor="middle" fill="#0f172a" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="18" font-weight="700" opacity="1">校领导的合理顾虑</text>
+  <rect x="25" y="50" width="280" height="230" rx="14" fill="#ffffff" stroke="#f59e0b" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="25" y="50" width="280" height="44" rx="14" fill="#f59e0b"/>
+  <rect x="25" y="78" width="280" height="16" fill="#f59e0b"/>
+  <circle cx="165" cy="72" r="16" fill="#ffffff"/><text x="165" y="76" text-anchor="middle" fill="#fff" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="12" font-weight="700">1</text>
+  <text x="195" y="78" text-anchor="start" fill="#ffffff" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="15" font-weight="700" opacity="1">资源有限</text>
+  <text x="45" y="115" text-anchor="start" fill="#78350f" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="12" font-weight="400" opacity="1">· 人力资金时间都是稀缺资源</text>
+  <text x="45" y="140" text-anchor="start" fill="#78350f" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="12" font-weight="400" opacity="1">· 投入新项目=放弃其他机会</text>
+  <text x="45" y="165" text-anchor="start" fill="#78350f" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="12" font-weight="400" opacity="1">· 预算审批流程漫长</text>
+  <rect x="320" y="50" width="280" height="230" rx="14" fill="#ffffff" stroke="#f87171" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="320" y="50" width="280" height="44" rx="14" fill="#f87171"/>
+  <rect x="320" y="78" width="280" height="16" fill="#f87171"/>
+  <circle cx="460" cy="72" r="16" fill="#ffffff"/><text x="460" y="76" text-anchor="middle" fill="#fff" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="12" font-weight="700">2</text>
+  <text x="490" y="78" text-anchor="start" fill="#ffffff" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="15" font-weight="700" opacity="1">风险担忧</text>
+  <text x="340" y="115" text-anchor="start" fill="#7f1d1d" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="12" font-weight="400" opacity="1">· 平台是否靠谱？能否落地？</text>
+  <text x="340" y="140" text-anchor="start" fill="#7f1d1d" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="12" font-weight="400" opacity="1">· 学生是否愿意参与？</text>
+  <text x="340" y="165" text-anchor="start" fill="#7f1d1d" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="12" font-weight="400" opacity="1">· 企业是否认可能力护照？</text>
+  <text x="340" y="190" text-anchor="start" fill="#7f1d1d" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="12" font-weight="400" opacity="1">· 数据安全如何保障？</text>
+  <rect x="615" y="50" width="280" height="230" rx="14" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="615" y="50" width="280" height="44" rx="14" fill="#475569"/>
+  <rect x="615" y="78" width="280" height="16" fill="#475569"/>
+  <circle cx="755" cy="72" r="16" fill="#ffffff"/><text x="755" y="76" text-anchor="middle" fill="#fff" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="12" font-weight="700">3</text>
+  <text x="785" y="78" text-anchor="start" fill="#ffffff" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="15" font-weight="700" opacity="1">政绩考量</text>
+  <text x="635" y="115" text-anchor="start" fill="#334155" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="12" font-weight="400" opacity="1">· 短期能否见效？</text>
+  <text x="635" y="140" text-anchor="start" fill="#334155" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="12" font-weight="400" opacity="1">· 如何向上级汇报成果？</text>
+  <text x="635" y="165" text-anchor="start" fill="#334155" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="12" font-weight="400" opacity="1">· 政策是否支持？</text>
+  <text x="635" y="190" text-anchor="start" fill="#334155" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="12" font-weight="400" opacity="1">· 失败了怎么办？</text>
+  <text x="460" y="300" text-anchor="middle" fill="#64748b" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="12" font-weight="500" opacity="1">这些顾虑都是合理的——我们的方案需要逐一回应</text>
 </svg>

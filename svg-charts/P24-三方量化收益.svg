@@ -1,45 +1,95 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="340" viewBox="0 0 900 340">
-  <text x="450" y="30" text-anchor="middle" fill="#0f172a" font-family="sans-serif" font-size="16" font-weight="700">价值量化：三方获益的具体指标</text>
+  <defs>
+    <filter id="shadow" x="-4%" y="-4%" width="108%" height="112%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+    <filter id="shadowLg" x="-4%" y="-4%" width="108%" height="116%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+    <linearGradient id="gBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb"/><stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+    <linearGradient id="gGreen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#16a34a"/><stop offset="100%" stop-color="#22c55e"/>
+    </linearGradient>
+    <linearGradient id="gAmber" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d97706"/><stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+    <linearGradient id="gViolet" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="gTeal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d9488"/><stop offset="100%" stop-color="#14b8a6"/>
+    </linearGradient>
+    <linearGradient id="gDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/><stop offset="50%" stop-color="#1e3a5f"/><stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+    <linearGradient id="gLine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#94a3b8"/><stop offset="100%" stop-color="#22c55e"/>
+    </linearGradient>
+    <marker id="arrowB" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L7,3 z" fill="#2563eb"/>
+    </marker>
+    <marker id="arrowG" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L7,3 z" fill="#22c55e"/>
+    </marker>
+    <marker id="arrowV" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L7,3 z" fill="#7c3aed"/>
+    </marker>
+    <marker id="arrowS" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L7,3 z" fill="#64748b"/>
+    </marker>
+    <marker id="arrowA" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L7,3 z" fill="#d97706"/>
+    </marker>
+  </defs>
+  <text x="450" y="28" text-anchor="middle" fill="#0f172a" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="18" font-weight="700">价值量化：三方获益的具体指标</text>
   <!-- 学生 -->
-  <rect x="30" y="55" width="270" height="265" rx="14" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
-  <text x="165" y="85" text-anchor="middle" fill="#1e40af" font-family="sans-serif" font-size="15" font-weight="700">学 生</text>
-  <rect x="50" y="100" width="230" height="50" rx="8" fill="#fff" stroke="#bfdbfe"/>
-  <text x="165" y="120" text-anchor="middle" fill="#1e40af" font-family="sans-serif" font-size="20" font-weight="800">-60%</text>
-  <text x="165" y="140" text-anchor="middle" fill="#64748b" font-family="sans-serif" font-size="11">求职周期 6-8月→2-3月</text>
-  <rect x="50" y="158" width="230" height="50" rx="8" fill="#fff" stroke="#bfdbfe"/>
-  <text x="165" y="178" text-anchor="middle" fill="#1e40af" font-family="sans-serif" font-size="20" font-weight="800">+267%</text>
-  <text x="165" y="198" text-anchor="middle" fill="#64748b" font-family="sans-serif" font-size="11">面试邀请 3个→11个</text>
-  <rect x="50" y="216" width="230" height="50" rx="8" fill="#fff" stroke="#bfdbfe"/>
-  <text x="165" y="236" text-anchor="middle" fill="#1e40af" font-family="sans-serif" font-size="20" font-weight="800">500-3000</text>
-  <text x="165" y="256" text-anchor="middle" fill="#64748b" font-family="sans-serif" font-size="11">在校月收入（元）</text>
-  <rect x="50" y="274" width="230" height="35" rx="6" fill="#dbeafe"/>
-  <text x="165" y="296" text-anchor="middle" fill="#1e40af" font-family="sans-serif" font-size="11" font-weight="600">从"0收入"到"在校即赚钱"</text>
+  <rect x="30" y="50" width="270" height="270" rx="14" fill="#ffffff" stroke="#3b82f6" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="30" y="50" width="270" height="40" rx="14" fill="url(#gBlue)"/>
+  <rect x="30" y="76" width="270" height="14" fill="url(#gBlue)"/>
+  <text x="165" y="76" text-anchor="middle" fill="#ffffff" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="15" font-weight="700">学 生</text>
+  <rect x="50" y="100" width="230" height="48" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1"/>
+  <text x="165" y="122" text-anchor="middle" fill="#1e40af" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="20" font-weight="800">-60%</text>
+  <text x="165" y="140" text-anchor="middle" fill="#64748b" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="10">求职周期 6-8月→2-3月</text>
+  <rect x="50" y="156" width="230" height="48" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1"/>
+  <text x="165" y="178" text-anchor="middle" fill="#1e40af" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="20" font-weight="800">+267%</text>
+  <text x="165" y="196" text-anchor="middle" fill="#64748b" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="10">面试邀请 3个→11个</text>
+  <rect x="50" y="212" width="230" height="48" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1"/>
+  <text x="165" y="234" text-anchor="middle" fill="#1e40af" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="20" font-weight="800">500-3000</text>
+  <text x="165" y="252" text-anchor="middle" fill="#64748b" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="10">在校月收入（元）</text>
+  <rect x="50" y="270" width="230" height="36" rx="8" fill="#dbeafe"/>
+  <text x="165" y="293" text-anchor="middle" fill="#1e40af" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="11" font-weight="600">从"0收入"到"在校即赚钱"</text>
   <!-- 企业 -->
-  <rect x="315" y="55" width="270" height="265" rx="14" fill="#f0fdf4" stroke="#22c55e" stroke-width="2"/>
-  <text x="450" y="85" text-anchor="middle" fill="#166534" font-family="sans-serif" font-size="15" font-weight="700">企 业</text>
-  <rect x="335" y="100" width="230" height="50" rx="8" fill="#fff" stroke="#bbf7d0"/>
-  <text x="450" y="120" text-anchor="middle" fill="#166534" font-family="sans-serif" font-size="20" font-weight="800">-84%</text>
-  <text x="450" y="140" text-anchor="middle" fill="#64748b" font-family="sans-serif" font-size="11">校招成本 5万→0.8万/人</text>
-  <rect x="335" y="158" width="230" height="50" rx="8" fill="#fff" stroke="#bbf7d0"/>
-  <text x="450" y="178" text-anchor="middle" fill="#166534" font-family="sans-serif" font-size="20" font-weight="800">+25pp</text>
-  <text x="450" y="198" text-anchor="middle" fill="#64748b" font-family="sans-serif" font-size="11">3月留存率 60%→85%</text>
-  <rect x="335" y="216" width="230" height="50" rx="8" fill="#fff" stroke="#bbf7d0"/>
-  <text x="450" y="236" text-anchor="middle" fill="#166534" font-family="sans-serif" font-size="20" font-weight="800">30%→70%</text>
-  <text x="450" y="256" text-anchor="middle" fill="#64748b" font-family="sans-serif" font-size="11">用人准确率</text>
-  <rect x="335" y="274" width="230" height="35" rx="6" fill="#dcfce7"/>
-  <text x="450" y="296" text-anchor="middle" fill="#166534" font-family="sans-serif" font-size="11" font-weight="600">从"盲人摸象"到"精准匹配"</text>
+  <rect x="315" y="50" width="270" height="270" rx="14" fill="#ffffff" stroke="#22c55e" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="315" y="50" width="270" height="40" rx="14" fill="url(#gGreen)"/>
+  <rect x="315" y="76" width="270" height="14" fill="url(#gGreen)"/>
+  <text x="450" y="76" text-anchor="middle" fill="#ffffff" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="15" font-weight="700">企 业</text>
+  <rect x="335" y="100" width="230" height="48" rx="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1"/>
+  <text x="450" y="122" text-anchor="middle" fill="#166534" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="20" font-weight="800">-84%</text>
+  <text x="450" y="140" text-anchor="middle" fill="#64748b" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="10">校招成本 5万→0.8万/人</text>
+  <rect x="335" y="156" width="230" height="48" rx="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1"/>
+  <text x="450" y="178" text-anchor="middle" fill="#166534" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="20" font-weight="800">+25pp</text>
+  <text x="450" y="196" text-anchor="middle" fill="#64748b" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="10">3月留存率 60%→85%</text>
+  <rect x="335" y="212" width="230" height="48" rx="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1"/>
+  <text x="450" y="234" text-anchor="middle" fill="#166534" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="20" font-weight="800">30%→70%</text>
+  <text x="450" y="252" text-anchor="middle" fill="#64748b" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="10">用人准确率</text>
+  <rect x="335" y="270" width="230" height="36" rx="8" fill="#dcfce7"/>
+  <text x="450" y="293" text-anchor="middle" fill="#166534" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="11" font-weight="600">从"盲人摸象"到"精准匹配"</text>
   <!-- 大学 -->
-  <rect x="600" y="55" width="270" height="265" rx="14" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
-  <text x="735" y="85" text-anchor="middle" fill="#92400e" font-family="sans-serif" font-size="15" font-weight="700">大 学</text>
-  <rect x="620" y="100" width="230" height="50" rx="8" fill="#fff" stroke="#fde68a"/>
-  <text x="735" y="120" text-anchor="middle" fill="#92400e" font-family="sans-serif" font-size="20" font-weight="800">+15-25%</text>
-  <text x="735" y="140" text-anchor="middle" fill="#64748b" font-family="sans-serif" font-size="11">就业率提升</text>
-  <rect x="620" y="158" width="230" height="50" rx="8" fill="#fff" stroke="#fde68a"/>
-  <text x="735" y="178" text-anchor="middle" fill="#92400e" font-family="sans-serif" font-size="20" font-weight="800">+20-40%</text>
-  <text x="735" y="198" text-anchor="middle" fill="#64748b" font-family="sans-serif" font-size="11">毕业生起薪提升</text>
-  <rect x="620" y="216" width="230" height="50" rx="8" fill="#fff" stroke="#fde68a"/>
-  <text x="735" y="236" text-anchor="middle" fill="#92400e" font-family="sans-serif" font-size="20" font-weight="800">实时</text>
-  <text x="735" y="256" text-anchor="middle" fill="#64748b" font-family="sans-serif" font-size="11">毕业生发展追踪</text>
-  <rect x="620" y="274" width="230" height="35" rx="6" fill="#fef9c3"/>
-  <text x="735" y="296" text-anchor="middle" fill="#92400e" font-family="sans-serif" font-size="11" font-weight="600">从"不知道"到"实时追踪"</text>
+  <rect x="600" y="50" width="270" height="270" rx="14" fill="#ffffff" stroke="#f59e0b" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="600" y="50" width="270" height="40" rx="14" fill="url(#gAmber)"/>
+  <rect x="600" y="76" width="270" height="14" fill="url(#gAmber)"/>
+  <text x="735" y="76" text-anchor="middle" fill="#ffffff" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="15" font-weight="700">大 学</text>
+  <rect x="620" y="100" width="230" height="48" rx="8" fill="#fffbeb" stroke="#fde68a" stroke-width="1"/>
+  <text x="735" y="122" text-anchor="middle" fill="#92400e" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="20" font-weight="800">+15-25%</text>
+  <text x="735" y="140" text-anchor="middle" fill="#64748b" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="10">就业率提升</text>
+  <rect x="620" y="156" width="230" height="48" rx="8" fill="#fffbeb" stroke="#fde68a" stroke-width="1"/>
+  <text x="735" y="178" text-anchor="middle" fill="#92400e" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="20" font-weight="800">+20-40%</text>
+  <text x="735" y="196" text-anchor="middle" fill="#64748b" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="10">毕业生起薪提升</text>
+  <rect x="620" y="212" width="230" height="48" rx="8" fill="#fffbeb" stroke="#fde68a" stroke-width="1"/>
+  <text x="735" y="234" text-anchor="middle" fill="#92400e" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="20" font-weight="800">实时</text>
+  <text x="735" y="252" text-anchor="middle" fill="#64748b" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="10">毕业生发展追踪</text>
+  <rect x="620" y="270" width="230" height="36" rx="8" fill="#fef9c3"/>
+  <text x="735" y="293" text-anchor="middle" fill="#92400e" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="11" font-weight="600">从"不知道"到"实时追踪"</text>
 </svg>
