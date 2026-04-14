@@ -338,18 +338,21 @@ export default function UserDashboard() {
             </div>
             <div className="space-y-3">
               {recentActivities.map((activity) => (
-                <div key={activity.id} className="flex items-start gap-3 p-3 rounded-lg bg-gray-50">
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold shrink-0 ${activity.avatarColor}`}>
-                    {activity.avatar}
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="text-xs text-gray-900 mb-1">
-                      <span className="font-semibold">{activity.user}</span>{" "}
-                      {activity.action}
+                <Link key={activity.id} href={`/users/${activity.id}`} className="block">
+                  <div className="flex items-start gap-3 p-3 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors">
+                    <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold shrink-0 ${activity.avatarColor}`}>
+                      {activity.avatar}
                     </div>
-                    <div className="text-[10px] text-gray-400">{activity.time}</div>
+                    <div className="flex-1 min-w-0">
+                      <div className="text-xs text-gray-900 mb-1">
+                        <span className="font-semibold">{activity.user}</span>{" "}
+                        {activity.action}
+                      </div>
+                      <div className="text-[10px] text-gray-400">{activity.time}</div>
+                    </div>
+                    <IconChevronRight size={14} className="text-gray-300 shrink-0 mt-1" />
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </section>
