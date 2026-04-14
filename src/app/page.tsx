@@ -3,7 +3,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import BottomNav from "@/components/BottomNav";
-import { IconTasks, IconCircles, IconDiscover, IconProfile, IconChevronRight, IconTarget, IconGraduationCap, IconCoins, IconLightbulb, IconZap, IconUsers, IconTrophy, IconCheck, IconArrowRight } from "@/components/Icons";
+import { IconTasks, IconCircles, IconDiscover, IconProfile, IconChevronRight, IconTarget, IconGraduationCap, IconCoins, IconLightbulb, IconZap, IconUsers, IconTrophy, IconCheck, IconArrowRight, IconShopping, IconPlane, IconFactory, IconBookOpen, IconMessage, IconBriefcase, IconClock, IconCheckCircle } from "@/components/Icons";
 import { authUtils } from "@/lib/api";
 
 // 成功案例数据
@@ -16,9 +16,12 @@ const successStories = [
     badge: "已入职",
     badgeColor: "bg-[#2DD4A8]/10 text-[#14B88C]",
     story: "学完种草文案速成，2周后拿到小红书运营实习offer，月薪5.5K",
-    industry: "🎯 零售电商",
-    time: "⏱️ 2小时学习",
-    scholarship: "💰 ¥3,200奖学金",
+    industry: "零售电商",
+    industryIcon: IconTarget,
+    time: "2小时学习",
+    timeIcon: IconClock,
+    scholarship: "¥3,200奖学金",
+    scholarshipIcon: IconCoins,
   },
   {
     id: 2,
@@ -28,9 +31,12 @@ const successStories = [
     badge: "晋升中",
     badgeColor: "bg-violet-50 text-violet-600",
     story: "从微技能课到体系课，3个月后晋升内容主管，管理5人实习生团队",
-    industry: "🎯 零售电商",
-    time: "⏱️ 12小时学习",
-    scholarship: "💼 运营主管",
+    industry: "零售电商",
+    industryIcon: IconTarget,
+    time: "12小时学习",
+    timeIcon: IconClock,
+    scholarship: "运营主管",
+    scholarshipIcon: IconBriefcase,
   },
   {
     id: 3,
@@ -40,9 +46,12 @@ const successStories = [
     badge: "转行成功",
     badgeColor: "bg-blue-50 text-blue-600",
     story: "从机械专业转行文旅内容运营，现在负责旅行社小红书账号",
-    industry: "🎯 文旅行业",
-    time: "⏱️ 8小时学习",
-    scholarship: "💰 ¥2,800奖学金",
+    industry: "文旅行业",
+    industryIcon: IconTarget,
+    time: "8小时学习",
+    timeIcon: IconClock,
+    scholarship: "¥2,800奖学金",
+    scholarshipIcon: IconCoins,
   },
 ];
 
@@ -50,7 +59,8 @@ const successStories = [
 const industries = [
   {
     name: "零售电商",
-    icon: "🛍️",
+    icon: IconShopping,
+    iconColor: "text-[#2DD4A8]",
     color: "from-[#2DD4A8] to-[#14B88C]",
     description: "小红书种草、详情页文案、私域运营",
     jobs: "运营助理、内容策划、社群运营",
@@ -59,7 +69,8 @@ const industries = [
   },
   {
     name: "文旅行业",
-    icon: "✈️",
+    icon: IconPlane,
+    iconColor: "text-violet-500",
     color: "from-violet-500 to-purple-600",
     description: "旅行笔记、民宿文案、景区营销",
     jobs: "旅行博主、民宿运营、景区策划",
@@ -68,7 +79,8 @@ const industries = [
   },
   {
     name: "制造B2B",
-    icon: "🏭",
+    icon: IconFactory,
+    iconColor: "text-amber-500",
     color: "from-amber-500 to-orange-600",
     description: "产品详情页、1688文案、技术文档",
     jobs: "B2B文案、产品策划、技术支持",
@@ -79,10 +91,10 @@ const industries = [
 
 // 核心数据
 const stats = [
-  { value: "1,247", label: "活跃学员", icon: "👥" },
-  { value: "¥156K", label: "奖学金发放", icon: "💰" },
-  { value: "89%", label: "完课率", icon: "✅" },
-  { value: "21", label: "实训场景", icon: "🎯" },
+  { value: "1,247", label: "活跃学员", icon: IconUsers, iconColor: "text-blue-500" },
+  { value: "¥156K", label: "奖学金发放", icon: IconCoins, iconColor: "text-amber-500" },
+  { value: "89%", label: "完课率", icon: IconCheckCircle, iconColor: "text-[#2DD4A8]" },
+  { value: "21", label: "实训场景", icon: IconTarget, iconColor: "text-violet-500" },
 ];
 
 export default function LandingPage() {
@@ -213,13 +225,18 @@ export default function LandingPage() {
       <section className="py-12 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="text-3xl mb-2">{stat.icon}</div>
-                <div className="text-3xl md:text-4xl font-bold text-gray-900 mb-1">{stat.value}</div>
-                <div className="text-sm text-gray-500">{stat.label}</div>
-              </div>
-            ))}
+            {stats.map((stat, index) => {
+              const IconComponent = stat.icon;
+              return (
+                <div key={index} className="text-center">
+                  <div className="flex justify-center mb-2">
+                    <IconComponent size={32} className={stat.iconColor} />
+                  </div>
+                  <div className="text-3xl md:text-4xl font-bold text-gray-900 mb-1">{stat.value}</div>
+                  <div className="text-sm text-gray-500">{stat.label}</div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -314,11 +331,15 @@ export default function LandingPage() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {industries.map((industry, index) => (
-              <div key={index} className="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm hover:shadow-lg transition-all hover:-translate-y-1">
-                <div className="text-4xl mb-4">{industry.icon}</div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{industry.name}</h3>
-                <p className="text-gray-600 mb-4">{industry.description}</p>
+            {industries.map((industry, index) => {
+              const IconComponent = industry.icon;
+              return (
+                <div key={index} className="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm hover:shadow-lg transition-all hover:-translate-y-1">
+                  <div className="flex justify-center mb-4">
+                    <IconComponent size={48} className={industry.iconColor} />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">{industry.name}</h3>
+                  <p className="text-gray-600 mb-4">{industry.description}</p>
                 
                 <div className="space-y-3 mb-6">
                   <div>
@@ -343,7 +364,8 @@ export default function LandingPage() {
                   <IconArrowRight size={16} />
                 </button>
               </div>
-            ))}
+            );
+            })}
           </div>
         </div>
       </section>
@@ -376,9 +398,21 @@ export default function LandingPage() {
                 <p className="text-sm text-gray-600 mb-4 leading-relaxed">{story.story}</p>
 
                 <div className="space-y-2 text-xs text-gray-500 mb-4">
-                  <div>{story.industry}</div>
-                  <div>{story.time}</div>
-                  <div>{story.scholarship}</div>
+                  <div className="flex items-center gap-1.5">
+                    <IconTarget size={12} className="text-gray-400" />
+                    <span>{story.industry}</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <IconClock size={12} className="text-gray-400" />
+                    <span>{story.time}</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    {story.scholarship.includes('¥') ? (
+                      <><IconCoins size={12} className="text-gray-400" /><span>{story.scholarship}</span></>
+                    ) : (
+                      <><IconBriefcase size={12} className="text-gray-400" /><span>{story.scholarship}</span></>
+                    )}
+                  </div>
                 </div>
 
                 <div className="pt-4 border-t border-gray-100">
@@ -405,23 +439,28 @@ export default function LandingPage() {
 
           <div className="grid md:grid-cols-5 gap-6">
             {[
-              { step: "1", title: "微技能课速成", desc: "1-2小时掌握技能", icon: "🎯" },
-              { step: "2", title: "体系课进阶", desc: "10小时晋升主管", icon: "📚" },
-              { step: "3", title: "互评与反馈", desc: "持续进步成长", icon: "💬" },
-              { step: "4", title: "加入小组", desc: "社交学习互助", icon: "👥" },
-              { step: "5", title: "获得奖励", desc: "奖学金+荣誉", icon: "🏆" },
-            ].map((item) => (
-              <div key={item.step} className="bg-white rounded-xl p-6 border border-gray-100 shadow-sm text-center">
-                <div className="text-4xl mb-3">{item.icon}</div>
-                <div className="flex items-center justify-center gap-2 mb-2">
-                  <div className="w-6 h-6 rounded-full bg-[#2DD4A8] flex items-center justify-center text-white text-xs font-bold">
-                    {item.step}
+              { step: "1", title: "微技能课速成", desc: "1-2小时掌握技能", icon: IconTarget, iconColor: "text-[#2DD4A8]" },
+              { step: "2", title: "体系课进阶", desc: "10小时晋升主管", icon: IconBookOpen, iconColor: "text-blue-500" },
+              { step: "3", title: "互评与反馈", desc: "持续进步成长", icon: IconMessage, iconColor: "text-violet-500" },
+              { step: "4", title: "加入小组", desc: "社交学习互助", icon: IconUsers, iconColor: "text-amber-500" },
+              { step: "5", title: "获得奖励", desc: "奖学金+荣誉", icon: IconTrophy, iconColor: "text-rose-500" },
+            ].map((item, index) => {
+              const IconComponent = item.icon;
+              return (
+                <div key={index} className="bg-white rounded-xl p-6 border border-gray-100 shadow-sm text-center">
+                  <div className="flex justify-center mb-3">
+                    <IconComponent size={40} className={item.iconColor} />
                   </div>
-                  <h3 className="text-sm font-bold text-gray-900">{item.title}</h3>
+                  <div className="flex items-center justify-center gap-2 mb-2">
+                    <div className="w-6 h-6 rounded-full bg-[#2DD4A8] flex items-center justify-center text-white text-xs font-bold">
+                      {item.step}
+                    </div>
+                    <h3 className="text-sm font-bold text-gray-900">{item.title}</h3>
+                  </div>
+                  <p className="text-xs text-gray-500">{item.desc}</p>
                 </div>
-                <p className="text-xs text-gray-500">{item.desc}</p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
