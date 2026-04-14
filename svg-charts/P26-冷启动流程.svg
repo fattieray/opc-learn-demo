@@ -52,7 +52,7 @@
   <rect x="55" y="100" width="330" height="40" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1"/>
   <text x="220" y="125" text-anchor="middle" fill="#1e40af" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="12">能力体检吸引：焦虑+好奇驱动</text>
   <rect x="55" y="148" width="330" height="40" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1"/>
-  <text x="220" y="173" text-anchor="middle" fill="#1e40af" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="12">社交传播裂变："测一测你的能力值多少分"</text>
+  <text x="220" y="173" text-anchor="middle" fill="#1e40af" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="12">社交传播裂变：&ldquo;测一测你的能力值多少分&rdquo;</text>
   <rect x="55" y="196" width="330" height="40" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1"/>
   <text x="220" y="221" text-anchor="middle" fill="#1e40af" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="12">任务参与：碎片时间即可完成</text>
   <rect x="55" y="248" width="330" height="44" rx="8" fill="#dbeafe"/>

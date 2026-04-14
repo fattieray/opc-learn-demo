@@ -68,8 +68,8 @@
   <!-- 企业需求 -->
   <rect x="375" y="100" width="120" height="80" rx="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1"/>
   <text x="435" y="128" text-anchor="middle" fill="#166534" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="12" font-weight="600">企业需求</text>
-  <text x="435" y="148" text-anchor="middle" fill="#64748b" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="10">"需要做一套"</text>
-  <text x="435" y="164" text-anchor="middle" fill="#64748b" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="10">"营销方案"</text>
+  <text x="435" y="148" text-anchor="middle" fill="#64748b" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="10">&ldquo;需要做一套&rdquo;</text>
+  <text x="435" y="164" text-anchor="middle" fill="#64748b" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="10">&ldquo;营销方案&rdquo;</text>
   <!-- 拆解箭头 -->
   <line x1="500" y1="140" x2="540" y2="140" stroke="#22c55e" stroke-width="2" marker-end="url(#arrowG)"/>
   <!-- LLM拆解 -->

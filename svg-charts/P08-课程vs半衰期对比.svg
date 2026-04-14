@@ -49,7 +49,7 @@
   <rect x="180" y="195" width="140" height="100" rx="10" fill="#f59e0b" opacity="0.85" filter="url(#shadow)"/>
   <text x="250" y="235" text-anchor="middle" fill="#ffffff" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="24" font-weight="800" opacity="1">5-10年</text>
   <text x="250" y="265" text-anchor="middle" fill="#ffffff" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="13" font-weight="500" opacity="1">课程更新周期</text>
-  <text x="410" y="250" text-anchor="middle" fill="#e11d48" font-family="sans-serif" font-size="40" font-weight="800">≠</text>
+  <text x="410" y="250" text-anchor="middle" fill="#e11d48" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="40" font-weight="800">≠</text>
   <rect x="500" y="225" width="140" height="70" rx="10" fill="#e11d48" opacity="0.85" filter="url(#shadow)"/>
   <text x="570" y="260" text-anchor="middle" fill="#ffffff" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="24" font-weight="800" opacity="1">1.5-2年</text>
   <text x="570" y="285" text-anchor="middle" fill="#ffffff" font-family="system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="13" font-weight="500" opacity="1">技能半衰期</text>

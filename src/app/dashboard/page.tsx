@@ -1,8 +1,9 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import BottomNav from "@/components/BottomNav";
+import Onboarding from "@/components/Onboarding";
 import {
   IconTarget, IconClock, IconCoins, IconTrophy, IconTrendingUp,
   IconBookOpen, IconUsers, IconMessage, IconChevronRight, IconZap,
@@ -141,9 +142,25 @@ const recommendedCourses = [
 export default function UserDashboard() {
   const router = useRouter();
   const user = currentUser;
+  const [showOnboarding, setShowOnboarding] = useState(false);
+
+  useEffect(() => {
+    // Check if user has completed onboarding
+    const hasCompletedOnboarding = localStorage.getItem("onboarding_completed");
+    if (!hasCompletedOnboarding) {
+      setShowOnboarding(true);
+    }
+  }, []);
+
+  const handleOnboardingComplete = () => {
+    setShowOnboarding(false);
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 pb-20">
+      {/* Onboarding Modal */}
+      {showOnboarding && <Onboarding onComplete={handleOnboardingComplete} />}
+
       {/* Header with User Info */}
       <header className="bg-gradient-to-br from-[#2DD4A8] to-[#14B88C] text-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8">

@@ -365,7 +365,7 @@ export default function CirclesPage() {
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-1.5">
                           <div className="w-5 h-5 rounded-full bg-[#2DD4A8]/10 flex items-center justify-center text-[8px] font-bold text-[#14B88C]">{h.avatar}</div>
-                          <Link href={`/users/${h.userId}`} className="text-[10px] text-gray-500 hover:text-[#2DD4A8] transition-colors">{h.user}</Link> · {h.time}
+                          <span className="text-[10px] text-gray-500">{h.user} · {h.time}</span>
                         </div>
                         <button className="text-[10px] px-2 py-1 rounded-md bg-blue-50 text-blue-600 font-medium">我来答</button>
                       </div>

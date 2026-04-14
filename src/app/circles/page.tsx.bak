@@ -61,11 +61,11 @@ const feedTypeColors: Record<string, string> = {
 
 // Help board items
 const helpRequests = [
-  { id: "h1", userId: "user-jie", user: "阿杰", avatar: "杰", question: "种草文案的开头怎么写才能抓住注意力？", course: "小红书种草文案速成", courseId: "r-micro-01", answers: 1, time: "20分钟前", expertAnswered: true },
-  { id: "h2", userId: "user-lu", user: "小鹿", avatar: "鹿", question: "5感写作法的「触感」怎么融入旅行笔记？", course: "小红书旅行种草笔记速写", courseId: "t-micro-01", answers: 0, time: "1小时前", expertAnswered: false },
-  { id: "h3", userId: "user-cheng", user: "小程", avatar: "程", question: "B2B产品文案怎么避免太技术化？", course: "1688产品详情页文案速写", courseId: "m-micro-01", answers: 0, time: "2小时前", expertAnswered: false },
-  { id: "h4", userId: "user-lin", user: "小林", avatar: "林", question: "体系课的作业评分标准是什么？", course: "小红书内容运营全栈能力", courseId: "r-sys-01", answers: 2, time: "3小时前", expertAnswered: true },
-  { id: "h5", userId: "user-ming", user: "阿明", avatar: "明", question: "如何平衡文案的商业性和真实性？", course: "电商详情页卖点提炼", courseId: "r-micro-02", answers: 1, time: "5小时前", expertAnswered: false },
+  { id: "h1", user: "阿杰", avatar: "杰", question: "种草文案的开头怎么写才能抓住注意力？", course: "小红书种草文案速成", courseId: "r-micro-01", answers: 1, time: "20分钟前", expertAnswered: true },
+  { id: "h2", user: "小鹿", avatar: "鹿", question: "5感写作法的「触感」怎么融入旅行笔记？", course: "小红书旅行种草笔记速写", courseId: "t-micro-01", answers: 0, time: "1小时前", expertAnswered: false },
+  { id: "h3", user: "小程", avatar: "程", question: "B2B产品文案怎么避免太技术化？", course: "1688产品详情页文案速写", courseId: "m-micro-01", answers: 0, time: "2小时前", expertAnswered: false },
+  { id: "h4", user: "小林", avatar: "林", question: "体系课的作业评分标准是什么？", course: "小红书内容运营全栈能力", courseId: "r-sys-01", answers: 2, time: "3小时前", expertAnswered: true },
+  { id: "h5", user: "阿明", avatar: "明", question: "如何平衡文案的商业性和真实性？", course: "电商详情页卖点提炼", courseId: "r-micro-02", answers: 1, time: "5小时前", expertAnswered: false },
 ];
 
 // Onboarding steps for new users
@@ -365,7 +365,7 @@ export default function CirclesPage() {
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-1.5">
                           <div className="w-5 h-5 rounded-full bg-[#2DD4A8]/10 flex items-center justify-center text-[8px] font-bold text-[#14B88C]">{h.avatar}</div>
-                          <Link href={`/users/${h.userId}`} className="text-[10px] text-gray-500 hover:text-[#2DD4A8] transition-colors">{h.user}</Link> · {h.time}
+                          <span className="text-[10px] text-gray-500">{h.user} · {h.time}</span>
                         </div>
                         <button className="text-[10px] px-2 py-1 rounded-md bg-blue-50 text-blue-600 font-medium">我来答</button>
                       </div>
@@ -394,9 +394,7 @@ export default function CirclesPage() {
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-1.5 mb-0.5">
-                          <Link href={`/users/${item.userId}`} className="text-xs font-medium text-gray-900 hover:text-[#2DD4A8] transition-colors">
-                            {item.user}
-                          </Link>
+                          <span className="text-xs font-medium text-gray-900">{item.user}</span>
                           {item.role === "coach" && <span className="text-[8px] px-1 py-0.5 rounded bg-amber-50 text-amber-600 flex items-center gap-0.5"><IconBadgeCheck size={6} />教练</span>}
                           <span className="text-[10px] text-gray-300 ml-auto shrink-0">{item.time}</span>
                         </div>
