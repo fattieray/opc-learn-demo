@@ -53,8 +53,24 @@ log_success "系统: $OS $VER"
 # ==========================================
 log_info "步骤 2/8: 更新系统..."
 
-apt update -y
-apt upgrade -y
+# 检测包管理器
+if command -v apt &> /dev/null; then
+    # Debian/Ubuntu
+    apt update -y
+    apt upgrade -y
+    PKG_MANAGER="apt"
+elif command -v yum &> /dev/null; then
+    # CentOS/OpenCloudOS
+    yum update -y
+    PKG_MANAGER="yum"
+elif command -v dnf &> /dev/null; then
+    # Fedora/newer CentOS
+    dnf upgrade -y
+    PKG_MANAGER="dnf"
+else
+    log_error "无法识别包管理器"
+    exit 1
+fi
 
 log_success "系统更新完成"
 
@@ -63,16 +79,31 @@ log_success "系统更新完成"
 # ==========================================
 log_info "步骤 3/8: 安装基础软件..."
 
-# 安装必要工具
-apt install -y \
-    curl \
-    git \
-    wget \
-    unzip \
-    nginx \
-    certbot \
-    python3-certbot-nginx \
-    build-essential
+# 根据包管理器安装
+if [ "$PKG_MANAGER" = "apt" ]; then
+    # Debian/Ubuntu
+    apt install -y \
+        curl \
+        git \
+        wget \
+        unzip \
+        nginx \
+        certbot \
+        python3-certbot-nginx \
+        build-essential
+elif [ "$PKG_MANAGER" = "yum" ] || [ "$PKG_MANAGER" = "dnf" ]; then
+    # CentOS/OpenCloudOS
+    $PKG_MANAGER install -y \
+        curl \
+        git \
+        wget \
+        unzip \
+        nginx \
+        certbot \
+        gcc \
+        gcc-c++ \
+        make
+fi
 
 log_success "基础软件安装完成"
 
@@ -96,8 +127,14 @@ log_success "npm 版本: $(npm --version)"
 # ==========================================
 log_info "步骤 5/8: 安装 Python 环境..."
 
-# 安装 Python 和 pip
-apt install -y python3 python3-pip python3-venv
+# 根据系统安装 Python
+if [ "$PKG_MANAGER" = "apt" ]; then
+    apt install -y python3 python3-pip python3-venv
+elif [ "$PKG_MANAGER" = "yum" ] || [ "$PKG_MANAGER" = "dnf" ]; then
+    $PKG_MANAGER install -y python3 python3-pip
+    # CentOS 可能需要额外安装
+    $PKG_MANAGER install -y python3-devel || true
+fi
 
 # 安装 PM2（进程管理）
 npm install -g pm2
@@ -303,15 +340,23 @@ server {
 EOF
 
 # 启用配置
-ln -sf /etc/nginx/sites-available/opc-learn /etc/nginx/sites-enabled/opc-learn
-rm -f /etc/nginx/sites-enabled/default
+ln -sf /etc/nginx/sites-available/opc-learn /etc/nginx/sites-enabled/opc-learn 2>/dev/null || \
+    cp /etc/nginx/sites-available/opc-learn /etc/nginx/conf.d/opc-learn.conf
+rm -f /etc/nginx/sites-enabled/default 2>/dev/null || true
+rm -f /etc/nginx/conf.d/default.conf 2>/dev/null || true
 
 # 测试 Nginx 配置
 nginx -t
 
 # 重启 Nginx
-systemctl restart nginx
-systemctl enable nginx
+if [ "$PKG_MANAGER" = "apt" ]; then
+    systemctl restart nginx
+    systemctl enable nginx
+else
+    # CentOS/OpenCloudOS
+    systemctl restart nginx
+    systemctl enable nginx
+fi
 
 log_success "Nginx 配置完成"
 
