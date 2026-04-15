@@ -71,18 +71,18 @@ export default function CertificatePage() {
                   </span>
                 </div>
                 <div className="text-base font-bold text-gray-900 mb-1">{cert.courseTitle}</div>
-                <div className="text-xs text-gray-400">认证编号：{cert.certNo}</div>
+                <div className="text-xs text-gray-500">认证编号：{cert.certNo}</div>
               </div>
 
               {/* Score & Skills */}
               <div className="px-5 py-4 border-t border-gray-50">
                 <div className="flex items-center justify-between mb-3">
                   <div>
-                    <div className="text-[10px] text-gray-400">综合评分</div>
+                    <div className="text-[10px] text-gray-500">综合评分</div>
                     <div className={`text-3xl font-bold ${scoreColor}`}>{cert.score}</div>
                   </div>
                   <div className="text-right">
-                    <div className="text-[10px] text-gray-400">等级</div>
+                    <div className="text-[10px] text-gray-500">等级</div>
                     <div className={`text-lg font-bold ${scoreColor}`}>{cert.level}</div>
                   </div>
                 </div>
@@ -93,7 +93,7 @@ export default function CertificatePage() {
                     </span>
                   ))}
                 </div>
-                <div className="flex items-center justify-between text-[10px] text-gray-400">
+                <div className="flex items-center justify-between text-[10px] text-gray-500">
                   <span>颁发方：{cert.issuer}</span>
                   <span>{cert.issuedAt}</span>
                 </div>
@@ -118,7 +118,7 @@ export default function CertificatePage() {
             <IconTrophy size={24} className="text-amber-500" />
           </div>
           <div className="text-sm font-medium text-gray-700 mb-1">继续学习，获得更多认证</div>
-          <div className="text-xs text-gray-400 mb-4">完成课程且评分≥60分即可获得技能认证卡</div>
+          <div className="text-xs text-gray-500 mb-4">完成课程且评分≥60分即可获得技能认证卡</div>
           <Link
             href="/courses"
             className="inline-block text-xs font-medium px-4 py-2 rounded-lg bg-[#2DD4A8] text-white"

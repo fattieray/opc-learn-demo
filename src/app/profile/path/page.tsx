@@ -147,7 +147,7 @@ export default function PathPage() {
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
                     <span className="text-[10px] px-1.5 py-0.5 rounded bg-gray-100 text-gray-500">{milestone.phase}</span>
-                    <span className="text-[10px] text-gray-400">{milestone.duration}</span>
+                    <span className="text-[10px] text-gray-500">{milestone.duration}</span>
                   </div>
                   <div className="text-sm font-semibold text-gray-900 mb-1">{milestone.title}</div>
                   <div className="text-xs text-gray-500">{milestone.goal}</div>
@@ -173,7 +173,7 @@ export default function PathPage() {
                       }`} />
                       <div className="flex-1">
                         <div className="text-xs text-gray-900">{course.title}</div>
-                        <div className="text-[10px] text-gray-400">
+                        <div className="text-[10px] text-gray-500">
                           {course.status === "completed" && `已完成 · ${course.hours}小时 · ${course.score}分`}
                           {course.status === "in-progress" && `进行中 · ${course.progress}% · ${course.hours}小时`}
                           {course.status === "locked" && `未解锁 · ${course.hours}小时`}
@@ -187,7 +187,7 @@ export default function PathPage() {
 
               {/* Milestone progress */}
               <div className="mt-3 pt-3 border-t border-gray-100">
-                <div className="flex items-center justify-between text-[10px] text-gray-400 mb-1">
+                <div className="flex items-center justify-between text-[10px] text-gray-500 mb-1">
                   <span>阶段进度</span>
                   <span>{milestone.completedHours}/{milestone.totalHours}小时</span>
                 </div>
@@ -221,7 +221,7 @@ export default function PathPage() {
                   <div className="flex items-center justify-between mb-1">
                     <span className="text-xs text-gray-700">{sg.skill}</span>
                     <span className="text-[10px]">
-                      <span className="text-gray-400">{sg.from}</span>
+                      <span className="text-gray-500">{sg.from}</span>
                       <span className="text-gray-300 mx-1">→</span>
                       <span className="text-[#2DD4A8] font-medium">{sg.to}</span>
                     </span>
@@ -229,7 +229,7 @@ export default function PathPage() {
                   <div className="relative h-2 bg-gray-100 rounded-full overflow-hidden">
                     <div className="h-full bg-gradient-to-r from-[#2DD4A8]/40 to-[#2DD4A8] rounded-full" style={{ width: `${Math.min(progress, 100)}%` }} />
                   </div>
-                  <div className="flex justify-between text-[10px] text-gray-400 mt-0.5">
+                  <div className="flex justify-between text-[10px] text-gray-500 mt-0.5">
                     <span>当前 {current}</span>
                     <span>目标 {sg.to}</span>
                   </div>
@@ -258,7 +258,7 @@ export default function PathPage() {
                   <div className="flex items-start gap-3 py-3 border-b border-gray-50 last:border-0">
                     <div className="flex flex-col items-center shrink-0">
                       <div className={`w-7 h-7 rounded-full flex items-center justify-center ${
-                        completed ? "bg-[#2DD4A8] text-white" : current ? "bg-[#2DD4A8]/20 text-[#2DD4A8]" : "bg-gray-100 text-gray-400"
+                        completed ? "bg-[#2DD4A8] text-white" : current ? "bg-[#2DD4A8]/20 text-[#2DD4A8]" : "bg-gray-100 text-gray-500"
                       }`}>
                         {completed ? <IconCheck size={14} /> : <span className="text-xs font-medium">{i + 1}</span>}
                       </div>
@@ -267,11 +267,11 @@ export default function PathPage() {
                       )}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <div className={`text-sm ${completed ? "text-gray-400 line-through" : current ? "text-gray-900 font-medium" : "text-gray-500"}`}>
+                      <div className={`text-sm ${completed ? "text-gray-500 line-through" : current ? "text-gray-900 font-medium" : "text-gray-500"}`}>
                         {title}
                       </div>
                       {task && (
-                        <div className="flex items-center gap-2 mt-1 text-[10px] text-gray-400">
+                        <div className="flex items-center gap-2 mt-1 text-[10px] text-gray-500">
                           <span className="flex items-center gap-0.5"><IconClock size={9} />{task.estimatedMinutes}分钟</span>
                           <span>{task.resources.length}篇文档</span>
                           <span>{task.assignments.length}个作业</span>
@@ -301,11 +301,11 @@ export default function PathPage() {
               return (
                 <div key={level} className="flex flex-col items-center gap-1 flex-1">
                   <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${
-                    isPast ? "bg-[#2DD4A8] text-white" : isActive ? "bg-amber-100 text-amber-700 ring-2 ring-amber-300" : "bg-gray-100 text-gray-400"
+                    isPast ? "bg-[#2DD4A8] text-white" : isActive ? "bg-amber-100 text-amber-700 ring-2 ring-amber-300" : "bg-gray-100 text-gray-500"
                   }`}>
                     {i + 1}
                   </div>
-                  <div className={`text-[10px] ${isActive ? "font-bold text-amber-700" : isPast ? "text-[#2DD4A8]" : "text-gray-400"}`}>
+                  <div className={`text-[10px] ${isActive ? "font-bold text-amber-700" : isPast ? "text-[#2DD4A8]" : "text-gray-500"}`}>
                     {honorLevelNames[level]}
                   </div>
                 </div>

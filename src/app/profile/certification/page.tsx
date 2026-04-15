@@ -63,7 +63,7 @@ export default function CertificationHubPage() {
           </Link>
           <div className="flex-1">
             <div className="text-base font-bold text-gray-900">认证中心</div>
-            <div className="text-[10px] text-gray-400">学习 → 认证 → 就业 · 三级认证体系</div>
+            <div className="text-[10px] text-gray-500">学习 → 认证 → 就业 · 三级认证体系</div>
           </div>
         </div>
       </div>
@@ -80,19 +80,19 @@ export default function CertificationHubPage() {
             <div className="flex-1 text-center p-2 rounded-lg bg-[#2DD4A8]/10 border border-[#2DD4A8]/20">
               <IconZap size={16} className="text-[#2DD4A8] mx-auto mb-1" />
               <div className="text-[10px] font-semibold text-gray-700">学习练习</div>
-              <div className="text-[9px] text-gray-400">课程认证</div>
+              <div className="text-[9px] text-gray-500">课程认证</div>
             </div>
             <IconChevronRight size={14} className="text-gray-300 shrink-0" />
             <div className="flex-1 text-center p-2 rounded-lg bg-blue-50 border border-blue-200/30">
               <IconCertification size={16} className="text-blue-500 mx-auto mb-1" />
               <div className="text-[10px] font-semibold text-gray-700">认证评估</div>
-              <div className="text-[9px] text-gray-400">OPC认证</div>
+              <div className="text-[9px] text-gray-500">OPC认证</div>
             </div>
             <IconChevronRight size={14} className="text-gray-300 shrink-0" />
             <div className="flex-1 text-center p-2 rounded-lg bg-violet-50 border border-violet-200/30">
               <IconGraduationCap size={16} className="text-violet-500 mx-auto mb-1" />
               <div className="text-[10px] font-semibold text-gray-700">国家考试</div>
-              <div className="text-[9px] text-gray-400">工信部认证</div>
+              <div className="text-[9px] text-gray-500">工信部认证</div>
             </div>
           </div>
         </div>
@@ -144,7 +144,7 @@ export default function CertificationHubPage() {
               <span className="text-sm font-semibold text-gray-900">{cfg.name}</span>
               <span className="text-[10px] px-1.5 py-0.5 rounded" style={{ backgroundColor: cfg.bgColor, color: cfg.color }}>{cfg.label}</span>
             </div>
-            <p className="text-[10px] text-gray-400 mb-3 -mt-1 ml-8">{cfg.desc}</p>
+            <p className="text-[10px] text-gray-500 mb-3 -mt-1 ml-8">{cfg.desc}</p>
 
             {/* Cert cards */}
             <div className="space-y-3">
@@ -179,13 +179,13 @@ export default function CertificationHubPage() {
                             {!isMyIndustry && <span className="text-[10px] text-gray-300">其他方向</span>}
                           </div>
                           <div className={`text-sm font-semibold ${isEarned || isInProgress ? "text-gray-900" : "text-gray-500"}`}>{cert.name}</div>
-                          <div className="text-[10px] text-gray-400 mt-0.5">{cert.description}</div>
+                          <div className="text-[10px] text-gray-500 mt-0.5">{cert.description}</div>
                         </div>
                       </div>
 
                       {/* Assessment details */}
                       <div className="mt-3 pt-3 border-t border-gray-50">
-                        <div className="flex items-center gap-4 text-[10px] text-gray-400">
+                        <div className="flex items-center gap-4 text-[10px] text-gray-500">
                           <span className="flex items-center gap-1">
                             {cert.assessmentType === "auto" ? <IconZap size={10} /> :
                              cert.assessmentType === "portfolio" ? <IconCertification size={10} /> :
@@ -209,7 +209,7 @@ export default function CertificationHubPage() {
                                     <span className="text-[11px] font-medium text-gray-800">{coach.userId === "coach-lin" ? "林雪" : coach.userId === "coach-chen" ? "陈野" : "赵工"}</span>
                                     <span className="text-[9px] px-1 py-0.5 rounded bg-blue-100 text-blue-600 flex items-center gap-0.5"><IconBadgeCheck size={8} />认证教练</span>
                                   </div>
-                                  <div className="text-[9px] text-gray-400 mt-0.5">已完成 {coach.stats.reviewsCompleted} 次评审 · 评分 {coach.stats.avgRating}</div>
+                                  <div className="text-[9px] text-gray-500 mt-0.5">已完成 {coach.stats.reviewsCompleted} 次评审 · 评分 {coach.stats.avgRating}</div>
                                 </div>
                                 <div className="text-[10px] text-blue-500 font-medium">¥50-100/次</div>
                               </div>
@@ -249,7 +249,7 @@ export default function CertificationHubPage() {
                       {cert.relatedPositions.length > 0 && (isEarned || isInProgress) && (
                         <div className="mt-3 pt-3 border-t border-gray-50">
                           <div className="flex items-center gap-1 mb-2">
-                            <IconBriefcase size={12} className="text-gray-400" />
+                            <IconBriefcase size={12} className="text-gray-500" />
                             <span className="text-[10px] font-medium text-gray-500">认证可衔接岗位</span>
                           </div>
                           <div className="space-y-1.5">
@@ -298,12 +298,12 @@ export default function CertificationHubPage() {
           <div className="mt-3 flex items-center gap-2">
             <div className="flex-1 text-center py-2 rounded-lg bg-blue-500/10 border border-blue-200/30">
               <div className="text-[10px] text-blue-600 font-medium">OPC认证</div>
-              <div className="text-[9px] text-gray-400">作品集审核</div>
+              <div className="text-[9px] text-gray-500">作品集审核</div>
             </div>
             <IconChevronRight size={14} className="text-gray-300" />
             <div className="flex-1 text-center py-2 rounded-lg bg-violet-500/10 border border-violet-200/30">
               <div className="text-[10px] text-violet-600 font-medium">工信部认证</div>
-              <div className="text-[9px] text-gray-400">闭卷机考</div>
+              <div className="text-[9px] text-gray-500">闭卷机考</div>
             </div>
           </div>
         </div>

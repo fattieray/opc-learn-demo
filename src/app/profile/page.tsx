@@ -119,7 +119,7 @@ export default function ProfilePage() {
     return (
       <div className="min-h-screen bg-[#f9fafb] flex items-center justify-center">
         <div className="text-center">
-          <div className="text-gray-400 mb-2">加载中...</div>
+          <div className="text-gray-500 mb-2">加载中...</div>
         </div>
       </div>
     );
@@ -170,7 +170,7 @@ export default function ProfilePage() {
               <div className="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center mx-auto mb-1">
                 <IconZap size={14} className="text-amber-600" />
               </div>
-              <div className="text-[10px] text-gray-400">当前</div>
+              <div className="text-[10px] text-gray-500">当前</div>
               <div className="text-[11px] font-semibold text-amber-700">微技能课</div>
               <div className="text-[9px] text-amber-500">{completedInPath}/{myPath.taskIds.length}</div>
             </div>
@@ -183,8 +183,8 @@ export default function ProfilePage() {
               <div className="w-8 h-8 rounded-full bg-violet-50 flex items-center justify-center mx-auto mb-1">
                 <IconShield size={14} className="text-violet-300" />
               </div>
-              <div className="text-[10px] text-gray-400">进阶</div>
-              <div className="text-[11px] font-medium text-gray-400">体系课</div>
+              <div className="text-[10px] text-gray-500">进阶</div>
+              <div className="text-[11px] font-medium text-gray-500">体系课</div>
               <div className="text-[9px] text-gray-300">待解锁</div>
             </div>
             {/* 箭头 */}
@@ -194,16 +194,16 @@ export default function ProfilePage() {
             {/* 职业目标 */}
             <div className="flex-1 text-center p-2.5 rounded-lg bg-gray-50 border border-gray-100">
               <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center mx-auto mb-1">
-                <IconBriefcase size={14} className="text-gray-400" />
+                <IconBriefcase size={14} className="text-gray-500" />
               </div>
-              <div className="text-[10px] text-gray-400">目标</div>
+              <div className="text-[10px] text-gray-500">目标</div>
               <div className="text-[11px] font-medium text-gray-600">{sysCourse?.careerGrowth?.title || "运营主管"}</div>
-              <div className="text-[9px] text-gray-400">{sysCourse?.careerGrowth?.salaryRange || "10k+"}</div>
+              <div className="text-[9px] text-gray-500">{sysCourse?.careerGrowth?.salaryRange || "10k+"}</div>
             </div>
           </div>
           <div className="mt-3 pt-3 border-t border-gray-50 flex items-center justify-between text-[10px]">
-            <span className="text-gray-400">入行：<span className="text-amber-600 font-medium">{microCourses[0]?.career?.salaryRange || "4k-7k"}</span></span>
-            <span className="text-gray-400">进阶：<span className="text-violet-600 font-medium">{sysCourse?.careerGrowth?.salaryRange || "12k-20k"}</span></span>
+            <span className="text-gray-500">入行：<span className="text-amber-600 font-medium">{microCourses[0]?.career?.salaryRange || "4k-7k"}</span></span>
+            <span className="text-gray-500">进阶：<span className="text-violet-600 font-medium">{sysCourse?.careerGrowth?.salaryRange || "12k-20k"}</span></span>
           </div>
         </div>
 
@@ -212,19 +212,19 @@ export default function ProfilePage() {
           <div className="grid grid-cols-4 gap-2 text-center">
             <div>
               <div className="text-lg font-bold text-gray-900">{currentUser.tasksCompleted}</div>
-              <div className="text-[9px] text-gray-400">完成课程</div>
+              <div className="text-[9px] text-gray-500">完成课程</div>
             </div>
             <div>
               <div className="text-lg font-bold text-amber-600">¥{currentUser.scholarshipsEarned}</div>
-              <div className="text-[9px] text-gray-400">奖学金</div>
+              <div className="text-[9px] text-gray-500">奖学金</div>
             </div>
             <div>
               <div className="text-lg font-bold text-[#2DD4A8]">{currentUser.honorPoints}</div>
-              <div className="text-[9px] text-gray-400">荣誉积分</div>
+              <div className="text-[9px] text-gray-500">荣誉积分</div>
             </div>
             <div>
               <div className="text-lg font-bold text-blue-600">{mySquads.length}</div>
-              <div className="text-[9px] text-gray-400">学习小组</div>
+              <div className="text-[9px] text-gray-500">学习小组</div>
             </div>
           </div>
         </div>
@@ -237,7 +237,7 @@ export default function ProfilePage() {
           <div className="flex items-center gap-2 mb-3">
             <IconTarget size={16} className="text-[#2DD4A8]" />
             <span className="text-sm font-semibold text-gray-900">能力成长</span>
-            <span className="text-[10px] text-gray-400 ml-auto">实习门槛 40分 · 主管门槛 70分</span>
+            <span className="text-[10px] text-gray-500 ml-auto">实习门槛 40分 · 主管门槛 70分</span>
           </div>
           <div className="space-y-3">
             {currentUser.skills.map((skill) => {
@@ -254,7 +254,7 @@ export default function ProfilePage() {
                       {isManagerReady && <span className="text-[8px] px-1 py-0.5 rounded bg-violet-50 text-violet-600">达主管线</span>}
                     </div>
                     <span className="text-[10px]">
-                      <span className={`font-medium ${isInternReady ? "text-[#2DD4A8]" : "text-gray-400"}`}>{skill.score}</span>
+                      <span className={`font-medium ${isInternReady ? "text-[#2DD4A8]" : "text-gray-500"}`}>{skill.score}</span>
                       <span className="text-gray-200">/100</span>
                     </span>
                   </div>
@@ -308,7 +308,7 @@ export default function ProfilePage() {
               <div className="h-full bg-gradient-to-r from-blue-300 to-blue-500 rounded-full" style={{ width: `${((currentUser.honorPoints - 100) / 399) * 100}%` }} />
             )}
           </div>
-          <div className="flex justify-between text-[10px] text-gray-400">
+          <div className="flex justify-between text-[10px] text-gray-500">
             <span>{honorLevelNames[currentUser.honorLevel]}</span>
             {currentUser.honorLevel === "rookie" && <span>距学徒还需 {100 - currentUser.honorPoints} 分</span>}
             {currentUser.honorLevel === "apprentice" && <span>距匠人还需 {500 - currentUser.honorPoints} 分</span>}
@@ -335,13 +335,13 @@ export default function ProfilePage() {
               <div key={i} className="flex items-start gap-3">
                 <div className="flex flex-col items-center shrink-0">
                   <div className={`w-6 h-6 rounded-full flex items-center justify-center ${m.done ? "bg-[#2DD4A8]" : "bg-gray-100"}`}>
-                    {m.done ? <IconCheck size={12} className="text-white" /> : (() => { const Mc = milestoneIconMap[m.icon]; return Mc ? <Mc size={12} className="text-gray-400" /> : <span className="text-[8px] text-gray-400">{i + 1}</span>; })()}
+                    {m.done ? <IconCheck size={12} className="text-white" /> : (() => { const Mc = milestoneIconMap[m.icon]; return Mc ? <Mc size={12} className="text-gray-500" /> : <span className="text-[8px] text-gray-500">{i + 1}</span>; })()}
                   </div>
                   {i < 4 && <div className={`w-0.5 h-5 ${m.done ? "bg-[#2DD4A8]/30" : "bg-gray-100"}`} />}
                 </div>
                 <div className="pb-3">
                   <div className={`text-xs ${m.done ? "text-gray-900 font-medium" : "text-gray-500"}`}>{m.label}</div>
-                  <div className="text-[10px] text-gray-400">{m.desc}</div>
+                  <div className="text-[10px] text-gray-500">{m.desc}</div>
                   {m.done && <div className="text-[10px] text-[#2DD4A8] mt-0.5">✓ {m.date}</div>}
                 </div>
               </div>
@@ -358,7 +358,7 @@ export default function ProfilePage() {
           <div className="space-y-3">
             {growthLog.map((day) => (
               <div key={day.date}>
-                <div className="text-[10px] font-medium text-gray-400 mb-1.5">{day.date}</div>
+                <div className="text-[10px] font-medium text-gray-500 mb-1.5">{day.date}</div>
                 <div className="space-y-1">
                   {day.events.map((evt, i) => (
                     <div key={i} className="text-xs text-gray-600 pl-3 border-l-2 border-[#2DD4A8]/20">{evt}</div>
@@ -377,13 +377,13 @@ export default function ProfilePage() {
           <div className="text-xs font-semibold text-gray-500 mb-2">学习相关</div>
           <div className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
             <Link href="/profile/path" className="flex items-center gap-3 px-4 py-3.5 border-b border-gray-50 hover:bg-gray-50">
-              <IconMap size={16} className="text-gray-400" />
+              <IconMap size={16} className="text-gray-500" />
               <span className="text-sm text-gray-700 flex-1">学习路径</span>
-              <span className="text-[10px] text-gray-400 mr-1">{myPath.title}</span>
+              <span className="text-[10px] text-gray-500 mr-1">{myPath.title}</span>
               <IconChevronRight size={16} className="text-gray-300" />
             </Link>
             <Link href="/profile/notes" className="flex items-center gap-3 px-4 py-3.5 hover:bg-gray-50">
-              <IconBookmark size={16} className="text-gray-400" />
+              <IconBookmark size={16} className="text-gray-500" />
               <span className="text-sm text-gray-700 flex-1">我的收藏</span>
               <IconChevronRight size={16} className="text-gray-300" />
             </Link>
@@ -395,20 +395,20 @@ export default function ProfilePage() {
           <div className="text-xs font-semibold text-gray-500 mb-2">认证相关</div>
           <div className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
             <Link href="/profile/certification" className="flex items-center gap-3 px-4 py-3.5 border-b border-gray-50 hover:bg-gray-50">
-              <IconCertification size={16} className="text-gray-400" />
+              <IconCertification size={16} className="text-gray-500" />
               <span className="text-sm text-gray-700 flex-1">认证中心</span>
               <span className="text-[10px] text-[#2DD4A8] mr-1">{earnedCerts}张已获</span>
               {inProgressCerts > 0 && <span className="text-[10px] text-blue-500 mr-1">{inProgressCerts}项准备中</span>}
               <IconChevronRight size={16} className="text-gray-300" />
             </Link>
             <Link href="/profile/certificate" className="flex items-center gap-3 px-4 py-3.5 border-b border-gray-50 hover:bg-gray-50">
-              <IconTrophy size={16} className="text-gray-400" />
+              <IconTrophy size={16} className="text-gray-500" />
               <span className="text-sm text-gray-700 flex-1">我的证书</span>
-              <span className="text-[10px] text-gray-400 mr-1">{userCertifications.filter(c => c.status === "earned").length}张</span>
+              <span className="text-[10px] text-gray-500 mr-1">{userCertifications.filter(c => c.status === "earned").length}张</span>
               <IconChevronRight size={16} className="text-gray-300" />
             </Link>
             <div className="flex items-center gap-3 px-4 py-3.5 border-b border-gray-50 hover:bg-gray-50">
-              <IconCoins size={16} className="text-gray-400" />
+              <IconCoins size={16} className="text-gray-500" />
               <span className="text-sm text-gray-700 flex-1">奖学金记录</span>
               <span className="text-[10px] text-amber-600 mr-1">¥{scholarshipHistory.reduce((sum, s) => sum + s.amount, 0)}</span>
               <IconChevronRight size={16} className="text-gray-300" />

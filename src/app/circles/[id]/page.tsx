@@ -37,7 +37,7 @@ export default function CircleDetailPage({ params }: { params: Promise<{ id: str
     return (
       <div className="min-h-screen bg-[#f9fafb] flex items-center justify-center">
         <div className="text-center">
-          <div className="text-gray-400 mb-2">小组不存在</div>
+          <div className="text-gray-500 mb-2">小组不存在</div>
           <Link href="/circles" className="text-[#2DD4A8] text-sm">返回学习圈</Link>
         </div>
       </div>
@@ -77,7 +77,7 @@ export default function CircleDetailPage({ params }: { params: Promise<{ id: str
           </Link>
           <div className="flex-1 min-w-0">
             <div className="text-base font-bold text-gray-900 truncate">{squad.name}</div>
-            <div className="text-[10px] text-gray-400 truncate">{squad.taskTitle}</div>
+            <div className="text-[10px] text-gray-500 truncate">{squad.taskTitle}</div>
           </div>
           <span className={`text-[10px] px-1.5 py-0.5 rounded shrink-0 ${statusColors[squad.status]}`}>
             {statusNames[squad.status]}
@@ -97,7 +97,7 @@ export default function CircleDetailPage({ params }: { params: Promise<{ id: str
                 className={`flex-1 flex items-center justify-center gap-1 py-2.5 text-xs font-medium border-b-2 transition-colors ${
                   activeTab === tab.key
                     ? "text-[#2DD4A8] border-[#2DD4A8]"
-                    : "text-gray-400 border-transparent"
+                    : "text-gray-500 border-transparent"
                 }`}
               >
                 <Ic size={14} />
@@ -122,7 +122,7 @@ export default function CircleDetailPage({ params }: { params: Promise<{ id: str
             <div className="bg-white rounded-xl p-4 border border-gray-100 shadow-sm">
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 rounded-full bg-[#2DD4A8] flex items-center justify-center text-white text-xs font-bold">林</div>
-                <div className="flex-1 bg-gray-50 rounded-lg px-3 py-2 text-xs text-gray-400 flex items-center justify-between">
+                <div className="flex-1 bg-gray-50 rounded-lg px-3 py-2 text-xs text-gray-500 flex items-center justify-between">
                   <span>分享你的想法或问题...</span>
                   <IconSend size={14} className="text-gray-300" />
                 </div>
@@ -166,10 +166,10 @@ export default function CircleDetailPage({ params }: { params: Promise<{ id: str
                       {post.content}
                     </div>
                     <div className="flex items-center gap-4 mt-3">
-                      <button className="flex items-center gap-1 text-[10px] text-gray-400 hover:text-[#2DD4A8] transition-colors">
+                      <button className="flex items-center gap-1 text-[10px] text-gray-500 hover:text-[#2DD4A8] transition-colors">
                         <IconThumbsUp size={12} />{post.likeCount} 赞
                       </button>
-                      <button className="flex items-center gap-1 text-[10px] text-gray-400 hover:text-[#2DD4A8] transition-colors">
+                      <button className="flex items-center gap-1 text-[10px] text-gray-500 hover:text-[#2DD4A8] transition-colors">
                         <IconMessage size={12} />{post.commentCount} 回复
                       </button>
                     </div>
@@ -195,7 +195,7 @@ export default function CircleDetailPage({ params }: { params: Promise<{ id: str
                       <span className="font-medium text-sm text-gray-900">{m.name}</span>
                       <span className="text-[10px] px-1.5 py-0.5 rounded bg-amber-50 text-amber-600">教练</span>
                     </div>
-                    <div className="text-xs text-gray-400">指导小组学习，点评作业</div>
+                    <div className="text-xs text-gray-500">指导小组学习，点评作业</div>
                   </div>
                 </div>
               </div>
@@ -210,14 +210,14 @@ export default function CircleDetailPage({ params }: { params: Promise<{ id: str
                   </div>
                   <div className="flex-1">
                     <div className="font-medium text-sm text-gray-900">{m.name}</div>
-                    <div className="text-[10px] text-gray-400">
+                    <div className="text-[10px] text-gray-500">
                       {m.score !== undefined ? `当前评分：${m.score}分` : "暂无评分"}
                     </div>
                   </div>
                   {m.score !== undefined && squad.status === "reviewing" && (
                     <div className="text-right">
                       <div className="text-sm font-bold text-[#2DD4A8]">{m.score}</div>
-                      <div className="text-[10px] text-gray-400">当前评分</div>
+                      <div className="text-[10px] text-gray-500">当前评分</div>
                     </div>
                   )}
                 </div>
@@ -244,8 +244,8 @@ export default function CircleDetailPage({ params }: { params: Promise<{ id: str
                   { label: "教练点评", done: squad.status === "completed" },
                   { label: "奖金分配", done: squad.status === "completed" },
                 ].map((step, i) => {
-                  const stepCls = step.done ? "bg-[#2DD4A8] text-white" : step.current ? "bg-amber-100 text-amber-600" : "bg-gray-100 text-gray-400";
-                  const labelCls = step.done ? "text-gray-700" : step.current ? "text-amber-600 font-medium" : "text-gray-400";
+                  const stepCls = step.done ? "bg-[#2DD4A8] text-white" : step.current ? "bg-amber-100 text-amber-600" : "bg-gray-100 text-gray-500";
+                  const labelCls = step.done ? "text-gray-700" : step.current ? "text-amber-600 font-medium" : "text-gray-500";
                   return (
                   <div key={step.label} className="flex items-center gap-3">
                     <div className={`w-6 h-6 rounded-full flex items-center justify-center shrink-0 ${stepCls}`}>
@@ -267,12 +267,12 @@ export default function CircleDetailPage({ params }: { params: Promise<{ id: str
             {task && task.assignments.length > 0 && (
               <div className="bg-white rounded-xl p-4 border border-gray-100 shadow-sm">
                 <div className="text-sm font-semibold text-gray-900 mb-3">成员作业评分</div>
-                <div className="text-[10px] text-gray-400 mb-2">作业得分 = 同伴评分×40% + 教练评分×60%</div>
+                <div className="text-[10px] text-gray-500 mb-2">作业得分 = 同伴评分×40% + 教练评分×60%</div>
                 {/* Header row */}
                 <div className="flex items-center gap-2 pb-2 border-b border-gray-100">
                   <div className="w-16 text-[10px] text-gray-500 font-medium">成员</div>
                   {task.assignments.map((asgn) => (
-                    <div key={asgn.id} className="flex-1 text-[10px] text-gray-400 text-center truncate">{asgn.title.slice(0, 4)}</div>
+                    <div key={asgn.id} className="flex-1 text-[10px] text-gray-500 text-center truncate">{asgn.title.slice(0, 4)}</div>
                   ))}
                   <div className="w-12 text-[10px] text-gray-500 font-medium text-center">综合</div>
                 </div>
@@ -314,7 +314,7 @@ export default function CircleDetailPage({ params }: { params: Promise<{ id: str
                   <IconClipboardCheck size={16} className="text-amber-500" />
                   <span className="text-sm font-semibold text-gray-900">待点评作业</span>
                 </div>
-                <div className="text-[10px] text-gray-400 mb-2">互评是强制性的——给出优质点评也能获得积分</div>
+                <div className="text-[10px] text-gray-500 mb-2">互评是强制性的——给出优质点评也能获得积分</div>
                 {squad.members
                   .filter((m) => m.role === "learner" && m.userId !== "user-lin")
                   .map((m) => (
@@ -334,7 +334,7 @@ export default function CircleDetailPage({ params }: { params: Promise<{ id: str
               <div className="flex items-center gap-2 mb-3">
                 <IconUsers size={16} className="text-[#2DD4A8]" />
                 <span className="text-sm font-semibold text-gray-900">学员进度管理</span>
-                <span className="text-[10px] text-gray-400 ml-auto">教练视角</span>
+                <span className="text-[10px] text-gray-500 ml-auto">教练视角</span>
               </div>
               <div className="space-y-2">
                 {squad.members.filter((m) => m.role === "learner").map((m) => {
@@ -342,7 +342,7 @@ export default function CircleDetailPage({ params }: { params: Promise<{ id: str
                   const totalAssignments = task?.assignments.length || 3;
                   const progressPct = totalAssignments > 0 ? Math.round((submittedCount / totalAssignments) * 100) : 0;
                   const statusLabel = submittedCount === totalAssignments ? "已全部提交" : submittedCount > 0 ? "进行中" : "未开始";
-                  const statusColor = submittedCount === totalAssignments ? "text-green-600 bg-green-50" : submittedCount > 0 ? "text-amber-600 bg-amber-50" : "text-gray-400 bg-gray-50";
+                  const statusColor = submittedCount === totalAssignments ? "text-green-600 bg-green-50" : submittedCount > 0 ? "text-amber-600 bg-amber-50" : "text-gray-500 bg-gray-50";
                   return (
                     <div key={m.userId} className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-50">
                       <div className="w-7 h-7 rounded-full bg-[#2DD4A8]/10 flex items-center justify-center text-[10px] font-bold text-[#14B88C] shrink-0">{m.avatar}</div>
@@ -355,7 +355,7 @@ export default function CircleDetailPage({ params }: { params: Promise<{ id: str
                           <div className="flex-1 h-1.5 bg-gray-100 rounded-full overflow-hidden">
                             <div className="h-full bg-[#2DD4A8] rounded-full transition-all" style={{ width: `${progressPct}%` }} />
                           </div>
-                          <span className="text-[10px] text-gray-400 shrink-0">{submittedCount}/{totalAssignments}</span>
+                          <span className="text-[10px] text-gray-500 shrink-0">{submittedCount}/{totalAssignments}</span>
                         </div>
                       </div>
                       {submittedCount < totalAssignments && submittedCount > 0 && (
@@ -368,7 +368,7 @@ export default function CircleDetailPage({ params }: { params: Promise<{ id: str
             </div>
 
             {(!task || task.assignments.length === 0) && (
-              <div className="text-center py-12 text-gray-400 text-sm">暂无作业</div>
+              <div className="text-center py-12 text-gray-500 text-sm">暂无作业</div>
             )}
           </div>
         )}
@@ -424,13 +424,13 @@ export default function CircleDetailPage({ params }: { params: Promise<{ id: str
                 </div>
                 {squad.pool.distribution.map((d, i) => (
                   <div key={d.userId} className="flex items-center gap-3 py-2 border-b border-gray-50 last:border-0">
-                    <div className="text-xs text-gray-400 w-4">{i + 1}</div>
+                    <div className="text-xs text-gray-500 w-4">{i + 1}</div>
                     <div className="w-7 h-7 rounded-full bg-[#2DD4A8]/10 flex items-center justify-center text-[10px] font-bold text-[#14B88C]">
                       {d.name[0]}
                     </div>
                     <div className="flex-1">
                       <div className="text-xs font-medium text-gray-900">{d.name}</div>
-                      <div className="text-[10px] text-gray-400">评分 {d.score}</div>
+                      <div className="text-[10px] text-gray-500">评分 {d.score}</div>
                     </div>
                     <div className="text-sm font-bold text-amber-600">¥{d.amount}</div>
                   </div>
@@ -442,7 +442,7 @@ export default function CircleDetailPage({ params }: { params: Promise<{ id: str
                   <IconTarget size={16} className="text-[#2DD4A8]" />
                   <span className="text-sm font-semibold text-gray-900">预计分配</span>
                 </div>
-                <div className="text-[10px] text-gray-400 mb-3">基于当前评分（最终以互评+教练评分为准）</div>
+                <div className="text-[10px] text-gray-500 mb-3">基于当前评分（最终以互评+教练评分为准）</div>
                 {squad.members
                   .filter((m) => m.role === "learner" && m.score !== undefined)
                   .sort((a, b) => (b.score || 0) - (a.score || 0))
@@ -451,13 +451,13 @@ export default function CircleDetailPage({ params }: { params: Promise<{ id: str
                     const projected = Math.round(squad.pool.total * ((m.score || 0) / allScores));
                     return (
                       <div key={m.userId} className="flex items-center gap-3 py-2 border-b border-gray-50 last:border-0">
-                        <div className="text-xs text-gray-400 w-4">{i + 1}</div>
+                        <div className="text-xs text-gray-500 w-4">{i + 1}</div>
                         <div className="w-7 h-7 rounded-full bg-[#2DD4A8]/10 flex items-center justify-center text-[10px] font-bold text-[#14B88C]">
                           {m.avatar}
                         </div>
                         <div className="flex-1">
                           <div className="text-xs font-medium text-gray-900">{m.name}</div>
-                          <div className="text-[10px] text-gray-400">评分 {m.score}</div>
+                          <div className="text-[10px] text-gray-500">评分 {m.score}</div>
                         </div>
                         <div className="text-sm font-bold text-amber-600">~¥{projected}</div>
                       </div>

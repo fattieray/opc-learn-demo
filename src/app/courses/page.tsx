@@ -80,7 +80,7 @@ export default function CoursesPage() {
       {/* Header */}
       <div className="bg-white px-5 pt-12 pb-4 border-b border-gray-100">
         <h1 className="text-xl font-bold text-gray-900">课程中心</h1>
-        <p className="text-xs text-gray-400 mt-1">找到你的起点，开始职业成长</p>
+        <p className="text-xs text-gray-500 mt-1">找到你的起点，开始职业成长</p>
       </div>
 
       {/* Section A: Personalized Recommendation */}
@@ -116,7 +116,7 @@ export default function CoursesPage() {
                   <span className="text-amber-600 font-medium">{recommendedCourse.career?.salaryRange}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-1 text-[10px] text-gray-400">
+                  <div className="flex items-center gap-1 text-[10px] text-gray-500">
                     <IconUsers size={10} />
                     <span>{recommendedCourse.activeLearners}人在学</span>
                   </div>
@@ -129,7 +129,7 @@ export default function CoursesPage() {
             </Link>
           ) : (
             <div className="bg-white rounded-lg p-3 border border-[#2DD4A8]/20">
-              <div className="text-sm text-gray-400 text-center">暂无推荐课程</div>
+              <div className="text-sm text-gray-500 text-center">暂无推荐课程</div>
             </div>
           )}
 
@@ -147,7 +147,7 @@ export default function CoursesPage() {
             <div className="flex items-center gap-2 mb-2">
               <IconMap size={16} className="text-violet-600" />
               <span className="text-sm font-semibold text-gray-900">查看完整学习路径</span>
-              <IconChevronRight size={14} className="text-gray-400 ml-auto" />
+              <IconChevronRight size={14} className="text-gray-500 ml-auto" />
             </div>
             <div className="text-xs text-gray-600 mb-1">
               从 <span className="font-medium text-violet-700">{userPath.taskTitles[0]}</span> 到 <span className="font-medium text-violet-700">{userPath.taskTitles[userPath.taskIds.length - 1]}</span>
@@ -182,7 +182,7 @@ export default function CoursesPage() {
                     <Ic size={14} className={isActive ? "text-white" : tab.id === "micro" ? "text-amber-500" : tab.id === "system" ? "text-violet-500" : "text-blue-500"} />
                     <span className="text-xs font-medium">{tab.label}</span>
                   </div>
-                  <div className={`text-[9px] ${isActive ? "text-white/80" : "text-gray-400"}`}>{tab.desc}</div>
+                  <div className={`text-[9px] ${isActive ? "text-white/80" : "text-gray-500"}`}>{tab.desc}</div>
                 </button>
               );
             })}
@@ -215,13 +215,13 @@ export default function CoursesPage() {
             {activeTab === "micro" && "微技能课"}
             {activeTab === "system" && "体系课"}
             {activeTab === "expert" && "专家课程"}
-            <span className="text-gray-400 ml-1 font-normal">({filteredCourses.length})</span>
+            <span className="text-gray-500 ml-1 font-normal">({filteredCourses.length})</span>
           </div>
         </div>
 
         {filteredCourses.length === 0 ? (
           <div className="bg-white rounded-xl p-8 border border-gray-100 text-center">
-            <div className="text-sm text-gray-400 mb-2">暂无课程</div>
+            <div className="text-sm text-gray-500 mb-2">暂无课程</div>
             <button 
               onClick={() => setSelectedIndustry("all")}
               className="text-xs text-[#2DD4A8] font-medium"
@@ -279,7 +279,7 @@ export default function CoursesPage() {
                   {/* Row 3: Social Proof + Industry + Price */}
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                      <span className="flex items-center gap-1 text-[10px] text-gray-400">
+                      <span className="flex items-center gap-1 text-[10px] text-gray-500">
                         <IconUsers size={10} />
                         {students}人在学
                       </span>
@@ -288,7 +288,7 @@ export default function CoursesPage() {
                       </span>
                       {isExpert && (
                         <>
-                          <span className="text-[10px] text-gray-400">·</span>
+                          <span className="text-[10px] text-gray-500">·</span>
                           <span className="text-[10px] text-blue-500 flex items-center gap-0.5">
                             <IconBadgeCheck size={8} />
                             {(course as any).providerName}
@@ -325,19 +325,19 @@ export default function CoursesPage() {
             <div className="flex-1 text-center p-2 rounded-lg bg-amber-50/50 border border-amber-100/30">
               <IconZap size={16} className="text-amber-500 mx-auto mb-1" />
               <div className="text-[10px] font-semibold text-gray-700">微技能课</div>
-              <div className="text-[9px] text-gray-400">1-2小时速成</div>
+              <div className="text-[9px] text-gray-500">1-2小时速成</div>
             </div>
             <IconChevronRight size={12} className="text-gray-300 shrink-0" />
             <div className="flex-1 text-center p-2 rounded-lg bg-violet-50/50 border border-violet-100/30">
               <IconShield size={16} className="text-violet-500 mx-auto mb-1" />
               <div className="text-[10px] font-semibold text-gray-700">体系课</div>
-              <div className="text-[9px] text-gray-400">10小时系统</div>
+              <div className="text-[9px] text-gray-500">10小时系统</div>
             </div>
             <IconChevronRight size={12} className="text-gray-300 shrink-0" />
             <div className="flex-1 text-center p-2 rounded-lg bg-blue-50/50 border border-blue-100/30">
               <IconGraduationCap size={16} className="text-blue-500 mx-auto mb-1" />
               <div className="text-[10px] font-semibold text-gray-700">OPC认证</div>
-              <div className="text-[9px] text-gray-400">能力证明</div>
+              <div className="text-[9px] text-gray-500">能力证明</div>
             </div>
           </div>
           <Link href="/profile/certification" className="block mt-2 pt-2 border-t border-gray-50 text-center">

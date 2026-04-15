@@ -92,7 +92,7 @@ export default function LoginPage() {
           <div className="flex items-center gap-2 mb-3">
             <IconZap size={16} className="text-[#2DD4A8]" />
             <span className="text-sm font-semibold text-gray-900">快速体验</span>
-            <span className="text-[10px] text-gray-400 ml-auto">无需注册，一键体验</span>
+            <span className="text-[10px] text-gray-500 ml-auto">无需注册，一键体验</span>
           </div>
           <div className="space-y-2">
             {demoAccounts.map((demo) => (
@@ -110,7 +110,7 @@ export default function LoginPage() {
                     <span className="text-sm font-semibold text-gray-900">{demo.name}</span>
                     <span className="text-[9px] px-1.5 py-0.5 rounded bg-gray-100 text-gray-500">{demo.role}</span>
                   </div>
-                  <div className="text-[10px] text-gray-400">{demo.industry} · {demo.phone}</div>
+                  <div className="text-[10px] text-gray-500">{demo.industry} · {demo.phone}</div>
                 </div>
                 <IconChevronRight size={16} className="text-gray-300" />
               </button>
@@ -177,7 +177,7 @@ export default function LoginPage() {
               手机号
             </label>
             <div className="flex items-center gap-2">
-              <IconUser size={18} className="text-gray-400" />
+              <IconUser size={18} className="text-gray-500" />
               <input
                 type="tel"
                 value={phone}
@@ -189,7 +189,7 @@ export default function LoginPage() {
                 title="请输入有效的11位手机号，以1开头，第二位是3-9"
               />
             </div>
-            <p className="text-xs text-gray-400 mt-2">
+            <p className="text-xs text-gray-500 mt-2">
               示例：13800138000
             </p>
           </div>
@@ -220,7 +220,7 @@ export default function LoginPage() {
                 验证码
               </label>
               <div className="flex items-center gap-2">
-                <IconShield size={18} className="text-gray-400" />
+                <IconShield size={18} className="text-gray-500" />
                 <input
                   type="text"
                   value={otp}
@@ -268,7 +268,7 @@ export default function LoginPage() {
         </form>
 
         {/* Help Text */}
-        <p className="text-xs text-gray-400 text-center mt-6">
+        <p className="text-xs text-gray-500 text-center mt-6">
           {mode === "login"
             ? "首次使用？请先注册账号"
             : "已有账号？直接登录"}

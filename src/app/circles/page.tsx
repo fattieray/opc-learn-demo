@@ -143,18 +143,18 @@ export default function CirclesPage() {
       {/* Header */}
       <div className="bg-white px-5 pt-12 pb-0 border-b border-gray-100">
         <h1 className="text-xl font-bold text-gray-900">学习圈</h1>
-        <p className="text-xs text-gray-400 mt-1 mb-3">一起学、互相帮、共同成长</p>
+        <p className="text-xs text-gray-500 mt-1 mb-3">一起学、互相帮、共同成长</p>
         {/* Sub-tabs */}
         <div className="flex">
           <button
             onClick={() => setTab("feed")}
-            className={`flex-1 pb-3 text-sm font-medium border-b-2 transition-colors ${tab === "feed" ? "text-[#2DD4A8] border-[#2DD4A8]" : "text-gray-400 border-transparent"}`}
+            className={`flex-1 pb-3 text-sm font-medium border-b-2 transition-colors ${tab === "feed" ? "text-[#2DD4A8] border-[#2DD4A8]" : "text-gray-500 border-transparent"}`}
           >
             学习动态
           </button>
           <button
             onClick={() => setTab("squads")}
-            className={`flex-1 pb-3 text-sm font-medium border-b-2 transition-colors ${tab === "squads" ? "text-[#2DD4A8] border-[#2DD4A8]" : "text-gray-400 border-transparent"}`}
+            className={`flex-1 pb-3 text-sm font-medium border-b-2 transition-colors ${tab === "squads" ? "text-[#2DD4A8] border-[#2DD4A8]" : "text-gray-500 border-transparent"}`}
           >
             学习小组
           </button>
@@ -230,7 +230,7 @@ export default function CirclesPage() {
                   </div>
                   <button
                     onClick={() => setOnboardingStep(onboardingStep + 1)}
-                    className="w-full mt-2 text-xs text-gray-400 hover:text-gray-600"
+                    className="w-full mt-2 text-xs text-gray-500 hover:text-gray-600"
                   >
                     跳过，下一步 →
                   </button>
@@ -308,7 +308,7 @@ export default function CirclesPage() {
                         <span className={`text-[10px] px-1.5 py-0.5 rounded ${currentTask.type === "micro" ? "bg-amber-50 text-amber-700" : "bg-violet-50 text-violet-700"}`}>
                           {currentTask.type === "micro" ? "微技能课" : "体系课"}
                         </span>
-                        <span className="text-[10px] text-gray-400">{activeSquad.name}</span>
+                        <span className="text-[10px] text-gray-500">{activeSquad.name}</span>
                       </div>
                     </div>
                     <Link href={`/circles/${activeSquad.id}`} className="shrink-0 text-xs px-3 py-1.5 rounded-lg bg-[#2DD4A8] text-white font-medium">
@@ -473,13 +473,13 @@ export default function CirclesPage() {
                           </div>
                         ))}
                         {squad.members.length > 5 && (
-                          <div className="w-7 h-7 rounded-full bg-gray-100 flex items-center justify-center text-[10px] text-gray-400">
+                          <div className="w-7 h-7 rounded-full bg-gray-100 flex items-center justify-center text-[10px] text-gray-500">
                             +{squad.members.length - 5}
                           </div>
                         )}
-                        <span className="text-[10px] text-gray-400 ml-1">{squad.members.filter((m) => m.role === "learner").length}人</span>
+                        <span className="text-[10px] text-gray-500 ml-1">{squad.members.filter((m) => m.role === "learner").length}人</span>
                       </div>
-                      <div className="flex items-center gap-2 text-[10px] text-gray-400">
+                      <div className="flex items-center gap-2 text-[10px] text-gray-500">
                         <span className="flex items-center gap-1"><IconMessage size={10} />{squadPosts.length}</span>
                         <IconChevronRight size={14} className="text-gray-300" />
                       </div>

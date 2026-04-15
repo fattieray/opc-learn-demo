@@ -205,7 +205,7 @@ export default function AssessmentPage() {
               </div>
               <div className="text-left">
                 <div className="text-sm font-medium text-gray-900">智能推荐</div>
-                <div className="text-xs text-gray-400">基于你的技能画像匹配最优路径</div>
+                <div className="text-xs text-gray-500">基于你的技能画像匹配最优路径</div>
               </div>
             </div>
             <div className="flex items-center gap-3 bg-white rounded-xl p-4 border border-gray-100">
@@ -214,7 +214,7 @@ export default function AssessmentPage() {
               </div>
               <div className="text-left">
                 <div className="text-sm font-medium text-gray-900">精准定位</div>
-                <div className="text-xs text-gray-400">避免从错误起点开始浪费时间</div>
+                <div className="text-xs text-gray-500">避免从错误起点开始浪费时间</div>
               </div>
             </div>
           </div>
@@ -252,7 +252,7 @@ export default function AssessmentPage() {
             <div className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4" style={{ backgroundColor: ind.bgColor }}>
               <IconGraduationCap size={28} style={{ color: ind.color }} />
             </div>
-            <div className="text-xs text-gray-400 mb-1">你的推荐方向</div>
+            <div className="text-xs text-gray-500 mb-1">你的推荐方向</div>
             <div className="text-xl font-bold text-gray-900 mb-1">{ind.fullName}</div>
             <div className="text-sm" style={{ color: ind.color }}>{ind.name}</div>
           </div>
@@ -279,7 +279,7 @@ export default function AssessmentPage() {
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="text-sm font-medium text-gray-900">{rec.level}推荐</div>
-                  <div className="text-xs text-gray-400">{ind.name} · 从这里开始</div>
+                  <div className="text-xs text-gray-500">{ind.name} · 从这里开始</div>
                 </div>
                 <IconChevronRight size={16} className="text-gray-300 shrink-0" />
               </div>
@@ -378,7 +378,7 @@ export default function AssessmentPage() {
           >
             立即开始学习
           </Link>
-          <Link href="/courses" className="block text-center text-sm text-gray-400">
+          <Link href="/courses" className="block text-center text-sm text-gray-500">
             浏览全部课程
           </Link>
         </div>
@@ -398,7 +398,7 @@ export default function AssessmentPage() {
           <div className="flex-1">
             <div className="text-base font-bold text-gray-900">技能测评</div>
           </div>
-          <span className="text-xs text-gray-400">{step}/{questions.length}</span>
+          <span className="text-xs text-gray-500">{step}/{questions.length}</span>
         </div>
         {/* Progress bar */}
         <div className="h-1 bg-gray-100">

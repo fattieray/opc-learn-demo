@@ -177,7 +177,7 @@ export default function Onboarding({ onComplete }: OnboardingProps) {
                           <p className="text-xs text-gray-600 mb-2">
                             {industry.description}
                           </p>
-                          <div className="flex items-center gap-2 text-[10px] text-gray-400">
+                          <div className="flex items-center gap-2 text-[10px] text-gray-500">
                             <span>就业方向：{industry.jobs}</span>
                           </div>
                         </div>
@@ -193,7 +193,7 @@ export default function Onboarding({ onComplete }: OnboardingProps) {
                   className={`px-6 py-3 rounded-xl font-semibold flex items-center gap-2 transition-all ${
                     selectedIndustry
                       ? "bg-[#2DD4A8] text-white hover:bg-[#14B88C] shadow-lg"
-                      : "bg-gray-200 text-gray-400 cursor-not-allowed"
+                      : "bg-gray-200 text-gray-500 cursor-not-allowed"
                   }`}
                 >
                   下一步
@@ -275,7 +275,7 @@ export default function Onboarding({ onComplete }: OnboardingProps) {
                   className={`px-6 py-3 rounded-xl font-semibold flex items-center gap-2 transition-all ${
                     selectedGoal
                       ? "bg-[#2DD4A8] text-white hover:bg-[#14B88C] shadow-lg"
-                      : "bg-gray-200 text-gray-400 cursor-not-allowed"
+                      : "bg-gray-200 text-gray-500 cursor-not-allowed"
                   }`}
                 >
                   下一步

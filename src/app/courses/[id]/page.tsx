@@ -152,7 +152,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
     return (
       <div className="min-h-screen bg-[#f9fafb] flex items-center justify-center">
         <div className="text-center">
-          <div className="text-gray-400 mb-2">加载中...</div>
+          <div className="text-gray-500 mb-2">加载中...</div>
         </div>
       </div>
     );
@@ -173,7 +173,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
     return (
       <div className="min-h-screen bg-[#f9fafb] flex items-center justify-center">
         <div className="text-center">
-          <div className="text-gray-400 mb-2">课程不存在</div>
+          <div className="text-gray-500 mb-2">课程不存在</div>
           <Link href="/courses" className="text-[#2DD4A8] text-sm">返回课程中心</Link>
         </div>
       </div>
@@ -230,7 +230,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
           <div className="flex-1 min-w-0">
             <div className="text-base font-bold text-gray-900 truncate">{task.title}</div>
           </div>
-          <button className="text-gray-400 hover:text-[#2DD4A8] transition-colors">
+          <button className="text-gray-500 hover:text-[#2DD4A8] transition-colors">
             <IconBookmark size={20} />
           </button>
         </div>
@@ -256,7 +256,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
               <span key={s} className="text-[10px] px-1.5 py-0.5 rounded bg-gray-50 text-gray-500">{s}</span>
             ))}
           </div>
-          <div className="flex items-center gap-4 text-[10px] text-gray-400">
+          <div className="flex items-center gap-4 text-[10px] text-gray-500">
             <span className="flex items-center gap-1"><IconClock size={12} />{task.estimatedMinutes}分钟</span>
             <span className="flex items-center gap-1"><IconFileText size={12} />{task.resources.length}篇文档</span>
             <span className="flex items-center gap-1"><IconUsers size={12} />{task.activeLearners}人在学</span>
@@ -271,7 +271,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
           <IconZap size={18} />
           立即开始学习
         </button>
-        <div className="text-center text-[10px] text-gray-400 mt-2">
+        <div className="text-center text-[10px] text-gray-500 mt-2">
           加入学习小组 · 完成作业获得奖学金 · {task.estimatedMinutes}分钟速成上岗
         </div>
       </div>
@@ -290,7 +290,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
                 <span key={i} className="text-[10px] px-2 py-1 rounded-lg bg-[#2DD4A8]/5 text-[#14B88C]">{kp}</span>
               ))}
             </div>
-            <div className="flex items-center gap-3 text-[10px] text-gray-400">
+            <div className="flex items-center gap-3 text-[10px] text-gray-500">
               <span>{task.syllabus.modules.length}个学习模块</span>
               <span>{task.syllabus.modules.reduce((s, m) => s + m.items.length, 0)}个学习环节</span>
               <span>预期技能提升{task.syllabus.skillGrowth.length}项</span>
@@ -343,7 +343,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
               {careerInfo.growthNext && (
                 <div className="flex items-center gap-2 pt-2 border-t border-gray-100/60">
                   <IconTrendingUp size={12} className="text-[#2DD4A8] shrink-0" />
-                  <span className="text-[11px] text-gray-400">成长路径</span>
+                  <span className="text-[11px] text-gray-500">成长路径</span>
                   <span className="text-[11px] text-gray-500 font-medium">{careerInfo.growthNext}</span>
                 </div>
               )}
@@ -352,7 +352,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
               {task.type === "system" && task.canManageMicroIds && task.canManageMicroIds.length > 0 && (
                 <div className="flex items-center gap-2 pt-2 border-t border-gray-100/60 mt-2">
                   <IconShield size={12} className="text-violet-500 shrink-0" />
-                  <span className="text-[11px] text-gray-400">可管理</span>
+                  <span className="text-[11px] text-gray-500">可管理</span>
                   <span className="text-[11px] text-gray-500 font-medium">{task.canManageMicroIds.length}门微技能课的实习生交付</span>
                 </div>
               )}
@@ -373,7 +373,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
                 className={`flex-1 flex items-center justify-center gap-1 py-2.5 text-xs font-medium border-b-2 transition-colors ${
                   activeTab === tab.key
                     ? "text-[#2DD4A8] border-[#2DD4A8]"
-                    : "text-gray-400 border-transparent"
+                    : "text-gray-500 border-transparent"
                 }`}
               >
                 <Ic size={14} />
@@ -417,7 +417,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
                           </div>
                           <div className="flex-1 min-w-0">
                             <div className="font-semibold text-sm text-gray-900 mb-0.5">{mod.title}</div>
-                            <div className="flex items-center gap-2 text-[10px] text-gray-400">
+                            <div className="flex items-center gap-2 text-[10px] text-gray-500">
                               <span className="text-violet-500">{learnCount}项知识</span>
                               <span className="text-amber-500">{practiceCount}项实训</span>
                               <span>{totalMin}分钟</span>
@@ -445,9 +445,9 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
                                     {isDone ? <IconCheck size={12} className="text-white" /> : isLearn ? <IconBookOpen size={12} className="text-violet-600" /> : <IconEdit size={12} className="text-amber-600" />}
                                   </div>
                                   <div className="flex-1 min-w-0">
-                                    <div className={`text-xs ${isDone ? "text-gray-400 line-through" : "text-gray-800"}`}>{item.title}</div>
+                                    <div className={`text-xs ${isDone ? "text-gray-500 line-through" : "text-gray-800"}`}>{item.title}</div>
                                   </div>
-                                  <span className="text-[10px] text-gray-400 shrink-0">{item.minutes}分钟</span>
+                                  <span className="text-[10px] text-gray-500 shrink-0">{item.minutes}分钟</span>
                                   {isPractice && !isDone && (
                                     <button className="text-[10px] px-2.5 py-1 rounded-lg bg-[#2DD4A8] text-white font-medium shrink-0">
                                       {itemIdx === 0 && modIdx === 0 ? "开始" : "继续"}
@@ -480,7 +480,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
                         <div className="flex items-center justify-between mb-1">
                           <span className="text-xs text-gray-600">{sg.skill}</span>
                           <span className="text-[10px]">
-                            <span className="text-gray-400">{sg.from}</span>
+                            <span className="text-gray-500">{sg.from}</span>
                             <span className="text-gray-300 mx-1">→</span>
                             <span className="text-[#2DD4A8] font-medium">{sg.to}</span>
                           </span>
@@ -538,10 +538,10 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-2 mb-1">
                               <span className={`text-[10px] px-1.5 py-0.5 rounded ${resourceTypeColors[res.type]}`}>{resourceTypeNames[res.type]}</span>
-                              <span className="text-[10px] text-gray-400">{res.readTime}分钟</span>
+                              <span className="text-[10px] text-gray-500">{res.readTime}分钟</span>
                             </div>
                             <div className="font-medium text-sm text-gray-900 mb-1">{res.title}</div>
-                            <div className="text-xs text-gray-400 line-clamp-2">{res.summary}</div>
+                            <div className="text-xs text-gray-500 line-clamp-2">{res.summary}</div>
                           </div>
                           <IconChevronRight size={16} className={`text-gray-300 shrink-0 mt-2 transition-transform ${isExpanded ? "rotate-90" : ""}`} />
                         </div>
@@ -625,7 +625,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
             <div className="bg-white rounded-xl p-4 border border-gray-100 shadow-sm">
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 rounded-full bg-[#2DD4A8] flex items-center justify-center text-white text-xs font-bold">林</div>
-                <div className="flex-1 bg-gray-50 rounded-lg px-3 py-2 text-xs text-gray-400">
+                <div className="flex-1 bg-gray-50 rounded-lg px-3 py-2 text-xs text-gray-500">
                   分享你的想法或问题...
                 </div>
               </div>
@@ -657,10 +657,10 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
                       {post.content}
                     </div>
                     <div className="flex items-center gap-4 mt-3">
-                      <button className="flex items-center gap-1 text-[10px] text-gray-400 hover:text-[#2DD4A8]">
+                      <button className="flex items-center gap-1 text-[10px] text-gray-500 hover:text-[#2DD4A8]">
                         <IconThumbsUp size={12} />{post.likeCount}
                       </button>
-                      <button className="flex items-center gap-1 text-[10px] text-gray-400 hover:text-[#2DD4A8]">
+                      <button className="flex items-center gap-1 text-[10px] text-gray-500 hover:text-[#2DD4A8]">
                         <IconMessage size={12} />{post.commentCount}
                       </button>
                     </div>
@@ -669,7 +669,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
               </div>
             ))}
             {taskPosts.length === 0 && (
-              <div className="text-center py-12 text-gray-400 text-sm">暂无讨论</div>
+              <div className="text-center py-12 text-gray-500 text-sm">暂无讨论</div>
             )}
           </div>
         )}
@@ -738,7 +738,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
                 </div>
               </div>
               {mySquad && (
-                <div className="mt-3 pt-2 border-t border-gray-50 text-[10px] text-gray-400">
+                <div className="mt-3 pt-2 border-t border-gray-50 text-[10px] text-gray-500">
                   我的投入：¥{task.bonusPool.perMemberStake} · {mySquad.status === "reviewing" || mySquad.status === "completed" ? "已冻结" : "积累中"}
                 </div>
               )}
@@ -753,13 +753,13 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
                 </div>
                 {mySquad.pool.distribution.map((d, i) => (
                   <div key={d.userId} className="flex items-center gap-3 py-2 border-b border-gray-50 last:border-0">
-                    <div className="text-xs text-gray-400 w-4">{i + 1}</div>
+                    <div className="text-xs text-gray-500 w-4">{i + 1}</div>
                     <div className="w-7 h-7 rounded-full bg-[#2DD4A8]/10 flex items-center justify-center text-[10px] font-bold text-[#14B88C]">
                       {d.name[0]}
                     </div>
                     <div className="flex-1">
                       <div className="text-xs font-medium text-gray-900">{d.name}</div>
-                      <div className="text-[10px] text-gray-400">评分 {d.score}</div>
+                      <div className="text-[10px] text-gray-500">评分 {d.score}</div>
                     </div>
                     <div className="text-sm font-bold text-amber-600">¥{d.amount}</div>
                     {d.userId === currentUser.id && <span className="text-[10px] text-[#2DD4A8] font-medium">我</span>}
@@ -772,7 +772,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
                   <IconTarget size={16} className="text-[#2DD4A8]" />
                   <span className="text-sm font-semibold text-gray-900">我的小组 — 预计分配</span>
                 </div>
-                <div className="text-[10px] text-gray-400 mb-3">基于当前评分的预计分配（实际以最终评分为准）</div>
+                <div className="text-[10px] text-gray-500 mb-3">基于当前评分的预计分配（实际以最终评分为准）</div>
                 {mySquad.members
                   .filter((m) => m.role === "learner")
                   .sort((a, b) => (b.score || 0) - (a.score || 0))
@@ -783,13 +783,13 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
                     const stakeReturn = m.score !== undefined && m.score >= 80 ? "全额返还+利润" : m.score !== undefined && m.score >= 60 ? "全额返还+小额" : m.score !== undefined && m.score >= 40 ? "80%返还" : "投入没收";
                     return (
                       <div key={m.userId} className="flex items-center gap-3 py-2 border-b border-gray-50 last:border-0">
-                        <div className="text-xs text-gray-400 w-4">{i + 1}</div>
+                        <div className="text-xs text-gray-500 w-4">{i + 1}</div>
                         <div className="w-7 h-7 rounded-full bg-[#2DD4A8]/10 flex items-center justify-center text-[10px] font-bold text-[#14B88C]">
                           {m.avatar}
                         </div>
                         <div className="flex-1">
                           <div className="text-xs font-medium text-gray-900">{m.name}{isMe && <span className="text-[#2DD4A8] ml-1">我</span>}</div>
-                          <div className="text-[10px] text-gray-400">评分 {m.score} · {stakeReturn}</div>
+                          <div className="text-[10px] text-gray-500">评分 {m.score} · {stakeReturn}</div>
                         </div>
                         <div className="text-sm font-bold text-amber-600">~¥{projected}</div>
                       </div>
@@ -855,7 +855,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
                 <span className="text-sm font-semibold text-gray-900">荣誉积分可转化为奖金</span>
               </div>
               <div className="text-xs text-gray-500">100荣誉积分 = 5元加入当前小组的奖金池</div>
-              <div className="text-[10px] text-gray-400 mt-1">你当前拥有 {currentUser.honorPoints} 荣誉积分</div>
+              <div className="text-[10px] text-gray-500 mt-1">你当前拥有 {currentUser.honorPoints} 荣誉积分</div>
             </div>
           </div>
         )}
@@ -897,18 +897,18 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
                         </div>
                       ))}
                       {squad.members.length > 5 && (
-                        <div className="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center text-[10px] text-gray-400">
+                        <div className="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center text-[10px] text-gray-500">
                           +{squad.members.length - 5}
                         </div>
                       )}
                     </div>
-                    <div className="flex items-center justify-between text-[10px] text-gray-400">
+                    <div className="flex items-center justify-between text-[10px] text-gray-500">
                       <span>{squad.members.filter((m) => m.role === "learner").length}名学员 · 1名教练</span>
                       <span className="flex items-center gap-1"><IconCoins size={10} />奖金池¥{squad.pool.total}</span>
                     </div>
                     {squad.status === "completed" && squad.pool.distribution && (
                       <div className="mt-2 pt-2 border-t border-gray-50">
-                        <div className="text-[10px] text-gray-400 mb-1">最终分配</div>
+                        <div className="text-[10px] text-gray-500 mb-1">最终分配</div>
                         {squad.pool.distribution.map((d) => (
                           <div key={d.userId} className="flex items-center justify-between text-[10px]">
                             <span className="text-gray-600">{d.name}（{d.score}分）</span>
@@ -922,11 +922,11 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
               );
             })}
             {taskSquads.length === 0 && (
-              <div className="text-center py-12 text-gray-400 text-sm">暂无小组</div>
+              <div className="text-center py-12 text-gray-500 text-sm">暂无小组</div>
             )}
 
             {/* Create Squad */}
-            <button className="w-full bg-white rounded-xl p-4 border-2 border-dashed border-gray-200 text-center text-sm text-gray-400 hover:border-[#2DD4A8] hover:text-[#2DD4A8] transition-colors">
+            <button className="w-full bg-white rounded-xl p-4 border-2 border-dashed border-gray-200 text-center text-sm text-gray-500 hover:border-[#2DD4A8] hover:text-[#2DD4A8] transition-colors">
               + 发起学习小组
             </button>
           </div>

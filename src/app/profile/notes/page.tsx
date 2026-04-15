@@ -206,7 +206,7 @@ export default function NotesPage() {
         <div className="bg-white rounded-xl p-3 border border-gray-100 shadow-sm">
           {/* Search bar */}
           <div className="flex items-center gap-2 mb-3 px-2">
-            <IconSearch size={16} className="text-gray-400" />
+            <IconSearch size={16} className="text-gray-500" />
             <input
               type="text"
               placeholder="搜索收藏..."
@@ -265,13 +265,13 @@ export default function NotesPage() {
                         <span className={`text-[10px] px-1.5 py-0.5 rounded ${resourceTypeColors[bm.resourceType]}`}>
                           {resourceTypeNames[bm.resourceType]}
                         </span>
-                        <span className="text-[10px] text-gray-400">{bm.readTime}分钟</span>
+                        <span className="text-[10px] text-gray-500">{bm.readTime}分钟</span>
                         <span className="text-[10px] px-1.5 py-0.5 rounded" style={{ backgroundColor: ind?.bgColor, color: ind?.color }}>
                           {ind?.name}
                         </span>
                       </div>
                       <div className="font-medium text-sm text-gray-900 mb-1">{bm.resourceTitle}</div>
-                      <div className="text-xs text-gray-400 line-clamp-2 mb-2">{bm.summary}</div>
+                      <div className="text-xs text-gray-500 line-clamp-2 mb-2">{bm.summary}</div>
                       <div className="flex items-center justify-between text-[10px] text-gray-300">
                         <span>来自：{bm.courseTitle}</span>
                         <span>{bm.savedAt}</span>
@@ -287,13 +287,13 @@ export default function NotesPage() {
           <div className="text-center py-12">
             <div className="text-4xl mb-3">🔍</div>
             <div className="text-sm text-gray-600 mb-1">没有找到匹配的收藏</div>
-            <div className="text-xs text-gray-400">尝试调整筛选条件或搜索关键词</div>
+            <div className="text-xs text-gray-500">尝试调整筛选条件或搜索关键词</div>
           </div>
         )}
 
         {/* Empty hint */}
         <div className="text-center py-8">
-          <div className="text-xs text-gray-400">收藏学习资源，方便随时回顾</div>
+          <div className="text-xs text-gray-500">收藏学习资源，方便随时回顾</div>
           <div className="text-[10px] text-gray-300 mt-1">在课程详情页点击收藏图标即可添加</div>
         </div>
       </div>

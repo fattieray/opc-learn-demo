@@ -186,29 +186,29 @@ export default function UserDashboard() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="bg-white/10 rounded-xl p-4 backdrop-blur-sm">
               <div className="flex items-center gap-2 mb-2">
-                <IconClock size={18} className="text-white/80" />
-                <span className="text-sm text-white/80">学习时长</span>
+                <IconClock size={18} className="text-white/90" />
+                <span className="text-sm text-white/90">学习时长</span>
               </div>
               <div className="text-2xl font-bold">{userStats.totalLearningHours}h</div>
             </div>
             <div className="bg-white/10 rounded-xl p-4 backdrop-blur-sm">
               <div className="flex items-center gap-2 mb-2">
-                <IconBookOpen size={18} className="text-white/80" />
-                <span className="text-sm text-white/80">完成课程</span>
+                <IconBookOpen size={18} className="text-white/90" />
+                <span className="text-sm text-white/90">完成课程</span>
               </div>
               <div className="text-2xl font-bold">{userStats.completedCourses}</div>
             </div>
             <div className="bg-white/10 rounded-xl p-4 backdrop-blur-sm">
               <div className="flex items-center gap-2 mb-2">
-                <IconCoins size={18} className="text-white/80" />
-                <span className="text-sm text-white/80">奖学金</span>
+                <IconCoins size={18} className="text-white/90" />
+                <span className="text-sm text-white/90">奖学金</span>
               </div>
               <div className="text-2xl font-bold">¥{userStats.scholarships}</div>
             </div>
             <div className="bg-white/10 rounded-xl p-4 backdrop-blur-sm">
               <div className="flex items-center gap-2 mb-2">
-                <IconFire size={18} className="text-white/80" />
-                <span className="text-sm text-white/80">连续学习</span>
+                <IconFire size={18} className="text-white/90" />
+                <span className="text-sm text-white/90">连续学习</span>
               </div>
               <div className="text-2xl font-bold">{userStats.streak}天</div>
             </div>
@@ -249,7 +249,7 @@ export default function UserDashboard() {
                   {task.completed && <IconCheckCircle size={14} className="text-white" />}
                 </div>
                 <div className="flex-1">
-                  <div className={`text-sm font-medium ${task.completed ? "line-through text-gray-400" : "text-gray-900"}`}>
+                  <div className={`text-sm font-medium ${task.completed ? "line-through text-gray-500" : "text-gray-900"}`}>
                     {task.title}
                   </div>
                   <div className="flex items-center gap-3 mt-1 text-xs text-gray-500">
@@ -365,7 +365,7 @@ export default function UserDashboard() {
                         <span className="font-semibold">{activity.user}</span>{" "}
                         {activity.action}
                       </div>
-                      <div className="text-[10px] text-gray-400">{activity.time}</div>
+                      <div className="text-[10px] text-gray-500">{activity.time}</div>
                     </div>
                     <IconChevronRight size={14} className="text-gray-300 shrink-0 mt-1" />
                   </div>
@@ -395,7 +395,7 @@ export default function UserDashboard() {
                     </span>
                   </div>
                   <p className="text-xs text-gray-500 mb-2">{course.reason}</p>
-                  <div className="flex items-center justify-between text-xs text-gray-400">
+                  <div className="flex items-center justify-between text-xs text-gray-500">
                     <span>⏱️ {course.duration}</span>
                     <span className="text-[#2DD4A8] font-medium">开始学习 →</span>
                   </div>
@@ -415,7 +415,7 @@ export default function UserDashboard() {
             <div className="bg-white/60 rounded-lg p-4">
               <div className="text-sm text-gray-600 mb-1">班级排名</div>
               <div className="text-2xl font-bold text-blue-600">{userStats.rank}</div>
-              <div className="text-xs text-gray-400 mt-1">继续保持！</div>
+              <div className="text-xs text-gray-500 mt-1">继续保持！</div>
             </div>
             <div className="bg-white/60 rounded-lg p-4">
               <div className="text-sm text-gray-600 mb-1">本周学习</div>
@@ -425,7 +425,7 @@ export default function UserDashboard() {
             <div className="bg-white/60 rounded-lg p-4">
               <div className="text-sm text-gray-600 mb-1">预计完成</div>
               <div className="text-2xl font-bold text-blue-600">2周后</div>
-              <div className="text-xs text-gray-400 mt-1">保持当前进度</div>
+              <div className="text-xs text-gray-500 mt-1">保持当前进度</div>
             </div>
           </div>
         </section>

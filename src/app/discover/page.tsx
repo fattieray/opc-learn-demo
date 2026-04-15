@@ -78,7 +78,7 @@ export default function DiscoverPage() {
       {/* Header */}
       <div className="bg-white px-5 pt-12 pb-4 border-b border-gray-100">
         <h1 className="text-xl font-bold text-gray-900">成长罗盘</h1>
-        <p className="text-xs text-gray-400 mt-1">你在哪里、能去哪里、下一步做什么</p>
+        <p className="text-xs text-gray-500 mt-1">你在哪里、能去哪里、下一步做什么</p>
       </div>
 
       {/* A. 我的成长导航 — 个性化 + 高优先级 */}
@@ -91,7 +91,7 @@ export default function DiscoverPage() {
             </div>
             <div className="flex-1">
               <div className="text-sm font-semibold text-gray-900">职业成长之旅</div>
-              <div className="text-[10px] text-gray-400">{userPath.title} · {ind.name}</div>
+              <div className="text-[10px] text-gray-500">{userPath.title} · {ind.name}</div>
             </div>
             <span className="text-[10px] px-2 py-0.5 rounded-full bg-[#2DD4A8]/10 text-[#14B88C] font-medium">{completedMicro}/{totalMicro}完成</span>
           </div>
@@ -117,17 +117,17 @@ export default function DiscoverPage() {
             {/* 体系课阶段 — 待解锁 */}
             <div className="flex items-center gap-3">
               <div className="w-6 h-6 rounded-full bg-gray-200 flex items-center justify-center shrink-0">
-                <IconShield size={12} className="text-gray-400" />
+                <IconShield size={12} className="text-gray-500" />
               </div>
               <div className="flex-1">
                 <div className="flex items-center justify-between mb-1">
-                  <span className="text-xs font-medium text-gray-400">体系课阶段</span>
-                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-gray-100 text-gray-400">完成{totalMicro - completedMicro}门解锁</span>
+                  <span className="text-xs font-medium text-gray-500">体系课阶段</span>
+                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-gray-100 text-gray-500">完成{totalMicro - completedMicro}门解锁</span>
                 </div>
                 <div className="h-1.5 bg-white/40 rounded-full overflow-hidden">
                   <div className="h-full bg-gray-200 rounded-full" style={{ width: "0%" }} />
                 </div>
-                <div className="text-[10px] text-gray-400 mt-1">进阶：{(systemCourses[0] as any)?.careerGrowth?.title || "运营主管"} · {(systemCourses[0] as any)?.careerGrowth?.salaryRange || "10k+"}</div>
+                <div className="text-[10px] text-gray-500 mt-1">进阶：{(systemCourses[0] as any)?.careerGrowth?.title || "运营主管"} · {(systemCourses[0] as any)?.careerGrowth?.salaryRange || "10k+"}</div>
               </div>
             </div>
           </div>
@@ -163,19 +163,19 @@ export default function DiscoverPage() {
           </div>
           <div className="flex gap-2 text-[10px]">
             <div className="flex-1 p-2 rounded-lg bg-gray-50 text-center">
-              <div className="text-gray-400 mb-0.5">已投入</div>
+              <div className="text-gray-500 mb-0.5">已投入</div>
               <div className="font-medium text-gray-700">2小时</div>
             </div>
             <div className="flex-1 p-2 rounded-lg bg-gray-50 text-center">
-              <div className="text-gray-400 mb-0.5">本周目标</div>
+              <div className="text-gray-500 mb-0.5">本周目标</div>
               <div className="font-medium text-[#2DD4A8]">3小时</div>
             </div>
             <div className="flex-1 p-2 rounded-lg bg-gray-50 text-center">
-              <div className="text-gray-400 mb-0.5">连续学习</div>
+              <div className="text-gray-500 mb-0.5">连续学习</div>
               <div className="font-medium text-amber-600">5天</div>
             </div>
           </div>
-          <div className="mt-2 pt-2 border-t border-gray-50 text-[10px] text-gray-400 text-center">
+          <div className="mt-2 pt-2 border-t border-gray-50 text-[10px] text-gray-500 text-center">
             预计 <span className="text-[#2DD4A8] font-medium">6周</span> 完成微技能课阶段
           </div>
         </div>
@@ -190,7 +190,7 @@ export default function DiscoverPage() {
             </div>
             <div>
               <div className="text-sm font-semibold text-gray-900">AI 成长顾问</div>
-              <div className="text-[10px] text-gray-400">基于你的进度，为你规划</div>
+              <div className="text-[10px] text-gray-500">基于你的进度，为你规划</div>
             </div>
           </div>
           <div className="space-y-2">
@@ -220,7 +220,7 @@ export default function DiscoverPage() {
           <div className="flex items-center gap-2 mb-3">
             <IconGraduationCap size={16} className="text-violet-500" />
             <span className="text-sm font-semibold text-gray-900">同伴在做什么</span>
-            <span className="text-[10px] text-gray-400 ml-auto">同方向学员</span>
+            <span className="text-[10px] text-gray-500 ml-auto">同方向学员</span>
           </div>
           <div className="space-y-3">
             {peerActivities.map((peer, i) => (
@@ -232,17 +232,17 @@ export default function DiscoverPage() {
                     <span className="text-[9px] px-1 py-0.5 rounded bg-violet-50 text-violet-500">学徒</span>
                   </div>
                   <div className="text-xs text-gray-600 mt-0.5">{peer.action}</div>
-                  <div className="text-[10px] text-gray-400 mt-0.5">{peer.course} · {peer.time}</div>
+                  <div className="text-[10px] text-gray-500 mt-0.5">{peer.course} · {peer.time}</div>
                 </div>
                 <div className="shrink-0 text-center">
-                  <div className="text-[9px] text-gray-400">技能</div>
+                  <div className="text-[9px] text-gray-500">技能</div>
                   <div className="text-[10px] font-medium text-[#2DD4A8]">{peer.skill}</div>
                 </div>
               </div>
             ))}
           </div>
           <div className="mt-3 pt-3 border-t border-gray-50 text-center">
-            <span className="text-[10px] text-gray-400">你有 <span className="text-[#2DD4A8] font-medium">3位</span> 同伴正在同方向学习</span>
+            <span className="text-[10px] text-gray-500">你有 <span className="text-[#2DD4A8] font-medium">3位</span> 同伴正在同方向学习</span>
           </div>
         </div>
 
@@ -251,7 +251,7 @@ export default function DiscoverPage() {
           <div className="flex items-center gap-2 mb-3">
             <IconBadgeCheck size={16} className="text-amber-500" />
             <span className="text-sm font-semibold text-gray-900">推荐导师</span>
-            <span className="text-[10px] text-gray-400 ml-auto">认证教练+课程提供方</span>
+            <span className="text-[10px] text-gray-500 ml-auto">认证教练+课程提供方</span>
           </div>
           <div className="space-y-3">
             {experts.filter((e) => e.industry === displayUser.industry_preference || e.industry === "retail").slice(0, 2).map((expert) => {
@@ -271,7 +271,7 @@ export default function DiscoverPage() {
                         <span className="text-[9px] text-amber-500 flex items-center gap-0.5 ml-auto"><IconStar size={8} className="text-amber-400" />{expert.stats.avgRating}</span>
                       </div>
                       <div className="text-[10px] text-gray-500 mb-1.5">{expert.bio}</div>
-                      <div className="flex items-center gap-2 text-[10px] text-gray-400">
+                      <div className="flex items-center gap-2 text-[10px] text-gray-500">
                         <span>{ind.name}</span>
                         <span>·</span>
                         <span>{expert.specialties.slice(0, 3).join("、")}</span>
@@ -279,8 +279,8 @@ export default function DiscoverPage() {
                     </div>
                   </div>
                   <div className="flex items-center gap-3 mt-2 pt-2 border-t border-gray-100/50">
-                    <div className="text-[10px] text-gray-400">已完成 {expert.stats.reviewsCompleted} 次评审</div>
-                    <div className="text-[10px] text-gray-400">{expert.stats.totalStudents} 位学员</div>
+                    <div className="text-[10px] text-gray-500">已完成 {expert.stats.reviewsCompleted} 次评审</div>
+                    <div className="text-[10px] text-gray-500">{expert.stats.totalStudents} 位学员</div>
                     <div className="text-[10px] text-[#2DD4A8] font-medium ml-auto">查看详情 →</div>
                   </div>
                 </div>
@@ -319,14 +319,14 @@ export default function DiscoverPage() {
                     <div className="font-medium text-sm text-gray-900 mb-2">{path.title}</div>
                     <div className="flex items-center gap-4 bg-gray-50 rounded-lg p-2.5">
                       <div className="flex-1">
-                        <div className="text-[10px] text-gray-400 mb-0.5">入行起点</div>
+                        <div className="text-[10px] text-gray-500 mb-0.5">入行起点</div>
                         <div className="text-xs font-medium text-amber-600">
                           {microList[0]?.career?.title || "运营实习生"} · {microList[0]?.career?.salaryRange || "4k-7k"}
                         </div>
                       </div>
                       <IconArrowRight size={12} className="text-gray-300" />
                       <div className="flex-1">
-                        <div className="text-[10px] text-gray-400 mb-0.5">职业进阶</div>
+                        <div className="text-[10px] text-gray-500 mb-0.5">职业进阶</div>
                         <div className="text-xs font-medium text-violet-600">
                           {sysCourse?.careerGrowth?.title || "运营主管"} · {sysCourse?.careerGrowth?.salaryRange || "10k+"}
                         </div>

@@ -93,7 +93,7 @@ const industries = [
 const stats = [
   { value: "1,247", label: "活跃学员", icon: IconUsers, iconColor: "text-blue-500" },
   { value: "¥156K", label: "奖学金发放", icon: IconCoins, iconColor: "text-amber-500" },
-  { value: "89%", label: "完课率", icon: IconCheckCircle, iconColor: "text-[#2DD4A8]" },
+  { value: "89%", label: "完课率", icon: IconCheckCircle, iconColor: "text-green-500" },
   { value: "21", label: "实训场景", icon: IconTarget, iconColor: "text-violet-500" },
 ];
 
@@ -343,15 +343,15 @@ export default function LandingPage() {
                 
                 <div className="space-y-3 mb-6">
                   <div>
-                    <div className="text-xs text-gray-400 mb-1">就业方向</div>
+                    <div className="text-xs text-gray-500 mb-1">就业方向</div>
                     <div className="text-sm text-gray-700">{industry.jobs}</div>
                   </div>
                   <div>
-                    <div className="text-xs text-gray-400 mb-1">薪资范围</div>
+                    <div className="text-xs text-gray-500 mb-1">薪资范围</div>
                     <div className="text-sm font-semibold text-[#2DD4A8]">{industry.salary}</div>
                   </div>
                   <div>
-                    <div className="text-xs text-gray-400 mb-1">课程数量</div>
+                    <div className="text-xs text-gray-500 mb-1">课程数量</div>
                     <div className="text-sm text-gray-700">{industry.courses}门实战课程</div>
                   </div>
                 </div>
@@ -399,18 +399,18 @@ export default function LandingPage() {
 
                 <div className="space-y-2 text-xs text-gray-500 mb-4">
                   <div className="flex items-center gap-1.5">
-                    <IconTarget size={12} className="text-gray-400" />
+                    <IconTarget size={12} className="text-gray-500" />
                     <span>{story.industry}</span>
                   </div>
                   <div className="flex items-center gap-1.5">
-                    <IconClock size={12} className="text-gray-400" />
+                    <IconClock size={12} className="text-gray-500" />
                     <span>{story.time}</span>
                   </div>
                   <div className="flex items-center gap-1.5">
                     {story.scholarship.includes('¥') ? (
-                      <><IconCoins size={12} className="text-gray-400" /><span>{story.scholarship}</span></>
+                      <><IconCoins size={12} className="text-gray-500" /><span>{story.scholarship}</span></>
                     ) : (
-                      <><IconBriefcase size={12} className="text-gray-400" /><span>{story.scholarship}</span></>
+                      <><IconBriefcase size={12} className="text-gray-500" /><span>{story.scholarship}</span></>
                     )}
                   </div>
                 </div>
@@ -517,12 +517,12 @@ export default function LandingPage() {
                 </div>
                 <span className="text-lg font-bold">OPC Learn</span>
               </div>
-              <p className="text-sm text-gray-400">实战驱动的内容运营学习平台</p>
+              <p className="text-sm text-gray-500">实战驱动的内容运营学习平台</p>
             </div>
             
             <div>
               <h4 className="font-semibold mb-4">产品</h4>
-              <ul className="space-y-2 text-sm text-gray-400">
+              <ul className="space-y-2 text-sm text-gray-500">
                 <li><Link href="/courses" className="hover:text-white transition-colors">课程中心</Link></li>
                 <li><Link href="/assessment" className="hover:text-white transition-colors">技能测评</Link></li>
                 <li><Link href="/circles" className="hover:text-white transition-colors">学习圈</Link></li>
@@ -531,7 +531,7 @@ export default function LandingPage() {
 
             <div>
               <h4 className="font-semibold mb-4">资源</h4>
-              <ul className="space-y-2 text-sm text-gray-400">
+              <ul className="space-y-2 text-sm text-gray-500">
                 <li><a href="#" className="hover:text-white transition-colors">帮助中心</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">学习指南</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">联系我们</a></li>
@@ -540,7 +540,7 @@ export default function LandingPage() {
 
             <div>
               <h4 className="font-semibold mb-4">法律</h4>
-              <ul className="space-y-2 text-sm text-gray-400">
+              <ul className="space-y-2 text-sm text-gray-500">
                 <li><a href="#" className="hover:text-white transition-colors">隐私政策</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">服务条款</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Cookie政策</a></li>
@@ -548,7 +548,7 @@ export default function LandingPage() {
             </div>
           </div>
 
-          <div className="pt-8 border-t border-gray-800 text-center text-sm text-gray-400">
+          <div className="pt-8 border-t border-gray-800 text-center text-sm text-gray-500">
             <p>© 2026 OPC Learn. All rights reserved.</p>
           </div>
         </div>

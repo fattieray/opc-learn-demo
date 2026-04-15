@@ -240,7 +240,7 @@ export default function UserProfilePage({ params }: { params: { id: string } }) 
               <IconUsers size={18} className="text-blue-500" />
               <h2 className="text-sm font-bold text-gray-900">学习伙伴</h2>
             </div>
-            <span className="text-xs text-gray-400">{studyPartners.length}人</span>
+            <span className="text-xs text-gray-500">{studyPartners.length}人</span>
           </div>
           <div className="flex gap-3 overflow-x-auto pb-2">
             {studyPartners.map((partner) => (
@@ -264,7 +264,7 @@ export default function UserProfilePage({ params }: { params: { id: string } }) 
                 <IconTrophy size={18} className="text-amber-500" />
                 <h2 className="text-sm font-bold text-gray-900">技能认证</h2>
               </div>
-              <span className="text-xs text-gray-400">{userCertificates.length}个</span>
+              <span className="text-xs text-gray-500">{userCertificates.length}个</span>
             </div>
             <div className="space-y-2">
               {userCertificates.map((cert) => (
@@ -276,7 +276,7 @@ export default function UserProfilePage({ params }: { params: { id: string } }) 
                     </div>
                     <div className="text-right ml-3">
                       <div className="text-sm font-bold text-amber-600">{cert.score}分</div>
-                      <div className="text-[9px] text-gray-400">{cert.issuedAt}</div>
+                      <div className="text-[9px] text-gray-500">{cert.issuedAt}</div>
                     </div>
                   </div>
                 </div>
@@ -322,10 +322,10 @@ export default function UserProfilePage({ params }: { params: { id: string } }) 
                     <div className="flex items-start gap-3 mb-2">
                       <div className="flex-1">
                         <div className="text-xs text-gray-900 mb-1">{activity.content}</div>
-                        <div className="text-[10px] text-gray-400">{activity.time}</div>
+                        <div className="text-[10px] text-gray-500">{activity.time}</div>
                       </div>
                     </div>
-                    <div className="flex items-center gap-4 text-xs text-gray-400">
+                    <div className="flex items-center gap-4 text-xs text-gray-500">
                       <button className="flex items-center gap-1 hover:text-[#2DD4A8] transition-colors">
                         <IconThumbsUp size={12} />
                         <span>{activity.likes}</span>
@@ -351,7 +351,7 @@ export default function UserProfilePage({ params }: { params: { id: string } }) 
                       </div>
                       <div className="text-right ml-3">
                         <div className="text-sm font-bold text-[#2DD4A8]">{assignment.score}分</div>
-                        <div className="text-[9px] text-gray-400">{assignment.level}</div>
+                        <div className="text-[9px] text-gray-500">{assignment.level}</div>
                       </div>
                     </div>
                     {assignment.coachComment && (

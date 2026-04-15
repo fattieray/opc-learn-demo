@@ -151,7 +151,7 @@ export default function ExpertPage() {
           </Link>
           <div className="flex-1">
             <div className="text-base font-bold text-gray-900">专家中心</div>
-            <div className="text-[10px] text-gray-400">认证教练 · 课程提供方 · 知识变现</div>
+            <div className="text-[10px] text-gray-500">认证教练 · 课程提供方 · 知识变现</div>
           </div>
           {existingExpert && (
             <span className="text-[10px] px-2 py-1 rounded-full bg-[#2DD4A8]/10 text-[#14B88C] font-medium">已认证</span>
@@ -163,7 +163,7 @@ export default function ExpertPage() {
       <div className="px-4 pt-4">
         <div className={`rounded-xl p-4 border ${hasOPCCert ? "bg-[#2DD4A8]/5 border-[#2DD4A8]/20" : hasOPCInProgress ? "bg-amber-50/50 border-amber-200/30" : "bg-gray-50 border-gray-200/50"}`}>
           <div className="flex items-center gap-2 mb-2">
-            <IconShield size={16} className={hasOPCCert ? "text-[#2DD4A8]" : hasOPCInProgress ? "text-amber-500" : "text-gray-400"} />
+            <IconShield size={16} className={hasOPCCert ? "text-[#2DD4A8]" : hasOPCInProgress ? "text-amber-500" : "text-gray-500"} />
             <span className="text-sm font-semibold text-gray-900">入驻前提：OPC认证</span>
           </div>
           <p className="text-xs text-gray-600 leading-relaxed mb-2">
@@ -203,7 +203,7 @@ export default function ExpertPage() {
               </div>
               <div>
                 <div className="text-xs font-semibold text-gray-800">年费 ¥199</div>
-                <div className="text-[10px] text-gray-400">平台工具使用费，涵盖课程管理、评审工具、数据分析</div>
+                <div className="text-[10px] text-gray-500">平台工具使用费，涵盖课程管理、评审工具、数据分析</div>
               </div>
             </div>
             <div className="flex items-start gap-2.5 p-2.5 rounded-lg bg-gray-50">
@@ -212,11 +212,11 @@ export default function ExpertPage() {
               </div>
               <div>
                 <div className="text-xs font-semibold text-gray-800">收入分成 10%</div>
-                <div className="text-[10px] text-gray-400">平台抽成10%，你保留90%收入。评审费、课程费均适用</div>
+                <div className="text-[10px] text-gray-500">平台抽成10%，你保留90%收入。评审费、课程费均适用</div>
               </div>
             </div>
           </div>
-          <div className="mt-3 pt-3 border-t border-gray-50 text-[10px] text-gray-400">
+          <div className="mt-3 pt-3 border-t border-gray-50 text-[10px] text-gray-500">
             平台担保：学员不满意可退款，确保教学质量
           </div>
         </div>
@@ -246,7 +246,7 @@ export default function ExpertPage() {
                   <Ri size={20} style={{ color: rc.color }} />
                 </div>
                 <div className="text-sm font-semibold text-gray-900 text-center">{rc.name}</div>
-                <div className="text-[10px] text-gray-400 text-center mt-1">{rc.income}</div>
+                <div className="text-[10px] text-gray-500 text-center mt-1">{rc.income}</div>
               </button>
             );
           })}
@@ -269,7 +269,7 @@ export default function ExpertPage() {
               {cfg.requirements.map((req, i) => (
                 <div key={i} className="flex items-center gap-2 text-xs text-gray-600">
                   <div className="w-5 h-5 rounded-full bg-gray-100 flex items-center justify-center shrink-0">
-                    <span className="text-[10px] text-gray-400">{i + 1}</span>
+                    <span className="text-[10px] text-gray-500">{i + 1}</span>
                   </div>
                   {req}
                 </div>
@@ -282,7 +282,7 @@ export default function ExpertPage() {
             {cfg.stats.map((stat) => (
               <div key={stat.label} className="p-2 rounded-lg bg-gray-50 text-center">
                 <div className="text-xs font-bold text-gray-900">{stat.value}</div>
-                <div className="text-[9px] text-gray-400">{stat.label}</div>
+                <div className="text-[9px] text-gray-500">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -323,7 +323,7 @@ export default function ExpertPage() {
           <div className="flex items-center gap-2 mb-3">
             <IconStar size={16} className="text-amber-500" />
             <span className="text-sm font-semibold text-gray-900">平台专家</span>
-            <span className="text-[10px] text-gray-400 ml-auto">{experts.length}位已入驻</span>
+            <span className="text-[10px] text-gray-500 ml-auto">{experts.length}位已入驻</span>
           </div>
           <div className="space-y-2.5">
             {experts.map((expert) => {
@@ -341,14 +341,14 @@ export default function ExpertPage() {
                         {expert.roles.includes("course_provider") && <span className="text-[8px] px-1 py-0.5 rounded bg-amber-50 text-amber-500">课程提供方</span>}
                         <span className="text-[9px] px-1 py-0.5 rounded" style={{ backgroundColor: ind.bgColor, color: ind.color }}>{ind.name}</span>
                       </div>
-                      <div className="text-[10px] text-gray-400">{expert.specialties.join("、")}</div>
+                      <div className="text-[10px] text-gray-500">{expert.specialties.join("、")}</div>
                     </div>
                     <div className="text-right shrink-0">
                       <div className="text-xs font-bold text-[#2DD4A8]">¥{expert.stats.totalEarnings.toLocaleString()}</div>
-                      <div className="text-[9px] text-gray-400">累计收入</div>
+                      <div className="text-[9px] text-gray-500">累计收入</div>
                     </div>
                   </div>
-                  <div className="flex items-center gap-3 mt-2 pt-2 border-t border-gray-100/50 text-[10px] text-gray-400">
+                  <div className="flex items-center gap-3 mt-2 pt-2 border-t border-gray-100/50 text-[10px] text-gray-500">
                     <span>{expert.onboardingType === "invited" ? "平台邀请入驻" : "申请审核入驻"}</span>
                     <span>·</span>
                     <span>评分 {expert.stats.avgRating}</span>
@@ -370,7 +370,7 @@ export default function ExpertPage() {
               <IconClock size={16} className="text-blue-500" />
               <span className="text-sm font-semibold text-gray-900">即将到来的辅导</span>
             </div>
-            <span className="text-[10px] text-gray-400">{upcomingSessions.filter(s => s.status === "已预约").length}个已预约</span>
+            <span className="text-[10px] text-gray-500">{upcomingSessions.filter(s => s.status === "已预约").length}个已预约</span>
           </div>
           <div className="space-y-2.5">
             {upcomingSessions.map((session) => {
@@ -432,7 +432,7 @@ export default function ExpertPage() {
               <div className="text-[10px] text-gray-500 mt-0.5">技能提升</div>
             </div>
           </div>
-          <div className="flex items-center justify-between text-[10px] text-gray-400 pt-2 border-t border-gray-50">
+          <div className="flex items-center justify-between text-[10px] text-gray-500 pt-2 border-t border-gray-50">
             <span>总辅导时长: {coachingStats.totalHours}小时</span>
             <span>获得反馈: {coachingStats.totalFeedback}次</span>
           </div>
@@ -451,8 +451,8 @@ export default function ExpertPage() {
               <span className="text-sm font-semibold text-gray-900">辅导历史</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-[10px] text-gray-400">{sessionHistory.length}条记录</span>
-              <IconChevronRight size={16} className={`text-gray-400 transition-transform ${showHistory ? "rotate-90" : ""}`} />
+              <span className="text-[10px] text-gray-500">{sessionHistory.length}条记录</span>
+              <IconChevronRight size={16} className={`text-gray-500 transition-transform ${showHistory ? "rotate-90" : ""}`} />
             </div>
           </button>
           
@@ -463,7 +463,7 @@ export default function ExpertPage() {
                   <div className="flex items-start justify-between mb-2">
                     <div>
                       <div className="text-xs font-semibold text-gray-900 mb-0.5">{session.topic}</div>
-                      <div className="text-[10px] text-gray-400">教练: {session.coachName} · {session.type} · {session.date}</div>
+                      <div className="text-[10px] text-gray-500">教练: {session.coachName} · {session.type} · {session.date}</div>
                     </div>
                     <div className="flex items-center gap-0.5">
                       {[...Array(session.rating)].map((_, i) => (
@@ -495,7 +495,7 @@ export default function ExpertPage() {
           </button>
         ) : (
           <div className="text-center">
-            <button className="w-full py-3.5 rounded-xl bg-gray-200 text-gray-400 font-semibold text-sm cursor-not-allowed">
+            <button className="w-full py-3.5 rounded-xl bg-gray-200 text-gray-500 font-semibold text-sm cursor-not-allowed">
               {hasOPCInProgress ? "通过OPC认证后可申请" : "需要先获得OPC认证"}
             </button>
             <Link href="/profile/certification" className="text-xs text-[#2DD4A8] font-medium mt-2 inline-block">
