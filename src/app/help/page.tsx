@@ -26,7 +26,7 @@ const faqCategories = [
       },
       {
         q: "如何注册和开始学习？",
-        a: "点击首页的"免费开始"按钮，填写手机号和验证码即可完成注册。注册后系统会引导你选择感兴趣的行业赛道和学习目标，然后为你推荐最适合的课程。",
+        a: "点击首页的免费开始按钮，填写手机号和验证码即可完成注册。注册后系统会引导你选择感兴趣的行业赛道和学习目标，然后为你推荐最适合的课程。",
       },
       {
         q: "平台收费吗？",
@@ -90,7 +90,7 @@ const faqCategories = [
   },
   {
     id: "scholarship",
-    name: "奖学金",
+    name: 奖学金,
     icon: IconCoins,
     color: "text-violet-500",
     bgColor: "bg-violet-50",
@@ -101,7 +101,7 @@ const faqCategories = [
       },
       {
         q: "奖学金如何提现？",
-        a: "奖学金满¥100即可提现：\n\n1. 进入"个人中心" → "奖学金"\n2. 点击"提现"按钮\n3. 填写支付宝/微信收款码\n4. 1-3个工作日到账\n\n提现无手续费，平台全额发放。",
+        a: "奖学金满100元即可提现：\n\n1. 进入个人中心 → 奖学金\n2. 点击提现按钮\n3. 填写支付宝/微信收款码\n4. 1-3个工作日到账\n\n提现无手续费，平台全额发放。",
       },
       {
         q: "奖学金池是什么？",
@@ -126,7 +126,7 @@ const faqCategories = [
       },
       {
         q: "什么是信任分？",
-        a: "信任分是你的社交资本，构成包括：\n\n• 被认可次数 × 认可者权重（教练认可=10分，优秀学员=5分）\n• 帮助他人解决问题的成功率\n• 互评质量（评语长度、深度、被采纳次数）\n• 连续学习天数\n• 作业平均分\n\n高信任分可成为"同伴导师"，获得额外收益。",
+        a: "信任分是你的社交资本，构成包括：\n\n• 被认可次数 × 认可者权重（教练认可=10分，优秀学员=5分）\n• 帮助他人解决问题的成功率\n• 互评质量（评语长度、深度、被采纳次数）\n• 连续学习天数\n• 作业平均分\n\n高信任分可成为同伴导师，获得额外收益。",
       },
     ],
   },
@@ -160,7 +160,7 @@ const faqCategories = [
     questions: [
       {
         q: "忘记密码怎么办？",
-        a: "在登录页面点击"忘记密码"，输入注册手机号，获取验证码后即可重置密码。如果手机号已更换，请联系客服处理。",
+        a: "在登录页面点击忘记密码，输入注册手机号，获取验证码后即可重置密码。如果手机号已更换，请联系客服处理。",
       },
       {
         q: "视频无法播放怎么办？",
@@ -168,7 +168,7 @@ const faqCategories = [
       },
       {
         q: "如何修改个人资料？",
-        a: "进入"个人中心" → "编辑资料"，可以修改：\n\n• 昵称\n• 头像\n• 个人简介\n• 行业偏好\n• 学习目标\n\n注意：行业偏好修改后，推荐课程会相应调整。",
+        a: "进入个人中心 → "编辑资料"，可以修改：\n\n• 昵称\n• 头像\n• 个人简介\n• 行业偏好\n• 学习目标\n\n注意：行业偏好修改后，推荐课程会相应调整。",
       },
       {
         q: "APP在哪里下载？",
@@ -182,7 +182,7 @@ const faqCategories = [
 const quickLinks = [
   { icon: IconBookOpen, label: "浏览课程", href: "/courses", color: "text-blue-500" },
   { icon: IconAward, label: "认证中心", href: "/profile/certification", color: "text-amber-500" },
-  { icon: IconCoins, label: "奖学金", href: "/profile", color: "text-violet-500" },
+  { icon: IconCoins, label: 奖学金, href: "/profile", color: "text-violet-500" },
   { icon: IconUsers, label: "学习圈", href: "/circles", color: "text-blue-500" },
   { icon: IconGraduationCap, label: "学习路径", href: "/discover", color: "text-[#2DD4A8]" },
   { icon: IconStar, label: "成为教练", href: "/profile/expert", color: "text-amber-500" },
