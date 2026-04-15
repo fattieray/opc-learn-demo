@@ -90,7 +90,7 @@ const faqCategories = [
   },
   {
     id: "scholarship",
-    name: 奖学金,
+    name: "奖学金",
     icon: IconCoins,
     color: "text-violet-500",
     bgColor: "bg-violet-50",
@@ -182,7 +182,7 @@ const faqCategories = [
 const quickLinks = [
   { icon: IconBookOpen, label: "浏览课程", href: "/courses", color: "text-blue-500" },
   { icon: IconAward, label: "认证中心", href: "/profile/certification", color: "text-amber-500" },
-  { icon: IconCoins, label: 奖学金, href: "/profile", color: "text-violet-500" },
+  { icon: IconCoins, label: "奖学金", href: "/profile", color: "text-violet-500" },
   { icon: IconUsers, label: "学习圈", href: "/circles", color: "text-blue-500" },
   { icon: IconGraduationCap, label: "学习路径", href: "/discover", color: "text-[#2DD4A8]" },
   { icon: IconStar, label: "成为教练", href: "/profile/expert", color: "text-amber-500" },
