@@ -10,7 +10,7 @@ import {
   IconTarget, IconCoins, IconTrendingUp, IconGraduationCap, IconBookmark,
   IconCheck, IconMessage, IconLightbulb, IconThumbsUp, IconClock, IconBarChart,
   IconBriefcase, IconShield, IconZap, IconStar, IconFlag, IconActivity,
-  IconCertification, IconExam, IconChalkboard, IconBadgeCheck,
+  IconCertification, IconExam, IconChalkboard, IconBadgeCheck, IconHelpCircle,
 } from "@/components/Icons";
 import { currentUser } from "@/lib/mock/users";
 import { squads } from "@/lib/mock/squads";
@@ -438,6 +438,22 @@ export default function ProfilePage() {
                 <IconChalkboard size={12} className="text-blue-500" />
                 <span>课程提供方 · 卖课收入</span>
               </div>
+            </div>
+          </div>
+        </Link>
+
+        {/* 帮助中心 */}
+        <Link href="/help" className="block">
+          <div className="bg-gradient-to-br from-blue-50/80 to-indigo-50/50 rounded-xl p-4 border border-blue-200/30">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center">
+                <IconHelpCircle size={20} className="text-blue-600" />
+              </div>
+              <div className="flex-1">
+                <div className="text-sm font-semibold text-gray-900 mb-0.5">帮助中心</div>
+                <div className="text-[10px] text-gray-600">常见问题、联系方式、在线客服</div>
+              </div>
+              <IconChevronRight size={18} className="text-blue-400" />
             </div>
           </div>
         </Link>
